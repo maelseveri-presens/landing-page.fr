@@ -1,0 +1,2918 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présens · Studio GEO France pour restaurants &amp; hôtels</title>
+  <meta name="description"
+    content="Premier studio français spécialisé exclusivement en GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Faites citer votre établissement par ChatGPT, Perplexity, Gemini et Claude. Audit gratuit en 48h.">
+  <meta name="keywords"
+    content="GEO, Generative Engine Optimization, référencement génératif, restaurant, hôtel, ChatGPT, Perplexity, Gemini, Claude, France, llms.txt">
+  <meta name="author" content="Maël — Présens">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://presens.fr/">
+  <link rel="sitemap" type="application/xml" href="https://presens.fr/sitemap.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presens.fr/">
+  <meta property="og:site_name" content="Présens">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Présens · Studio GEO France pour restaurants &amp; hôtels">
+  <meta property="og:description"
+    content="Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration. Audit gratuit en 48h — Score de Présence sur ChatGPT, Perplexity, Gemini et Claude.">
+  <meta property="og:image" content="https://presens.fr/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Présens — Studio GEO pour restaurants et hôtels">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Présens · Studio GEO France pour restaurants &amp; hôtels">
+  <meta name="twitter:description"
+    content="Premier studio français de GEO pour l'hôtellerie-restauration. Audit gratuit en 48h.">
+  <meta name="twitter:image" content="https://presens.fr/assets/img/og-image.jpg">
+
+  <!-- Technique -->
+  <meta name="theme-color" content="#0A1410">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="alternate icon" href="/assets/img/favicon.ico">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- GSAP (micro-animations d'entrée uniquement) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════ */
+    :root {
+      --bg-main: #0A1410;
+      --bg-deep: #0F1F18;
+      --bg-card: #142822;
+      --bg-hover: #1A2E26;
+
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --space-16: 64px;
+
+      --radius-xs: 4px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+
+      --container: 1100px;
+      --gutter: 24px;
+      --lh-body: 1.6;
+      --lh-title: 1.07;
+      --ls-pill: 0.18em;
+    }
+
+    /* ═══════════════════════════════════════════
+       RESET
+    ═══════════════════════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: var(--lh-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       PROGRESS BAR — 2px, top, mint→cta
+    ═══════════════════════════════════════════ */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(31, 58, 45, 0.5);
+      z-index: 200;
+    }
+
+    #progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, var(--green-mint), var(--green-cta));
+      transition: width 50ms linear;
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVBAR FLOTTANTE
+    ═══════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 8px 20px;
+      background: rgba(20, 40, 34, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-logo .pre {
+      color: #E8E0D0;
+    }
+
+    .nav-logo .sens {
+      color: var(--green-sage);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      transition: color 200ms ease;
+      padding: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      transition: background-color 200ms ease, transform 200ms ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--bg-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION DOTS — fixe droite, centre vertical
+    ═══════════════════════════════════════════ */
+    #nav-dots {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-forest);
+      border: 1px solid var(--text-tertiary);
+      cursor: pointer;
+      padding: 0;
+      transition:
+        background 250ms ease,
+        transform 250ms ease,
+        width 250ms ease,
+        height 250ms ease,
+        border-color 250ms ease;
+    }
+
+    .nav-dot:hover {
+      background: var(--green-sage);
+      transform: scale(1.2);
+      border-color: var(--green-sage);
+    }
+
+    .nav-dot.active {
+      background: var(--green-mint);
+      width: 8.4px;
+      height: 8.4px;
+      border-color: var(--green-mint);
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL CONTAINER + SECTIONS
+    ═══════════════════════════════════════════ */
+    #scroll-container {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes slide-in-from-below {
+      0% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+
+      60% {
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes slide-in-from-above {
+      0% {
+        transform: translate3d(0, -100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+
+      60% {
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes slide-out-to-above {
+      0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, -100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+    }
+
+    @keyframes slide-out-to-below {
+      0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+    }
+
+    .section {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: none;
+      will-change: transform, filter;
+      transform: translateY(100%);
+    }
+
+    .section.is-above {
+      transform: translateY(-100%);
+    }
+
+    .section.active {
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .section.entering-down {
+      animation: slide-in-from-below 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .section.entering-up {
+      animation: slide-in-from-above 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .section.leaving-up {
+      animation: slide-out-to-above 700ms cubic-bezier(0.64, 0, 0.78, 0) both;
+    }
+
+    .section.leaving-down {
+      animation: slide-out-to-below 700ms cubic-bezier(0.64, 0, 0.78, 0) both;
+    }
+
+    /* ═══════════════════════════════════════════
+       ORBES — radial-gradient, blur, fond z:0
+    ═══════════════════════════════════════════ */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: orb-pulse 4s ease-in-out infinite;
+    }
+
+    /* Décalage de phase entre les 3 orbes de chaque section */
+    .section>.orb:nth-child(3) {
+      animation-delay: -1.3s;
+    }
+
+    .section>.orb:nth-child(4) {
+      animation-delay: -2.6s;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION INNER
+    ═══════════════════════════════════════════ */
+    .section-inner {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      width: 100%;
+      max-width: var(--container);
+      padding: 0 var(--gutter);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    /* ═══════════════════════════════════════════
+       PILL COMPOSANT
+    ═══════════════════════════════════════════ */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 14px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SKIP LINK — accessibilité clavier
+    ═══════════════════════════════════════════ */
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 10px 24px;
+      background: var(--green-cta);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: top 200ms;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOCUS VISIBLE — navigation clavier
+    ═══════════════════════════════════════════ */
+    :focus-visible {
+      outline: 2px solid var(--green-mint);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .audit-input:focus-visible {
+      outline: 2px solid var(--green-cta);
+      outline-offset: -2px;
+    }
+
+    /* ═══════════════════════════════════════════
+       TOUCH TARGETS — min 44px (WCAG 2.5.5)
+    ═══════════════════════════════════════════ */
+    .tarif-toggle-btn,
+    .tarif-cta-outline,
+    .tarif-cta-filled,
+    .footer-nav-link {
+      min-height: 44px;
+    }
+
+    .footer-nav-link {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ═══════════════════════════════════════════
+       PREFERS-REDUCED-MOTION
+       — sections : fade opacity sans slide ni blur
+       — orbes : statiques
+       — éléments GSAP : immédiatement visibles
+    ═══════════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+
+      /* Orbes : statiques, pas de pulsation */
+      .orb,
+      .orb-cta-pulse {
+        animation: none !important;
+        opacity: 0.35;
+      }
+
+      /* Sections : fade simple, sans slide ni blur */
+      .section {
+        transform: translateY(0) !important;
+        animation: none !important;
+        opacity: 0;
+        transition: opacity 300ms linear !important;
+      }
+
+      .section.active {
+        opacity: 1 !important;
+      }
+
+      .section.entering-down,
+      .section.entering-up {
+        opacity: 1 !important;
+      }
+
+      /* Éléments GSAP : visibles immédiatement */
+      .hero-pill,
+      .hero-title,
+      .hero-sub,
+      .hero-ctas,
+      .prob-pill,
+      .prob-title,
+      .prob-body,
+      .prob-stat,
+      .prob-cta,
+      .meth-pill,
+      .meth-title,
+      .meth-card,
+      .found-portrait,
+      .found-pill,
+      .found-title,
+      .found-paras,
+      .found-sig,
+      .found-cta,
+      .tarif-pill,
+      .tarif-title,
+      .tarif-toggle,
+      .tarif-card,
+      .audit-pill,
+      .audit-title,
+      .audit-sub,
+      .audit-form,
+      .faq-pill,
+      .faq-title,
+      .faq-item,
+      .footer-anim {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE NAVBAR
+    ═══════════════════════════════════════════ */
+    @media (min-width: 1024px) {
+      #navbar {
+        padding: 14px 32px;
+        gap: 36px;
+      }
+
+      .nav-links {
+        gap: 36px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .nav-logo {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links .nav-link {
+        display: none;
+      }
+
+      #navbar {
+        gap: 16px;
+      }
+
+      #nav-dots {
+        right: 12px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       ORBE CTA PULSE — Hero uniquement (index 0)
+    ═══════════════════════════════════════════ */
+    @keyframes orb-pulse {
+
+      0%,
+      100% {
+        opacity: 0.18;
+      }
+
+      50% {
+        opacity: 0.58;
+      }
+    }
+
+    .orb-cta-pulse {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #9BEAC8 0%, transparent 70%);
+      filter: blur(40px);
+      left: 58%;
+      top: 8%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      pointer-events: none;
+      animation: orb-pulse 4s ease-in-out infinite;
+      animation-delay: -0.7s;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO — INDEX 0
+    ═══════════════════════════════════════════ */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    /* États initiaux — GSAP anime vers opacity:1, y:0 */
+    .hero-pill,
+    .hero-title,
+    .hero-sub,
+    .hero-ctas {
+      opacity: 0;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 5.5vw, 64px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .hero-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-sage);
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      cursor: pointer;
+      border: none;
+      transition: background-color 200ms ease, transform 200ms ease;
+    }
+
+    .btn-cta:hover {
+      background: var(--bg-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 4px;
+      transition: color 200ms ease, text-decoration-color 200ms ease;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-primary);
+      text-decoration-color: var(--text-secondary);
+    }
+
+    /* ═══════════════════════════════════════════
+       PROBLÈME — INDEX 1
+    ═══════════════════════════════════════════ */
+    .prob-pill,
+    .prob-title,
+    .prob-body,
+    .prob-stat,
+    .prob-cta {
+      opacity: 0;
+    }
+
+    .prob-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 54px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .prob-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-sage);
+    }
+
+    .prob-body {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.5vw, 17px);
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.65;
+    }
+
+    .prob-stat {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 36px);
+      color: var(--green-sage);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.3;
+    }
+
+    /* ═══════════════════════════════════════════
+       MÉTHODE — INDEX 2
+    ═══════════════════════════════════════════ */
+    .meth-pill,
+    .meth-title,
+    .meth-card {
+      opacity: 0;
+    }
+
+    .meth-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 40px;
+    }
+
+    .meth-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-sage);
+    }
+
+    .meth-cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .meth-card {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: left;
+      transition: border-color 250ms ease, transform 250ms ease;
+    }
+
+    .meth-card:hover {
+      border-color: var(--green-cta);
+      transform: translateY(-2px);
+    }
+
+    .meth-card-icon {
+      color: var(--green-mint);
+      margin-bottom: 14px;
+    }
+
+    .meth-card-num {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .meth-card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .meth-card-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .meth-cards {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       FONDATEUR — INDEX 3
+    ═══════════════════════════════════════════ */
+    .found-portrait,
+    .found-pill,
+    .found-title,
+    .found-paras,
+    .found-sig,
+    .found-cta {
+      opacity: 0;
+    }
+
+    .found-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+      text-align: left;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .found-portrait {
+      flex: 0 0 260px;
+      aspect-ratio: 4 / 5;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .found-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .found-portrait-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 16px;
+    }
+
+    .found-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .found-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .found-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-sage);
+    }
+
+    .found-paras {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .found-para {
+      font-family: var(--font-body);
+      font-size: clamp(13px, 1.3vw, 15px);
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .found-sig {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--green-sage);
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .found-inner {
+        flex-direction: column;
+        gap: 28px;
+        text-align: left;
+      }
+
+      .found-portrait {
+        flex: 0 0 auto;
+        width: 200px;
+        align-self: center;
+      }
+    }
+
+    /* ── TARIFS (INDEX 4) ───────────────────────── */
+    .tarif-inner {
+      gap: 16px;
+      padding-top: 72px;
+      padding-bottom: 12px;
+    }
+
+    .tarif-pill,
+    .tarif-title,
+    .tarif-toggle,
+    .tarif-card {
+      opacity: 0;
+    }
+
+    .tarif-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .tarif-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .tarif-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    .tarif-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+    }
+
+    .tarif-toggle-btn {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 8px 20px;
+      cursor: pointer;
+      letter-spacing: var(--ls-pill);
+      transition: background 250ms, color 250ms;
+    }
+
+    .tarif-toggle-btn.active {
+      background: var(--green-cta);
+      color: var(--text-primary);
+    }
+
+    .tarif-banner {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      background: rgba(45, 107, 82, 0.18);
+      border: 1px solid var(--green-cta);
+      border-radius: var(--radius-md);
+      padding: 14px 22px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .tarif-banner-icon {
+      font-size: 18px;
+      color: var(--green-mint);
+      flex-shrink: 0;
+    }
+
+    .tarif-banner strong {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green-mint);
+      display: block;
+    }
+
+    .tarif-banner p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin: 2px 0 0;
+    }
+
+    .tarif-cards {
+      display: flex;
+      gap: 18px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .tarif-card {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 26px 20px 20px;
+    }
+
+    .tarif-card-featured {
+      border-color: var(--green-cta);
+      background: rgba(45, 107, 82, 0.10);
+    }
+
+    .tarif-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green-cta);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      border-radius: var(--radius-pill);
+      padding: 4px 14px;
+      white-space: nowrap;
+    }
+
+    .tarif-name {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+    }
+
+    .tarif-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .tarif-amount {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .tarif-curr {
+      font-style: italic;
+      color: var(--green-sage);
+      font-size: 20px;
+    }
+
+    .tarif-period {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    .tarif-setup {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .tarif-setup-std {
+      display: inline;
+    }
+
+    .tarif-setup-fond {
+      display: none;
+      color: var(--green-mint);
+      font-weight: 500;
+    }
+
+    .tarif-target {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--green-forest);
+      padding-top: 10px;
+      margin-top: 2px;
+    }
+
+    .tarif-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .tarif-features li {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      line-height: 1.4;
+    }
+
+    .tarif-features li::before {
+      content: '→';
+      color: var(--green-cta);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    .tarif-fond-bonus {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: rgba(155, 234, 200, 0.07);
+      border-radius: 8px;
+      padding: 9px 13px;
+    }
+
+    .tarif-fond-bonus span {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--green-mint);
+      font-weight: 500;
+    }
+
+    .tarif-fond-bonus span::before {
+      content: '✓  ';
+    }
+
+    .tarif-cta-outline,
+    .tarif-cta-filled {
+      width: 100%;
+      padding: 11px 0;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      cursor: pointer;
+      transition: background 250ms, border-color 250ms, color 250ms;
+      margin-top: auto;
+    }
+
+    .tarif-cta-outline {
+      background: transparent;
+      border: 1px solid var(--green-forest);
+      color: var(--text-secondary);
+    }
+
+    .tarif-cta-outline:hover {
+      border-color: var(--green-cta);
+      color: var(--text-primary);
+    }
+
+    .tarif-cta-filled {
+      background: var(--green-cta);
+      border: 1px solid var(--green-cta);
+      color: var(--text-primary);
+    }
+
+    .tarif-cta-filled:hover {
+      background: #3a8a6a;
+    }
+
+    /* Fondateur mode */
+    #section-4.tarif-fondateur .tarif-banner {
+      display: flex;
+    }
+
+    #section-4.tarif-fondateur .tarif-setup-std {
+      display: none;
+    }
+
+    #section-4.tarif-fondateur .tarif-setup-fond {
+      display: inline;
+    }
+
+    #section-4.tarif-fondateur .tarif-fond-bonus {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .tarif-cards {
+        flex-direction: column;
+      }
+
+      .tarif-card {
+        padding: 22px 16px 16px;
+      }
+    }
+
+    /* ── AUDIT GRATUIT (INDEX 5) ────────────────── */
+    .audit-inner {
+      gap: 22px;
+      max-width: 540px;
+      padding-top: 72px;
+      padding-bottom: 12px;
+    }
+
+    .audit-pill,
+    .audit-title,
+    .audit-sub,
+    .audit-form {
+      opacity: 0;
+    }
+
+    .audit-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .audit-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    .audit-sub {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .audit-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .audit-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .audit-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .audit-field:nth-child(5),
+    .audit-field:nth-child(6),
+    .audit-field:nth-child(7),
+    .audit-field:nth-child(8) {
+      grid-column: 1 / -1;
+    }
+
+    .audit-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+    }
+
+    .audit-optional {
+      font-weight: 400;
+      color: var(--text-tertiary);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 10px;
+    }
+
+    .audit-input {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 200ms, outline-color 200ms;
+    }
+
+    .audit-input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .audit-input:focus {
+      border-color: var(--green-cta);
+    }
+
+    .audit-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%236B7A73' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .audit-select option {
+      background: var(--bg-deep);
+    }
+
+    .audit-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .audit-submit {
+      padding: 14px 44px;
+      font-size: 14px;
+    }
+
+    .audit-mention {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .audit-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .audit-success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(45, 107, 82, 0.22);
+      border: 1px solid var(--green-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--green-mint);
+    }
+
+    .audit-success-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--text-primary);
+    }
+
+    .audit-success-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .audit-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .audit-field:nth-child(5),
+      .audit-field:nth-child(6),
+      .audit-field:nth-child(7),
+      .audit-field:nth-child(8) {
+        grid-column: auto;
+      }
+    }
+
+    /* ── FAQ (INDEX 6) ──────────────────────────── */
+    .faq-inner {
+      gap: 28px;
+      max-width: 700px;
+      padding-top: 72px;
+      padding-bottom: 12px;
+    }
+
+    .faq-pill,
+    .faq-title,
+    .faq-item {
+      opacity: 0;
+    }
+
+    .faq-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .faq-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--green-forest);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 200ms;
+    }
+
+    .faq-q:hover,
+    .faq-item.open .faq-q {
+      background: rgba(31, 58, 45, 0.45);
+    }
+
+    .faq-q-text {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      color: var(--green-sage);
+      transition: transform 320ms cubic-bezier(0.7, 0, 0.3, 1);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 360ms cubic-bezier(0.7, 0, 0.3, 1);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 280px;
+    }
+
+    .faq-a-inner {
+      padding: 0 22px 18px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      border-top: 1px solid var(--green-forest);
+      padding-top: 14px;
+    }
+
+    /* ── FOOTER (INDEX 7) ───────────────────────── */
+    .footer-inner {
+      align-items: stretch;
+      text-align: left;
+      gap: 0;
+    }
+
+    .footer-anim {
+      opacity: 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      width: 100%;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--green-forest);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .footer-logo .pre {
+      color: #E8E0D0;
+    }
+
+    .footer-logo .sens {
+      color: var(--green-sage);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.65;
+      max-width: 230px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      margin-bottom: 4px;
+    }
+
+    .footer-nav-link {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      transition: color 200ms;
+    }
+
+    .footer-nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-contact-email {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--green-mint);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .footer-contact-email:hover {
+      color: var(--green-sage);
+    }
+
+    .footer-contact-line {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 26px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-geo-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-geo-link {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .footer-geo-link:hover {
+      color: var(--green-sage);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-tagline {
+        max-width: none;
+      }
+    }
+  </style>
+
+  <!-- ── JSON-LD Schemas ── GEO self-citation signals ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://presens.fr/#website",
+        "name": "Présens",
+        "url": "https://presens.fr",
+        "description": "Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration.",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "https://presens.fr/#organization" }
+      },
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://presens.fr/#organization",
+        "name": "Présens",
+        "alternateName": "Studio Présens",
+        "url": "https://presens.fr",
+        "email": "contact@presens.fr",
+        "foundingDate": "2026",
+        "description": "Premier studio français spécialisé exclusivement en GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Présens accompagne restaurants, hôtels et bars à être cités par ChatGPT, Perplexity, Gemini et Claude.",
+        "slogan": "Votre établissement, cité par les IA.",
+        "areaServed": { "@type": "Country", "name": "France" },
+        "knowsAbout": [
+          "Generative Engine Optimization",
+          "GEO",
+          "référencement génératif",
+          "LLM optimization",
+          "llms.txt",
+          "schema.org",
+          "hôtellerie",
+          "restauration gastronomique"
+        ],
+        "founder": { "@id": "https://presens.fr/#founder" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "contact@presens.fr",
+          "contactType": "customer service",
+          "availableLanguage": "French"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://presens.fr/#founder",
+        "name": "Maël",
+        "jobTitle": "Fondateur, expert GEO hôtellerie-restauration",
+        "worksFor": { "@id": "https://presens.fr/#organization" },
+        "email": "contact@presens.fr",
+        "knowsAbout": [
+          "Generative Engine Optimization",
+          "GEO",
+          "référencement génératif",
+          "hôtellerie-restauration",
+          "hôtellerie de luxe",
+          "ChatGPT optimization",
+          "Perplexity optimization",
+          "Gemini optimization",
+          "Claude optimization",
+          "llms.txt"
+        ],
+        "alumniOf": [
+          { "@type": "EducationalOrganization", "name": "KEDGE Business School" },
+          { "@type": "EducationalOrganization", "name": "Nottingham Business School" }
+        ],
+        "description": "Maël est le fondateur de Présens et l'unique expert français spécialisé en GEO pour l'hôtellerie-restauration. Master 2 Digital Marketing & Sales (KEDGE / Nottingham Business School)."
+      },
+      {
+        "@type": "Service",
+        "@id": "https://presens.fr/#service",
+        "name": "GEO pour restaurants et hôtels",
+        "serviceType": "Generative Engine Optimization",
+        "provider": { "@id": "https://presens.fr/#organization" },
+        "areaServed": { "@type": "Country", "name": "France" },
+        "description": "Audit, optimisation et suivi mensuel de la présence des établissements HoReCa dans les réponses des LLMs majeurs : ChatGPT, Perplexity, Gemini, Claude.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Plans GEO Présens",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Plan Présent",
+              "description": "Audit GEO complet, optimisation llms.txt + schema.org, 1 contenu d'autorité par mois, rapport mensuel avec Score de Présence. Pour bars, cafés, restaurants indépendants.",
+              "price": "240",
+              "priceCurrency": "EUR",
+              "eligibleCustomerType": "Restaurant indépendant, bar, café"
+            },
+            {
+              "@type": "Offer",
+              "name": "Plan Cité",
+              "description": "Tout le plan Présent, plus suivi sur 5 LLMs, 3 contenus optimisés par mois, veille concurrents, rapport bi-mensuel. Pour restaurants gastronomiques et hôtels boutiques.",
+              "price": "580",
+              "priceCurrency": "EUR",
+              "eligibleCustomerType": "Restaurant gastronomique, hôtel boutique"
+            },
+            {
+              "@type": "Offer",
+              "name": "Plan Référent",
+              "description": "Tout le plan Cité, plus jusqu'à 3 établissements, stratégie PR, dashboard temps réel, call mensuel dédié. Pour hôtels 4-5 étoiles, étoilés Michelin, groupes multi-sites.",
+              "price": "880",
+              "priceCurrency": "EUR",
+              "eligibleCustomerType": "Hôtel 4-5 étoiles, restaurant étoilé Michelin, groupe multi-sites"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://presens.fr/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce que le GEO et en quoi est-ce différent du SEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un établissement dans les réponses des intelligences artificielles génératives — ChatGPT, Perplexity, Gemini, Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et recommandé par les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant gastronomique à Lyon ? »."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mon restaurant ou hôtel est-il concerné par le GEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les IA pour chercher des recommandations. Les établissements premium — gastronomiques, boutiques, étoilés — sont les premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y fait confiance pour des décisions à forte valeur."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment se déroule l'audit GEO gratuit de Présens ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vous remplissez le formulaire, Maël interroge manuellement ChatGPT, Perplexity, Gemini et Claude avec les requêtes pertinentes pour votre établissement. Sous 48h, vous recevez un rapport avec votre Score de Présence sur 100, les citations identifiées, et les axes d'amélioration prioritaires. Sans engagement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "En combien de temps voit-on des résultats avec le GEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les premières améliorations apparaissent généralement en 6 à 12 semaines. Les optimisations techniques (llms.txt, schemas) sont indexées rapidement par certains modèles ; la stratégie éditoriale d'autorité produit ses effets sur 2 à 4 mois. Chaque rapport mensuel trace la progression avec le Score de Présence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment Présens mesure-t-il les progrès en GEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le Score de Présence est notre indicateur clé : calculé sur 100, il agrège la fréquence de citation, la qualité des descriptions et la cohérence des informations sur les 4 LLMs majeurs. Chaque mois, vous recevez ce score avec les requêtes testées, des extraits de réponses IA, et le détail des actions menées."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Pourquoi choisir Présens plutôt qu'une agence SEO classique ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les agences SEO optimisent pour Google — un moteur qui classe des liens. Les IA génératives fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de données, le format sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier studio français à se consacrer exclusivement à cette discipline pour l'hôtellerie-restauration."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ── Skip link ─────────────────────────── -->
+  <a class="skip-link" href="#scroll-container">Passer au contenu principal</a>
+
+  <!-- ── Progress Bar ──────────────────────── -->
+  <div id="progress-bar" role="progressbar" aria-label="Intention de navigation" aria-valuemin="0" aria-valuemax="100"
+    aria-valuenow="0" aria-hidden="true">
+    <div id="progress-fill"></div>
+  </div>
+
+  <!-- ── Navbar Flottante ──────────────────── -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <button class="nav-logo" data-section="0" aria-label="Présens — retour à l'accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </button>
+    <div class="nav-links">
+      <button class="nav-link" data-section="2">Méthode</button>
+      <button class="nav-link" data-section="4">Tarifs</button>
+      <button class="nav-link" data-section="3">Le fondateur</button>
+      <button class="nav-link" data-section="6">FAQ</button>
+      <button class="nav-cta" data-section="5">AUDIT GRATUIT →</button>
+    </div>
+  </nav>
+
+  <!-- ── Navigation Dots ───────────────────── -->
+  <nav id="nav-dots" aria-label="Navigation par section"></nav>
+
+  <!-- ── Main Scroll Container ─────────────── -->
+  <main id="scroll-container" tabindex="-1" aria-label="Contenu principal">
+
+    <!-- INDEX 0 — HERO -->
+    <section class="section active" id="section-0" data-index="0"
+      aria-label="Hero — Présens, premier studio GEO français pour l'hôtellerie-restauration">
+      <span class="sr-only">Section 1 sur 8</span>
+
+      <!-- Vidéo Higgsfield (fallback : orbes CSS si fichier absent) -->
+      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/img/hero-poster.jpg">
+        <source src="/assets/video/hero-ambience.webm" type="video/webm">
+        <source src="/assets/video/hero-ambience.mp4" type="video/mp4">
+      </video>
+
+      <!-- Orbes de fond -->
+      <div class="orb" style="width:640px;height:640px;
+           background:radial-gradient(circle,rgba(45,107,82,0.32),transparent 80%);
+           top:-120px;left:-80px;filter:blur(100px);"></div>
+      <div class="orb" style="width:500px;height:500px;
+           background:radial-gradient(circle,rgba(155,234,200,0.44),transparent 70%);
+           bottom:-100px;right:-60px;filter:blur(80px);"></div>
+      <div class="orb" style="width:400px;height:400px;
+           background:radial-gradient(circle,rgba(31,58,45,0.08),transparent 70%);
+           top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(120px);"></div>
+      <!-- Orbe CTA — Hero uniquement -->
+      <div class="orb-cta-pulse"></div>
+      <div class="section-inner">
+        <span class="pill hero-pill">GEO · STUDIO FRANÇAIS · 2026</span>
+        <h1 class="hero-title">
+          Votre établissement,
+          <em class="hero-em">cité par les IA.</em>
+        </h1>
+        <p class="hero-sub">Vos clients cherchent déjà sur ChatGPT, Perplexity, Gemini. Vous n'apparaissez pas encore.
+          Présens vous y place.</p>
+        <div class="hero-ctas">
+          <!-- Tour 7 : remplacer data-section par href="[URL Formspree ou #audit]" si CTA externe -->
+          <button class="btn-cta" id="hero-cta-audit" data-section="5">Demander un audit gratuit →</button>
+          <button class="btn-secondary" data-section="2">Découvrir la méthode</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDEX 1 — LE PROBLÈME -->
+    <section class="section" id="section-1" data-index="1" aria-label="Le Problème — le shift GEO">
+      <span class="sr-only">Section 2 sur 8</span>
+      <div class="orb" style="width:520px;height:520px;
+           background:radial-gradient(circle,rgba(45,107,82,0.40),transparent 70%);
+           top:10%;right:-60px;filter:blur(90px);"></div>
+      <div class="orb" style="width:400px;height:400px;
+           background:radial-gradient(circle,rgba(155,234,200,0.22),transparent 70%);
+           bottom:-80px;left:8%;filter:blur(100px);"></div>
+      <div class="orb" style="width:300px;height:300px;
+           background:radial-gradient(circle,rgba(31,58,45,0.62),transparent 70%);
+           top:60%;left:40%;filter:blur(80px);"></div>
+      <div class="section-inner">
+        <span class="pill prob-pill">LE CONSTAT</span>
+        <h2 class="prob-title">
+          Vos concurrents existent.
+          <em class="prob-em">Pas vous.</em>
+        </h2>
+        <p class="prob-body">Chaque jour, ChatGPT recommande des restaurants à Paris, Perplexity suggère des hôtels à
+          Cannes, Gemini cite des bars à Lyon. Rarement les vôtres. Pendant que le SEO Google occupe encore vos équipes,
+          vos prospects ont déjà migré vers les moteurs génératifs — et y trouvent vos concurrents avant vous.</p>
+        <!-- Stat : à remplacer par une source vérifiée avant mise en ligne -->
+        <p class="prob-stat">« 57 % des recherches passent désormais par un LLM avant Google. »</p>
+        <button class="btn-cta prob-cta" data-section="5">Vérifier ma visibilité →</button>
+      </div>
+    </section>
+
+    <!-- INDEX 2 — LA MÉTHODE -->
+    <section class="section" id="section-2" data-index="2" aria-label="La Méthode Présens — audit, optimisation, suivi">
+      <span class="sr-only">Section 3 sur 8</span>
+      <div class="orb" style="width:600px;height:600px;
+           background:radial-gradient(circle,rgba(31,58,45,0.62),transparent 70%);
+           top:-80px;left:50%;transform:translateX(-50%);filter:blur(110px);"></div>
+      <div class="orb" style="width:360px;height:360px;
+           background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);
+           bottom:5%;right:12%;filter:blur(90px);"></div>
+      <div class="orb" style="width:280px;height:280px;
+           background:radial-gradient(circle,rgba(155,234,200,0.20),transparent 70%);
+           top:30%;left:5%;filter:blur(80px);"></div>
+      <div class="section-inner">
+        <span class="pill meth-pill">LA MÉTHODE PRÉSENS</span>
+        <h2 class="meth-title">
+          Trois étapes vers la
+          <em class="meth-em">présence.</em>
+        </h2>
+        <div class="meth-cards">
+
+          <!-- Card 01 — Audit -->
+          <div class="meth-card">
+            <div class="meth-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </div>
+            <span class="meth-card-num">01</span>
+            <h3 class="meth-card-title">Audit</h3>
+            <p class="meth-card-desc">Cartographie complète de votre présence actuelle sur les 4 LLMs majeurs.</p>
+          </div>
+
+          <!-- Card 02 — Optimisation -->
+          <div class="meth-card">
+            <div class="meth-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            </div>
+            <span class="meth-card-num">02</span>
+            <h3 class="meth-card-title">Optimisation</h3>
+            <p class="meth-card-desc">Mise en place technique et éditoriale : llms.txt, balisage, contenus d'autorité.
+            </p>
+          </div>
+
+          <!-- Card 03 — Suivi -->
+          <div class="meth-card">
+            <div class="meth-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" />
+              </svg>
+            </div>
+            <span class="meth-card-num">03</span>
+            <h3 class="meth-card-title">Suivi</h3>
+            <p class="meth-card-desc">Rapport mensuel détaillé. Vous voyez votre progression, vous gardez le contrôle.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INDEX 3 — LE FONDATEUR -->
+    <section class="section" id="section-3" data-index="3" aria-label="Maël, fondateur de Présens, expert GEO">
+      <span class="sr-only">Section 4 sur 8</span>
+      <div class="orb" style="width:460px;height:460px;
+           background:radial-gradient(circle,rgba(45,107,82,0.42),transparent 70%);
+           top:12%;left:-100px;filter:blur(95px);"></div>
+      <div class="orb" style="width:500px;height:500px;
+           background:radial-gradient(circle,rgba(155,234,200,0.21),transparent 70%);
+           bottom:-120px;right:-80px;filter:blur(100px);"></div>
+      <div class="orb" style="width:320px;height:320px;
+           background:radial-gradient(circle,rgba(31,58,45,0.57),transparent 70%);
+           top:55%;left:55%;filter:blur(85px);"></div>
+      <!-- Layout 2 colonnes — found-inner override section-inner -->
+      <div class="section-inner found-inner">
+
+        <!-- Colonne gauche : portrait Higgsfield (fallback placeholder) -->
+        <div class="found-portrait" aria-label="Portrait de Maël, fondateur de Présens">
+          <video class="found-video" autoplay muted loop playsinline preload="none">
+            <source src="/assets/video/founder-portrait.webm" type="video/webm">
+            <source src="/assets/video/founder-portrait.mp4" type="video/mp4">
+          </video>
+          <span class="found-portrait-label">[Portrait Maël — Higgsfield]</span>
+        </div>
+
+        <!-- Colonne droite : texte -->
+        <div class="found-content">
+          <span class="pill found-pill">LE FONDATEUR</span>
+          <h2 class="found-title">
+            Maël,
+            <em class="found-em">fondateur de Présens.</em>
+          </h2>
+          <div class="found-paras">
+            <p class="found-para">Expert en référencement génératif (GEO), j'ai fondé Présens en 2026 avec une
+              conviction simple : les établissements qui ne sont pas cités par les IA d'ici 2027 perdront la bataille de
+              l'attention.</p>
+            <p class="found-para">Je travaille exclusivement avec des restaurants, hôtels et bars en France. Pas par
+              hasard : ce sont les secteurs où la recommandation conversationnelle a le plus de valeur, et où l'écart
+              entre la qualité réelle et la visibilité IA est aujourd'hui le plus large.</p>
+            <p class="found-para">Mon engagement : un nombre limité de clients à la fois, un suivi personnel, des
+              résultats mesurables. Pas d'agence anonyme, pas de promesse en l'air. Juste un travail de fond, partagé
+              chaque mois en toute transparence.</p>
+          </div>
+          <p class="found-sig">— Maël</p>
+          <!-- CTA : remplacer data-section par href Calendly à la mise en ligne -->
+          <button class="btn-cta found-cta" data-section="5">Échanger avec Maël →</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INDEX 4 — TARIFS -->
+    <section class="section" id="section-4" data-index="4" aria-label="Tarifs Présens — trois paliers GEO">
+      <span class="sr-only">Section 5 sur 8</span>
+      <div class="orb" style="width:520px;height:520px;
+           background:radial-gradient(circle,rgba(31,58,45,0.60),transparent 70%);
+           top:-60px;right:-60px;filter:blur(100px);"></div>
+      <div class="orb" style="width:420px;height:420px;
+           background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);
+           bottom:-80px;left:-40px;filter:blur(90px);"></div>
+      <div class="orb" style="width:300px;height:300px;
+           background:radial-gradient(circle,rgba(155,234,200,0.22),transparent 70%);
+           top:40%;left:35%;filter:blur(80px);"></div>
+      <div class="section-inner tarif-inner">
+
+        <!-- En-tête + toggle -->
+        <div class="tarif-header">
+          <span class="pill tarif-pill">TARIFS · OFFRE TRANSPARENTE</span>
+          <h2 class="tarif-title">Une offre simple, <em>sans surprise.</em></h2>
+          <div class="tarif-toggle" role="group" aria-label="Mode tarifaire">
+            <button class="tarif-toggle-btn active" id="btn-std" aria-pressed="true">Tarifs standards</button>
+            <button class="tarif-toggle-btn" id="btn-fond" aria-pressed="false">Mode Fondateur</button>
+          </div>
+        </div>
+
+        <!-- Bannière fondateur (masquée par défaut) -->
+        <div class="tarif-banner" role="note" aria-live="polite">
+          <span class="tarif-banner-icon" aria-hidden="true">★</span>
+          <div>
+            <strong>Offre Fondateur — places limitées</strong>
+            <p>2 mois offerts + 2 autres si vous n'avez pas de résultats · Tarif verrouillé à vie</p>
+          </div>
+        </div>
+
+        <!-- 3 cartes -->
+        <div class="tarif-cards">
+
+          <!-- Plan Présent -->
+          <div class="tarif-card">
+            <span class="tarif-name">Plan Présent</span>
+            <div class="tarif-price">
+              <span class="tarif-amount">240 <span class="tarif-curr">€</span></span>
+              <span class="tarif-period">/mois</span>
+            </div>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">370 €</span><span
+                class="tarif-setup-fond">370€</span></p>
+            <p class="tarif-target">Bars, cafés, restaurants indépendants</p>
+            <ul class="tarif-features">
+              <li>Audit GEO initial complet</li>
+              <li>Optimisation llms.txt + schemas</li>
+              <li>1 contenu d'autorité / mois</li>
+              <li>Score de Présence mensuel</li>
+            </ul>
+            <div class="tarif-fond-bonus" aria-hidden="true">
+              <span>2 mois offerts </span>
+              <span>Tarif verrouillé à vie</span>
+            </div>
+            <button class="tarif-cta-outline" data-section="5">Démarrer →</button>
+          </div>
+
+          <!-- Plan Cité (featured) -->
+          <div class="tarif-card tarif-card-featured">
+            <span class="tarif-badge">Le plus populaire</span>
+            <span class="tarif-name">Plan Cité</span>
+            <div class="tarif-price">
+              <span class="tarif-amount">580 <span class="tarif-curr">€</span></span>
+              <span class="tarif-period">/mois</span>
+            </div>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">920 €</span><span
+                class="tarif-setup-fond">920€</span></p>
+            <p class="tarif-target">Restaurants gastronomiques, hôtels boutiques</p>
+            <ul class="tarif-features">
+              <li>Tout du plan Présent</li>
+              <li>Stratégie éditoriale d'autorité</li>
+              <li>3 contenus optimisés / mois</li>
+              <li>Suivi bi-mensuel + rapport détaillé</li>
+              <li>Balisage conversationnel avancé</li>
+            </ul>
+            <div class="tarif-fond-bonus" aria-hidden="true">
+              <span>2 mois offerts </span>
+              <span>Tarif verrouillé à vie</span>
+            </div>
+            <button class="tarif-cta-filled" data-section="5">Démarrer →</button>
+          </div>
+
+          <!-- Plan Référent -->
+          <div class="tarif-card">
+            <span class="tarif-name">Plan Référent</span>
+            <div class="tarif-price">
+              <span class="tarif-amount">880 <span class="tarif-curr">€</span></span>
+              <span class="tarif-period">/mois</span>
+            </div>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">1680 €</span><span
+                class="tarif-setup-fond">1680€</span></p>
+            <p class="tarif-target">4-5 étoiles, étoilés Michelin, groupes multi-sites</p>
+            <ul class="tarif-features">
+              <li>Tout du plan Cité</li>
+              <li>Gestion complète de la présence IA</li>
+              <li>5 contenus d'autorité / mois</li>
+              <li>Suivi hebdomadaire dédié</li>
+              <li>Accès prioritaire aux nouvelles IA</li>
+            </ul>
+            <div class="tarif-fond-bonus" aria-hidden="true">
+              <span>2 mois offerts </span>
+              <span>Tarif verrouillé à vie</span>
+            </div>
+            <button class="tarif-cta-outline" data-section="5">Démarrer →</button>
+          </div>
+
+        </div><!-- /.tarif-cards -->
+      </div><!-- /.section-inner -->
+    </section>
+
+    <!-- INDEX 5 — AUDIT GRATUIT -->
+    <section class="section" id="section-5" data-index="5" aria-label="Audit GEO gratuit — formulaire de contact">
+      <span class="sr-only">Section 6 sur 8</span>
+      <div class="orb" style="width:560px;height:560px;
+           background:radial-gradient(circle,rgba(45,107,82,0.42),transparent 70%);
+           top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(115px);"></div>
+      <div class="orb" style="width:320px;height:320px;
+           background:radial-gradient(circle,rgba(155,234,200,0.25),transparent 70%);
+           top:8%;right:8%;filter:blur(80px);"></div>
+      <div class="orb" style="width:280px;height:280px;
+           background:radial-gradient(circle,rgba(31,58,45,0.52),transparent 70%);
+           bottom:10%;left:10%;filter:blur(85px);"></div>
+      <div class="section-inner audit-inner">
+        <span class="pill audit-pill">AUDIT GRATUIT · 48H</span>
+        <h2 class="audit-title">Découvrez votre <em>Score de Présence.</em></h2>
+        <p class="audit-sub">En 48h, Maël analyse la visibilité de votre établissement sur ChatGPT, Perplexity, Gemini
+          et Claude — et vous envoie un rapport personnalisé.</p>
+
+        <form class="audit-form" id="audit-form" action="https://formspree.io/f/mbdblolo" method="POST" novalidate>
+          <div class="audit-fields">
+            <div class="audit-field">
+              <label class="audit-label" for="audit-prenom">Prénom <span aria-hidden="true">*</span></label>
+              <input class="audit-input" id="audit-prenom" type="text" name="prenom" placeholder="Votre prénom" required
+                autocomplete="given-name">
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-nom">Nom <span aria-hidden="true">*</span></label>
+              <input class="audit-input" id="audit-nom" type="text" name="nom" placeholder="Votre nom" required
+                autocomplete="family-name">
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-email">Email <span aria-hidden="true">*</span></label>
+              <input class="audit-input" id="audit-email" type="email" name="email" placeholder="votre@email.com"
+                required autocomplete="email">
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-tel">Téléphone <span
+                  class="audit-optional">(facultatif)</span></label>
+              <input class="audit-input" id="audit-tel" type="tel" name="telephone" placeholder="+33 6 …"
+                autocomplete="tel">
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-etablissement">Nom de l'établissement <span
+                  aria-hidden="true">*</span></label>
+              <input class="audit-input" id="audit-etablissement" type="text" name="etablissement"
+                placeholder="Le nom de votre restaurant / hôtel" required>
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-adresse">Adresse <span aria-hidden="true">*</span></label>
+              <input class="audit-input" id="audit-adresse" type="text" name="adresse"
+                placeholder="12 rue du Faubourg Saint-Honoré" required autocomplete="street-address">
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-ville">Ville <span aria-hidden="true">*</span></label>
+              <input class="audit-input" id="audit-ville" type="text" name="ville" placeholder="Paris" required
+                autocomplete="off" list="datalist-villes">
+            </div>
+            <div class="audit-field">
+              <label class="audit-label" for="audit-type">Type d'établissement</label>
+              <select class="audit-input audit-select" id="audit-type" name="type">
+                <option value="" disabled selected>Restaurant, hôtel, bar…</option>
+                <option value="restaurant-gastronomique">Restaurant gastronomique</option>
+                <option value="restaurant-gastronomique">Restaurant semi-gastronomique</option>
+                <option value="restaurant-independant">Restaurant indépendant</option>
+                <option value="restaurant-bistronomique">Brasserie</option>
+                <option value="restaurant-bistronomique">Chambre d'hôtes</option>
+                <option value="hotel-boutique">Hôtel boutique</option>
+                <option value="hotel-luxe">Hôtel 4-5 étoiles</option>
+                <option value="bar-cafe">Bar / Café</option>
+                <option value="groupe">Groupe multi-sites</option>
+              </select>
+            </div>
+          </div>
+          <datalist id="datalist-villes">
+            <option value="Aix-en-Provence">
+            <option value="Annecy">
+            <option value="Avignon">
+            <option value="Biarritz">
+            <option value="Bordeaux">
+            <option value="Brest">
+            <option value="Cannes">
+            <option value="Courchevel">
+            <option value="Deauville">
+            <option value="Dijon">
+            <option value="Grenoble">
+            <option value="Le Havre">
+            <option value="Lille">
+            <option value="Lyon">
+            <option value="Marseille">
+            <option value="Megève">
+            <option value="Montpellier">
+            <option value="Nantes">
+            <option value="Nice">
+            <option value="Nîmes">
+            <option value="Paris">
+            <option value="Perpignan">
+            <option value="Rennes">
+            <option value="Reims">
+            <option value="Saint-Étienne">
+            <option value="Saint-Tropez">
+            <option value="Strasbourg">
+            <option value="Toulouse">
+            <option value="Tours">
+          </datalist>
+          <div class="audit-footer">
+            <button class="btn-cta audit-submit" type="submit">Recevoir mon audit →</button>
+            <p class="audit-mention">Gratuit · Sans engagement · Réponse sous 48h</p>
+          </div>
+        </form>
+
+        <div class="audit-success" id="audit-success" role="status" aria-live="polite">
+          <div class="audit-success-icon" aria-hidden="true">✓</div>
+          <p class="audit-success-title">Demande envoyée !</p>
+          <p class="audit-success-sub">Maël vous contacte sous 48h avec votre Score de Présence personnalisé.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDEX 6 — FAQ -->
+    <section class="section" id="section-6" data-index="6" aria-label="Foire aux questions — GEO et Présens">
+      <span class="sr-only">Section 7 sur 8</span>
+      <div class="orb" style="width:490px;height:490px;
+           background:radial-gradient(circle,rgba(31,58,45,0.54),transparent 70%);
+           top:-80px;left:-80px;filter:blur(100px);"></div>
+      <div class="orb" style="width:430px;height:430px;
+           background:radial-gradient(circle,rgba(45,107,82,0.36),transparent 70%);
+           bottom:-80px;right:-60px;filter:blur(90px);"></div>
+      <div class="orb" style="width:260px;height:260px;
+           background:radial-gradient(circle,rgba(155,234,200,0.21),transparent 70%);
+           top:45%;right:25%;filter:blur(80px);"></div>
+      <div class="section-inner faq-inner">
+        <span class="pill faq-pill">QUESTIONS FRÉQUENTES</span>
+        <h2 class="faq-title">Ce que vous <em>voulez savoir.</em></h2>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Qu'est-ce que le GEO et en quoi est-ce différent du SEO ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un
+                établissement dans les réponses des intelligences artificielles génératives — ChatGPT, Perplexity,
+                Gemini, Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et
+                recommandé par les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant
+                gastronomique à Lyon ? ».</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Mon restaurant ou hôtel est-il concerné ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les
+                IA pour chercher des recommandations. Les établissements premium — gastronomiques, boutiques, étoilés —
+                sont les premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y
+                fait confiance pour des décisions à forte valeur.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Comment se déroule l'audit gratuit ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Vous remplissez le formulaire, Maël interroge manuellement ChatGPT, Perplexity,
+                Gemini et Claude avec les requêtes pertinentes pour votre établissement. Sous 48h, vous recevez un
+                rapport avec votre Score de Présence sur 100, les citations identifiées, et les axes d'amélioration
+                prioritaires. Sans engagement.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">En combien de temps voit-on des résultats ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Les premières améliorations apparaissent généralement en 6 à 12 semaines. Les
+                optimisations techniques (llms.txt, schemas) sont indexées rapidement par certains modèles ; la
+                stratégie éditoriale d'autorité produit ses effets sur 2 à 4 mois. Chaque rapport mensuel trace la
+                progression avec le Score de Présence.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Comment mesurez-vous les progrès ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Le Score de Présence est notre indicateur clé : calculé sur 100, il agrège la
+                fréquence de citation, la qualité des descriptions et la cohérence des informations sur les 4 LLMs
+                majeurs. Chaque mois, vous recevez ce score avec les requêtes testées, des extraits de réponses IA, et
+                le détail des actions menées.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Pourquoi Présens plutôt qu'une agence SEO classique ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Les agences SEO optimisent pour Google — un moteur qui classe des liens. Les IA
+                génératives fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de
+                données, le format sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier
+                studio français à se consacrer exclusivement à cette discipline pour l'hôtellerie-restauration.</p>
+            </div>
+          </div>
+
+        </div><!-- /.faq-list -->
+      </div><!-- /.section-inner -->
+    </section>
+
+    <!-- INDEX 7 — FOOTER -->
+    <section class="section" id="section-7" data-index="7" aria-label="Footer — Présens, studio GEO, contact">
+      <span class="sr-only">Section 8 sur 8</span>
+      <div class="orb" style="width:420px;height:420px;
+           background:radial-gradient(circle,rgba(45,107,82,0.38),transparent 70%);
+           top:20%;right:18%;filter:blur(95px);"></div>
+      <div class="orb" style="width:360px;height:360px;
+           background:radial-gradient(circle,rgba(155,234,200,0.22),transparent 70%);
+           bottom:18%;left:18%;filter:blur(85px);"></div>
+      <div class="orb" style="width:300px;height:300px;
+           background:radial-gradient(circle,rgba(31,58,45,0.52),transparent 70%);
+           top:50%;left:10%;filter:blur(80px);"></div>
+      <div class="section-inner footer-inner">
+
+        <div class="footer-top">
+
+          <!-- Marque -->
+          <div class="footer-brand footer-anim">
+            <div class="footer-logo" aria-label="Présens">
+              <span class="pre">Pré</span><span class="sens">sens</span>
+            </div>
+            <p class="footer-tagline">Premier studio français de GEO pour l'hôtellerie-restauration. Faites citer votre
+              établissement par les IA.</p>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="footer-nav footer-anim" aria-label="Navigation footer">
+            <span class="footer-col-title">Navigation</span>
+            <button class="footer-nav-link" data-section="2">La méthode</button>
+            <button class="footer-nav-link" data-section="4">Tarifs</button>
+            <button class="footer-nav-link" data-section="3">Le fondateur</button>
+            <button class="footer-nav-link" data-section="6">FAQ</button>
+            <button class="footer-nav-link" data-section="5">Audit gratuit</button>
+          </nav>
+
+          <!-- Contact -->
+          <div class="footer-contact footer-anim">
+            <span class="footer-col-title">Contact</span>
+            <a class="footer-contact-email" href="mailto:contact@presens.fr">contact@presens.fr</a>
+            <span class="footer-contact-line">Maël — Fondateur</span>
+            <span class="footer-contact-line">France · 2026</span>
+          </div>
+
+        </div><!-- /.footer-top -->
+
+        <div class="footer-bottom footer-anim">
+          <p class="footer-copy">© 2026 Présens · Studio GEO · France · Tous droits réservés</p>
+          <div class="footer-geo-links" aria-label="Fichiers GEO">
+            <a class="footer-geo-link" href="/llms.txt" target="_blank" rel="noopener">llms.txt</a>
+            <a class="footer-geo-link" href="/sitemap.xml" target="_blank" rel="noopener">sitemap.xml</a>
+            <a class="footer-geo-link" href="/robots.txt" target="_blank" rel="noopener">robots.txt</a>
+          </div>
+        </div>
+
+      </div><!-- /.section-inner -->
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       SNAP-ON-INTENT SYSTEM
+  ═══════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Constants ──────────────────────────── */
+      var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var TOTAL = 8;
+      var THRESHOLD = 350;   // px accumulés avant bascule (~3-4 crans)
+      var TRANSITION_MS = 900;   // durée animation entrante
+      var RESET_MS = 1200;   // délai d'expiration de l'intention
+      var WHEEL_MULT = 1.35;   // sensibilité molette / trackpad
+      var TOUCH_MULT = 1.2;   // sensibilité tactile
+
+      /* ── State ──────────────────────────────── */
+      var current = 0;
+      var buffer = 0;
+      var transitioning = false;
+      var resetTimer = null;
+      var rafPending = false;
+      var pendingDelta = 0;
+      var touchStartY = 0;
+
+      /* ── DOM refs ───────────────────────────── */
+      var sections = Array.from(document.querySelectorAll('.section'));
+      var progressFill = document.getElementById('progress-fill');
+      var progressBar = document.getElementById('progress-bar');
+      var dotsNav = document.getElementById('nav-dots');
+
+      /* ── Build Navigation Dots ──────────────── */
+      var dots = sections.map(function (_, i) {
+        var btn = document.createElement('button');
+        btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        btn.setAttribute('aria-label', 'Section ' + (i + 1) + ' sur ' + TOTAL);
+        btn.addEventListener('click', function () { jumpTo(i); });
+        dotsNav.appendChild(btn);
+        return btn;
+      });
+
+      /* ── Progress Bar ───────────────────────── */
+      function setProgress(val) {
+        var pct = Math.min(Math.abs(val) / THRESHOLD * 100, 100);
+        progressFill.style.width = pct + '%';
+        progressBar.setAttribute('aria-valuenow', Math.round(pct));
+      }
+
+      /* ── goTo: direction-aware slide + motion blur ── */
+      function goTo(idx) {
+        if (transitioning) return;
+        if (idx < 0 || idx >= TOTAL) return;
+        if (idx === current) return;
+
+        transitioning = true;
+        buffer = 0;
+        setProgress(0);
+        clearTimeout(resetTimer);
+
+        var prev = current;
+        var dir = idx > prev ? 'down' : 'up';
+        current = idx;
+
+        /* Update dots + aria */
+        dots[prev].classList.remove('active');
+        dots[idx].classList.add('active');
+        sections[prev].removeAttribute('aria-current');
+        sections[idx].setAttribute('aria-current', 'step');
+
+        /* Leaving animation on old section */
+        sections[prev].classList.add(dir === 'down' ? 'leaving-up' : 'leaving-down');
+        sections[prev].classList.remove('active');
+
+        /* Entering animation on new section */
+        if (dir === 'up') sections[idx].classList.remove('is-above');
+        sections[idx].classList.add(dir === 'down' ? 'entering-down' : 'entering-up');
+
+        /* Fire content entrance animation concurrently with the CSS slide */
+        onSectionEnter(idx);
+
+        setTimeout(function () {
+          /* Settle leaving section at its new rest position */
+          sections[prev].classList.remove('leaving-up', 'leaving-down');
+          if (dir === 'down') sections[prev].classList.add('is-above');
+          /* going up: prev returns to base (below) — no extra class needed */
+
+          /* Settle entering section as active */
+          sections[idx].classList.remove('entering-down', 'entering-up');
+          sections[idx].classList.add('active');
+
+          transitioning = false;
+        }, TRANSITION_MS);
+      }
+
+      /* ── jumpTo: instant jump (dots / navbar / Home / End) */
+      function jumpTo(idx) {
+        if (idx < 0 || idx >= TOTAL) return;
+
+        transitioning = false;
+        buffer = 0;
+        setProgress(0);
+        clearTimeout(resetTimer);
+
+        /* Reset every section to correct positional state without animation */
+        sections.forEach(function (sec, i) {
+          sec.classList.remove(
+            'active', 'is-above',
+            'entering-down', 'entering-up', 'leaving-up', 'leaving-down'
+          );
+          if (i < idx) sec.classList.add('is-above');
+          else if (i === idx) sec.classList.add('active');
+          /* else: base transform = below */
+
+          if (i === idx) sec.setAttribute('aria-current', 'step');
+          else sec.removeAttribute('aria-current');
+        });
+
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        current = idx;
+
+        /* Brief lock then trigger GSAP entrance */
+        transitioning = true;
+        setTimeout(function () {
+          transitioning = false;
+          onSectionEnter(current);
+        }, TRANSITION_MS);
+      }
+
+      /* ── addBuffer: accumulation + seuil ────── */
+      function addBuffer(delta) {
+        if (transitioning) return;
+
+        buffer += delta;
+        setProgress(buffer);
+
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          buffer = 0;
+          setProgress(0);
+        }, RESET_MS);
+
+        if (buffer >= THRESHOLD) {
+          buffer = 0;
+          goTo(current + 1);
+        } else if (buffer <= -THRESHOLD) {
+          buffer = 0;
+          goTo(current - 1);
+        }
+      }
+
+      /* ── Wheel Handler ──────────────────────── */
+      function onWheel(e) {
+        e.preventDefault();                    /* toujours, même en transition */
+        if (transitioning) return;
+
+        var delta = e.deltaY;
+        if (e.deltaMode === 1) delta *= 16;    /* lignes → px */
+        if (e.deltaMode === 2) delta *= 100;   /* pages  → px */
+
+        pendingDelta += delta * WHEEL_MULT;
+
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(function () {
+            addBuffer(pendingDelta);
+            pendingDelta = 0;
+            rafPending = false;
+          });
+        }
+      }
+
+      /* ── Touch Handlers ─────────────────────── */
+      function onTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+      }
+
+      function onTouchMove(e) {
+        e.preventDefault();
+        if (transitioning) return;
+        var delta = (touchStartY - e.touches[0].clientY) * TOUCH_MULT;
+        touchStartY = e.touches[0].clientY;
+        addBuffer(delta);
+      }
+
+      /* ── Keyboard Handler ───────────────────── */
+      function onKeyDown(e) {
+        if (transitioning) return;
+
+        var tag = document.activeElement ? document.activeElement.tagName : '';
+        var inForm = ['INPUT', 'TEXTAREA', 'SELECT'].indexOf(tag) !== -1;
+
+        switch (e.key) {
+          case 'ArrowDown':
+          case 'PageDown':
+            e.preventDefault();
+            goTo(current + 1);
+            break;
+          case ' ':
+            if (!inForm) { e.preventDefault(); goTo(current + 1); }
+            break;
+          case 'ArrowUp':
+          case 'PageUp':
+            e.preventDefault();
+            goTo(current - 1);
+            break;
+          case 'Home':
+            e.preventDefault();
+            jumpTo(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            jumpTo(TOTAL - 1);
+            break;
+        }
+      }
+
+      /* ── Section Animations (GSAP stagger) ─── */
+      function animateSection(idx) {
+        if (typeof gsap === 'undefined' || REDUCED_MOTION) return;
+        if (idx === 0) {
+          gsap.fromTo(
+            ['#section-0 .hero-pill', '#section-0 .hero-title',
+              '#section-0 .hero-sub', '#section-0 .hero-ctas'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 1) {
+          gsap.fromTo(
+            ['#section-1 .prob-pill', '#section-1 .prob-title',
+              '#section-1 .prob-body', '#section-1 .prob-stat',
+              '#section-1 .prob-cta'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 2) {
+          gsap.fromTo(
+            ['#section-2 .meth-pill', '#section-2 .meth-title',
+              '#section-2 .meth-card'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 3) {
+          gsap.fromTo(
+            ['#section-3 .found-portrait', '#section-3 .found-pill',
+              '#section-3 .found-title', '#section-3 .found-paras',
+              '#section-3 .found-sig', '#section-3 .found-cta'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 4) {
+          gsap.fromTo(
+            ['#section-4 .tarif-pill', '#section-4 .tarif-title',
+              '#section-4 .tarif-toggle', '#section-4 .tarif-card'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 5) {
+          gsap.fromTo(
+            ['#section-5 .audit-pill', '#section-5 .audit-title',
+              '#section-5 .audit-sub', '#section-5 .audit-form'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 6) {
+          gsap.fromTo(
+            ['#section-6 .faq-pill', '#section-6 .faq-title', '#section-6 .faq-item'],
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.07 }
+          );
+        }
+        if (idx === 7) {
+          gsap.fromTo(
+            '#section-7 .footer-anim',
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.12 }
+          );
+        }
+      }
+
+      /* ── Section Entrance Hook ──────────────── */
+      function onSectionEnter(idx) {
+        animateSection(idx);
+      }
+
+      /* ── Tarif Toggle (standard / fondateur) ── */
+      function initTarifToggle() {
+        var sec = document.getElementById('section-4');
+        var btnS = document.getElementById('btn-std');
+        var btnF = document.getElementById('btn-fond');
+        if (!sec || !btnS || !btnF) return;
+        btnS.addEventListener('click', function () {
+          sec.classList.remove('tarif-fondateur');
+          btnS.classList.add('active'); btnS.setAttribute('aria-pressed', 'true');
+          btnF.classList.remove('active'); btnF.setAttribute('aria-pressed', 'false');
+        });
+        btnF.addEventListener('click', function () {
+          sec.classList.add('tarif-fondateur');
+          btnF.classList.add('active'); btnF.setAttribute('aria-pressed', 'true');
+          btnS.classList.remove('active'); btnS.setAttribute('aria-pressed', 'false');
+        });
+      }
+
+      /* ── Audit Form (Formspree async) ──────────── */
+      function initAuditForm() {
+        var form = document.getElementById('audit-form');
+        var success = document.getElementById('audit-success');
+        if (!form || !success) return;
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('.audit-submit');
+          btn.disabled = true;
+          btn.textContent = 'Envoi en cours…';
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          }).then(function (res) {
+            if (res.ok) {
+              form.style.display = 'none';
+              success.style.display = 'flex';
+              if (typeof gsap !== 'undefined') {
+                gsap.fromTo(success, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+              }
+            } else {
+              btn.disabled = false;
+              btn.textContent = 'Recevoir mon audit →';
+            }
+          }).catch(function () {
+            btn.disabled = false;
+            btn.textContent = 'Recevoir mon audit →';
+          });
+        });
+      }
+
+      /* ── FAQ Accordion ──────────────────────── */
+      function initFaq() {
+        var items = document.querySelectorAll('#section-6 .faq-item');
+        items.forEach(function (item) {
+          var btn = item.querySelector('.faq-q');
+          if (!btn) return;
+          btn.addEventListener('click', function () {
+            var isOpen = item.classList.contains('open');
+            items.forEach(function (i) {
+              i.classList.remove('open');
+              var b = i.querySelector('.faq-q');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              item.classList.add('open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+      }
+
+      /* ── Navbar & Dot links ─────────────────── */
+      document.querySelectorAll('[data-section]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          jumpTo(parseInt(el.dataset.section, 10));
+        });
+      });
+
+      /* ── Event Listeners ────────────────────── */
+      document.addEventListener('wheel', onWheel, { passive: false });
+      document.addEventListener('touchstart', onTouchStart, { passive: true });
+      document.addEventListener('touchmove', onTouchMove, { passive: false });
+      document.addEventListener('keydown', onKeyDown);
+
+      /* ── Init ───────────────────────────────── */
+      sections[0].setAttribute('aria-current', 'step');
+
+      /* Expose pour debug console */
+      window.__presens = {
+        goTo: goTo,
+        jumpTo: jumpTo,
+        getCurrent: function () { return current; },
+        getBuffer: function () { return buffer; }
+      };
+
+      /* Animation Hero au chargement (GSAP disponible après defer) */
+      window.addEventListener('load', function () {
+        animateSection(0);
+        initTarifToggle();
+        initAuditForm();
+        initFaq();
+      });
+
+    })();
+  </script>
+
+</body>
+
+</html>
