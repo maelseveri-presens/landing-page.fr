@@ -151,25 +151,6 @@
       border: 0;
     }
 
-    /* ═══════════════════════════════════════════
-       PROGRESS BAR — 2px, top, mint→cta
-    ═══════════════════════════════════════════ */
-    #progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: rgba(31, 58, 45, 0.5);
-      z-index: 200;
-    }
-
-    #progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(to right, var(--green-mint), var(--green-cta));
-      transition: width 50ms linear;
-    }
 
     /* ═══════════════════════════════════════════
        NAVBAR FLOTTANTE
@@ -301,6 +282,7 @@
     #scroll-container {
       position: relative;
       height: 100vh;
+      height: 100dvh;
       overflow: hidden;
     }
 
@@ -621,6 +603,31 @@
       #nav-dots {
         right: 12px;
       }
+
+      /* Transitions mobile : blur plus fort + opacités décalées
+         pour éviter que les deux sections soient visibles simultanément */
+      @keyframes slide-in-from-below {
+        0%   { transform: translate3d(0, 100%, 0); opacity: 0; filter: blur(20px); }
+        40%  { opacity: 0; filter: blur(20px); }
+        75%  { opacity: 1; filter: blur(0); }
+        100% { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+      }
+      @keyframes slide-in-from-above {
+        0%   { transform: translate3d(0, -100%, 0); opacity: 0; filter: blur(20px); }
+        40%  { opacity: 0; filter: blur(20px); }
+        75%  { opacity: 1; filter: blur(0); }
+        100% { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+      }
+      @keyframes slide-out-to-above {
+        0%   { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+        50%  { opacity: 0; filter: blur(20px); }
+        100% { transform: translate3d(0, -100%, 0); opacity: 0; filter: blur(20px); }
+      }
+      @keyframes slide-out-to-below {
+        0%   { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+        50%  { opacity: 0; filter: blur(20px); }
+        100% { transform: translate3d(0, 100%, 0); opacity: 0; filter: blur(20px); }
+      }
     }
 
     /* ═══════════════════════════════════════════
@@ -900,7 +907,7 @@
       text-align: left;
       max-width: 960px;
       margin: 0 auto;
-      padding: 0 var(--gutter);
+      padding: 16px var(--gutter) 0;
     }
 
     .found-portrait {
@@ -993,7 +1000,7 @@
     /* ── TARIFS (INDEX 4) ───────────────────────── */
     .tarif-inner {
       gap: 16px;
-      padding-top: 72px;
+      padding-top: 86px;
       padding-bottom: 12px;
     }
 
@@ -1300,7 +1307,7 @@
     .audit-inner {
       gap: 22px;
       max-width: 540px;
-      padding-top: 72px;
+      padding-top: 86px;
       padding-bottom: 12px;
     }
 
@@ -1478,7 +1485,7 @@
     .faq-inner {
       gap: 28px;
       max-width: 700px;
-      padding-top: 72px;
+      padding-top: 86px;
       padding-bottom: 12px;
     }
 
@@ -1579,6 +1586,7 @@
       align-items: stretch;
       text-align: left;
       gap: 0;
+      padding-top: 64px;
     }
 
     .footer-anim {
@@ -1588,16 +1596,16 @@
     .footer-top {
       display: grid;
       grid-template-columns: 1.6fr 1fr 1fr;
-      gap: 48px;
+      gap: 32px;
       width: 100%;
-      padding-bottom: 36px;
+      padding-bottom: 20px;
       border-bottom: 1px solid var(--green-forest);
     }
 
     .footer-brand {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 8px;
     }
 
     .footer-logo {
@@ -1684,7 +1692,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding-top: 26px;
+      padding-top: 16px;
       gap: 16px;
       flex-wrap: wrap;
     }
@@ -1717,11 +1725,75 @@
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 16px;
       }
 
       .footer-tagline {
         max-width: none;
+      }
+    }
+
+    /* Dégagement global navbar pour sections sans -inner spécifique */
+    #section-2 .section-inner { padding-top: 16px; padding-bottom: 16px; }
+
+    /* ═══════════════════════════════════════════
+       MOBILE — espacements réduits + scroll interne
+       Bloc terminal : prime sur les règles antérieures
+    ═══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* ── Réduction globale des espacements ────────── */
+      .section-inner {
+        gap: 16px;
+      }
+
+      /* Hero */
+      .hero-title  { margin-bottom: 8px; }
+      .hero-sub    { margin: 0 auto 8px; }
+
+      /* Le Constat */
+      .prob-title  { margin-bottom: 8px; }
+      .prob-body   { margin: 0 auto 8px; }
+      .prob-stat   { margin: 0 auto 8px; }
+
+      /* La Méthode */
+      .meth-title       { margin-bottom: 12px; }
+      .meth-card        { padding: 14px; }
+      .meth-card-icon   { margin-bottom: 8px; }
+      .meth-card-title  { margin-bottom: 6px; }
+
+      /* Fondateur */
+      .found-inner    { gap: 16px; }
+      .found-portrait { flex: 0 0 auto; width: 140px; }
+
+      /* Tarifs / Audit / FAQ — padding-bottom déjà géré */
+      .tarif-inner  { padding-bottom: 24px; }
+      .audit-inner  { padding-bottom: 0; gap: 14px; }
+      .faq-inner    { padding-bottom: 0; gap: 16px; }
+
+      /* ── Sections à scroll interne ────────────────── */
+      /* Sections 2–6 : contenu trop long
+         pour tenir dans une seule page mobile         */
+      #section-2,
+      #section-3,
+      #section-4,
+      #section-5 {
+        align-items: flex-start;
+        overflow-y: auto;
+      }
+
+      /* FAQ : scroll interne uniquement quand une réponse est déployée */
+      #section-6.faq-expanded {
+        align-items: flex-start;
+        overflow-y: auto;
+      }
+
+      /* Dégagement navbar pour sections sans padding-top
+         dans leur classe -inner (2 et 3).
+         Sections 4, 5, 6 ont déjà padding-top: 86px. */
+      #section-2 .section-inner,
+      #section-3 .section-inner {
+        padding-top: 88px;
       }
     }
   </style>
@@ -1896,12 +1968,6 @@
 
   <!-- ── Skip link ─────────────────────────── -->
   <a class="skip-link" href="#scroll-container">Passer au contenu principal</a>
-
-  <!-- ── Progress Bar ──────────────────────── -->
-  <div id="progress-bar" role="progressbar" aria-label="Intention de navigation" aria-valuemin="0" aria-valuemax="100"
-    aria-valuenow="0" aria-hidden="true">
-    <div id="progress-fill"></div>
-  </div>
 
   <!-- ── Navbar Flottante ──────────────────── -->
   <nav id="navbar" role="navigation" aria-label="Navigation principale">
@@ -2526,7 +2592,8 @@
       /* ── Constants ──────────────────────────── */
       var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var TOTAL = 8;
-      var THRESHOLD = 350;   // px accumulés avant bascule (~3-4 crans)
+      var THRESHOLD = 350;       // wheel : px avant bascule
+      var TOUCH_THRESHOLD = 80;  // touch : seuil mobile (swipe court suffit)
       var TRANSITION_MS = 900;   // durée animation entrante
       var RESET_MS = 1200;   // délai d'expiration de l'intention
       var WHEEL_MULT = 1.35;   // sensibilité molette / trackpad
@@ -2543,8 +2610,6 @@
 
       /* ── DOM refs ───────────────────────────── */
       var sections = Array.from(document.querySelectorAll('.section'));
-      var progressFill = document.getElementById('progress-fill');
-      var progressBar = document.getElementById('progress-bar');
       var dotsNav = document.getElementById('nav-dots');
 
       /* ── Build Navigation Dots ──────────────── */
@@ -2557,13 +2622,6 @@
         return btn;
       });
 
-      /* ── Progress Bar ───────────────────────── */
-      function setProgress(val) {
-        var pct = Math.min(Math.abs(val) / THRESHOLD * 100, 100);
-        progressFill.style.width = pct + '%';
-        progressBar.setAttribute('aria-valuenow', Math.round(pct));
-      }
-
       /* ── goTo: direction-aware slide + motion blur ── */
       function goTo(idx) {
         if (transitioning) return;
@@ -2572,7 +2630,6 @@
 
         transitioning = true;
         buffer = 0;
-        setProgress(0);
         clearTimeout(resetTimer);
 
         var prev = current;
@@ -2601,6 +2658,7 @@
           sections[prev].classList.remove('leaving-up', 'leaving-down');
           if (dir === 'down') sections[prev].classList.add('is-above');
           /* going up: prev returns to base (below) — no extra class needed */
+          sections[prev].scrollTop = 0; /* reset pour re-entrée propre */
 
           /* Settle entering section as active */
           sections[idx].classList.remove('entering-down', 'entering-up');
@@ -2616,7 +2674,6 @@
 
         transitioning = false;
         buffer = 0;
-        setProgress(0);
         clearTimeout(resetTimer);
 
         /* Reset every section to correct positional state without animation */
@@ -2645,22 +2702,21 @@
       }
 
       /* ── addBuffer: accumulation + seuil ────── */
-      function addBuffer(delta) {
+      function addBuffer(delta, thr) {
         if (transitioning) return;
+        thr = thr || THRESHOLD;
 
         buffer += delta;
-        setProgress(buffer);
 
         clearTimeout(resetTimer);
         resetTimer = setTimeout(function () {
           buffer = 0;
-          setProgress(0);
         }, RESET_MS);
 
-        if (buffer >= THRESHOLD) {
+        if (buffer >= thr) {
           buffer = 0;
           goTo(current + 1);
-        } else if (buffer <= -THRESHOLD) {
+        } else if (buffer <= -thr) {
           buffer = 0;
           goTo(current - 1);
         }
@@ -2693,11 +2749,30 @@
       }
 
       function onTouchMove(e) {
+        var sec = sections[current];
+        /* Vérifie que la section est réellement scrollable (overflow auto/scroll)
+           et que le contenu dépasse la hauteur visible */
+        var oy = window.getComputedStyle(sec).overflowY;
+        var isScrollable = (oy === 'auto' || oy === 'scroll') &&
+          sec.scrollHeight > sec.clientHeight + 1;
+
+        if (isScrollable) {
+          var swipingDown = e.touches[0].clientY < touchStartY;
+          var atBottom = sec.scrollTop >= sec.scrollHeight - sec.clientHeight - 2;
+          var atTop = sec.scrollTop <= 0;
+
+          if ((swipingDown && !atBottom) || (!swipingDown && !atTop)) {
+            /* Section a du contenu à scroller — laisser le scroll natif agir */
+            touchStartY = e.touches[0].clientY;
+            return;
+          }
+        }
+
         e.preventDefault();
         if (transitioning) return;
         var delta = (touchStartY - e.touches[0].clientY) * TOUCH_MULT;
         touchStartY = e.touches[0].clientY;
-        addBuffer(delta);
+        addBuffer(delta, TOUCH_THRESHOLD);
       }
 
       /* ── Keyboard Handler ───────────────────── */
@@ -2858,7 +2933,13 @@
 
       /* ── FAQ Accordion ──────────────────────── */
       function initFaq() {
+        var sec6 = document.getElementById('section-6');
         var items = document.querySelectorAll('#section-6 .faq-item');
+        function syncScroll() {
+          var anyOpen = Array.from(items).some(function (i) { return i.classList.contains('open'); });
+          sec6.classList.toggle('faq-expanded', anyOpen);
+          if (!anyOpen) sec6.scrollTop = 0;
+        }
         items.forEach(function (item) {
           var btn = item.querySelector('.faq-q');
           if (!btn) return;
@@ -2873,6 +2954,7 @@
               item.classList.add('open');
               btn.setAttribute('aria-expanded', 'true');
             }
+            syncScroll();
           });
         });
       }
