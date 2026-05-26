@@ -409,6 +409,12 @@
       animation-delay: -2.6s;
     }
 
+    /* Sections 1–7 : orbes plus lumineux, respiration plus ample */
+    .section:not(#section-0)>.orb {
+      animation-name: orb-pulse-bright;
+      animation-duration: 6s;
+    }
+
     /* ═══════════════════════════════════════════
        SECTION INNER
     ═══════════════════════════════════════════ */
@@ -607,26 +613,89 @@
       /* Transitions mobile : blur plus fort + opacités décalées
          pour éviter que les deux sections soient visibles simultanément */
       @keyframes slide-in-from-below {
-        0%   { transform: translate3d(0, 100%, 0); opacity: 0; filter: blur(20px); }
-        40%  { opacity: 0; filter: blur(20px); }
-        75%  { opacity: 1; filter: blur(0); }
-        100% { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+        0% {
+          transform: translate3d(0, 100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        40% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        75% {
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
       }
+
       @keyframes slide-in-from-above {
-        0%   { transform: translate3d(0, -100%, 0); opacity: 0; filter: blur(20px); }
-        40%  { opacity: 0; filter: blur(20px); }
-        75%  { opacity: 1; filter: blur(0); }
-        100% { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
+        0% {
+          transform: translate3d(0, -100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        40% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        75% {
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
       }
+
       @keyframes slide-out-to-above {
-        0%   { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
-        50%  { opacity: 0; filter: blur(20px); }
-        100% { transform: translate3d(0, -100%, 0); opacity: 0; filter: blur(20px); }
+        0% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        50% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        100% {
+          transform: translate3d(0, -100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
       }
+
       @keyframes slide-out-to-below {
-        0%   { transform: translate3d(0, 0, 0); opacity: 1; filter: blur(0); }
-        50%  { opacity: 0; filter: blur(20px); }
-        100% { transform: translate3d(0, 100%, 0); opacity: 0; filter: blur(20px); }
+        0% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        50% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        100% {
+          transform: translate3d(0, 100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
       }
     }
 
@@ -642,6 +711,18 @@
 
       50% {
         opacity: 0.58;
+      }
+    }
+
+    @keyframes orb-pulse-bright {
+
+      0%,
+      100% {
+        opacity: 0.28;
+      }
+
+      50% {
+        opacity: 0.78;
       }
     }
 
@@ -1738,7 +1819,10 @@
     }
 
     /* Dégagement global navbar pour sections sans -inner spécifique */
-    #section-2 .section-inner { padding-top: 16px; padding-bottom: 16px; }
+    #section-2 .section-inner {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
 
     /* ═══════════════════════════════════════════
        MOBILE — espacements réduits + scroll interne
@@ -1752,52 +1836,109 @@
       }
 
       /* Hero */
-      .hero-title  { margin-bottom: 8px; }
-      .hero-sub    { margin: 0 auto 8px; }
+      .hero-title {
+        margin-bottom: 8px;
+      }
+
+      .hero-sub {
+        margin: 0 auto 8px;
+      }
 
       /* Le Constat */
-      .prob-title  { margin-bottom: 8px; }
-      .prob-body   { margin: 0 auto 8px; }
-      .prob-stat   { margin: 0 auto 8px; }
+      .prob-title {
+        margin-bottom: 8px;
+      }
+
+      .prob-body {
+        margin: 0 auto 8px;
+      }
+
+      .prob-stat {
+        margin: 0 auto 8px;
+      }
 
       /* La Méthode — compact + accordion */
-      .meth-title      { margin-bottom: 12px; }
-      .meth-card       { padding: 14px; cursor: pointer; user-select: none; }
+      .meth-title {
+        margin-bottom: 12px;
+      }
+
+      .meth-card {
+        padding: 14px;
+        cursor: pointer;
+        user-select: none;
+      }
+
       .meth-card-header {
         display: flex;
         align-items: center;
         gap: 10px;
       }
-      .meth-card-icon  { margin-bottom: 0; flex-shrink: 0; }
-      .meth-card-meta  { flex: 1; min-width: 0; }
-      .meth-card-num   { margin-bottom: 2px; }
-      .meth-card-title { margin-bottom: 0; }
+
+      .meth-card-icon {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .meth-card-meta {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .meth-card-num {
+        margin-bottom: 2px;
+      }
+
+      .meth-card-title {
+        margin-bottom: 0;
+      }
+
       .meth-card-chevron {
         display: block;
         flex-shrink: 0;
         color: var(--text-tertiary);
         transition: transform 280ms ease;
       }
-      .meth-card.open .meth-card-chevron { transform: rotate(180deg); }
+
+      .meth-card.open .meth-card-chevron {
+        transform: rotate(180deg);
+      }
+
       .meth-card-desc {
         max-height: 0;
         overflow: hidden;
         transition: max-height 350ms ease, padding-top 350ms ease;
         padding-top: 0;
       }
+
       .meth-card.open .meth-card-desc {
         max-height: 200px;
         padding-top: 10px;
       }
 
       /* Fondateur */
-      .found-inner    { gap: 16px; }
-      .found-portrait { flex: 0 0 auto; width: 140px; }
+      .found-inner {
+        gap: 16px;
+      }
+
+      .found-portrait {
+        flex: 0 0 auto;
+        width: 140px;
+      }
 
       /* Tarifs / Audit / FAQ — padding-bottom déjà géré */
-      .tarif-inner  { padding-bottom: 24px; }
-      .audit-inner  { padding-bottom: 0; gap: 14px; }
-      .faq-inner    { padding-bottom: 0; gap: 16px; }
+      .tarif-inner {
+        padding-bottom: 24px;
+      }
+
+      .audit-inner {
+        padding-bottom: 0;
+        gap: 14px;
+      }
+
+      .faq-inner {
+        padding-bottom: 0;
+        gap: 16px;
+      }
 
       /* ── Sections à scroll interne ────────────────── */
       /* Sections 2–6 : contenu trop long
@@ -1822,6 +1963,7 @@
       #section-1 .section-inner {
         padding-top: 56px;
       }
+
       #section-2 .section-inner,
       #section-3 .section-inner {
         padding-top: 88px;
@@ -2063,13 +2205,13 @@
     <section class="section" id="section-1" data-index="1" aria-label="Le Problème — le shift GEO">
       <span class="sr-only">Section 2 sur 8</span>
       <div class="orb" style="width:520px;height:520px;
-           background:radial-gradient(circle,rgba(45,107,82,0.40),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.72),transparent 70%);
            top:10%;right:-60px;filter:blur(90px);"></div>
       <div class="orb" style="width:400px;height:400px;
-           background:radial-gradient(circle,rgba(155,234,200,0.22),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.52),transparent 70%);
            bottom:-80px;left:8%;filter:blur(100px);"></div>
       <div class="orb" style="width:300px;height:300px;
-           background:radial-gradient(circle,rgba(31,58,45,0.62),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.82),transparent 70%);
            top:60%;left:40%;filter:blur(80px);"></div>
       <div class="section-inner">
         <span class="pill prob-pill">LE CONSTAT</span>
@@ -2090,13 +2232,13 @@
     <section class="section" id="section-2" data-index="2" aria-label="La Méthode Présens — audit, optimisation, suivi">
       <span class="sr-only">Section 3 sur 8</span>
       <div class="orb" style="width:600px;height:600px;
-           background:radial-gradient(circle,rgba(31,58,45,0.62),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.82),transparent 70%);
            top:-80px;left:50%;transform:translateX(-50%);filter:blur(110px);"></div>
       <div class="orb" style="width:360px;height:360px;
-           background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.62),transparent 70%);
            bottom:5%;right:12%;filter:blur(90px);"></div>
       <div class="orb" style="width:280px;height:280px;
-           background:radial-gradient(circle,rgba(155,234,200,0.20),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.48),transparent 70%);
            top:30%;left:5%;filter:blur(80px);"></div>
       <div class="section-inner">
         <span class="pill meth-pill">LA MÉTHODE PRÉSENS</span>
@@ -2122,7 +2264,9 @@
               </div>
               <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </div>
             <p class="meth-card-desc">Cartographie complète de votre présence actuelle sur les 4 LLMs majeurs.</p>
           </div>
@@ -2144,9 +2288,12 @@
               </div>
               <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </div>
-            <p class="meth-card-desc">Mise en place technique et éditoriale : llms.txt, balisage, contenus d'autorité.</p>
+            <p class="meth-card-desc">Mise en place technique et éditoriale : llms.txt, balisage, contenus d'autorité.
+            </p>
           </div>
 
           <!-- Card 03 — Suivi -->
@@ -2165,9 +2312,12 @@
               </div>
               <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </div>
-            <p class="meth-card-desc">Rapport mensuel détaillé. Vous voyez votre progression, vous gardez le contrôle.</p>
+            <p class="meth-card-desc">Rapport mensuel détaillé. Vous voyez votre progression, vous gardez le contrôle.
+            </p>
           </div>
 
         </div>
@@ -2178,13 +2328,13 @@
     <section class="section" id="section-3" data-index="3" aria-label="Maël, fondateur de Présens, expert GEO">
       <span class="sr-only">Section 4 sur 8</span>
       <div class="orb" style="width:460px;height:460px;
-           background:radial-gradient(circle,rgba(45,107,82,0.42),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.74),transparent 70%);
            top:12%;left:-100px;filter:blur(95px);"></div>
       <div class="orb" style="width:500px;height:500px;
-           background:radial-gradient(circle,rgba(155,234,200,0.21),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.50),transparent 70%);
            bottom:-120px;right:-80px;filter:blur(100px);"></div>
       <div class="orb" style="width:320px;height:320px;
-           background:radial-gradient(circle,rgba(31,58,45,0.57),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.76),transparent 70%);
            top:55%;left:55%;filter:blur(85px);"></div>
       <!-- Layout 2 colonnes — found-inner override section-inner -->
       <div class="section-inner found-inner">
@@ -2228,13 +2378,13 @@
     <section class="section" id="section-4" data-index="4" aria-label="Tarifs Présens — trois paliers GEO">
       <span class="sr-only">Section 5 sur 8</span>
       <div class="orb" style="width:520px;height:520px;
-           background:radial-gradient(circle,rgba(31,58,45,0.60),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.80),transparent 70%);
            top:-60px;right:-60px;filter:blur(100px);"></div>
       <div class="orb" style="width:420px;height:420px;
-           background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.62),transparent 70%);
            bottom:-80px;left:-40px;filter:blur(90px);"></div>
       <div class="orb" style="width:300px;height:300px;
-           background:radial-gradient(circle,rgba(155,234,200,0.22),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.52),transparent 70%);
            top:40%;left:35%;filter:blur(80px);"></div>
       <div class="section-inner tarif-inner">
 
@@ -2340,13 +2490,13 @@
     <section class="section" id="section-5" data-index="5" aria-label="Audit GEO gratuit — formulaire de contact">
       <span class="sr-only">Section 6 sur 8</span>
       <div class="orb" style="width:560px;height:560px;
-           background:radial-gradient(circle,rgba(45,107,82,0.42),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.74),transparent 70%);
            top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(115px);"></div>
       <div class="orb" style="width:320px;height:320px;
-           background:radial-gradient(circle,rgba(155,234,200,0.25),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.58),transparent 70%);
            top:8%;right:8%;filter:blur(80px);"></div>
       <div class="orb" style="width:280px;height:280px;
-           background:radial-gradient(circle,rgba(31,58,45,0.52),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.72),transparent 70%);
            bottom:10%;left:10%;filter:blur(85px);"></div>
       <div class="section-inner audit-inner">
         <span class="pill audit-pill">AUDIT GRATUIT · 48H</span>
@@ -2458,13 +2608,13 @@
     <section class="section" id="section-6" data-index="6" aria-label="Foire aux questions — GEO et Présens">
       <span class="sr-only">Section 7 sur 8</span>
       <div class="orb" style="width:490px;height:490px;
-           background:radial-gradient(circle,rgba(31,58,45,0.54),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.74),transparent 70%);
            top:-80px;left:-80px;filter:blur(100px);"></div>
       <div class="orb" style="width:430px;height:430px;
-           background:radial-gradient(circle,rgba(45,107,82,0.36),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.66),transparent 70%);
            bottom:-80px;right:-60px;filter:blur(90px);"></div>
       <div class="orb" style="width:260px;height:260px;
-           background:radial-gradient(circle,rgba(155,234,200,0.21),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.50),transparent 70%);
            top:45%;right:25%;filter:blur(80px);"></div>
       <div class="section-inner faq-inner">
         <span class="pill faq-pill">QUESTIONS FRÉQUENTES</span>
@@ -2577,13 +2727,13 @@
     <section class="section" id="section-7" data-index="7" aria-label="Footer — Présens, studio GEO, contact">
       <span class="sr-only">Section 8 sur 8</span>
       <div class="orb" style="width:420px;height:420px;
-           background:radial-gradient(circle,rgba(45,107,82,0.38),transparent 70%);
+           background:radial-gradient(circle,rgba(45,107,82,0.68),transparent 70%);
            top:20%;right:18%;filter:blur(95px);"></div>
       <div class="orb" style="width:360px;height:360px;
-           background:radial-gradient(circle,rgba(155,234,200,0.22),transparent 70%);
+           background:radial-gradient(circle,rgba(155,234,200,0.52),transparent 70%);
            bottom:18%;left:18%;filter:blur(85px);"></div>
       <div class="orb" style="width:300px;height:300px;
-           background:radial-gradient(circle,rgba(31,58,45,0.52),transparent 70%);
+           background:radial-gradient(circle,rgba(31,58,45,0.72),transparent 70%);
            top:50%;left:10%;filter:blur(80px);"></div>
       <div class="section-inner footer-inner">
 
