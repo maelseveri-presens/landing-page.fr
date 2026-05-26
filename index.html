@@ -880,6 +880,10 @@
       line-height: 1.65;
     }
 
+    .meth-card-chevron {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .meth-cards {
         flex-direction: column;
@@ -1756,11 +1760,35 @@
       .prob-body   { margin: 0 auto 8px; }
       .prob-stat   { margin: 0 auto 8px; }
 
-      /* La Méthode */
-      .meth-title       { margin-bottom: 12px; }
-      .meth-card        { padding: 14px; }
-      .meth-card-icon   { margin-bottom: 8px; }
-      .meth-card-title  { margin-bottom: 6px; }
+      /* La Méthode — compact + accordion */
+      .meth-title      { margin-bottom: 12px; }
+      .meth-card       { padding: 14px; cursor: pointer; user-select: none; }
+      .meth-card-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .meth-card-icon  { margin-bottom: 0; flex-shrink: 0; }
+      .meth-card-meta  { flex: 1; min-width: 0; }
+      .meth-card-num   { margin-bottom: 2px; }
+      .meth-card-title { margin-bottom: 0; }
+      .meth-card-chevron {
+        display: block;
+        flex-shrink: 0;
+        color: var(--text-tertiary);
+        transition: transform 280ms ease;
+      }
+      .meth-card.open .meth-card-chevron { transform: rotate(180deg); }
+      .meth-card-desc {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 350ms ease, padding-top 350ms ease;
+        padding-top: 0;
+      }
+      .meth-card.open .meth-card-desc {
+        max-height: 200px;
+        padding-top: 10px;
+      }
 
       /* Fondateur */
       .found-inner    { gap: 16px; }
@@ -1789,8 +1817,11 @@
       }
 
       /* Dégagement navbar pour sections sans padding-top
-         dans leur classe -inner (2 et 3).
+         dans leur classe -inner (1, 2 et 3).
          Sections 4, 5, 6 ont déjà padding-top: 86px. */
+      #section-1 .section-inner {
+        padding-top: 56px;
+      }
       #section-2 .section-inner,
       #section-3 .section-inner {
         padding-top: 88px;
@@ -2076,48 +2107,67 @@
         <div class="meth-cards">
 
           <!-- Card 01 — Audit -->
-          <div class="meth-card">
-            <div class="meth-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
+          <div class="meth-card" role="button" aria-expanded="false" tabindex="0">
+            <div class="meth-card-header">
+              <div class="meth-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              </div>
+              <div class="meth-card-meta">
+                <span class="meth-card-num">01</span>
+                <h3 class="meth-card-title">Audit</h3>
+              </div>
+              <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <span class="meth-card-num">01</span>
-            <h3 class="meth-card-title">Audit</h3>
             <p class="meth-card-desc">Cartographie complète de votre présence actuelle sur les 4 LLMs majeurs.</p>
           </div>
 
           <!-- Card 02 — Optimisation -->
-          <div class="meth-card">
-            <div class="meth-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                <polyline points="2 17 12 22 22 17" />
-                <polyline points="2 12 12 17 22 12" />
-              </svg>
+          <div class="meth-card" role="button" aria-expanded="false" tabindex="0">
+            <div class="meth-card-header">
+              <div class="meth-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                  <polyline points="2 17 12 22 22 17" />
+                  <polyline points="2 12 12 17 22 12" />
+                </svg>
+              </div>
+              <div class="meth-card-meta">
+                <span class="meth-card-num">02</span>
+                <h3 class="meth-card-title">Optimisation</h3>
+              </div>
+              <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <span class="meth-card-num">02</span>
-            <h3 class="meth-card-title">Optimisation</h3>
-            <p class="meth-card-desc">Mise en place technique et éditoriale : llms.txt, balisage, contenus d'autorité.
-            </p>
+            <p class="meth-card-desc">Mise en place technique et éditoriale : llms.txt, balisage, contenus d'autorité.</p>
           </div>
 
           <!-- Card 03 — Suivi -->
-          <div class="meth-card">
-            <div class="meth-card-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-                <polyline points="16 7 22 7 22 13" />
-              </svg>
+          <div class="meth-card" role="button" aria-expanded="false" tabindex="0">
+            <div class="meth-card-header">
+              <div class="meth-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                  <polyline points="16 7 22 7 22 13" />
+                </svg>
+              </div>
+              <div class="meth-card-meta">
+                <span class="meth-card-num">03</span>
+                <h3 class="meth-card-title">Suivi</h3>
+              </div>
+              <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <span class="meth-card-num">03</span>
-            <h3 class="meth-card-title">Suivi</h3>
-            <p class="meth-card-desc">Rapport mensuel détaillé. Vous voyez votre progression, vous gardez le contrôle.
-            </p>
+            <p class="meth-card-desc">Rapport mensuel détaillé. Vous voyez votre progression, vous gardez le contrôle.</p>
           </div>
 
         </div>
@@ -2828,6 +2878,10 @@
           );
         }
         if (idx === 2) {
+          document.querySelectorAll('#section-2 .meth-card').forEach(function (c) {
+            c.classList.remove('open');
+            c.setAttribute('aria-expanded', 'false');
+          });
           gsap.fromTo(
             ['#section-2 .meth-pill', '#section-2 .meth-title',
               '#section-2 .meth-card'],
@@ -2931,6 +2985,28 @@
         });
       }
 
+      /* ── Méthode Accordion (mobile uniquement) ─ */
+      function initMeth() {
+        var cards = document.querySelectorAll('#section-2 .meth-card');
+        cards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            if (window.innerWidth > 768) return;
+            var isOpen = card.classList.contains('open');
+            cards.forEach(function (c) {
+              c.classList.remove('open');
+              c.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              card.classList.add('open');
+              card.setAttribute('aria-expanded', 'true');
+            }
+          });
+          card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+          });
+        });
+      }
+
       /* ── FAQ Accordion ──────────────────────── */
       function initFaq() {
         var sec6 = document.getElementById('section-6');
@@ -2987,6 +3063,7 @@
       /* Animation Hero au chargement (GSAP disponible après defer) */
       window.addEventListener('load', function () {
         animateSection(0);
+        initMeth();
         initTarifToggle();
         initAuditForm();
         initFaq();
