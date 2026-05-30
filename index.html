@@ -235,35 +235,42 @@
     /* ═══════════════════════════════════════════
        NAVIGATION DOTS — fixe droite, centre vertical
     ═══════════════════════════════════════════ */
-    /* ── Nav dots — desktop : colonne verticale à droite ── */
+    /* ── Nav dots — barre verticale (mobile + desktop) ── */
     #nav-dots {
       position: fixed;
-      right: 24px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 100;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       align-items: center;
+      padding: 10px 8px;
+      background: rgba(26, 46, 38, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      max-height: calc(100dvh - 80px);
+      overflow-y: auto;
+      scrollbar-width: none;
     }
 
     #nav-dots::-webkit-scrollbar { display: none; }
 
     .nav-dot {
       flex-shrink: 0;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(155, 234, 200, 0.3);
+      width: 8px;
+      height: 16px;
+      border-radius: 4px;
+      background: rgba(155, 234, 200, 0.25);
       border: none;
       cursor: pointer;
       padding: 0;
       transition:
         background 280ms ease,
-        width 280ms ease,
-        height 280ms ease,
-        border-radius 280ms ease;
+        height 280ms ease;
     }
 
     .nav-dot:hover {
@@ -272,8 +279,7 @@
 
     .nav-dot.active {
       background: var(--green-mint);
-      width: 9px;
-      height: 9px;
+      height: 44px;
     }
 
     /* ── Scrollbar sections (overflow-y: auto) ── */
@@ -631,36 +637,54 @@
         gap: 16px;
       }
 
-      /* Mobile : barre horizontale en bas */
       #nav-dots {
-        right: auto;
-        top: auto;
-        transform: translateX(-50%);
-        left: 50%;
-        bottom: 18px;
-        flex-direction: row;
-        gap: 6px;
-        padding: 9px 14px;
-        background: rgba(26, 46, 38, 0.6);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid var(--green-forest);
-        border-radius: var(--radius-pill);
-        max-width: calc(100vw - 48px);
-        overflow-x: auto;
-        scrollbar-width: none;
+        right: 10px;
+        gap: 0;
+        padding: 4px 2px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 350ms ease;
       }
 
+      #nav-dots.nav-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Grande zone de tap (hauteur), trait vertical fin via ::before */
       .nav-dot {
-        width: 28px;
-        height: 8px;
-        border-radius: 4px;
+        width: 14px;
+        height: 32px;
+        background: transparent;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-dot::before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 12px;
+        border-radius: 2px;
+        background: rgba(155, 234, 200, 0.28);
+        transition: background 280ms ease, height 280ms ease;
+        pointer-events: none;
       }
 
       .nav-dot.active {
-        width: 44px;
-        height: 8px;
-        border-radius: 4px;
+        height: 32px;
+        background: transparent;
+      }
+
+      .nav-dot.active::before {
+        height: 30px;
+        background: var(--green-mint);
+      }
+
+      .nav-dot:hover::before {
+        background: var(--green-sage);
       }
 
       /* Transitions mobile : blur plus fort + opacités décalées
@@ -3046,6 +3070,7 @@
       var transitioning = false;
       var resetTimer = null;
       var rafPending = false;
+      var navHideTimer = null;
       var pendingDelta = 0;
       var touchStartY = 0;
 
@@ -3063,6 +3088,16 @@
         return btn;
       });
 
+      /* ── showNav: affiche la barre sur mobile puis la cache ── */
+      function showNav() {
+        if (window.innerWidth > 768) return;
+        dotsNav.classList.add('nav-visible');
+        clearTimeout(navHideTimer);
+        navHideTimer = setTimeout(function () {
+          dotsNav.classList.remove('nav-visible');
+        }, TRANSITION_MS + 900);
+      }
+
       /* ── goTo: direction-aware slide + motion blur ── */
       function goTo(idx) {
         if (transitioning) return;
@@ -3072,6 +3107,7 @@
         transitioning = true;
         buffer = 0;
         clearTimeout(resetTimer);
+        showNav();
 
         var prev = current;
         var dir = idx > prev ? 'down' : 'up';
@@ -3117,6 +3153,7 @@
         transitioning = false;
         buffer = 0;
         clearTimeout(resetTimer);
+        showNav();
 
         /* Reset every section to correct positional state without animation */
         sections.forEach(function (sec, i) {
