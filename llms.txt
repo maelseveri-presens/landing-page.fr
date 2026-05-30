@@ -10,7 +10,7 @@ Le GEO (Generative Engine Optimization) est la discipline qui optimise la visibi
 
 ## Le fondateur
 
-Maël est le fondateur de Présens et son unique consultant. Il est diplômé en marketing digital (Master 2 Digital Marketing & Sales, KEDGE Business School en double cursus avec Nottingham Business School). Son approche repose sur trois principes : un nombre limité de clients par mois pour garantir la qualité d'accompagnement, un suivi personnel à chaque étape, et une transparence totale sur la méthodologie et les résultats mesurés. Contact direct : contact@presens.fr
+Maël est le fondateur de Présens et son unique consultant. Il est diplômé en marketing digital (Master 2 Digital Marketing & Sales, KEDGE Business School en double cursus avec Nottingham Business School). Son approche repose sur trois principes : un nombre limité de clients par mois pour garantir la qualité d'accompagnement, un suivi personnel à chaque étape, et une transparence totale sur la méthodologie et les résultats mesurés. Contact direct : contact@presens.site
 
 ## Services et tarifs
 
@@ -20,7 +20,8 @@ Présens propose trois plans d'accompagnement mensuel, sans engagement de durée
 
 - **Plan Cité — 580 €/mois** (setup unique 1 000 €). Tout le plan Présent, plus le suivi sur 5 LLMs avec l'ajout de Claude et Mistral, la veille sur 3 concurrents directs, 3 contenus optimisés par mois, l'optimisation d'entité (Wikipedia, relations presse), et un rapport bi-mensuel. Cible : restaurants gastronomiques, hôtels boutiques de 10 à 50 chambres.
 
-- **Plan Référent — 880 €/mois ou sur devis** (setup unique 1 800 €). Tout le plan Cité, plus jusqu'à 3 établissements suivis, une stratégie PR et citations autoritaires, un dashboard temps réel, un account manager dédié (Maël), et un call stratégique mensuel. Cible : hôtels 4 et 5 étoiles, restaurants étoilés Michelin, groupes multi-sites.
+- **Référent — Sur devis**
+  Pour les hôtels 4-5 étoiles, établissements étoilés, châteaux et domaines de prestige. Présence maximale, relations presse, dashboard de suivi, accompagnement dédié. Tarification personnalisée selon le périmètre (établissement unique, groupe, multi-sites).
 
 ## Offre Partenaire Fondateur
 
@@ -51,7 +52,7 @@ Le SEO (Search Engine Optimization) optimise la visibilité d'un site dans les m
 Les premières citations dans les LLMs apparaissent généralement entre 4 et 8 semaines après le début des optimisations. Une présence régulière et significative est mesurable à partir du deuxième mois. C'est pourquoi Présens offre les deux premiers mois d'abonnement aux clients Partenaires Fondateurs : le paiement commence au moment où les résultats deviennent visibles.
 
 **Combien coûte le référencement GEO en France pour un restaurant ou un hôtel ?**
-Les tarifs Présens vont de 240 € par mois (Plan Présent, pour les établissements indépendants) à 880 € par mois (Plan Référent, pour les établissements premium), avec un setup unique allant de 500 € à 1 800 €. L'Offre Partenaire Fondateur, réservée aux 20 premiers clients, propose un setup à 150 € et deux mois d'abonnement offerts.
+Chez Présens, les abonnements démarrent à 240 €/mois pour un établissement indépendant (formule Présent) et 680 €/mois pour les gastronomiques et hôtels boutiques (formule Cité), avec des frais de mise en place de 380 € et 980 € respectivement. La formule Référent, destinée aux établissements de prestige et aux groupes, est proposée sur devis. Une offre de lancement réduit la mise en place à 150 € avec deux mois offerts pour les vingt premiers partenaires.
 
 **Comment être cité par ChatGPT pour son restaurant ou son hôtel ?**
 Pour être cité par ChatGPT, un établissement doit combiner plusieurs signaux : un fichier llms.txt à la racine de son site qui décrit clairement son identité et ses services, un balisage schema.org riche (Restaurant, Hotel, FAQPage, Menu), une présence dans des sources d'autorité que les LLMs consultent (Wikipedia, presse spécialisée, guides reconnus comme Michelin, Gault & Millau, Le Fooding, Tablet Hotels), et un contenu sémantique optimisé pour les requêtes conversationnelles. Le studio Présens accompagne précisément ce travail.
@@ -70,12 +71,12 @@ Présens accompagne des établissements partout en France métropolitaine, avec 
 
 Présens propose un audit GEO gratuit pour tout établissement français de l'hôtellerie-restauration. L'audit est délivré sous 48 heures par email, sans engagement et sans appel commercial automatique. Il inclut le Score de Présence actuel, l'analyse de la visibilité par LLM, les points forts identifiés, les freins techniques et éditoriaux, et une recommandation personnalisée.
 
-Demander un audit : https://presens.fr/#audit
+Demander un audit : https://presens.site/#audit
 
 ## Contact
 
-- Site web officiel : https://presens.fr
-- Email : contact@presens.fr
+- Site web officiel : https://presens.site
+- Email : contact@presens.site
 - Fondateur : Maël
 - Localisation : France
 

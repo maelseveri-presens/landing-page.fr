@@ -11,18 +11,18 @@
     content="GEO, Generative Engine Optimization, référencement génératif, restaurant, hôtel, ChatGPT, Perplexity, Gemini, Claude, France, llms.txt">
   <meta name="author" content="Maël — Présens">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <link rel="canonical" href="https://presens.fr/">
-  <link rel="sitemap" type="application/xml" href="https://presens.fr/sitemap.xml">
+  <link rel="canonical" href="https://presens.site/">
+  <link rel="sitemap" type="application/xml" href="https://presens.site/sitemap.xml">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://presens.fr/">
+  <meta property="og:url" content="https://presens.site/">
   <meta property="og:site_name" content="Présens">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="Présens · Studio GEO France pour restaurants &amp; hôtels">
   <meta property="og:description"
     content="Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration. Audit gratuit en 48h — Score de Présence sur ChatGPT, Perplexity, Gemini et Claude.">
-  <meta property="og:image" content="https://presens.fr/assets/img/og-image.jpg">
+  <meta property="og:image" content="https://presens.site/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Présens — Studio GEO pour restaurants et hôtels">
@@ -32,10 +32,10 @@
   <meta name="twitter:title" content="Présens · Studio GEO France pour restaurants &amp; hôtels">
   <meta name="twitter:description"
     content="Premier studio français de GEO pour l'hôtellerie-restauration. Audit gratuit en 48h.">
-  <meta name="twitter:image" content="https://presens.fr/assets/img/og-image.jpg">
+  <meta name="twitter:image" content="https://presens.site/assets/img/og-image.jpg">
 
   <!-- Technique -->
-  <meta name="theme-color" content="#0A1410">
+  <meta name="theme-color" content="#0F1F18">
   <meta name="format-detection" content="telephone=no">
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="alternate icon" href="/assets/img/favicon.ico">
@@ -55,10 +55,10 @@
        DESIGN TOKENS
     ═══════════════════════════════════════════ */
     :root {
-      --bg-main: #0A1410;
-      --bg-deep: #0F1F18;
-      --bg-card: #142822;
-      --bg-hover: #1A2E26;
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
 
       --green-cta: #2D6B52;
       --green-sage: #B8DDC8;
@@ -165,7 +165,7 @@
       align-items: center;
       gap: 28px;
       padding: 8px 20px;
-      background: rgba(20, 40, 34, 0.7);
+      background: rgba(26, 46, 38, 0.7);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--green-forest);
@@ -237,43 +237,73 @@
     ═══════════════════════════════════════════ */
     #nav-dots {
       position: fixed;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 100;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: row;
+      gap: 5px;
       align-items: center;
+      padding: 7px 12px;
+      background: rgba(26, 46, 38, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      max-width: calc(100vw - 48px);
+      overflow-x: auto;
+      scrollbar-width: none;
     }
 
+    #nav-dots::-webkit-scrollbar { display: none; }
+
     .nav-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green-forest);
-      border: 1px solid var(--text-tertiary);
+      flex-shrink: 0;
+      width: 22px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(155, 234, 200, 0.25);
+      border: none;
       cursor: pointer;
       padding: 0;
       transition:
-        background 250ms ease,
-        transform 250ms ease,
-        width 250ms ease,
-        height 250ms ease,
-        border-color 250ms ease;
+        background 280ms ease,
+        width 280ms ease,
+        opacity 280ms ease;
     }
 
     .nav-dot:hover {
       background: var(--green-sage);
-      transform: scale(1.2);
-      border-color: var(--green-sage);
+      opacity: 0.85;
     }
 
     .nav-dot.active {
       background: var(--green-mint);
-      width: 8.4px;
-      height: 8.4px;
-      border-color: var(--green-mint);
+      width: 38px;
+    }
+
+    /* ── Scrollbar sections (overflow-y: auto) ── */
+    .section {
+      scrollbar-width: thin;
+      scrollbar-color: var(--green-cta) var(--bg-card);
+    }
+
+    .section::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .section::-webkit-scrollbar-track {
+      background: var(--bg-card);
+    }
+
+    .section::-webkit-scrollbar-thumb {
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+    }
+
+    .section::-webkit-scrollbar-thumb:hover {
+      background: var(--green-sage);
     }
 
     /* ═══════════════════════════════════════════
@@ -547,6 +577,7 @@
       .prob-title,
       .prob-body,
       .prob-stat,
+      .prob-source,
       .prob-cta,
       .meth-pill,
       .meth-title,
@@ -557,6 +588,7 @@
       .found-paras,
       .found-sig,
       .found-cta,
+      .tarif-scarcity,
       .tarif-pill,
       .tarif-title,
       .tarif-toggle,
@@ -607,7 +639,9 @@
       }
 
       #nav-dots {
-        right: 12px;
+        bottom: 16px;
+        gap: 4px;
+        padding: 6px 10px;
       }
 
       /* Transitions mobile : blur plus fort + opacités décalées
@@ -843,6 +877,7 @@
     .prob-title,
     .prob-body,
     .prob-stat,
+    .prob-source,
     .prob-cta {
       opacity: 0;
     }
@@ -877,8 +912,17 @@
       font-size: clamp(22px, 3vw, 36px);
       color: var(--green-sage);
       max-width: 560px;
-      margin: 0 auto 32px;
+      margin: 0 auto 10px;
       line-height: 1.3;
+    }
+
+    .prob-source {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.4;
     }
 
     /* ═══════════════════════════════════════════
@@ -1089,6 +1133,7 @@
       padding-bottom: 12px;
     }
 
+    .tarif-scarcity,
     .tarif-pill,
     .tarif-title,
     .tarif-toggle,
@@ -1361,13 +1406,114 @@
       background: #3a8a6a;
     }
 
+    /* Bandeau de rareté — toujours visible au-dessus du toggle */
+    .tarif-scarcity {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green-mint);
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+      border: 1px solid rgba(155, 234, 200, 0.25);
+      border-radius: var(--radius-pill);
+      padding: 5px 16px;
+    }
+
+    /* Référent — setup masqué dans les deux états (prix sur devis) */
+    .tarif-card-referent .tarif-setup {
+      display: none;
+    }
+
+    /* Référent fondateur — "Sur devis" */
+    .tarif-fond-referent-info {
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .tarif-fond-ref-price {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      line-height: 1;
+    }
+
+    .tarif-fond-ref-sub {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    /* Encart Conditions Fondateur — sous la grille */
+    .tarif-cond-encart {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .tarif-cond-encart-title {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+    }
+
+    .tarif-cond-encart ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tarif-cond-encart li {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .tarif-cond-encart li::before {
+      content: '→';
+      color: var(--green-cta);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    .tarif-cond-encart em {
+      font-style: italic;
+      color: var(--text-tertiary);
+    }
+
+    .tarif-cond-encart p {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--green-forest);
+      padding-top: 8px;
+    }
+
     /* Fondateur mode */
     #section-4.tarif-fondateur .tarif-banner {
       display: flex;
     }
 
     #section-4.tarif-fondateur .tarif-setup-std {
-      display: none;
+      text-decoration: line-through;
+      color: var(--text-tertiary);
     }
 
     #section-4.tarif-fondateur .tarif-setup-fond {
@@ -1375,6 +1521,26 @@
     }
 
     #section-4.tarif-fondateur .tarif-fond-bonus {
+      display: flex;
+    }
+
+    /* Référent — masquer prix+setup standard, afficher "Sur devis" */
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-price,
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-setup {
+      display: none;
+    }
+
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-fond-referent-info {
+      display: flex;
+    }
+
+    /* Référent n'a pas de fond-bonus (conditions sur devis) */
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-fond-bonus {
+      display: none !important;
+    }
+
+    /* Encart conditions — sous la grille en mode fondateur */
+    #section-4.tarif-fondateur .tarif-cond-encart {
       display: flex;
     }
 
@@ -1854,6 +2020,10 @@
       }
 
       .prob-stat {
+        margin: 0 auto 4px;
+      }
+
+      .prob-source {
         margin: 0 auto 8px;
       }
 
@@ -1925,49 +2095,59 @@
         width: 140px;
       }
 
-      /* Tarifs / Audit / FAQ — padding-bottom déjà géré */
-      .tarif-inner {
-        padding-bottom: 24px;
-      }
-
-      .audit-inner {
-        padding-bottom: 0;
-        gap: 14px;
-      }
-
-      .faq-inner {
-        padding-bottom: 0;
-        gap: 16px;
-      }
+      /* Tarifs / Audit / FAQ — gap mobile */
+      .audit-inner { gap: 14px; }
+      .faq-inner   { gap: 16px; }
 
       /* ── Sections à scroll interne ────────────────── */
-      /* Sections 2–6 : contenu trop long
-         pour tenir dans une seule page mobile         */
+      /* Sections 2–5 : align flex-start + scroll + bordures indicatrices */
       #section-2,
       #section-3,
       #section-4,
       #section-5 {
         align-items: flex-start;
         overflow-y: auto;
+        box-shadow:
+          inset 0 1px 0 var(--green-forest),
+          inset 0 -1px 0 var(--green-forest);
       }
 
-      /* FAQ : scroll interne uniquement quand une réponse est déployée */
+      /* Le Constat : centré verticalement, scrollable si déborde */
+      #section-1 {
+        overflow-y: auto;
+        box-shadow:
+          inset 0 1px 0 var(--green-forest),
+          inset 0 -1px 0 var(--green-forest);
+      }
+
+      /* FAQ : scroll + bordures uniquement quand une réponse est déployée */
       #section-6.faq-expanded {
         align-items: flex-start;
         overflow-y: auto;
+        box-shadow:
+          inset 0 1px 0 var(--green-forest),
+          inset 0 -1px 0 var(--green-forest);
       }
 
-      /* Dégagement navbar pour sections sans padding-top
-         dans leur classe -inner (1, 2 et 3).
-         Sections 4, 5, 6 ont déjà padding-top: 86px. */
+      /* Le Constat : min-height 100% + justify center = toujours centré */
       #section-1 .section-inner {
-        padding-top: 56px;
+        min-height: 100%;
+        justify-content: center;
+        padding-top: 120px;
+        padding-bottom: 0;
       }
 
+      /* Sections 2-3 : dégagement navbar haut + nav dots bas */
       #section-2 .section-inner,
       #section-3 .section-inner {
         padding-top: 88px;
+        padding-bottom: 48px;
       }
+
+      /* Sections 4-5-6 : padding-bottom pour la barre de nav */
+      .tarif-inner  { padding-bottom: 48px; }
+      .audit-inner  { padding-bottom: 48px; }
+      .faq-inner    { padding-bottom: 48px; }
     }
   </style>
 
@@ -1978,20 +2158,20 @@
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://presens.fr/#website",
+        "@id": "https://presens.site/#website",
         "name": "Présens",
-        "url": "https://presens.fr",
+        "url": "https://presens.site",
         "description": "Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration.",
         "inLanguage": "fr-FR",
-        "publisher": { "@id": "https://presens.fr/#organization" }
+        "publisher": { "@id": "https://presens.site/#organization" }
       },
       {
         "@type": ["Organization", "ProfessionalService"],
-        "@id": "https://presens.fr/#organization",
+        "@id": "https://presens.site/#organization",
         "name": "Présens",
         "alternateName": "Studio Présens",
-        "url": "https://presens.fr",
-        "email": "contact@presens.fr",
+        "url": "https://presens.site",
+        "email": "contact@presens.site",
         "foundingDate": "2026",
         "description": "Premier studio français spécialisé exclusivement en GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Présens accompagne restaurants, hôtels et bars à être cités par ChatGPT, Perplexity, Gemini et Claude.",
         "slogan": "Votre établissement, cité par les IA.",
@@ -2006,21 +2186,21 @@
           "hôtellerie",
           "restauration gastronomique"
         ],
-        "founder": { "@id": "https://presens.fr/#founder" },
+        "founder": { "@id": "https://presens.site/#founder" },
         "contactPoint": {
           "@type": "ContactPoint",
-          "email": "contact@presens.fr",
+          "email": "contact@presens.site",
           "contactType": "customer service",
           "availableLanguage": "French"
         }
       },
       {
         "@type": "Person",
-        "@id": "https://presens.fr/#founder",
+        "@id": "https://presens.site/#founder",
         "name": "Maël",
         "jobTitle": "Fondateur, expert GEO hôtellerie-restauration",
-        "worksFor": { "@id": "https://presens.fr/#organization" },
-        "email": "contact@presens.fr",
+        "worksFor": { "@id": "https://presens.site/#organization" },
+        "email": "contact@presens.site",
         "knowsAbout": [
           "Generative Engine Optimization",
           "GEO",
@@ -2041,10 +2221,10 @@
       },
       {
         "@type": "Service",
-        "@id": "https://presens.fr/#service",
+        "@id": "https://presens.site/#service",
         "name": "GEO pour restaurants et hôtels",
         "serviceType": "Generative Engine Optimization",
-        "provider": { "@id": "https://presens.fr/#organization" },
+        "provider": { "@id": "https://presens.site/#organization" },
         "areaServed": { "@type": "Country", "name": "France" },
         "description": "Audit, optimisation et suivi mensuel de la présence des établissements HoReCa dans les réponses des LLMs majeurs : ChatGPT, Perplexity, Gemini, Claude.",
         "hasOfferCatalog": {
@@ -2080,7 +2260,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://presens.fr/#faq",
+        "@id": "https://presens.site/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -2220,10 +2400,14 @@
           <em class="prob-em">Pas vous.</em>
         </h2>
         <p class="prob-body">Chaque jour, ChatGPT recommande des restaurants à Paris, Perplexity suggère des hôtels à
-          Cannes, Gemini cite des bars à Lyon. Rarement les vôtres. Pendant que le SEO Google occupe encore vos équipes,
-          vos prospects ont déjà migré vers les moteurs génératifs — et y trouvent vos concurrents avant vous.</p>
-        <!-- Stat : à remplacer par une source vérifiée avant mise en ligne -->
-        <p class="prob-stat">« 57 % des recherches passent désormais par un LLM avant Google. »</p>
+          Cannes, Gemini cite des bars à Lyon. Rarement les vôtres.</p>
+        <p class="prob-body">Ce n'est pas encore la majorité des recherches — c'est <em>celle qui grandit le plus
+            vite</em>.
+          Le basculement avec Google est attendu dès 2028. Le référencement Google s'est joué en 2005 ; la présence sur
+          les IA se joue maintenant. Pendant que vos concurrents attendent, la place est encore à prendre.</p>
+        <p class="prob-stat">Près d'une recherche sur dix passe déjà par une IA générative — et cette part double chaque
+          année.</p>
+        <p class="prob-source">Sources : Datos · Semrush · SparkToro, 2025-2026</p>
         <button class="btn-cta prob-cta" data-section="5">Vérifier ma visibilité →</button>
       </div>
     </section>
@@ -2392,6 +2576,7 @@
         <div class="tarif-header">
           <span class="pill tarif-pill">TARIFS · OFFRE TRANSPARENTE</span>
           <h2 class="tarif-title">Une offre simple, <em>sans surprise.</em></h2>
+          <p class="tarif-scarcity">Partenaire Fondateur · 19 / 20 places restantes</p>
           <div class="tarif-toggle" role="group" aria-label="Mode tarifaire">
             <button class="tarif-toggle-btn active" id="btn-std" aria-pressed="true">Tarifs standards</button>
             <button class="tarif-toggle-btn" id="btn-fond" aria-pressed="false">Mode Fondateur</button>
@@ -2403,7 +2588,8 @@
           <span class="tarif-banner-icon" aria-hidden="true">★</span>
           <div>
             <strong>Offre Fondateur — places limitées</strong>
-            <p>2 mois offerts + 2 autres si vous n'avez pas de résultats · Tarif verrouillé à vie</p>
+            <p>2 mois offerts + 2 mois supplémentaires si vous n'êtes pas cité dans une IA majeure sous 60 jours · Tarif
+              verrouillé à vie</p>
           </div>
         </div>
 
@@ -2417,13 +2603,14 @@
               <span class="tarif-amount">240 <span class="tarif-curr">€</span></span>
               <span class="tarif-period">/mois</span>
             </div>
-            <p class="tarif-setup">Setup : <span class="tarif-setup-std">370 €</span><span
-                class="tarif-setup-fond">370€</span></p>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">380 €</span><span class="tarif-setup-fond">150
+                €</span></p>
             <p class="tarif-target">Bars, cafés, restaurants indépendants</p>
             <ul class="tarif-features">
               <li>Audit GEO initial complet</li>
               <li>Optimisation llms.txt + schemas</li>
               <li>1 contenu d'autorité / mois</li>
+              <li>Présence sur 3 IA majeures</li>
               <li>Score de Présence mensuel</li>
             </ul>
             <div class="tarif-fond-bonus" aria-hidden="true">
@@ -2438,18 +2625,19 @@
             <span class="tarif-badge">Le plus populaire</span>
             <span class="tarif-name">Plan Cité</span>
             <div class="tarif-price">
-              <span class="tarif-amount">580 <span class="tarif-curr">€</span></span>
+              <span class="tarif-amount">680 <span class="tarif-curr">€</span></span>
               <span class="tarif-period">/mois</span>
             </div>
-            <p class="tarif-setup">Setup : <span class="tarif-setup-std">920 €</span><span
-                class="tarif-setup-fond">920€</span></p>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">980 €</span><span class="tarif-setup-fond">150
+                €</span></p>
             <p class="tarif-target">Restaurants gastronomiques, hôtels boutiques</p>
             <ul class="tarif-features">
               <li>Tout du plan Présent</li>
-              <li>Stratégie éditoriale d'autorité</li>
-              <li>3 contenus optimisés / mois</li>
-              <li>Suivi bi-mensuel + rapport détaillé</li>
-              <li>Balisage conversationnel avancé</li>
+              <li>3 contenus d'autorité / mois</li>
+              <li>Présence sur 5 IA majeures</li>
+              <li>Veille sur 3 concurrents</li>
+              <li>Optimisation d'entité</li>
+              <li>Rapport bi-mensuel</li>
             </ul>
             <div class="tarif-fond-bonus" aria-hidden="true">
               <span>2 mois offerts </span>
@@ -2459,30 +2647,45 @@
           </div>
 
           <!-- Plan Référent -->
-          <div class="tarif-card">
+          <div class="tarif-card tarif-card-referent">
             <span class="tarif-name">Plan Référent</span>
             <div class="tarif-price">
-              <span class="tarif-amount">880 <span class="tarif-curr">€</span></span>
-              <span class="tarif-period">/mois</span>
+              <span class="tarif-amount">Sur devis</span>
             </div>
-            <p class="tarif-setup">Setup : <span class="tarif-setup-std">1680 €</span><span
-                class="tarif-setup-fond">1680€</span></p>
-            <p class="tarif-target">4-5 étoiles, étoilés Michelin, groupes multi-sites</p>
+            <div class="tarif-fond-referent-info" aria-hidden="true">
+              <span class="tarif-fond-ref-price">Sur devis</span>
+              <span class="tarif-fond-ref-sub">Conditions Fondateur disponibles</span>
+            </div>
+            <p class="tarif-target">Hôtels 4-5 étoiles, restaurants étoilés, châteaux et domaines de prestige</p>
             <ul class="tarif-features">
               <li>Tout du plan Cité</li>
-              <li>Gestion complète de la présence IA</li>
               <li>5 contenus d'autorité / mois</li>
-              <li>Suivi hebdomadaire dédié</li>
-              <li>Accès prioritaire aux nouvelles IA</li>
+              <li>Présence maximale sur toutes les IA</li>
+              <li>Relations presse</li>
+              <li>Dashboard de suivi</li>
+              <li>Accompagnement dédié par le fondateur</li>
             </ul>
             <div class="tarif-fond-bonus" aria-hidden="true">
-              <span>2 mois offerts </span>
-              <span>Tarif verrouillé à vie</span>
+              <span>2 mois offerts</span>
             </div>
             <button class="tarif-cta-outline" data-section="5">Démarrer →</button>
           </div>
 
         </div><!-- /.tarif-cards -->
+
+        <!-- Encart Conditions Fondateur — affiché sous la grille en mode fondateur -->
+        <div class="tarif-cond-encart" aria-live="polite">
+          <span class="tarif-cond-encart-title">Conditions Partenaire Fondateur</span>
+          <ul>
+            <li>Mise en place à 150 € au lieu du tarif standard</li>
+            <li>2 premiers mois offerts</li>
+            <li>Tarif Fondateur verrouillé à vie (Présent &amp; Cité)</li>
+            <li>Garantie résultats : 2 mois supplémentaires offerts si non cité dans une IA majeure sous 60 jours</li>
+            <li><em>En contrepartie : engagement minimum de 12 mois</em></li>
+          </ul>
+          <p>Réservé aux 20 premiers établissements partenaires.</p>
+        </div>
+
       </div><!-- /.section-inner -->
     </section>
 
@@ -2705,6 +2908,25 @@
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Qu'est-ce qu'un « contenu d'autorité » ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Un contenu d'autorité est une unité de production qui renforce votre visibilité sur
+                les IA génératives. Selon la stratégie du mois, il peut prendre l'une de ces formes : un article
+                éditorial optimisé publié sur votre site, un enrichissement de votre FAQ structuré pour les IA, une
+                mention obtenue sur un site externe à forte autorité (guide sectoriel, presse, blog d'influence), ou une
+                fiche d'entité publiée sur une plateforme comme Wikidata. Le format est choisi à chaque édition en
+                fonction de ce qui aura le plus d'impact pour votre établissement, dans une logique d'efficacité plutôt
+                que de remplissage.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
               <span class="faq-q-text">Pourquoi Présens plutôt qu'une agence SEO classique ?</span>
               <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2761,7 +2983,7 @@
           <!-- Contact -->
           <div class="footer-contact footer-anim">
             <span class="footer-col-title">Contact</span>
-            <a class="footer-contact-email" href="mailto:contact@presens.fr">contact@presens.fr</a>
+            <a class="footer-contact-email" href="mailto:contact@presens.site">contact@presens.site</a>
             <span class="footer-contact-line">Maël — Fondateur</span>
             <span class="footer-contact-line">France · 2026</span>
           </div>
@@ -2839,6 +3061,7 @@
         /* Update dots + aria */
         dots[prev].classList.remove('active');
         dots[idx].classList.add('active');
+        dots[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         sections[prev].removeAttribute('aria-current');
         sections[idx].setAttribute('aria-current', 'step');
 
@@ -2891,6 +3114,7 @@
         });
 
         dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        dots[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         current = idx;
 
         /* Brief lock then trigger GSAP entrance */
@@ -3022,7 +3246,7 @@
           gsap.fromTo(
             ['#section-1 .prob-pill', '#section-1 .prob-title',
               '#section-1 .prob-body', '#section-1 .prob-stat',
-              '#section-1 .prob-cta'],
+              '#section-1 .prob-source', '#section-1 .prob-cta'],
             { opacity: 0, y: 12 },
             { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
           );
@@ -3051,7 +3275,8 @@
         if (idx === 4) {
           gsap.fromTo(
             ['#section-4 .tarif-pill', '#section-4 .tarif-title',
-              '#section-4 .tarif-toggle', '#section-4 .tarif-card'],
+              '#section-4 .tarif-scarcity', '#section-4 .tarif-toggle',
+              '#section-4 .tarif-card'],
             { opacity: 0, y: 12 },
             { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
           );
