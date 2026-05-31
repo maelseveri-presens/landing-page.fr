@@ -71,7 +71,18 @@ Présens accompagne des établissements partout en France métropolitaine, avec 
 
 Présens propose un audit GEO gratuit pour tout établissement français de l'hôtellerie-restauration. L'audit est délivré sous 48 heures par email, sans engagement et sans appel commercial automatique. Il inclut le Score de Présence actuel, l'analyse de la visibilité par LLM, les points forts identifiés, les freins techniques et éditoriaux, et une recommandation personnalisée.
 
-Demander un audit : https://presens.site/#audit
+Demander un audit : https://presens.site/audit
+
+## Blog et ressources
+
+Présens publie des articles sur le GEO appliqué à l'hôtellerie-restauration : https://presens.site/blog
+
+Articles disponibles :
+- GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ? → https://presens.site/blog/geo-vs-seo-restaurants-hotels
+- Comment faire citer votre restaurant par ChatGPT ? → https://presens.site/blog/chatgpt-cite-restaurant-comment
+- llms.txt : le fichier qui change tout pour votre référencement IA → https://presens.site/blog/llms-txt-guide-hotellerie-restauration
+- Score de Présence : comment mesurer votre visibilité sur les IA ? → https://presens.site/blog/score-presence-llm-mesurer-visibilite-ia
+- Perplexity, Gemini, Claude : quelles IA citer votre établissement en priorité ? → https://presens.site/blog/perplexity-gemini-hotels-restaurants
 
 ## Contact
 

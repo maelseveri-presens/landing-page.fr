@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog · Présens — GEO pour restaurants & hôtels</title>
+  <meta name="description"
+    content="Ressources et guides sur le GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Stratégies, méthodes et analyses pour être cité par ChatGPT, Perplexity et Gemini.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/blog">
+  <meta name="theme-color" content="#0F1F18">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presens.site/blog">
+  <meta property="og:title" content="Blog · Présens — GEO pour restaurants & hôtels">
+  <meta property="og:description" content="Ressources et guides sur le GEO pour l'hôtellerie-restauration.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --container: 1100px;
+      --gutter: 24px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .nav-back:hover { color: var(--text-secondary); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background 200ms;
+    }
+
+    .nav-cta:hover { background: #3a8a6a; }
+
+    /* ── Page wrapper ── */
+    main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: var(--container);
+      padding: 120px var(--gutter) 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    /* ── En-tête blog ── */
+    .blog-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 14px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.07;
+      color: var(--text-primary);
+    }
+
+    .blog-title em {
+      font-style: italic;
+      color: var(--green-sage);
+    }
+
+    .blog-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    /* ── Grille articles ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* ── Article card ── */
+    .article-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-decoration: none;
+      transition: border-color 250ms ease, transform 250ms ease;
+    }
+
+    .article-card:hover {
+      border-color: var(--green-cta);
+      transform: translateY(-2px);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .article-cat {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+      color: var(--green-mint);
+      background: rgba(155, 234, 200, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+    }
+
+    .article-date {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .article-excerpt {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .article-read {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green-sage);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Featured article (1ère carte grande) ── */
+    .article-card.featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .article-card.featured .article-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .article-card.featured .article-title {
+      font-size: clamp(22px, 2.5vw, 28px);
+    }
+
+    .article-card.featured .article-excerpt {
+      font-size: 14px;
+    }
+
+    .article-card.featured .article-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      height: 120px;
+      background: rgba(45, 107, 82, 0.15);
+      border: 1px solid var(--green-cta);
+      border-radius: var(--radius-md);
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .article-label-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 36px;
+      color: var(--green-sage);
+      line-height: 1;
+    }
+
+    .article-label-text {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+    }
+
+    /* ── CTA newsletter ── */
+    .blog-newsletter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .blog-newsletter-title {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 28px);
+      color: var(--text-primary);
+    }
+
+    .blog-newsletter-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 32px;
+      background: var(--green-cta);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 200ms;
+    }
+
+    .btn-cta:hover { background: #3a8a6a; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .article-card.featured { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .article-card.featured {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .article-card.featured .article-label { width: 100%; min-width: unset; height: 80px; }
+      main { padding-top: 96px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Orbes -->
+  <div class="orb" style="width:600px;height:600px;
+       background:radial-gradient(circle,rgba(31,58,45,0.62),transparent 70%);
+       top:-120px;left:50%;transform:translateX(-50%);filter:blur(110px);"></div>
+  <div class="orb" style="width:380px;height:380px;
+       background:radial-gradient(circle,rgba(45,107,82,0.38),transparent 70%);
+       bottom:10%;right:-80px;filter:blur(100px);"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — retour à l'accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/">← Retour</a>
+    <a class="nav-cta" href="/audit">Audit gratuit →</a>
+  </nav>
+
+  <main>
+
+    <!-- En-tête -->
+    <header class="blog-header">
+      <span class="pill">RESSOURCES · GEO</span>
+      <h1 class="blog-title">Le GEO expliqué aux<br><em>professionnels de l'hôtellerie.</em></h1>
+      <p class="blog-sub">Stratégies, méthodes et analyses pour être cité par ChatGPT, Perplexity et Gemini —
+        rédigées par Maël, fondateur de Présens.</p>
+    </header>
+
+    <!-- Grille articles -->
+    <section aria-label="Articles">
+      <div class="blog-grid">
+
+        <!-- Article featured -->
+        <a class="article-card featured" href="/blog/geo-vs-seo-restaurants-hotels">
+          <div class="article-label" aria-hidden="true">
+            <span class="article-label-num">#1</span>
+            <span class="article-label-text">À lire en premier</span>
+          </div>
+          <div class="article-body">
+            <div class="article-meta">
+              <span class="article-cat">Fondamentaux</span>
+              <span class="article-date">Mai 2026 · 8 min</span>
+            </div>
+            <h2 class="article-title">GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ?</h2>
+            <p class="article-excerpt">Le SEO vise Google. Le GEO vise les IA conversationnelles. Deux disciplines, deux logiques, deux fenêtres de tir — et une seule qui est encore en phase d'adoption. Comprendre la différence, c'est comprendre pourquoi la place est encore à prendre.</p>
+            <span class="article-read">Lire l'article →</span>
+          </div>
+        </a>
+
+        <!-- Article 2 -->
+        <a class="article-card" href="/blog/chatgpt-cite-restaurant-comment">
+          <div class="article-meta">
+            <span class="article-cat">Méthode</span>
+            <span class="article-date">Mai 2026 · 6 min</span>
+          </div>
+          <h2 class="article-title">Comment faire citer votre restaurant par ChatGPT ?</h2>
+          <p class="article-excerpt">Trois signaux dominent dans les réponses de ChatGPT : la lisibilité technique, les mentions d'autorité et la cohérence sémantique. Voici comment les activer concrètement pour un établissement HoReCa.</p>
+          <span class="article-read">Lire l'article →</span>
+        </a>
+
+        <!-- Article 3 -->
+        <a class="article-card" href="/blog/llms-txt-guide-hotellerie-restauration">
+          <div class="article-meta">
+            <span class="article-cat">Technique</span>
+            <span class="article-date">Avril 2026 · 5 min</span>
+          </div>
+          <h2 class="article-title">llms.txt : le fichier qui change tout pour votre référencement IA</h2>
+          <p class="article-excerpt">Moins connu que le robots.txt, le fichier llms.txt est pourtant le premier signal technique que les moteurs génératifs lisent. Comment le rédiger correctement pour un restaurant ou un hôtel ?</p>
+          <span class="article-read">Lire l'article →</span>
+        </a>
+
+        <!-- Article 4 -->
+        <a class="article-card" href="/blog/score-presence-llm-mesurer-visibilite-ia">
+          <div class="article-meta">
+            <span class="article-cat">Suivi</span>
+            <span class="article-date">Avril 2026 · 4 min</span>
+          </div>
+          <h2 class="article-title">Score de Présence : comment mesurer votre visibilité sur les IA ?</h2>
+          <p class="article-excerpt">Contrairement au SEO, le GEO n'a pas encore de Google Analytics. Le Score de Présence est la métrique que nous avons développée chez Présens pour suivre les progrès mois après mois.</p>
+          <span class="article-read">Lire l'article →</span>
+        </a>
+
+        <!-- Article 5 -->
+        <a class="article-card" href="/blog/perplexity-gemini-hotels-restaurants">
+          <div class="article-meta">
+            <span class="article-cat">Plateformes</span>
+            <span class="article-date">Mars 2026 · 7 min</span>
+          </div>
+          <h2 class="article-title">Perplexity, Gemini, Claude : quelles IA citer votre établissement en priorité ?</h2>
+          <p class="article-excerpt">Chaque moteur génératif a ses propres sources, ses propres biais et ses propres logiques de recommandation. Une stratégie GEO efficace tient compte de ces différences — pas une seule d'entre elles ne se ressemble.</p>
+          <span class="article-read">Lire l'article →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CTA audit -->
+    <aside class="blog-newsletter">
+      <span class="pill">AUDIT GRATUIT · 48H</span>
+      <h2 class="blog-newsletter-title">Votre établissement est-il cité par les IA ?</h2>
+      <p class="blog-newsletter-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude —
+        et vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
+      <a class="btn-cta" href="/audit">Demander mon audit gratuit →</a>
+    </aside>
+
+  </main>
+
+</body>
+</html>

@@ -718,10 +718,84 @@
       }
     }
 
+    /* ── Mobile dropdown menu ── */
+    .nav-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: border-color 200ms, color 200ms;
+    }
+
+    .nav-menu-btn:hover {
+      border-color: var(--green-sage);
+      color: var(--text-primary);
+    }
+
+    .nav-menu-btn .icon-close { display: none; }
+    .nav-menu-btn.open .icon-menu { display: none; }
+    .nav-menu-btn.open .icon-close { display: block; }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px;
+      background: rgba(20, 40, 34, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      min-width: 150px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    .nav-dropdown.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-item {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+      transition: background 180ms, color 180ms;
+    }
+
+    .nav-dropdown-item:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
     @media (max-width: 768px) {
       .nav-links .nav-link {
         display: none;
       }
+
+      .nav-menu-btn { display: flex; }
 
       #navbar {
         gap: 16px;
@@ -2241,8 +2315,7 @@
       /* Sections 2–5 : align flex-start + scroll + bordures indicatrices */
       #section-2,
       #section-3,
-      #section-4,
-      #section-5 {
+      #section-4 {
         align-items: flex-start;
         overflow-y: auto;
         box-shadow:
@@ -2294,6 +2367,7 @@
       .faq-inner {
         padding-bottom: 48px;
       }
+
     }
   </style>
 
@@ -2477,8 +2551,22 @@
       <button class="nav-link" data-section="2">Méthode</button>
       <button class="nav-link" data-section="4">Tarifs</button>
       <button class="nav-link" data-section="3">Le fondateur</button>
-      <button class="nav-link" data-section="6">FAQ</button>
-      <button class="nav-cta" data-section="5">AUDIT GRATUIT →</button>
+      <button class="nav-link" data-section="5">FAQ</button>
+      <a class="nav-link" href="/blog" style="text-decoration:none;">Blog</a>
+      <a class="nav-cta" href="/audit" style="text-decoration:none;">AUDIT GRATUIT →</a>
+    </div>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu" aria-expanded="false">
+      <svg class="icon-menu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+      <svg class="icon-close" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="nav-dropdown" id="nav-dropdown" role="menu">
+      <button class="nav-dropdown-item" data-section="4" role="menuitem">Tarifs</button>
+      <button class="nav-dropdown-item" data-section="5" role="menuitem">FAQ</button>
+      <a class="nav-dropdown-item" href="/blog" role="menuitem">Blog</a>
     </div>
   </nav>
 
@@ -2521,7 +2609,7 @@
           Présens vous y place.</p>
         <div class="hero-ctas">
           <!-- Tour 7 : remplacer data-section par href="[URL Formspree ou #audit]" si CTA externe -->
-          <button class="btn-cta" id="hero-cta-audit" data-section="5">Demander un audit gratuit →</button>
+          <button class="btn-cta" id="hero-cta-audit" data-audit="true">Demander un audit gratuit →</button>
           <button class="btn-secondary" data-section="2">Découvrir la méthode</button>
         </div>
       </div>
@@ -2554,7 +2642,7 @@
         <p class="prob-stat">Près d'une recherche sur dix passe déjà par une IA générative — et cette part double chaque
           année.</p>
         <p class="prob-source">Sources : Datos · Semrush · SparkToro, 2025-2026</p>
-        <button class="btn-cta prob-cta" data-section="5">Vérifier ma visibilité →</button>
+        <button class="btn-cta prob-cta" data-audit="true">Vérifier ma visibilité →</button>
       </div>
     </section>
 
@@ -2698,7 +2786,7 @@
           </div>
           <p class="found-sig">— Maël</p>
           <!-- CTA : remplacer data-section par href Calendly à la mise en ligne -->
-          <button class="btn-cta found-cta" data-section="5">Échanger avec Maël →</button>
+          <button class="btn-cta found-cta" data-audit="true">Échanger avec Maël →</button>
         </div>
 
       </div>
@@ -2763,7 +2851,7 @@
               <span>2 mois offerts </span>
               <span>Tarif verrouillé à vie</span>
             </div>
-            <button class="tarif-cta-outline" data-section="5">Démarrer →</button>
+            <button class="tarif-cta-outline" data-audit="true">Démarrer →</button>
           </div>
 
           <!-- Plan Cité (featured) -->
@@ -2789,7 +2877,7 @@
               <span>2 mois offerts </span>
               <span>Tarif verrouillé à vie</span>
             </div>
-            <button class="tarif-cta-filled" data-section="5">Démarrer →</button>
+            <button class="tarif-cta-filled" data-audit="true">Démarrer →</button>
           </div>
 
           <!-- Plan Référent -->
@@ -2814,7 +2902,7 @@
             <div class="tarif-fond-bonus" aria-hidden="true">
               <span>2 mois offerts</span>
             </div>
-            <button class="tarif-cta-outline" data-section="5">Démarrer →</button>
+            <button class="tarif-cta-outline" data-audit="true">Démarrer →</button>
           </div>
 
         </div><!-- /.tarif-cards -->
@@ -2835,123 +2923,6 @@
       </div><!-- /.section-inner -->
     </section>
 
-    <!-- INDEX 5 — AUDIT GRATUIT -->
-    <section class="section" id="section-5" data-index="5" aria-label="Audit GEO gratuit — formulaire de contact">
-      <span class="sr-only">Section 6 sur 8</span>
-      <div class="orb" style="width:560px;height:560px;
-           background:radial-gradient(circle,rgba(45,107,82,0.74),transparent 70%);
-           top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(115px);"></div>
-      <div class="orb" style="width:320px;height:320px;
-           background:radial-gradient(circle,rgba(155,234,200,0.58),transparent 70%);
-           top:8%;right:8%;filter:blur(80px);"></div>
-      <div class="orb" style="width:280px;height:280px;
-           background:radial-gradient(circle,rgba(31,58,45,0.72),transparent 70%);
-           bottom:10%;left:10%;filter:blur(85px);"></div>
-      <div class="section-inner audit-inner">
-        <span class="pill audit-pill">AUDIT GRATUIT · 48H</span>
-        <h2 class="audit-title">Découvrez votre <em>Score de Présence.</em></h2>
-        <p class="audit-sub">En 48h, Maël analyse la visibilité de votre établissement sur ChatGPT, Perplexity, Gemini
-          et Claude — et vous envoie un rapport personnalisé.</p>
-
-        <form class="audit-form" id="audit-form" action="https://formspree.io/f/mbdblolo" method="POST" novalidate>
-          <div class="audit-fields">
-            <div class="audit-field">
-              <label class="audit-label" for="audit-prenom">Prénom <span aria-hidden="true">*</span></label>
-              <input class="audit-input" id="audit-prenom" type="text" name="prenom" placeholder="Votre prénom" required
-                autocomplete="given-name">
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-nom">Nom <span aria-hidden="true">*</span></label>
-              <input class="audit-input" id="audit-nom" type="text" name="nom" placeholder="Votre nom" required
-                autocomplete="family-name">
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-email">Email <span aria-hidden="true">*</span></label>
-              <input class="audit-input" id="audit-email" type="email" name="email" placeholder="votre@email.com"
-                required autocomplete="email">
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-tel">Téléphone <span
-                  class="audit-optional">(facultatif)</span></label>
-              <input class="audit-input" id="audit-tel" type="tel" name="telephone" placeholder="+33 6 …"
-                autocomplete="tel">
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-etablissement">Nom de l'établissement <span
-                  aria-hidden="true">*</span></label>
-              <input class="audit-input" id="audit-etablissement" type="text" name="etablissement"
-                placeholder="Le nom de votre restaurant / hôtel" required>
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-adresse">Adresse <span aria-hidden="true">*</span></label>
-              <input class="audit-input" id="audit-adresse" type="text" name="adresse"
-                placeholder="12 rue du Faubourg Saint-Honoré" required autocomplete="street-address">
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-ville">Ville <span aria-hidden="true">*</span></label>
-              <input class="audit-input" id="audit-ville" type="text" name="ville" placeholder="Paris" required
-                autocomplete="off" list="datalist-villes">
-            </div>
-            <div class="audit-field">
-              <label class="audit-label" for="audit-type">Type d'établissement</label>
-              <select class="audit-input audit-select" id="audit-type" name="type">
-                <option value="" disabled selected>Restaurant, hôtel, bar…</option>
-                <option value="restaurant-gastronomique">Restaurant gastronomique</option>
-                <option value="restaurant-gastronomique">Restaurant semi-gastronomique</option>
-                <option value="restaurant-independant">Restaurant indépendant</option>
-                <option value="restaurant-bistronomique">Brasserie</option>
-                <option value="restaurant-bistronomique">Chambre d'hôtes</option>
-                <option value="hotel-boutique">Hôtel boutique</option>
-                <option value="hotel-luxe">Hôtel 4-5 étoiles</option>
-                <option value="bar-cafe">Bar / Café</option>
-                <option value="groupe">Groupe multi-sites</option>
-              </select>
-            </div>
-          </div>
-          <datalist id="datalist-villes">
-            <option value="Aix-en-Provence">
-            <option value="Annecy">
-            <option value="Avignon">
-            <option value="Biarritz">
-            <option value="Bordeaux">
-            <option value="Brest">
-            <option value="Cannes">
-            <option value="Courchevel">
-            <option value="Deauville">
-            <option value="Dijon">
-            <option value="Grenoble">
-            <option value="Le Havre">
-            <option value="Lille">
-            <option value="Lyon">
-            <option value="Marseille">
-            <option value="Megève">
-            <option value="Montpellier">
-            <option value="Nantes">
-            <option value="Nice">
-            <option value="Nîmes">
-            <option value="Paris">
-            <option value="Perpignan">
-            <option value="Rennes">
-            <option value="Reims">
-            <option value="Saint-Étienne">
-            <option value="Saint-Tropez">
-            <option value="Strasbourg">
-            <option value="Toulouse">
-            <option value="Tours">
-          </datalist>
-          <div class="audit-footer">
-            <button class="btn-cta audit-submit" type="submit">Recevoir mon audit →</button>
-            <p class="audit-mention">Gratuit · Sans engagement · Réponse sous 48h</p>
-          </div>
-        </form>
-
-        <div class="audit-success" id="audit-success" role="status" aria-live="polite">
-          <div class="audit-success-icon" aria-hidden="true">✓</div>
-          <p class="audit-success-title">Demande envoyée !</p>
-          <p class="audit-success-sub">Maël vous contacte sous 48h avec votre Score de Présence personnalisé.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- INDEX 6 — FAQ -->
     <section class="section" id="section-6" data-index="6" aria-label="Foire aux questions — GEO et Présens">
@@ -3122,8 +3093,8 @@
             <button class="footer-nav-link" data-section="2">La méthode</button>
             <button class="footer-nav-link" data-section="4">Tarifs</button>
             <button class="footer-nav-link" data-section="3">Le fondateur</button>
-            <button class="footer-nav-link" data-section="6">FAQ</button>
-            <button class="footer-nav-link" data-section="5">Audit gratuit</button>
+            <button class="footer-nav-link" data-section="5">FAQ</button>
+            <a class="footer-nav-link" href="/audit" style="text-decoration:none;">Audit gratuit</a>
           </nav>
 
           <!-- Contact -->
@@ -3168,7 +3139,7 @@
 
       /* ── Constants ──────────────────────────── */
       var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var TOTAL = 8;
+      var TOTAL = 7;
       var THRESHOLD = 350;       // wheel : px avant bascule
       var TOUCH_THRESHOLD = 80;  // touch : seuil mobile (swipe court suffit)
       var TRANSITION_MS = 900;   // durée animation entrante
@@ -3451,20 +3422,12 @@
         }
         if (idx === 5) {
           gsap.fromTo(
-            ['#section-5 .audit-pill', '#section-5 .audit-title',
-              '#section-5 .audit-sub', '#section-5 .audit-form'],
-            { opacity: 0, y: 12 },
-            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
-          );
-        }
-        if (idx === 6) {
-          gsap.fromTo(
             ['#section-6 .faq-pill', '#section-6 .faq-title', '#section-6 .faq-item'],
             { opacity: 0, y: 10 },
             { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.07 }
           );
         }
-        if (idx === 7) {
+        if (idx === 6) {
           gsap.fromTo(
             '#section-7 .footer-anim',
             { opacity: 0, y: 10 },
@@ -3497,36 +3460,6 @@
       }
 
       /* ── Audit Form (Formspree async) ──────────── */
-      function initAuditForm() {
-        var form = document.getElementById('audit-form');
-        var success = document.getElementById('audit-success');
-        if (!form || !success) return;
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          var btn = form.querySelector('.audit-submit');
-          btn.disabled = true;
-          btn.textContent = 'Envoi en cours…';
-          fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          }).then(function (res) {
-            if (res.ok) {
-              form.style.display = 'none';
-              success.style.display = 'flex';
-              if (typeof gsap !== 'undefined') {
-                gsap.fromTo(success, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
-              }
-            } else {
-              btn.disabled = false;
-              btn.textContent = 'Recevoir mon audit →';
-            }
-          }).catch(function () {
-            btn.disabled = false;
-            btn.textContent = 'Recevoir mon audit →';
-          });
-        });
-      }
 
       /* ── Méthode Accordion (mobile uniquement) ─ */
       function initMeth() {
@@ -3579,6 +3512,35 @@
       }
 
       /* ── Navbar & Dot links ─────────────────── */
+      /* ── Mobile nav dropdown ── */
+      var menuBtn = document.getElementById('nav-menu-btn');
+      var dropdown = document.getElementById('nav-dropdown');
+      if (menuBtn && dropdown) {
+        menuBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = dropdown.classList.contains('open');
+          dropdown.classList.toggle('open', !isOpen);
+          menuBtn.classList.toggle('open', !isOpen);
+          menuBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        dropdown.querySelectorAll('.nav-dropdown-item').forEach(function (item) {
+          item.addEventListener('click', function () {
+            dropdown.classList.remove('open');
+            menuBtn.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+        document.addEventListener('click', function () {
+          dropdown.classList.remove('open');
+          menuBtn.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      document.querySelectorAll('[data-audit]').forEach(function (el) {
+        el.addEventListener('click', function () { window.location.href = '/audit'; });
+      });
+
       document.querySelectorAll('[data-section]').forEach(function (el) {
         el.addEventListener('click', function (e) {
           e.preventDefault();
@@ -3608,7 +3570,6 @@
         animateSection(0);
         initMeth();
         initTarifToggle();
-        initAuditForm();
         initFaq();
       });
 

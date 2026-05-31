@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audit GEO Gratuit · Présens</title>
+  <meta name="description"
+    content="Demandez votre audit GEO gratuit. En 48h, Maël analyse la visibilité de votre établissement sur ChatGPT, Perplexity, Gemini et Claude et vous envoie un rapport personnalisé.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/audit">
+  <meta name="theme-color" content="#0F1F18">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presens.site/audit">
+  <meta property="og:title" content="Audit GEO Gratuit · Présens">
+  <meta property="og:description" content="En 48h, découvrez votre Score de Présence sur les IA génératives. Gratuit, sans engagement.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <style>
+    /* ── Design tokens ── */
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --container: 600px;
+      --gutter: 24px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Orbes ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .nav-back:hover { color: var(--text-secondary); }
+
+    /* ── Main content ── */
+    main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: var(--container);
+      padding: 120px var(--gutter) 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    /* ── Pill ── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 14px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    /* ── Titre ── */
+    .audit-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 5vw, 40px);
+      color: var(--text-primary);
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .audit-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    /* ── Sous-titre ── */
+    .audit-sub {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      text-align: center;
+      max-width: 480px;
+    }
+
+    /* ── Formulaire ── */
+    .audit-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .audit-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .audit-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .audit-field:nth-child(5),
+    .audit-field:nth-child(6),
+    .audit-field:nth-child(7),
+    .audit-field:nth-child(8) {
+      grid-column: 1 / -1;
+    }
+
+    .audit-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+    }
+
+    .audit-optional {
+      font-weight: 400;
+      color: var(--text-tertiary);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 10px;
+    }
+
+    .audit-input {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      width: 100%;
+      transition: border-color 200ms;
+    }
+
+    .audit-input::placeholder { color: var(--text-tertiary); }
+    .audit-input:focus { border-color: var(--green-cta); }
+
+    .audit-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%236B7A73' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .audit-select option { background: var(--bg-deep); }
+
+    .audit-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 44px;
+      background: var(--green-cta);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background 200ms;
+    }
+
+    .btn-cta:hover { background: #3a8a6a; }
+    .btn-cta:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .audit-mention {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Success ── */
+    .audit-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .audit-success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(45, 107, 82, 0.22);
+      border: 1px solid var(--green-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--green-mint);
+    }
+
+    .audit-success-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--text-primary);
+    }
+
+    .audit-success-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .audit-fields { grid-template-columns: 1fr; }
+      .audit-field:nth-child(5),
+      .audit-field:nth-child(6),
+      .audit-field:nth-child(7),
+      .audit-field:nth-child(8) { grid-column: auto; }
+    }
+
+    @media (max-width: 768px) {
+      main { padding-top: 100px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Orbes atmosphériques -->
+  <div class="orb" style="width:560px;height:560px;
+       background:radial-gradient(circle,rgba(45,107,82,0.74),transparent 70%);
+       top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(115px);"></div>
+  <div class="orb" style="width:320px;height:320px;
+       background:radial-gradient(circle,rgba(155,234,200,0.58),transparent 70%);
+       top:8%;right:8%;filter:blur(80px);"></div>
+  <div class="orb" style="width:280px;height:280px;
+       background:radial-gradient(circle,rgba(31,58,45,0.72),transparent 70%);
+       bottom:10%;left:10%;filter:blur(85px);"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — retour à l'accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/">← Retour</a>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main>
+    <span class="pill">AUDIT GRATUIT · 48H</span>
+    <h1 class="audit-title">Découvrez votre <em>Score de Présence.</em></h1>
+    <p class="audit-sub">En 48h, Maël analyse la visibilité de votre établissement sur ChatGPT, Perplexity, Gemini
+      et Claude — et vous envoie un rapport personnalisé.</p>
+
+    <form class="audit-form" id="audit-form" action="https://formspree.io/f/mbdblolo" method="POST" novalidate>
+      <div class="audit-fields">
+        <div class="audit-field">
+          <label class="audit-label" for="audit-prenom">Prénom <span aria-hidden="true">*</span></label>
+          <input class="audit-input" id="audit-prenom" type="text" name="prenom" placeholder="Votre prénom" required
+            autocomplete="given-name">
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-nom">Nom <span aria-hidden="true">*</span></label>
+          <input class="audit-input" id="audit-nom" type="text" name="nom" placeholder="Votre nom" required
+            autocomplete="family-name">
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-email">Email <span aria-hidden="true">*</span></label>
+          <input class="audit-input" id="audit-email" type="email" name="email" placeholder="votre@email.com"
+            required autocomplete="email">
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-tel">Téléphone <span class="audit-optional">(facultatif)</span></label>
+          <input class="audit-input" id="audit-tel" type="tel" name="telephone" placeholder="+33 6 …"
+            autocomplete="tel">
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-etablissement">Nom de l'établissement <span aria-hidden="true">*</span></label>
+          <input class="audit-input" id="audit-etablissement" type="text" name="etablissement"
+            placeholder="Le nom de votre restaurant / hôtel" required>
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-adresse">Adresse <span aria-hidden="true">*</span></label>
+          <input class="audit-input" id="audit-adresse" type="text" name="adresse"
+            placeholder="12 rue du Faubourg Saint-Honoré" required autocomplete="street-address">
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-ville">Ville <span aria-hidden="true">*</span></label>
+          <input class="audit-input" id="audit-ville" type="text" name="ville" placeholder="Paris" required
+            autocomplete="off" list="datalist-villes">
+        </div>
+        <div class="audit-field">
+          <label class="audit-label" for="audit-type">Type d'établissement</label>
+          <select class="audit-input audit-select" id="audit-type" name="type">
+            <option value="" disabled selected>Restaurant, hôtel, bar…</option>
+            <option value="restaurant-gastronomique">Restaurant gastronomique</option>
+            <option value="restaurant-gastronomique">Restaurant semi-gastronomique</option>
+            <option value="restaurant-independant">Restaurant indépendant</option>
+            <option value="restaurant-bistronomique">Brasserie</option>
+            <option value="restaurant-bistronomique">Chambre d'hôtes</option>
+            <option value="hotel-boutique">Hôtel boutique</option>
+            <option value="hotel-luxe">Hôtel 4-5 étoiles</option>
+            <option value="bar-cafe">Bar / Café</option>
+            <option value="groupe">Groupe multi-sites</option>
+          </select>
+        </div>
+      </div>
+      <datalist id="datalist-villes">
+        <option value="Aix-en-Provence"><option value="Annecy"><option value="Avignon">
+        <option value="Biarritz"><option value="Bordeaux"><option value="Brest">
+        <option value="Cannes"><option value="Courchevel"><option value="Deauville">
+        <option value="Dijon"><option value="Grenoble"><option value="Le Havre">
+        <option value="Lille"><option value="Lyon"><option value="Marseille">
+        <option value="Megève"><option value="Montpellier"><option value="Nantes">
+        <option value="Nice"><option value="Nîmes"><option value="Paris">
+        <option value="Perpignan"><option value="Rennes"><option value="Reims">
+        <option value="Saint-Étienne"><option value="Saint-Tropez"><option value="Strasbourg">
+        <option value="Toulouse"><option value="Tours">
+      </datalist>
+      <div class="audit-footer">
+        <button class="btn-cta" type="submit" id="audit-submit">Recevoir mon audit →</button>
+        <p class="audit-mention">Gratuit · Sans engagement · Réponse sous 48h</p>
+      </div>
+    </form>
+
+    <div class="audit-success" id="audit-success" role="status" aria-live="polite">
+      <div class="audit-success-icon" aria-hidden="true">✓</div>
+      <p class="audit-success-title">Demande envoyée !</p>
+      <p class="audit-success-sub">Maël vous contacte sous 48h avec votre Score de Présence personnalisé.</p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var form = document.getElementById('audit-form');
+      var success = document.getElementById('audit-success');
+      var btn = document.getElementById('audit-submit');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Envoi en cours…';
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (res.ok) {
+            form.style.display = 'none';
+            success.style.display = 'flex';
+            if (typeof gsap !== 'undefined') {
+              gsap.fromTo(success, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
+            }
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Recevoir mon audit →';
+          }
+        }).catch(function () {
+          btn.disabled = false;
+          btn.textContent = 'Recevoir mon audit →';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
