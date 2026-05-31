@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perplexity, Gemini, Claude : quelle IA prioriser ? (GEO 2026) · Présens</title>
+  <meta name="description"
+    content="ChatGPT, Gemini, Perplexity, Claude : chacune a ses sources et sa logique. Comment elles choisissent, et laquelle prioriser pour un restaurant ou un hôtel.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/blog/perplexity-gemini-hotels-restaurants">
+  <meta name="theme-color" content="#0F1F18">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://presens.site/blog/perplexity-gemini-hotels-restaurants">
+  <meta property="og:title" content="Perplexity, Gemini, Claude : quelle IA prioriser pour votre établissement ?">
+  <meta property="og:description" content="Comment chaque IA choisit ses sources et laquelle prioriser pour la visibilité d'un restaurant ou d'un hôtel.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Perplexity, Gemini, Claude : quelles IA citer votre établissement en priorité ?",
+        "description": "Comment ChatGPT, Gemini, Perplexity et Claude choisissent leurs sources, et laquelle prioriser pour la visibilité d'un restaurant ou d'un hôtel.",
+        "datePublished": "2026-03-01",
+        "dateModified": "2026-05-31",
+        "author": { "@type": "Organization", "name": "Présens", "url": "https://presens.site" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Présens",
+          "logo": { "@type": "ImageObject", "url": "https://presens.site/assets/img/favicon.svg" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://presens.site/blog/perplexity-gemini-hotels-restaurants" },
+        "articleSection": "Plateformes",
+        "keywords": "Perplexity, Gemini, Claude, ChatGPT, visibilité IA, GEO restaurant hôtel, citations IA"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Faut-il optimiser pour toutes les IA en même temps ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Non. On commence par le socle commun (fiche Google, avis, cohérence des informations, site structuré), qui sert toutes les IA, puis on séquence : Gemini en priorité pour le local, puis Perplexity, ChatGPT et Claude." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle IA est la plus importante pour un restaurant ou un hôtel ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Gemini offre le meilleur point de départ, car il s'appuie sur votre fiche Google Business Profile et recommande le plus d'établissements en local. ChatGPT a la plus grande audience, mais c'est aussi le plus difficile à conquérir." }
+          },
+          {
+            "@type": "Question",
+            "name": "Pourquoi mon établissement apparaît-il sur une IA et pas sur une autre ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Parce que chaque moteur utilise des sources et une logique de sélection différentes. Le recoupement entre IA est faible (environ 11 %) : une page citée par Perplexity peut être ignorée par Gemini." }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment Gemini choisit-il les restaurants qu'il recommande ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Gemini est ancré dans Google Search et Google Maps. Il s'appuie fortement sur les fiches Google Business Profile et les sites officiels, en vérifiant la cohérence des informations entre ces sources." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    body { display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+    #navbar {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+    .nav-back { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
+    .nav-back:hover { color: var(--text-secondary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; padding: 6px 14px;
+      background: var(--green-cta); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: var(--ls-pill);
+      color: var(--text-primary); text-decoration: none; transition: background 200ms;
+    }
+    .nav-cta:hover { background: #3a8a6a; }
+
+    main {
+      position: relative; z-index: 10;
+      width: 100%; max-width: 720px;
+      padding: 120px 24px 80px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+
+    .article-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .article-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .pill {
+      display: inline-flex; align-items: center; padding: 4px 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase; color: var(--text-secondary);
+    }
+
+    .article-date-read { font-family: var(--font-body); font-size: 12px; color: var(--text-tertiary); }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.12;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-lead {
+      font-family: var(--font-body);
+      font-size: 16px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      font-style: italic;
+    }
+
+    .summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-left: 3px solid var(--green-mint);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin-bottom: 40px;
+    }
+
+    .summary-box strong {
+      display: block;
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase;
+      color: var(--green-mint); margin-bottom: 10px;
+    }
+
+    .summary-box p {
+      font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+    }
+
+    .article-body { display: flex; flex-direction: column; gap: 28px; }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 500; color: var(--text-primary);
+      line-height: 1.25; margin-top: 12px;
+    }
+
+    .article-body p {
+      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.75;
+    }
+
+    .article-body p strong { color: var(--text-primary); font-weight: 500; }
+    .article-body em { font-style: italic; color: var(--green-sage); }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--green-cta);
+      padding: 12px 20px;
+      background: rgba(45, 107, 82, 0.08);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .article-body blockquote p { font-style: italic; color: var(--text-secondary); }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%; border-collapse: collapse;
+      font-family: var(--font-body); font-size: 13px;
+    }
+
+    thead th {
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: var(--ls-pill);
+      color: var(--text-tertiary); text-align: left;
+      padding: 10px 14px; border-bottom: 1px solid var(--green-forest);
+    }
+
+    tbody td {
+      padding: 12px 14px; color: var(--text-secondary);
+      border-bottom: 1px solid rgba(31, 58, 45, 0.5);
+      line-height: 1.5; vertical-align: top;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody td:first-child { font-family: var(--font-ui); font-size: 11px; font-weight: 600; color: var(--text-primary); }
+
+    .key-points {
+      display: flex; flex-direction: column; gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+    }
+
+    .key-points li {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+
+    .key-points li::before { content: '→'; color: var(--green-cta); font-weight: 600; flex-shrink: 0; }
+
+    .faq-section { display: flex; flex-direction: column; gap: 4px; }
+    .faq-section h2 { margin-bottom: 8px; }
+
+    details {
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    details + details { margin-top: 4px; }
+
+    summary {
+      font-family: var(--font-ui); font-size: 14px; font-weight: 500;
+      color: var(--text-primary); padding: 16px 18px;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      transition: background 200ms;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: var(--bg-hover); }
+
+    summary::after {
+      content: '';
+      display: block; flex-shrink: 0;
+      width: 14px; height: 14px;
+      border-right: 1.5px solid var(--text-tertiary);
+      border-bottom: 1.5px solid var(--text-tertiary);
+      transform: rotate(45deg);
+      transition: transform 250ms ease;
+      margin-top: -4px;
+    }
+
+    details[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
+    details[open] summary { background: var(--bg-card); }
+
+    .faq-answer {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      padding: 0 18px 18px;
+      background: var(--bg-card);
+    }
+
+    .article-cta {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-md);
+      padding: 36px 28px; text-align: center; margin-top: 20px;
+    }
+
+    .article-cta-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 24px); color: var(--text-primary); }
+    .article-cta-sub { font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; max-width: 420px; }
+
+    .btn-cta {
+      display: inline-flex; align-items: center; padding: 12px 32px;
+      background: var(--green-cta); border: none; border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.06em; color: var(--text-primary); text-decoration: none;
+      transition: background 200ms;
+    }
+    .btn-cta:hover { background: #3a8a6a; }
+
+    .divider { border: none; border-top: 1px solid var(--green-forest); }
+
+    @media (max-width: 768px) {
+      main { padding-top: 96px; }
+      tbody td { font-size: 12px; padding: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(31,58,45,0.55),transparent 70%);top:-100px;left:50%;transform:translateX(-50%);filter:blur(100px);"></div>
+  <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);bottom:15%;right:-60px;filter:blur(90px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/blog">← Blog</a>
+    <a class="nav-cta" href="/audit">Audit gratuit →</a>
+  </nav>
+
+  <main>
+    <article>
+
+      <header class="article-header">
+        <div class="article-meta-row">
+          <span class="pill">Plateformes</span>
+          <span class="article-date-read">Mars 2026 · 7 min de lecture</span>
+        </div>
+        <h1>Perplexity, Gemini, Claude : quelles IA citer votre établissement en priorité&nbsp;?</h1>
+        <p class="article-lead">Chaque moteur génératif a ses propres sources, ses propres biais et ses propres logiques de recommandation. Une stratégie GEO efficace tient compte de ces différences — pas une seule d'entre elles ne se ressemble.</p>
+      </header>
+
+      <div class="summary-box">
+        <strong>En bref</strong>
+        <p>Les IA ne sont pas interchangeables. Le recoupement de leurs citations est faible (environ 11 %) : être cité par ChatGPT ne signifie pas que Gemini vous connaît. Chacune a ses sources et sa logique — <strong>Gemini</strong> est ancré dans Google Maps, <strong>ChatGPT</strong> s'appuie sur une recherche externe et privilégie Wikipédia et Reddit, <strong>Perplexity</strong> cite énormément et récompense le spécialisé, <strong>Claude</strong> passe par Brave Search. Pour un restaurant ou un hôtel, on séquence : <strong>Gemini d'abord</strong> (le plus accessible en local), puis Perplexity, puis ChatGPT, puis Claude — sur un socle commun qui les sert toutes.</p>
+      </div>
+
+      <div class="article-body">
+
+        <p>Être recommandé par ChatGPT ne dit rien de votre visibilité sur Gemini. C'est contre-intuitif, mais c'est mesuré : le recoupement des citations entre les grandes IA tourne autour de <strong>11 %</strong>. Autrement dit, surveiller — et optimiser pour — une seule plateforme ne couvre qu'une fraction de votre visibilité réelle.</p>
+
+        <p>Pour un restaurant ou un hôtel, l'enjeu est encore plus fort, car la visibilité locale sur les IA est <strong>3 à 30 fois plus difficile</strong> à obtenir qu'un bon classement dans la recherche Google classique. Comprendre comment chaque moteur choisit qui recommander, c'est arrêter de tirer dans le noir.</p>
+
+        <hr class="divider">
+
+        <h2>Pourquoi être cité sur une IA ne suffit pas</h2>
+
+        <p>Chaque IA est une machine différente, branchée sur des sources différentes. Une marque qui tient sa fiche Google à jour mais néglige les plateformes d'avis sera visible sur Gemini et absente de ChatGPT ; une autre avec d'excellents avis mais un site mal structuré pourra l'emporter sur Perplexity et perdre sur Gemini. Même établissement, résultats opposés.</p>
+
+        <p>C'est pourquoi une stratégie GEO sérieuse raisonne moteur par moteur — tout en s'appuyant sur un socle commun. Voyons chaque plateforme.</p>
+
+        <hr class="divider">
+
+        <h2>ChatGPT : la plus grande audience, le tri le plus sévère</h2>
+
+        <p>ChatGPT s'appuie sur une couche de recherche externe et se montre <strong>sélectif</strong> : il cite peu de sources, mais à fort poids. Il s'appuie massivement sur Wikipédia et sur Reddit, surtout pour les requêtes d'expérience (« où bien dîner à … »).</p>
+
+        <p>En local, c'est l'IA la <strong>plus exigeante</strong> : elle ne recommande qu'environ 1,2 % des établissements testés, et privilégie les mieux notés. La plus grande portée du marché, donc, mais la barre la plus haute à franchir — et qui se construit dans le temps.</p>
+
+        <hr class="divider">
+
+        <h2>Gemini : ancré dans Google Maps, le plus accessible en local</h2>
+
+        <p>Gemini puise dans l'index de Google et, surtout, dans <strong>Google Maps</strong>. C'est décisif pour un établissement HoReCa : les informations de votre fiche Google Business Profile y sont fiables à près de 100 %, et c'est l'IA qui <strong>recommande le plus d'établissements en local</strong> (autour de 11 %).</p>
+
+        <p>Conséquence concrète : votre <strong>fiche Google Business Profile est un levier que vous contrôlez directement</strong>. La tenir impeccable, complète et cohérente avec votre site, c'est agir là où l'effort se transforme le plus vite en visibilité. C'est, pour la plupart des restaurants et hôtels, le meilleur point de départ.</p>
+
+        <hr class="divider">
+
+        <h2>Perplexity : le moteur qui cite tout, et récompense le spécialisé</h2>
+
+        <p>Perplexity est un « moteur de réponse » : la citation est au cœur de son fonctionnement. Il cite près de <strong>trois fois plus de sources</strong> par réponse que ChatGPT, et il a une particularité précieuse — il <strong>récompense les sources spécialisées et précises</strong>, pas seulement les gros sites d'autorité. Un contenu de niche bien fait, une présence soignée dans les annuaires et plateformes d'avis (Google, TripAdvisor, TheFork…) y pèsent.</p>
+
+        <p>Autre atout : c'est la plateforme qui <strong>réagit le plus vite</strong> aux changements (souvent en quelques jours). Idéale pour des gains rapides et visibles une fois les fondations posées.</p>
+
+        <hr class="divider">
+
+        <h2>Claude : Brave Search en coulisses, une audience qui monte</h2>
+
+        <p>Claude s'appuie sur <strong>Brave Search</strong> comme moteur de recherche (ni Bing, ni Google), avec une récupération en temps réel. Son audience reste plus petite que celle de ChatGPT ou Gemini, et il <strong>met plus de temps</strong> à reflèter les changements (souvent deux à six semaines). À ne pas négliger pour autant : son usage progresse, et il valorise les sources fiables et bien structurées.</p>
+
+        <hr class="divider">
+
+        <h2>Comment chaque IA choisit qui recommander</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>IA</th>
+                <th>D'où viennent ses sources</th>
+                <th>Ce qu'elle favorise</th>
+                <th>Enjeu pour un resto / hôtel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ChatGPT</td>
+                <td>Couche de recherche externe, sélective</td>
+                <td>Wikipédia, Reddit, sources à forte autorité</td>
+                <td>Plus grande audience, mais le tri le plus sévère en local</td>
+              </tr>
+              <tr>
+                <td>Gemini</td>
+                <td>Index Google + Google Maps</td>
+                <td>Fiche Google Business Profile, sites officiels</td>
+                <td>Le plus accessible : votre fiche Google est le levier direct</td>
+              </tr>
+              <tr>
+                <td>Perplexity</td>
+                <td>Recherche multi-sources, riche en citations</td>
+                <td>Sources spécialisées, annuaires, avis</td>
+                <td>Réagit vite : bons gains rapides</td>
+              </tr>
+              <tr>
+                <td>Claude</td>
+                <td>Brave Search, temps réel</td>
+                <td>Sources fiables et bien structurées</td>
+                <td>Audience plus petite mais croissante, mises à jour plus lentes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr class="divider">
+
+        <h2>Alors, quelle IA prioriser pour un restaurant ou un hôtel&nbsp;?</h2>
+
+        <p>À long terme, aucune ne se priorise <em>au détriment</em> des autres — mais elles se <strong>séquencent</strong>. L'ordre le plus rentable pour un établissement HoReCa :</p>
+
+        <ol style="margin-left: 20px; color: var(--text-secondary); line-height: 1.75;">
+          <li><strong>Gemini d'abord.</strong> Votre fiche Google Business Profile est un levier direct, et c'est l'IA la plus généreuse en recommandations locales. Meilleur rapport effort/résultat.</li>
+          <li><strong>Perplexity ensuite.</strong> Il réagit en quelques jours et récompense les contenus précis et la présence dans les annuaires : des victoires rapides.</li>
+          <li><strong>ChatGPT.</strong> La plus grande audience, mais la barre la plus haute — il faut des signaux d'autorité (mentions, présence communautaire, avis excellents) qui se bâtissent dans la durée.</li>
+          <li><strong>Claude.</strong> Plus petite audience et mises à jour plus lentes, mais en croissance : à entretenir.</li>
+        </ol>
+
+        <p>Et surtout, le <strong>socle commun</strong> qui sert les quatre : une fiche Google Business Profile impeccable, des avis nombreux, récents et bien notés (les IA écartent les établissements mal notés), des informations cohérentes sur tous les annuaires, une présence sur les espaces communautaires, et un site structuré. C'est ce socle — plus que le « hacking » d'une plateforme — qui vous rend visible partout à la fois.</p>
+
+        <hr class="divider">
+
+        <h2>Points clés à retenir</h2>
+
+        <ul class="key-points">
+          <li>Les IA <strong>ne sont pas interchangeables</strong> : environ 11 % de recoupement seulement entre leurs citations.</li>
+          <li><strong>Gemini</strong> est ancré dans Google Maps — le plus accessible en local via votre fiche Google Business Profile.</li>
+          <li><strong>ChatGPT</strong> a la plus grande audience mais le <strong>tri le plus sévère</strong> (Wikipédia, Reddit, top avis).</li>
+          <li><strong>Perplexity</strong> cite beaucoup, récompense le spécialisé et <strong>réagit vite</strong>.</li>
+          <li><strong>Claude</strong> passe par Brave Search : audience plus petite, mises à jour plus lentes, mais en hausse.</li>
+          <li>On <strong>séquence</strong> (Gemini → Perplexity → ChatGPT → Claude) sur un <strong>socle commun</strong> : fiche Google, avis, cohérence, site structuré.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <!-- FAQ -->
+        <section class="faq-section">
+          <h2>FAQ : les IA et la visibilité des restaurants et hôtels</h2>
+
+          <details>
+            <summary>Faut-il optimiser pour toutes les IA en même temps&nbsp;?</summary>
+            <p class="faq-answer">Non. On commence par le socle commun (fiche Google, avis, cohérence des informations, site structuré), qui sert toutes les IA, puis on séquence : Gemini en priorité pour le local, puis Perplexity, ChatGPT et Claude.</p>
+          </details>
+
+          <details>
+            <summary>Quelle IA est la plus importante pour un restaurant ou un hôtel&nbsp;?</summary>
+            <p class="faq-answer">Gemini offre le meilleur point de départ, car il s'appuie sur votre fiche Google Business Profile et recommande le plus d'établissements en local. ChatGPT a la plus grande audience, mais c'est aussi le plus difficile à conquérir.</p>
+          </details>
+
+          <details>
+            <summary>Pourquoi mon établissement apparaît-il sur une IA et pas sur une autre&nbsp;?</summary>
+            <p class="faq-answer">Parce que chaque moteur utilise des sources et une logique de sélection différentes. Le recoupement entre IA est faible (environ 11 %) : une page citée par Perplexity peut être totalement ignorée par Gemini.</p>
+          </details>
+
+          <details>
+            <summary>Comment Gemini choisit-il les restaurants qu'il recommande&nbsp;?</summary>
+            <p class="faq-answer">Gemini est ancré dans Google Search et Google Maps. Il s'appuie fortement sur les fiches Google Business Profile et les sites officiels, en vérifiant la cohérence des informations entre ces sources.</p>
+          </details>
+        </section>
+
+        <hr class="divider">
+
+        <p>Optimiser pour chaque IA selon sa logique — et bâtir le socle qui les sert toutes — demande une stratégie, pas du bricolage plateforme par plateforme. C'est le métier de <strong>Présens</strong> : rendre votre restaurant ou votre hôtel visible là où vos clients posent désormais leurs questions, sur chaque IA qui compte.</p>
+
+      </div><!-- /.article-body -->
+
+    </article>
+
+    <aside class="article-cta">
+      <span class="pill">AUDIT GRATUIT · 48H</span>
+      <h2 class="article-cta-title">Votre établissement est-il cité par les IA&nbsp;?</h2>
+      <p class="article-cta-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude — et vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
+      <a class="btn-cta" href="/audit">Demander mon audit gratuit →</a>
+    </aside>
+
+  </main>
+
+</body>
+</html>

@@ -44,9 +44,16 @@
       --ls-pill: 0.18em;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
+    html,
+    body {
       background: var(--bg-main);
       color: var(--text-primary);
       font-family: var(--font-body);
@@ -97,8 +104,13 @@
       color: var(--text-primary);
     }
 
-    .nav-logo .pre { color: #E8E0D0; }
-    .nav-logo .sens { color: var(--green-sage); }
+    .nav-logo .pre {
+      color: #E8E0D0;
+    }
+
+    .nav-logo .sens {
+      color: var(--green-sage);
+    }
 
     .nav-back {
       font-family: var(--font-body);
@@ -109,7 +121,9 @@
       transition: color 200ms;
     }
 
-    .nav-back:hover { color: var(--text-secondary); }
+    .nav-back:hover {
+      color: var(--text-secondary);
+    }
 
     .nav-cta {
       display: inline-flex;
@@ -127,7 +141,9 @@
       transition: background 200ms;
     }
 
-    .nav-cta:hover { background: #3a8a6a; }
+    .nav-cta:hover {
+      background: #3a8a6a;
+    }
 
     /* ── Page wrapper ── */
     main {
@@ -356,22 +372,40 @@
       transition: background 200ms;
     }
 
-    .btn-cta:hover { background: #3a8a6a; }
+    .btn-cta:hover {
+      background: #3a8a6a;
+    }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
-      .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      .article-card.featured { grid-column: 1 / -1; }
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .article-card.featured {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (max-width: 600px) {
-      .blog-grid { grid-template-columns: 1fr; }
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
       .article-card.featured {
         flex-direction: column;
         gap: 20px;
       }
-      .article-card.featured .article-label { width: 100%; min-width: unset; height: 80px; }
-      main { padding-top: 96px; }
+
+      .article-card.featured .article-label {
+        width: 100%;
+        min-width: unset;
+        height: 80px;
+      }
+
+      main {
+        padding-top: 96px;
+      }
     }
   </style>
 </head>
@@ -421,7 +455,9 @@
               <span class="article-date">Mai 2026 · 8 min</span>
             </div>
             <h2 class="article-title">GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ?</h2>
-            <p class="article-excerpt">Le SEO vise Google. Le GEO vise les IA conversationnelles. Deux disciplines, deux logiques, deux fenêtres de tir — et une seule qui est encore en phase d'adoption. Comprendre la différence, c'est comprendre pourquoi la place est encore à prendre.</p>
+            <p class="article-excerpt">Le SEO vise Google. Le GEO vise les IA conversationnelles. Deux disciplines, deux
+              logiques, deux fenêtres de tir — et une seule qui est encore en phase d'adoption. Comprendre la
+              différence, c'est comprendre pourquoi la place est encore à prendre.</p>
             <span class="article-read">Lire l'article →</span>
           </div>
         </a>
@@ -433,7 +469,9 @@
             <span class="article-date">Mai 2026 · 6 min</span>
           </div>
           <h2 class="article-title">Comment faire citer votre restaurant par ChatGPT ?</h2>
-          <p class="article-excerpt">Trois signaux dominent dans les réponses de ChatGPT : la lisibilité technique, les mentions d'autorité et la cohérence sémantique. Voici comment les activer concrètement pour un établissement HoReCa.</p>
+          <p class="article-excerpt">Trois signaux dominent dans les réponses de ChatGPT : la lisibilité technique, les
+            mentions d'autorité et la cohérence sémantique. Voici comment les activer concrètement pour un établissement
+            HoReCa.</p>
           <span class="article-read">Lire l'article →</span>
         </a>
 
@@ -444,7 +482,9 @@
             <span class="article-date">Avril 2026 · 5 min</span>
           </div>
           <h2 class="article-title">llms.txt : le fichier qui change tout pour votre référencement IA</h2>
-          <p class="article-excerpt">Moins connu que le robots.txt, le fichier llms.txt est pourtant le premier signal technique que les moteurs génératifs lisent. Comment le rédiger correctement pour un restaurant ou un hôtel ?</p>
+          <p class="article-excerpt">Moins connu que le robots.txt, le fichier llms.txt est pourtant le premier signal
+            technique que les moteurs génératifs lisent. Comment le rédiger correctement pour un restaurant ou un hôtel
+            ?</p>
           <span class="article-read">Lire l'article →</span>
         </a>
 
@@ -455,7 +495,8 @@
             <span class="article-date">Avril 2026 · 4 min</span>
           </div>
           <h2 class="article-title">Score de Présence : comment mesurer votre visibilité sur les IA ?</h2>
-          <p class="article-excerpt">Contrairement au SEO, le GEO n'a pas encore de Google Analytics. Le Score de Présence est la métrique que nous avons développée chez Présens pour suivre les progrès mois après mois.</p>
+          <p class="article-excerpt">Contrairement au SEO, le GEO n'a pas encore de Google Analytics. Le Score de
+            Présence est la métrique que nous avons développée chez Présens pour suivre les progrès mois après mois.</p>
           <span class="article-read">Lire l'article →</span>
         </a>
 
@@ -466,7 +507,9 @@
             <span class="article-date">Mars 2026 · 7 min</span>
           </div>
           <h2 class="article-title">Perplexity, Gemini, Claude : quelles IA citer votre établissement en priorité ?</h2>
-          <p class="article-excerpt">Chaque moteur génératif a ses propres sources, ses propres biais et ses propres logiques de recommandation. Une stratégie GEO efficace tient compte de ces différences — pas une seule d'entre elles ne se ressemble.</p>
+          <p class="article-excerpt">Chaque moteur génératif a ses propres sources, ses propres biais et ses propres
+            logiques de recommandation. Une stratégie GEO efficace tient compte de ces différences — pas une seule
+            d'entre elles ne se ressemble.</p>
           <span class="article-read">Lire l'article →</span>
         </a>
 
@@ -485,4 +528,5 @@
   </main>
 
 </body>
+
 </html>

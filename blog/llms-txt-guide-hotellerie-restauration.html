@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>llms.txt : le fichier qui change tout pour votre référencement IA · Présens</title>
+  <meta name="description"
+    content="Les IA lisent-elles vraiment le llms.txt en 2026 ? Ce que ce fichier apporte à un restaurant ou un hôtel, et comment le rédiger correctement.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/blog/llms-txt-guide-hotellerie-restauration">
+  <meta name="theme-color" content="#0F1F18">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://presens.site/blog/llms-txt-guide-hotellerie-restauration">
+  <meta property="og:title" content="llms.txt : le fichier qui change tout pour votre référencement IA">
+  <meta property="og:description" content="Ce que le fichier llms.txt apporte vraiment et comment le rédiger pour un restaurant ou un hôtel.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "llms.txt : ce que ce fichier change (et ne change pas) pour votre référencement IA",
+        "description": "La réalité du llms.txt en 2026 pour un restaurant ou un hôtel : ce que les IA en font vraiment, et comment le rédiger correctement.",
+        "datePublished": "2026-04-01",
+        "dateModified": "2026-05-31",
+        "author": { "@type": "Organization", "name": "Présens", "url": "https://presens.site" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Présens",
+          "logo": { "@type": "ImageObject", "url": "https://presens.site/assets/img/favicon.svg" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://presens.site/blog/llms-txt-guide-hotellerie-restauration" },
+        "articleSection": "Technique",
+        "keywords": "llms.txt, llms.txt restaurant, référencement IA, GEO, visibilité ChatGPT"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ChatGPT lit-il le llms.txt ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Pas de façon confirmée. En 2026, les crawlers de ChatGPT et des autres grands moteurs explorent directement le HTML et ignorent massivement le llms.txt. Aucune amélioration mesurable des citations n'a été démontrée." }
+          },
+          {
+            "@type": "Question",
+            "name": "Le llms.txt améliore-t-il mon référencement IA ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Pas à lui seul, et pas aujourd'hui de façon mesurable. Les leviers efficaces restent les données structurées, la fiche Google Business Profile, les avis récents et la cohérence des informations. Le llms.txt est un complément à faible coût." }
+          },
+          {
+            "@type": "Question",
+            "name": "Où placer le fichier llms.txt ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "À la racine de votre domaine, à l'adresse https://votre-site.fr/llms.txt, au format Markdown." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle différence entre llms.txt et robots.txt ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Le robots.txt indique aux robots ce qu'ils peuvent explorer ou non. Le llms.txt ne bloque rien : il met en avant vos contenus importants sous une forme lisible par les IA. Les deux sont complémentaires." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    body { display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+    #navbar {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+    .nav-back { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
+    .nav-back:hover { color: var(--text-secondary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; padding: 6px 14px;
+      background: var(--green-cta); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: var(--ls-pill);
+      color: var(--text-primary); text-decoration: none; transition: background 200ms;
+    }
+    .nav-cta:hover { background: #3a8a6a; }
+
+    main {
+      position: relative; z-index: 10;
+      width: 100%; max-width: 720px;
+      padding: 120px 24px 80px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+
+    .article-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .article-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .pill {
+      display: inline-flex; align-items: center; padding: 4px 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase; color: var(--text-secondary);
+    }
+
+    .article-date-read { font-family: var(--font-body); font-size: 12px; color: var(--text-tertiary); }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.12;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-lead {
+      font-family: var(--font-body);
+      font-size: 16px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      font-style: italic;
+    }
+
+    .summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-left: 3px solid var(--green-mint);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin-bottom: 40px;
+    }
+
+    .summary-box strong {
+      display: block;
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase;
+      color: var(--green-mint); margin-bottom: 10px;
+    }
+
+    .summary-box p {
+      font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+    }
+
+    .article-body { display: flex; flex-direction: column; gap: 28px; }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 500; color: var(--text-primary);
+      line-height: 1.25; margin-top: 12px;
+    }
+
+    .article-body p {
+      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.75;
+    }
+
+    .article-body p strong { color: var(--text-primary); font-weight: 500; }
+    .article-body em { font-style: italic; color: var(--green-sage); }
+    .article-body code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 13px; }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--green-cta);
+      padding: 12px 20px;
+      background: rgba(45, 107, 82, 0.08);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .article-body blockquote p { font-style: italic; color: var(--text-secondary); }
+
+    .code-block {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+
+    .code-block pre {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .key-points {
+      display: flex; flex-direction: column; gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+    }
+
+    .key-points li {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+
+    .key-points li::before { content: '→'; color: var(--green-cta); font-weight: 600; flex-shrink: 0; }
+
+    .faq-section { display: flex; flex-direction: column; gap: 4px; }
+    .faq-section h2 { margin-bottom: 8px; }
+
+    details {
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    details + details { margin-top: 4px; }
+
+    summary {
+      font-family: var(--font-ui); font-size: 14px; font-weight: 500;
+      color: var(--text-primary); padding: 16px 18px;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      transition: background 200ms;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: var(--bg-hover); }
+
+    summary::after {
+      content: '';
+      display: block; flex-shrink: 0;
+      width: 14px; height: 14px;
+      border-right: 1.5px solid var(--text-tertiary);
+      border-bottom: 1.5px solid var(--text-tertiary);
+      transform: rotate(45deg);
+      transition: transform 250ms ease;
+      margin-top: -4px;
+    }
+
+    details[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
+    details[open] summary { background: var(--bg-card); }
+
+    .faq-answer {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      padding: 0 18px 18px;
+      background: var(--bg-card);
+    }
+
+    .article-cta {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-md);
+      padding: 36px 28px; text-align: center; margin-top: 20px;
+    }
+
+    .article-cta-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 24px); color: var(--text-primary); }
+    .article-cta-sub { font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; max-width: 420px; }
+
+    .btn-cta {
+      display: inline-flex; align-items: center; padding: 12px 32px;
+      background: var(--green-cta); border: none; border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.06em; color: var(--text-primary); text-decoration: none;
+      transition: background 200ms;
+    }
+    .btn-cta:hover { background: #3a8a6a; }
+
+    .divider { border: none; border-top: 1px solid var(--green-forest); }
+
+    @media (max-width: 768px) {
+      main { padding-top: 96px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(31,58,45,0.55),transparent 70%);top:-100px;left:50%;transform:translateX(-50%);filter:blur(100px);"></div>
+  <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);bottom:15%;right:-60px;filter:blur(90px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/blog">← Blog</a>
+    <a class="nav-cta" href="/audit">Audit gratuit →</a>
+  </nav>
+
+  <main>
+    <article>
+
+      <header class="article-header">
+        <div class="article-meta-row">
+          <span class="pill">Technique</span>
+          <span class="article-date-read">Avril 2026 · 5 min de lecture</span>
+        </div>
+        <h1>llms.txt : ce que ce fichier change (et ne change pas) pour votre référencement IA</h1>
+        <p class="article-lead">Moins connu que le robots.txt, le llms.txt fait beaucoup parler dans le monde du GEO. Entre le battage marketing et la réalité technique, voici ce que ce fichier apporte réellement à un restaurant ou un hôtel — et comment le rédiger correctement.</p>
+      </header>
+
+      <div class="summary-box">
+        <strong>En bref</strong>
+        <p>Le <strong>llms.txt</strong> est un fichier texte placé à la racine de votre site qui résume votre établissement pour les IA. La réalité en 2026 : les grands moteurs génératifs (ChatGPT, Gemini, Perplexity) ne le lisent quasiment pas encore, et Google a annoncé ne pas le supporter. Il <strong>n'améliore pas mesurablement vos citations IA aujourd'hui</strong>. Faut-il quand même le créer ? <strong>Oui</strong> — coût quasi nul, aucun risque, et bon positionnement pour le web agentique de demain. Mais ce n'est pas une priorité tant que vos vrais signaux (données structurées, avis, cohérence) ne sont pas en place.</p>
+      </div>
+
+      <div class="article-body">
+
+        <p>Si vous vous intéressez au référencement IA, vous avez forcément croisé le <strong>llms.txt</strong>. On le présente souvent comme la pièce qui fait tout basculer. La réalité de 2026 est plus nuancée — et la connaître vous évite de perdre du temps là où ça ne rapporte pas encore.</p>
+
+        <hr class="divider">
+
+        <h2>Qu'est-ce que le fichier llms.txt&nbsp;?</h2>
+
+        <p>Le <strong>llms.txt</strong> est un fichier au format Markdown placé à la racine de votre site (par exemple <code>https://votre-restaurant.fr/llms.txt</code>). Proposé en septembre 2024, il vise à donner aux modèles d'IA une <strong>vue propre et curée de vos contenus les plus importants</strong> : un résumé de votre établissement, suivi de liens vers vos pages clés.</p>
+
+        <p>Attention à ne pas le confondre avec le <strong>robots.txt</strong>, qui dit aux robots ce qu'ils ont le droit d'explorer. Le llms.txt, lui, ne bloque rien : il <strong>met en avant</strong> ce qui compte, sous une forme directement digeste pour une IA, sans le bruit habituel d'une page web (menus de navigation, bannières cookies, scripts).</p>
+
+        <p>Un point important : c'est une <strong>convention proposée</strong>, pas une norme officielle. Aucun organisme (W3C, IETF) ne la soutient, et son adoption dépend du bon vouloir de chaque acteur.</p>
+
+        <hr class="divider">
+
+        <h2>Les IA lisent-elles vraiment le llms.txt en 2026&nbsp;?</h2>
+
+        <p>C'est là que le discours marketing et les faits divergent. Soyons clairs.</p>
+
+        <p>Les grands crawlers d'IA — GPTBot, ClaudeBot, PerplexityBot, Google-Extended — <strong>ignorent massivement le fichier</strong> et explorent directement votre HTML. Au premier trimestre 2026, <strong>aucune grande entreprise d'IA</strong> (OpenAI, Google, Anthropic, Mistral) ne s'est engagée publiquement à lire ou exploiter le llms.txt en production. Google est allé plus loin : il a déclaré <strong>ne pas le supporter</strong> et ne pas prévoir de le faire.</p>
+
+        <p>Côté résultats, c'est sans appel : une étude sur 300 000 domaines n'a trouvé <strong>aucune amélioration mesurable des citations IA</strong> liée à la présence d'un llms.txt. Aujourd'hui, ce fichier n'est donc <strong>pas</strong> le levier de visibilité ChatGPT qu'on vous vend parfois.</p>
+
+        <p>Où sert-il réellement ? Dans le <strong>web agentique</strong> : les agents de développement (Cursor, Claude Code, GitHub Copilot…) récupèrent couramment le llms.txt, et certaines intégrations le consomment. C'est un signal tourné vers les outils qui <em>agissent</em> pour le compte d'un utilisateur, plus que vers la recherche conversationnelle grand public.</p>
+
+        <hr class="divider">
+
+        <h2>Faut-il créer un llms.txt pour votre restaurant ou hôtel&nbsp;?</h2>
+
+        <p>Oui — mais pour les bonnes raisons, et pas en priorité.</p>
+
+        <p><strong>Les bonnes raisons :</strong> le coût est quasi nul, il ne présente aucun risque pour votre site (il n'affecte ni les performances ni le référencement classique), il vous positionne si l'adoption s'élargit, et l'exercice vous force à rédiger un inventaire clair et hiérarchisé de vos meilleurs contenus. La grande inconnue reste Google : s'il finit par le supporter, la convention deviendra quasi universelle.</p>
+
+        <p><strong>La nuance qui compte :</strong> pour un établissement HoReCa, le llms.txt arrive <strong>après</strong> les signaux qui déplacent réellement vos citations IA aujourd'hui — données structurées (schema), fiche Google Business Profile, avis récents, cohérence des informations. Réglez ces fondations d'abord. Le llms.txt est la couche « bonus », pas le point de départ.</p>
+
+        <hr class="divider">
+
+        <h2>Comment rédiger un llms.txt pour un établissement HoReCa</h2>
+
+        <p>Les bonnes pratiques se sont stabilisées en 2026 : un fichier <strong>court</strong> (idéalement sous 5 ko), qui <strong>ouvre sur un résumé d'autorité en un paragraphe</strong>, puis liste vos pages clés avec une description d'une ligne.</p>
+
+        <p>Voici un modèle concret pour un restaurant, à adapter :</p>
+
+        <div class="code-block">
+          <pre># Le Petit Jardin
+
+&gt; Restaurant bistronomique dans le Vieux-Nice, cuisine
+&gt; méditerranéenne de saison, terrasse ombragée. Idéal pour
+&gt; un dîner en amoureux ou un repas en petit groupe.
+&gt; Ouvert du mardi au samedi, midi et soir. Réservation conseillée.
+
+## Pages essentielles
+- [Menu et carte](https://exemple.fr/menu) : carte de saison, options végétariennes et sans gluten
+- [Réservation](https://exemple.fr/reservation) : réserver une table en ligne
+- [Horaires et accès](https://exemple.fr/infos) : adresse, horaires, parking, accès PMR
+- [À propos](https://exemple.fr/a-propos) : notre histoire, notre chef, nos producteurs locaux
+
+## Contact
+- Adresse : 12 rue Exemple, 06300 Nice
+- Téléphone : +33 4 00 00 00 00
+- Email : contact@exemple.fr</pre>
+        </div>
+
+        <p>Trois règles à retenir : le paragraphe d'ouverture (en <code>&gt;</code> blockquote) doit décrire votre établissement avec <strong>les mots de vos clients</strong> (ambiance, occasions, spécificités), pas avec des catégories administratives ; chaque lien doit pointer vers une page réelle et à jour ; et le fichier doit rester court et exact — ces informations doivent être <strong>cohérentes</strong> avec votre site, votre fiche Google et vos données structurées.</p>
+
+        <hr class="divider">
+
+        <h2>Points clés à retenir</h2>
+
+        <ul class="key-points">
+          <li>Le <strong>llms.txt</strong> est un fichier à la racine du site qui résume vos contenus pour les IA.</li>
+          <li>En 2026, les grands moteurs génératifs <strong>ne le lisent quasiment pas</strong> ; Google a annoncé ne pas le supporter.</li>
+          <li>Aucune étude ne montre qu'il <strong>améliore les citations IA</strong> aujourd'hui.</li>
+          <li>Il sert surtout au <strong>web agentique</strong> (agents de développement, certains outils).</li>
+          <li>À créer quand même : coût nul, aucun risque, bon positionnement futur — mais <strong>après</strong> les signaux qui comptent vraiment.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <!-- FAQ -->
+        <section class="faq-section">
+          <h2>FAQ : le fichier llms.txt</h2>
+
+          <details>
+            <summary>ChatGPT lit-il le llms.txt&nbsp;?</summary>
+            <p class="faq-answer">Pas de façon confirmée. En 2026, les crawlers de ChatGPT et des autres grands moteurs explorent directement le HTML et ignorent massivement le llms.txt. Aucune amélioration mesurable des citations n'a été démontrée.</p>
+          </details>
+
+          <details>
+            <summary>Le llms.txt améliore-t-il mon référencement IA&nbsp;?</summary>
+            <p class="faq-answer">Pas à lui seul, et pas aujourd'hui de façon mesurable. Les leviers efficaces restent les données structurées, la fiche Google Business Profile, les avis récents et la cohérence des informations. Le llms.txt est un complément à faible coût, pas un raccourci.</p>
+          </details>
+
+          <details>
+            <summary>Où placer le fichier llms.txt&nbsp;?</summary>
+            <p class="faq-answer">À la racine de votre domaine, à l'adresse <code>https://votre-site.fr/llms.txt</code>, au format Markdown.</p>
+          </details>
+
+          <details>
+            <summary>llms.txt ou robots.txt : quelle différence&nbsp;?</summary>
+            <p class="faq-answer">Le robots.txt indique aux robots ce qu'ils peuvent explorer ou non. Le llms.txt ne bloque rien : il met en avant vos contenus importants sous une forme lisible par les IA. Les deux sont complémentaires.</p>
+          </details>
+        </section>
+
+        <hr class="divider">
+
+        <p>Mettre en place un llms.txt propre — et surtout les signaux qui comptent vraiment — demande méthode et rigueur technique. C'est le rôle d'un studio de GEO comme <strong>Présens</strong> : prioriser ce qui rend réellement votre restaurant ou votre hôtel visible auprès des IA, sans vous vendre les fausses promesses du moment.</p>
+
+      </div><!-- /.article-body -->
+
+    </article>
+
+    <aside class="article-cta">
+      <span class="pill">AUDIT GRATUIT · 48H</span>
+      <h2 class="article-cta-title">Votre établissement est-il cité par les IA&nbsp;?</h2>
+      <p class="article-cta-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude — et vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
+      <a class="btn-cta" href="/audit">Demander mon audit gratuit →</a>
+    </aside>
+
+  </main>
+
+</body>
+</html>

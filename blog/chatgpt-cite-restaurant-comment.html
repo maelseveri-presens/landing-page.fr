@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment faire citer votre restaurant par ChatGPT ? (2026) · Présens</title>
+  <meta name="description"
+    content="ChatGPT cite votre restaurant selon 3 signaux : lisibilité technique, mentions d'autorité et cohérence sémantique. Voici comment les activer en 2026.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/blog/chatgpt-cite-restaurant-comment">
+  <meta name="theme-color" content="#0F1F18">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://presens.site/blog/chatgpt-cite-restaurant-comment">
+  <meta property="og:title" content="Comment faire citer votre restaurant par ChatGPT ? (2026)">
+  <meta property="og:description" content="Les 3 signaux qui font citer un restaurant par ChatGPT et comment les activer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Comment faire citer votre restaurant par ChatGPT ?",
+        "description": "Les 3 signaux qui font citer un restaurant par ChatGPT : lisibilité technique, mentions d'autorité et cohérence sémantique, et comment les activer.",
+        "datePublished": "2026-05-01",
+        "dateModified": "2026-05-31",
+        "author": { "@type": "Organization", "name": "Présens", "url": "https://presens.site" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Présens",
+          "logo": { "@type": "ImageObject", "url": "https://presens.site/assets/img/favicon.svg" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://presens.site/blog/chatgpt-cite-restaurant-comment" },
+        "articleSection": "Méthode",
+        "keywords": "citer restaurant ChatGPT, GEO restaurant, référencement IA, visibilité ChatGPT, être recommandé par ChatGPT"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Pourquoi ChatGPT ne cite-t-il pas mon restaurant ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Le plus souvent parce qu'un des trois signaux manque : informations non lisibles par les machines (pas de données structurées, menu en image), manque d'avis récents et de mentions externes, ou descriptions incohérentes d'une plateforme à l'autre." }
+          },
+          {
+            "@type": "Question",
+            "name": "Faut-il un site web pour être cité par ChatGPT ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Un site aide beaucoup, mais ce n'est pas le seul levier. Une fiche Google Business Profile complète, des avis et des mentions sur des plateformes tierces permettent déjà à une IA de vous identifier et de vous recommander." }
+          },
+          {
+            "@type": "Question",
+            "name": "Les avis Google comptent-ils pour être recommandé par les IA ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Oui, fortement. Le volume et surtout la récence des avis sont un signal d'autorité majeur. Des avis fréquents et récents pèsent davantage qu'un grand nombre d'avis anciens." }
+          },
+          {
+            "@type": "Question",
+            "name": "Combien de temps avant que ChatGPT cite mon restaurant ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Les fondations techniques produisent des effets en quelques semaines, le temps que les IA réindexent vos signaux. Les mentions d'autorité se construisent sur plusieurs mois." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    body { display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+    #navbar {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+    .nav-back { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
+    .nav-back:hover { color: var(--text-secondary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; padding: 6px 14px;
+      background: var(--green-cta); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: var(--ls-pill);
+      color: var(--text-primary); text-decoration: none; transition: background 200ms;
+    }
+    .nav-cta:hover { background: #3a8a6a; }
+
+    main {
+      position: relative; z-index: 10;
+      width: 100%; max-width: 720px;
+      padding: 120px 24px 80px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+
+    .article-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+
+    .article-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .pill {
+      display: inline-flex; align-items: center; padding: 4px 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase; color: var(--text-secondary);
+    }
+
+    .article-date-read { font-family: var(--font-body); font-size: 12px; color: var(--text-tertiary); }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.12;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-lead {
+      font-family: var(--font-body);
+      font-size: 16px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      font-style: italic;
+    }
+
+    .summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-left: 3px solid var(--green-mint);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin-bottom: 40px;
+    }
+
+    .summary-box strong {
+      display: block;
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase;
+      color: var(--green-mint); margin-bottom: 10px;
+    }
+
+    .summary-box p {
+      font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+    }
+
+    .article-body { display: flex; flex-direction: column; gap: 28px; }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 500; color: var(--text-primary);
+      line-height: 1.25; margin-top: 12px;
+    }
+
+    .article-body p {
+      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.75;
+    }
+
+    .article-body p strong { color: var(--text-primary); font-weight: 500; }
+
+    .article-body em { font-style: italic; color: var(--green-sage); }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--green-cta);
+      padding: 12px 20px;
+      background: rgba(45, 107, 82, 0.08);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .article-body blockquote p { font-style: italic; color: var(--text-secondary); }
+
+    .key-points {
+      display: flex; flex-direction: column; gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+    }
+
+    .key-points li {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+
+    .key-points li::before { content: '→'; color: var(--green-cta); font-weight: 600; flex-shrink: 0; }
+
+    .faq-section { display: flex; flex-direction: column; gap: 4px; }
+
+    .faq-section h2 { margin-bottom: 8px; }
+
+    details {
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    details + details { margin-top: 4px; }
+
+    summary {
+      font-family: var(--font-ui); font-size: 14px; font-weight: 500;
+      color: var(--text-primary); padding: 16px 18px;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      transition: background 200ms;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: var(--bg-hover); }
+
+    summary::after {
+      content: '';
+      display: block; flex-shrink: 0;
+      width: 14px; height: 14px;
+      border-right: 1.5px solid var(--text-tertiary);
+      border-bottom: 1.5px solid var(--text-tertiary);
+      transform: rotate(45deg);
+      transition: transform 250ms ease;
+      margin-top: -4px;
+    }
+
+    details[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
+    details[open] summary { background: var(--bg-card); }
+
+    .faq-answer {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      padding: 0 18px 18px;
+      background: var(--bg-card);
+    }
+
+    .article-cta {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-md);
+      padding: 36px 28px; text-align: center; margin-top: 20px;
+    }
+
+    .article-cta-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 24px); color: var(--text-primary); }
+    .article-cta-sub { font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; max-width: 420px; }
+
+    .btn-cta {
+      display: inline-flex; align-items: center; padding: 12px 32px;
+      background: var(--green-cta); border: none; border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.06em; color: var(--text-primary); text-decoration: none;
+      transition: background 200ms;
+    }
+    .btn-cta:hover { background: #3a8a6a; }
+
+    .divider { border: none; border-top: 1px solid var(--green-forest); }
+
+    @media (max-width: 768px) {
+      main { padding-top: 96px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(31,58,45,0.55),transparent 70%);top:-100px;left:50%;transform:translateX(-50%);filter:blur(100px);"></div>
+  <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);bottom:15%;right:-60px;filter:blur(90px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/blog">← Blog</a>
+    <a class="nav-cta" href="/audit">Audit gratuit →</a>
+  </nav>
+
+  <main>
+    <article>
+
+      <header class="article-header">
+        <div class="article-meta-row">
+          <span class="pill">Méthode</span>
+          <span class="article-date-read">Mai 2026 · 6 min de lecture</span>
+        </div>
+        <h1>Comment faire citer votre restaurant par ChatGPT&nbsp;?</h1>
+        <p class="article-lead">Trois signaux dominent dans les réponses de ChatGPT : la lisibilité technique, les mentions d'autorité et la cohérence sémantique. Voici comment les activer concrètement pour un établissement HoReCa.</p>
+      </header>
+
+      <div class="summary-box">
+        <strong>En bref</strong>
+        <p>Pour faire citer votre restaurant par ChatGPT, trois signaux dominent. <strong>1) La lisibilité technique</strong> : vos informations doivent être lisibles par les machines (données structurées, fiche Google Business Profile, menu en texte). <strong>2) Les mentions d'autorité</strong> : avis nombreux et récents, citations dans la presse et les guides. <strong>3) La cohérence sémantique</strong> : décrire votre établissement partout avec les mots que vos clients emploient réellement. Activez les trois et vous passez de l'invisibilité à la recommandation.</p>
+      </div>
+
+      <div class="article-body">
+
+        <p>ChatGPT ne cite pas un restaurant au hasard. Quand un client demande <em>« un bon resto pour ce soir »</em>, l'IA pèse des signaux pour décider quels noms méritent d'apparaître dans sa réponse — et lesquels rester dans l'ombre. Comprendre ces signaux, c'est arrêter de subir le référencement IA et commencer à le piloter.</p>
+
+        <p>Pour un établissement HoReCa (hôtellerie, restauration, café), trois signaux comptent plus que les autres. Voici comment les activer, concrètement.</p>
+
+        <hr class="divider">
+
+        <h2>Signal n°1 : la lisibilité technique (être lisible par les machines)</h2>
+
+        <p>C'est la fondation. Si une IA ne peut pas lire vos informations proprement, elle ne vous citera pas, même si vous êtes excellent.</p>
+
+        <p>Concrètement, pour rendre votre restaurant lisible par ChatGPT :</p>
+
+        <ul class="key-points">
+          <li><strong>Ajoutez des données structurées</strong> (schema <code>Restaurant</code> / <code>LocalBusiness</code>) : nom, adresse, horaires, type de cuisine, gamme de prix, menu, photos. C'est le langage que les machines comprennent le mieux.</li>
+          <li><strong>Mettez votre menu en texte</strong>, pas dans une image ou un PDF non lisible. Une IA ne « voit » pas un menu enfermé dans un visuel.</li>
+          <li><strong>Complétez à 100 % votre fiche Google Business Profile</strong> : c'est l'une des premières sources que les IA recoupent.</li>
+          <li><strong>Vérifiez la cohérence NAP</strong> (Name, Address, Phone) : nom, adresse et téléphone strictement identiques partout sur le web.</li>
+          <li><strong>Soignez un site rapide et propre</strong>, avec les informations clés en texte accessible et non cachées derrière du JavaScript ou des images.</li>
+        </ul>
+
+        <p>Tant que ce socle technique n'est pas en place, le reste a peu d'effet.</p>
+
+        <hr class="divider">
+
+        <h2>Signal n°2 : les mentions d'autorité (être cité ailleurs)</h2>
+
+        <p>Une IA ne se fie pas qu'à ce que vous dites de vous : elle se fie surtout à ce que <strong>les autres</strong> disent de vous. C'est le signal d'autorité.</p>
+
+        <p>Pour le renforcer :</p>
+
+        <ul class="key-points">
+          <li><strong>Cultivez le volume et la récence des avis.</strong> Les IA pondèrent la fraîcheur : dix avis ce mois-ci pèsent plus que cent avis d'il y a trois ans. Mettez en place une routine pour solliciter des avis régulièrement (Google, TripAdvisor, etc.).</li>
+          <li><strong>Répondez aux avis</strong>, positifs comme négatifs : ça signale un établissement actif et vivant.</li>
+          <li><strong>Faites parler de vous ailleurs</strong> : presse locale, blogs food, guides, annuaires sectoriels, listes « meilleurs restaurants de [ville] ». Chaque mention crédible est un vote de confiance que les IA enregistrent.</li>
+          <li><strong>Visez la cohérence des citations</strong> sur ces plateformes tierces : mêmes informations, partout.</li>
+        </ul>
+
+        <p>Ce signal est le plus long à construire — c'est aussi celui qui vous protège le mieux dans la durée.</p>
+
+        <hr class="divider">
+
+        <h2>Signal n°3 : la cohérence sémantique (parler le langage de vos clients)</h2>
+
+        <p>Vos clients ne demandent pas « restaurant français ». Ils demandent <em>« un endroit romantique avec terrasse »</em>, <em>« un brunch sympa sans gluten »</em>, <em>« un resto pour un groupe de 12 »</em>. Le signal sémantique, c'est la capacité de l'IA à relier votre établissement à ces intentions.</p>
+
+        <p>Pour l'activer :</p>
+
+        <ul class="key-points">
+          <li><strong>Décrivez votre restaurant avec les mots de vos clients</strong>, pas seulement avec des catégories administratives. Ambiance, occasions (anniversaire, dîner en amoureux, repas d'affaires), spécificités (terrasse, vue, options végétariennes, accès PMR, accepte les chiens).</li>
+          <li><strong>Répétez les mêmes attributs partout</strong> : site, Google, réseaux sociaux, annuaires. L'IA recoupe ces sources ; si elles se contredisent, elle doute, et dans le doute, elle ne cite pas.</li>
+          <li><strong>Créez du contenu qui répond aux vraies questions</strong> : une page ou un article « où dîner en amoureux à [ville] » aligne votre établissement sur une requête fréquente.</li>
+          <li><strong>Veillez à la cohérence entre votre discours et vos avis</strong> : si vous dites « cosy » et que les avis parlent de « bruyant », le signal se brouille.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <h2>Par où commencer ? (l'ordre qui compte)</h2>
+
+        <p>Vous ne pouvez pas tout faire en même temps. L'ordre le plus efficace :</p>
+
+        <ol style="margin-left: 20px; color: var(--text-secondary); line-height: 1.75;">
+          <li><strong>La lisibilité technique d'abord</strong> : données structurées, fiche Google, menu en texte, cohérence NAP. C'est rapide et c'est le préalable de tout le reste.</li>
+          <li><strong>La cohérence sémantique ensuite</strong> : harmoniser vos descriptions partout avec les mots de vos clients.</li>
+          <li><strong>Les mentions d'autorité en continu</strong> : avis et citations se construisent dans le temps, à entretenir mois après mois.</li>
+        </ol>
+
+        <hr class="divider">
+
+        <h2>Points clés à retenir</h2>
+
+        <ul class="key-points">
+          <li>ChatGPT cite un restaurant selon <strong>trois signaux</strong> : lisibilité technique, mentions d'autorité, cohérence sémantique.</li>
+          <li><strong>Lisibilité technique</strong> = données structurées, fiche Google complète, menu en texte, NAP cohérent.</li>
+          <li><strong>Mentions d'autorité</strong> = avis nombreux et récents + citations crédibles ailleurs sur le web.</li>
+          <li><strong>Cohérence sémantique</strong> = décrire votre établissement avec les mots de vos clients, partout de la même façon.</li>
+          <li>Commencez par le technique, puis le sémantique, puis l'autorité (qui se construit dans la durée).</li>
+        </ul>
+
+        <hr class="divider">
+
+        <!-- FAQ -->
+        <section class="faq-section">
+          <h2>FAQ : faire citer son restaurant par ChatGPT</h2>
+
+          <details>
+            <summary>Pourquoi ChatGPT ne cite-t-il pas mon restaurant&nbsp;?</summary>
+            <p class="faq-answer">Le plus souvent parce qu'un des trois signaux manque : vos informations ne sont pas lisibles par les machines (pas de données structurées, menu en image), vous manquez d'avis récents et de mentions externes, ou vos descriptions sont incohérentes d'une plateforme à l'autre.</p>
+          </details>
+
+          <details>
+            <summary>Faut-il un site web pour être cité par ChatGPT&nbsp;?</summary>
+            <p class="faq-answer">Un site aide beaucoup, mais ce n'est pas le seul levier. Une fiche Google Business Profile complète, des avis et des mentions sur des plateformes tierces permettent déjà à une IA de vous identifier et de vous recommander.</p>
+          </details>
+
+          <details>
+            <summary>Les avis Google comptent-ils pour être recommandé par les IA&nbsp;?</summary>
+            <p class="faq-answer">Oui, fortement. Le volume et surtout la récence des avis sont un signal d'autorité majeur. Des avis fréquents et récents pèsent davantage qu'un grand nombre d'avis anciens.</p>
+          </details>
+
+          <details>
+            <summary>Combien de temps avant que ChatGPT cite mon restaurant&nbsp;?</summary>
+            <p class="faq-answer">Les fondations techniques produisent des effets en quelques semaines, le temps que les IA réindexent vos signaux. Les mentions d'autorité se construisent sur plusieurs mois.</p>
+          </details>
+        </section>
+
+        <hr class="divider">
+
+        <p>Activer ces trois signaux demande une méthode et un peu de technique. C'est exactement le rôle d'un studio de GEO comme <strong>Présens</strong> : rendre votre restaurant lisible, crédible et cohérent aux yeux des IA, pour qu'il devienne la réponse — pas l'absent — quand un client demande conseil à ChatGPT.</p>
+
+      </div><!-- /.article-body -->
+
+    </article>
+
+    <aside class="article-cta">
+      <span class="pill">AUDIT GRATUIT · 48H</span>
+      <h2 class="article-cta-title">Votre établissement est-il cité par les IA&nbsp;?</h2>
+      <p class="article-cta-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude — et vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
+      <a class="btn-cta" href="/audit">Demander mon audit gratuit →</a>
+    </aside>
+
+  </main>
+
+</body>
+</html>

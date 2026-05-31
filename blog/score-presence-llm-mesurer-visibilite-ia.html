@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Score de Présence : mesurer votre visibilité sur les IA (2026) · Présens</title>
+  <meta name="description"
+    content="Le GEO n'a pas de Google Analytics. Le Score de Présence de Présens mesure votre visibilité sur ChatGPT, Perplexity, Gemini et Claude, mois après mois.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/blog/score-presence-llm-mesurer-visibilite-ia">
+  <meta name="theme-color" content="#0F1F18">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://presens.site/blog/score-presence-llm-mesurer-visibilite-ia">
+  <meta property="og:title" content="Score de Présence : mesurer votre visibilité sur les IA (2026)">
+  <meta property="og:description" content="Comment mesurer et suivre votre visibilité sur les IA : le Score de Présence de Présens.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Score de Présence : comment mesurer votre visibilité sur les IA ?",
+        "description": "Le GEO n'a pas encore de Google Analytics. Le Score de Présence de Présens mesure la visibilité d'un restaurant ou d'un hôtel sur ChatGPT, Perplexity, Gemini et Claude.",
+        "datePublished": "2026-04-01",
+        "dateModified": "2026-05-31",
+        "author": { "@type": "Organization", "name": "Présens", "url": "https://presens.site" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Présens",
+          "logo": { "@type": "ImageObject", "url": "https://presens.site/assets/img/favicon.svg" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://presens.site/blog/score-presence-llm-mesurer-visibilite-ia" },
+        "articleSection": "Suivi",
+        "keywords": "Score de Présence, mesurer visibilité IA, GEO, suivi GEO, part de voix IA"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Pourquoi le SEO et le GEO ne se mesurent-ils pas de la même façon ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Le SEO dispose d'outils standardisés (Google Analytics, Search Console) qui remontent trafic et positions. Le GEO n'a pas encore d'équivalent : les IA ne fournissent pas de tableau de bord de citations. Il faut donc une mesure dédiée, comme le Score de Présence." }
+          },
+          {
+            "@type": "Question",
+            "name": "Sur quelles IA le Score de Présence est-il calculé ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sur les quatre plateformes les plus utilisées pour trouver un restaurant ou un hôtel : ChatGPT, Perplexity, Gemini et Claude." }
+          },
+          {
+            "@type": "Question",
+            "name": "À quelle fréquence faut-il mesurer sa visibilité IA ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Au minimum une fois par mois. Les modèles d'IA évoluent vite et la concurrence aussi : un suivi mensuel permet de voir les progrès et de réagir, là où une mesure ponctuelle ne dit rien de la tendance." }
+          },
+          {
+            "@type": "Question",
+            "name": "Peut-on mesurer sa visibilité IA soi-même ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "En partie : vous pouvez poser quelques requêtes à ChatGPT ou Perplexity et vérifier si votre nom apparaît. Mais sans méthode constante, sans liste de requêtes représentative et sans suivi dans le temps, les résultats ne sont ni fiables ni comparables." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    body { display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+    #navbar {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+    .nav-back { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
+    .nav-back:hover { color: var(--text-secondary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; padding: 6px 14px;
+      background: var(--green-cta); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: var(--ls-pill);
+      color: var(--text-primary); text-decoration: none; transition: background 200ms;
+    }
+    .nav-cta:hover { background: #3a8a6a; }
+
+    main {
+      position: relative; z-index: 10;
+      width: 100%; max-width: 720px;
+      padding: 120px 24px 80px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+
+    .article-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .article-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .pill {
+      display: inline-flex; align-items: center; padding: 4px 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase; color: var(--text-secondary);
+    }
+
+    .article-date-read { font-family: var(--font-body); font-size: 12px; color: var(--text-tertiary); }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.12;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-lead {
+      font-family: var(--font-body);
+      font-size: 16px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      font-style: italic;
+    }
+
+    .summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-left: 3px solid var(--green-mint);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      margin-bottom: 40px;
+    }
+
+    .summary-box strong {
+      display: block;
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+      letter-spacing: var(--ls-pill); text-transform: uppercase;
+      color: var(--green-mint); margin-bottom: 10px;
+    }
+
+    .summary-box p {
+      font-family: var(--font-body); font-size: 14px; color: var(--text-secondary); line-height: 1.65;
+    }
+
+    .article-body { display: flex; flex-direction: column; gap: 28px; }
+
+    .article-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 500; color: var(--text-primary);
+      line-height: 1.25; margin-top: 12px;
+    }
+
+    .article-body p {
+      font-family: var(--font-body); font-size: 15px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.75;
+    }
+
+    .article-body p strong { color: var(--text-primary); font-weight: 500; }
+    .article-body em { font-style: italic; color: var(--green-sage); }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--green-cta);
+      padding: 12px 20px;
+      background: rgba(45, 107, 82, 0.08);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .article-body blockquote p { font-style: italic; color: var(--text-secondary); }
+
+    .key-points {
+      display: flex; flex-direction: column; gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+    }
+
+    .key-points li {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+
+    .key-points li::before { content: '→'; color: var(--green-cta); font-weight: 600; flex-shrink: 0; }
+
+    .faq-section { display: flex; flex-direction: column; gap: 4px; }
+    .faq-section h2 { margin-bottom: 8px; }
+
+    details {
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    details + details { margin-top: 4px; }
+
+    summary {
+      font-family: var(--font-ui); font-size: 14px; font-weight: 500;
+      color: var(--text-primary); padding: 16px 18px;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      transition: background 200ms;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: var(--bg-hover); }
+
+    summary::after {
+      content: '';
+      display: block; flex-shrink: 0;
+      width: 14px; height: 14px;
+      border-right: 1.5px solid var(--text-tertiary);
+      border-bottom: 1.5px solid var(--text-tertiary);
+      transform: rotate(45deg);
+      transition: transform 250ms ease;
+      margin-top: -4px;
+    }
+
+    details[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
+    details[open] summary { background: var(--bg-card); }
+
+    .faq-answer {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.7;
+      padding: 0 18px 18px;
+      background: var(--bg-card);
+    }
+
+    .article-cta {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      border: 1px solid var(--green-forest); border-radius: var(--radius-md);
+      padding: 36px 28px; text-align: center; margin-top: 20px;
+    }
+
+    .article-cta-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 24px); color: var(--text-primary); }
+    .article-cta-sub { font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; max-width: 420px; }
+
+    .btn-cta {
+      display: inline-flex; align-items: center; padding: 12px 32px;
+      background: var(--green-cta); border: none; border-radius: var(--radius-pill);
+      font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.06em; color: var(--text-primary); text-decoration: none;
+      transition: background 200ms;
+    }
+    .btn-cta:hover { background: #3a8a6a; }
+
+    .divider { border: none; border-top: 1px solid var(--green-forest); }
+
+    @media (max-width: 768px) {
+      main { padding-top: 96px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(31,58,45,0.55),transparent 70%);top:-100px;left:50%;transform:translateX(-50%);filter:blur(100px);"></div>
+  <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(45,107,82,0.34),transparent 70%);bottom:15%;right:-60px;filter:blur(90px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/blog">← Blog</a>
+    <a class="nav-cta" href="/audit">Audit gratuit →</a>
+  </nav>
+
+  <main>
+    <article>
+
+      <header class="article-header">
+        <div class="article-meta-row">
+          <span class="pill">Suivi</span>
+          <span class="article-date-read">Avril 2026 · 4 min de lecture</span>
+        </div>
+        <h1>Score de Présence : comment mesurer votre visibilité sur les IA&nbsp;?</h1>
+        <p class="article-lead">Contrairement au SEO, le GEO n'a pas encore d'outil de mesure standard comme Google Analytics. Le Score de Présence est la métrique que nous avons développée chez Présens pour suivre les progrès mois après mois.</p>
+      </header>
+
+      <div class="summary-box">
+        <strong>En bref</strong>
+        <p>Contrairement au SEO, le GEO n'a pas encore d'outil de mesure standard comme Google Analytics. Le <strong>Score de Présence</strong> est la métrique que nous avons développée chez <strong>Présens</strong> pour quantifier la visibilité d'un établissement sur les quatre IA qui comptent — <strong>ChatGPT, Perplexity, Gemini et Claude</strong>. Une note de <strong>0 à 100</strong>, calculée à partir des requêtes réelles que posent vos clients, et suivie <strong>mois après mois</strong> pour mesurer vos progrès et votre part de voix face aux concurrents.</p>
+      </div>
+
+      <div class="article-body">
+
+        <p>En SEO, vous pilotez à vue ouverte : Google Analytics, Search Console, des tableaux de bord qui vous disent exactement combien de visiteurs, depuis quelles requêtes, vers quelles pages. En GEO, c'est le trou noir. Quand ChatGPT recommande — ou ignore — votre restaurant, rien ne vous prévient. Vous pouvez investir des mois sans jamais savoir si ça bouge.</p>
+
+        <p>C'est précisément ce point aveugle que le <strong>Score de Présence</strong> vient combler.</p>
+
+        <hr class="divider">
+
+        <h2>Le problème : le GEO n'a pas (encore) de Google Analytics</h2>
+
+        <p>Les IA conversationnelles ne vous fournissent aucun tableau de bord. Aucune ne vous dit « vous avez été cité 142 fois ce mois-ci pour la requête <em>restaurant romantique</em> ». La visibilité IA est réelle, elle ramène des clients — mais elle est, par défaut, <strong>invisible et non mesurée</strong>.</p>
+
+        <p>Or on ne pilote pas ce qu'on ne mesure pas. Sans repère chiffré, impossible de savoir si votre référencement IA progresse, stagne ou recule, ni de prouver le retour sur investissement. Mesurer n'est pas un luxe : c'est la condition pour agir.</p>
+
+        <hr class="divider">
+
+        <h2>Qu'est-ce que le Score de Présence&nbsp;?</h2>
+
+        <p>Le <strong>Score de Présence</strong> est une note de <strong>0 à 100</strong> qui résume, en un seul chiffre, la visibilité de votre établissement sur les quatre intelligences artificielles les plus utilisées par vos clients : <strong>ChatGPT, Perplexity, Gemini et Claude</strong>.</p>
+
+        <p>Trois paliers permettent de situer immédiatement votre position : <strong>Faible</strong>, <strong>Moyen</strong>, <strong>Bon</strong>. Un restaurant au score faible est quasiment absent des réponses des IA ; un score élevé signifie qu'il fait partie des établissements que les IA recommandent spontanément.</p>
+
+        <p>C'est une métrique propriétaire que nous avons conçue pour un usage simple : transformer une discipline floue en un indicateur clair, comparable d'un mois à l'autre.</p>
+
+        <hr class="divider">
+
+        <h2>Comment le Score de Présence est-il calculé&nbsp;?</h2>
+
+        <p>Le principe repose sur un test systématique, pas sur une impression. Concrètement :</p>
+
+        <ul class="key-points">
+          <li><strong>Une liste de requêtes réelles.</strong> Nous partons des questions que vos clients posent vraiment à une IA pour trouver un établissement comme le vôtre — et elles diffèrent selon votre profil (un restaurant gastronomique, un bar à cocktails ou un boutique-hôtel n'attirent pas les mêmes recherches). Cette liste se construit avec vous.</li>
+          <li><strong>Un test sur les quatre IA.</strong> Pour chaque requête, nous vérifions si votre établissement est <strong>cité</strong>, <strong>partiellement cité</strong> (mentionné mais sans relief) ou <strong>non cité</strong> sur ChatGPT, Perplexity, Gemini et Claude.</li>
+          <li><strong>Une agrégation en une note unique.</strong> Ces résultats sont pondérés et consolidés en un score sur 100, selon une méthodologie propre à Présens.</li>
+        </ul>
+
+        <p>Le résultat n'est pas un chiffre sorti du chapeau : c'est une mesure reproductible, qui peut être refaite à l'identique le mois suivant pour comparer ce qui est comparable.</p>
+
+        <hr class="divider">
+
+        <h2>Pourquoi suivre votre Score de Présence chaque mois&nbsp;?</h2>
+
+        <p>Parce que le GEO n'est pas un état figé. Les modèles d'IA évoluent en continu, vos concurrents bougent, et l'autorité de votre établissement se construit dans le temps. Une mesure unique est une photo ; le suivi mensuel, c'est le film.</p>
+
+        <p>Le suivi régulier vous apporte trois choses : la <strong>preuve</strong> que les actions menées portent leurs fruits (ou le signal qu'il faut corriger le tir), la mesure de votre <strong>part de voix</strong> — votre position face aux établissements concurrents sur les mêmes requêtes — et un <strong>historique</strong> qui donne du sens à chaque progression. C'est ce qui distingue un référencement IA piloté d'un référencement subi.</p>
+
+        <hr class="divider">
+
+        <h2>Points clés à retenir</h2>
+
+        <ul class="key-points">
+          <li>Le GEO <strong>n'a pas encore</strong> d'équivalent à Google Analytics : la visibilité IA est invisible par défaut.</li>
+          <li>Le <strong>Score de Présence</strong> la rend mesurable, sous forme d'une note de <strong>0 à 100</strong> (Faible / Moyen / Bon).</li>
+          <li>Il couvre les <strong>quatre IA</strong> majeures : ChatGPT, Perplexity, Gemini et Claude.</li>
+          <li>Il se calcule à partir des <strong>requêtes réelles</strong> de vos clients, avec une classification <strong>cité / partiel / non cité</strong>.</li>
+          <li>Suivi <strong>mois après mois</strong>, il mesure vos progrès et votre <strong>part de voix</strong> face aux concurrents.</li>
+        </ul>
+
+        <hr class="divider">
+
+        <!-- FAQ -->
+        <section class="faq-section">
+          <h2>FAQ : mesurer sa visibilité sur les IA</h2>
+
+          <details>
+            <summary>Pourquoi le SEO et le GEO ne se mesurent-ils pas de la même façon&nbsp;?</summary>
+            <p class="faq-answer">Le SEO dispose d'outils standardisés (Google Analytics, Search Console) qui remontent trafic et positions. Le GEO n'a pas encore d'équivalent : les IA ne fournissent pas de tableau de bord de citations. Il faut donc une mesure dédiée, comme le Score de Présence.</p>
+          </details>
+
+          <details>
+            <summary>Sur quelles IA le Score de Présence est-il calculé&nbsp;?</summary>
+            <p class="faq-answer">Sur les quatre plateformes les plus utilisées pour trouver un restaurant ou un hôtel : ChatGPT, Perplexity, Gemini et Claude.</p>
+          </details>
+
+          <details>
+            <summary>À quelle fréquence faut-il mesurer sa visibilité IA&nbsp;?</summary>
+            <p class="faq-answer">Au minimum une fois par mois. Les modèles d'IA évoluent vite et la concurrence aussi : un suivi mensuel permet de voir les progrès et de réagir, là où une mesure ponctuelle ne dit rien de la tendance.</p>
+          </details>
+
+          <details>
+            <summary>Peut-on mesurer sa visibilité IA soi-même&nbsp;?</summary>
+            <p class="faq-answer">En partie : vous pouvez poser quelques requêtes à ChatGPT ou Perplexity et vérifier si votre nom apparaît. Mais sans méthode constante, sans liste de requêtes représentative et sans suivi dans le temps, les résultats ne sont ni fiables ni comparables.</p>
+          </details>
+        </section>
+
+        <hr class="divider">
+
+        <p>Le Score de Présence est au cœur de l'accompagnement <strong>Présens</strong> : il transforme votre visibilité IA en un indicateur clair, que nous faisons progresser mois après mois — pour que votre établissement passe de l'absence à la recommandation.</p>
+
+      </div><!-- /.article-body -->
+
+    </article>
+
+    <aside class="article-cta">
+      <span class="pill">AUDIT GRATUIT · 48H</span>
+      <h2 class="article-cta-title">Votre établissement est-il cité par les IA&nbsp;?</h2>
+      <p class="article-cta-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude — et vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
+      <a class="btn-cta" href="/audit">Demander mon audit gratuit →</a>
+    </aside>
+
+  </main>
+
+</body>
+</html>
