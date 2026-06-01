@@ -86,13 +86,14 @@
       z-index: 100;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 28px;
       padding: 8px 20px;
       background: rgba(26, 46, 38, 0.7);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--green-forest);
       border-radius: var(--radius-pill);
+      white-space: nowrap;
     }
 
     .nav-logo {
@@ -108,16 +109,106 @@
     .nav-logo .pre { color: #E8E0D0; }
     .nav-logo .sens { color: var(--green-sage); }
 
-    .nav-back {
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--text-tertiary);
-      text-decoration: none;
-      transition: color 200ms;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
     }
 
-    .nav-back:hover { color: var(--text-secondary); }
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .nav-link:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background 200ms ease;
+    }
+
+    .nav-cta:hover { background: #3a8a6a; }
+
+    .nav-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: border-color 200ms, color 200ms;
+    }
+
+    .nav-menu-btn:hover { border-color: var(--green-sage); color: var(--text-primary); }
+    .nav-menu-btn .icon-close { display: none; }
+    .nav-menu-btn.open .icon-menu { display: none; }
+    .nav-menu-btn.open .icon-close { display: block; }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px;
+      background: rgba(20, 40, 34, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      min-width: 150px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    .nav-dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    .nav-dropdown-item {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+      transition: background 180ms, color 180ms;
+    }
+
+    .nav-dropdown-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+    @media (max-width: 768px) {
+      .nav-links .nav-link { display: none; }
+      .nav-menu-btn { display: flex; }
+      #navbar { gap: 16px; }
+    }
 
     /* ── Main content ── */
     main {
@@ -342,11 +433,31 @@
        bottom:10%;left:10%;filter:blur(85px);"></div>
 
   <!-- Navbar -->
-  <nav id="navbar" aria-label="Navigation">
+  <nav id="navbar" aria-label="Navigation principale">
     <a class="nav-logo" href="/" aria-label="Présens — retour à l'accueil">
       <span class="pre">Pré</span><span class="sens">sens</span>
     </a>
-    <a class="nav-back" href="/">← Retour</a>
+    <div class="nav-links">
+      <a class="nav-link" href="/#section-2">Méthode</a>
+      <a class="nav-link" href="/#section-4">Tarifs</a>
+      <a class="nav-link" href="/#section-3">Le fondateur</a>
+      <a class="nav-link" href="/#section-5">FAQ</a>
+      <a class="nav-link" href="/blog">Blog</a>
+      <a class="nav-cta" href="/audit">AUDIT GRATUIT →</a>
+    </div>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu" aria-expanded="false">
+      <svg class="icon-menu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+      <svg class="icon-close" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="nav-dropdown" id="nav-dropdown" role="menu">
+      <a class="nav-dropdown-item" href="/#section-4" role="menuitem">Tarifs</a>
+      <a class="nav-dropdown-item" href="/#section-5" role="menuitem">FAQ</a>
+      <a class="nav-dropdown-item" href="/blog" role="menuitem">Blog</a>
+    </div>
   </nav>
 
   <!-- Contenu principal -->
@@ -463,6 +574,33 @@
           btn.disabled = false;
           btn.textContent = 'Recevoir mon audit →';
         });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var menuBtn = document.getElementById('nav-menu-btn');
+      var dropdown = document.getElementById('nav-dropdown');
+      if (!menuBtn || !dropdown) return;
+      menuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = dropdown.classList.contains('open');
+        dropdown.classList.toggle('open', !isOpen);
+        menuBtn.classList.toggle('open', !isOpen);
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+      dropdown.querySelectorAll('.nav-dropdown-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          dropdown.classList.remove('open');
+          menuBtn.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.addEventListener('click', function () {
+        dropdown.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
       });
     })();
   </script>
