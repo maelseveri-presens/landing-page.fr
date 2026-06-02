@@ -57,6 +57,7 @@
       background: var(--bg-main);
       color: var(--text-primary);
       font-family: var(--font-body);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -203,6 +204,13 @@
     }
 
     .nav-dropdown-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+    @media (min-width: 1024px) {
+      #navbar { padding: 14px 32px; gap: 36px; }
+      .nav-links { gap: 36px; }
+      .nav-link { font-size: 14px; font-weight: 500; }
+      .nav-logo { font-size: 22px; }
+    }
 
     @media (max-width: 768px) {
       .nav-links .nav-link { display: none; }

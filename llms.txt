@@ -25,7 +25,7 @@ Présens propose trois plans d'accompagnement mensuel, sans engagement de durée
 
 ## Offre Partenaire Fondateur
 
-Réservée aux 20 premiers clients, l'offre Partenaire Fondateur inclut : setup à 150 € (au lieu de 500 à 1 800 €), deux premiers mois d'abonnement offerts, tarif fondateur verrouillé à vie (les augmentations de tarifs futures ne s'appliquent pas), et garantie de citation dans au moins un LLM majeur sous 60 jours ou prolongation gratuite.
+Réservée aux 20 premiers clients, l'offre Partenaire Fondateur inclut : setup à 200 € (au lieu de 500 à 1 800 €), deux premiers mois d'abonnement offerts, tarif fondateur verrouillé à vie (les augmentations de tarifs futures ne s'appliquent pas), et garantie de citation dans au moins un LLM majeur sous 60 jours ou prolongation gratuite.
 
 ## Méthodologie Présens
 
@@ -52,7 +52,7 @@ Le SEO (Search Engine Optimization) optimise la visibilité d'un site dans les m
 Les premières citations dans les LLMs apparaissent généralement entre 4 et 8 semaines après le début des optimisations. Une présence régulière et significative est mesurable à partir du deuxième mois. C'est pourquoi Présens offre les deux premiers mois d'abonnement aux clients Partenaires Fondateurs : le paiement commence au moment où les résultats deviennent visibles.
 
 **Combien coûte le référencement GEO en France pour un restaurant ou un hôtel ?**
-Chez Présens, les abonnements démarrent à 240 €/mois pour un établissement indépendant (formule Présent) et 680 €/mois pour les gastronomiques et hôtels boutiques (formule Cité), avec des frais de mise en place de 380 € et 980 € respectivement. La formule Référent, destinée aux établissements de prestige et aux groupes, est proposée sur devis. Une offre de lancement réduit la mise en place à 150 € avec deux mois offerts pour les vingt premiers partenaires.
+Chez Présens, les abonnements démarrent à 240 €/mois pour un établissement indépendant (formule Présent) et 680 €/mois pour les gastronomiques et hôtels boutiques (formule Cité), avec des frais de mise en place de 380 € et 980 € respectivement. La formule Référent, destinée aux établissements de prestige et aux groupes, est proposée sur devis. Une offre de lancement réduit la mise en place à 200 € avec deux mois offerts pour les vingt premiers partenaires.
 
 **Comment être cité par ChatGPT pour son restaurant ou son hôtel ?**
 Pour être cité par ChatGPT, un établissement doit combiner plusieurs signaux : un fichier llms.txt à la racine de son site qui décrit clairement son identité et ses services, un balisage schema.org riche (Restaurant, Hotel, FAQPage, Menu), une présence dans des sources d'autorité que les LLMs consultent (Wikipedia, presse spécialisée, guides reconnus comme Michelin, Gault & Millau, Le Fooding, Tablet Hotels), et un contenu sémantique optimisé pour les requêtes conversationnelles. Le studio Présens accompagne précisément ce travail.
@@ -78,7 +78,7 @@ Demander un audit : https://presens.site/audit
 Présens publie des articles sur le GEO appliqué à l'hôtellerie-restauration : https://presens.site/blog
 
 Articles disponibles :
-- GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ? → https://presens.site/blog/geo-vs-seo-restaurants-hotels
+- GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ? → https://presens.site/blog/geo-vs-seo-restaurant-hotel
 - Comment faire citer votre restaurant par ChatGPT ? → https://presens.site/blog/chatgpt-cite-restaurant-comment
 - llms.txt : le fichier qui change tout pour votre référencement IA → https://presens.site/blog/llms-txt-guide-hotellerie-restauration
 - Score de Présence : comment mesurer votre visibilité sur les IA ? → https://presens.site/blog/score-presence-llm-mesurer-visibilite-ia
