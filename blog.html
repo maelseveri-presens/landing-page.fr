@@ -10,8 +10,8 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://presens.site/blog">
   <meta name="theme-color" content="#0F1F18">
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-  <link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="apple-touch-icon" href="/favicon.svg?v=2">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://presens.site/blog">
   <meta property="og:title" content="Blog · Présens — GEO pour restaurants & hôtels">
@@ -276,19 +276,11 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── Featured article (1ère carte grande) ── */
+    /* ── Featured article (1ère carte, pleine largeur) ── */
     .article-card.featured {
       grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 40px;
-    }
-
-    .article-card.featured .article-body {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      flex: 1;
+      border-color: var(--green-cta);
+      background: rgba(45, 107, 82, 0.10);
     }
 
     .article-card.featured .article-title {
@@ -297,37 +289,19 @@
 
     .article-card.featured .article-excerpt {
       font-size: 14px;
+      max-width: 720px;
     }
 
-    .article-card.featured .article-label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-width: 180px;
-      height: 120px;
-      background: rgba(45, 107, 82, 0.15);
-      border: 1px solid var(--green-cta);
-      border-radius: var(--radius-md);
-      gap: 4px;
-      flex-shrink: 0;
-    }
-
-    .article-label-num {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 36px;
-      color: var(--green-sage);
-      line-height: 1;
-    }
-
-    .article-label-text {
+    .article-featured-tag {
       font-family: var(--font-ui);
       font-size: 9px;
       font-weight: 600;
-      color: var(--text-tertiary);
       letter-spacing: var(--ls-pill);
       text-transform: uppercase;
+      color: var(--green-mint);
+      background: rgba(155, 234, 200, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
     }
 
     /* ── CTA newsletter ── */
@@ -394,17 +368,6 @@
         grid-template-columns: 1fr;
       }
 
-      .article-card.featured {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .article-card.featured .article-label {
-        width: 100%;
-        min-width: unset;
-        height: 80px;
-      }
-
       main {
         padding-top: 96px;
       }
@@ -437,7 +400,7 @@
     <header class="blog-header">
       <span class="pill">RESSOURCES · GEO</span>
       <h1 class="blog-title">Le GEO expliqué aux<br><em>professionnels de l'hôtellerie.</em></h1>
-      <p class="blog-sub">Stratégies, méthodes et analyses pour être cité par ChatGPT, Perplexity et Gemini —
+      <p class="blog-sub">Stratégies, méthodes et analyses pour être cité par ChatGPT, Perplexity et Gemini,
         rédigées par Maël, fondateur de Présens.</p>
     </header>
 
@@ -447,21 +410,16 @@
 
         <!-- Article featured -->
         <a class="article-card featured" href="/blog/geo-vs-seo-restaurant-hotel">
-          <div class="article-label" aria-hidden="true">
-            <span class="article-label-num">#1</span>
-            <span class="article-label-text">À lire en premier</span>
+          <div class="article-meta">
+            <span class="article-featured-tag">À lire en premier</span>
+            <span class="article-cat">Fondamentaux</span>
+            <span class="article-date">Mai 2026 · 8 min</span>
           </div>
-          <div class="article-body">
-            <div class="article-meta">
-              <span class="article-cat">Fondamentaux</span>
-              <span class="article-date">Mai 2026 · 8 min</span>
-            </div>
-            <h2 class="article-title">GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ?</h2>
-            <p class="article-excerpt">Le SEO vise Google. Le GEO vise les IA conversationnelles. Deux disciplines, deux
-              logiques, deux fenêtres de tir — et une seule qui est encore en phase d'adoption. Comprendre la
-              différence, c'est comprendre pourquoi la place est encore à prendre.</p>
-            <span class="article-read">Lire l'article →</span>
-          </div>
+          <h2 class="article-title">GEO vs SEO : quelle est la différence pour un restaurant ou un hôtel ?</h2>
+          <p class="article-excerpt">Le SEO vise Google. Le GEO vise les IA conversationnelles. Deux disciplines, deux
+            logiques, deux fenêtres de tir, et une seule qui est encore en phase d'adoption. Comprendre la
+            différence, c'est comprendre pourquoi la place est encore à prendre.</p>
+          <span class="article-read">Lire l'article →</span>
         </a>
 
         <!-- Article 2 -->
@@ -510,7 +468,7 @@
           </div>
           <h2 class="article-title">Perplexity, Gemini, Claude : quelles IA citer votre établissement en priorité ?</h2>
           <p class="article-excerpt">Chaque moteur génératif a ses propres sources, ses propres biais et ses propres
-            logiques de recommandation. Une stratégie GEO efficace tient compte de ces différences — pas une seule
+            logiques de recommandation. Une stratégie GEO efficace tient compte de ces différences : pas une seule
             d'entre elles ne se ressemble.</p>
           <span class="article-read">Lire l'article →</span>
         </a>
@@ -522,8 +480,8 @@
     <aside class="blog-newsletter">
       <span class="pill">AUDIT GRATUIT · 48H</span>
       <h2 class="blog-newsletter-title">Votre établissement est-il cité par les IA ?</h2>
-      <p class="blog-newsletter-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude —
-        et vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
+      <p class="blog-newsletter-sub">En 48h, Maël analyse votre visibilité sur ChatGPT, Perplexity, Gemini et Claude,
+        puis vous envoie un rapport personnalisé. Gratuit, sans engagement.</p>
       <a class="btn-cta" href="/audit">Demander mon audit gratuit →</a>
     </aside>
 
