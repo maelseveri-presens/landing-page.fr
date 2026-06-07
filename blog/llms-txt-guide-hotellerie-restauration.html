@@ -228,6 +228,7 @@
 
     .key-points {
       display: flex; flex-direction: column; gap: 10px;
+      list-style: none;
       background: var(--bg-card);
       border: 1px solid var(--green-forest);
       border-radius: var(--radius-md);
@@ -237,10 +238,10 @@
     .key-points li {
       font-family: var(--font-body); font-size: 14px; font-weight: 300;
       color: var(--text-secondary); line-height: 1.6;
-      display: flex; gap: 10px; align-items: flex-start;
+      position: relative; padding-left: 22px;
     }
 
-    .key-points li::before { content: '→'; color: var(--green-cta); font-weight: 600; flex-shrink: 0; }
+    .key-points li::before { content: '→'; position: absolute; left: 0; top: 0; color: var(--green-cta); font-weight: 600; }
 
     .faq-section { display: flex; flex-direction: column; gap: 4px; }
     .faq-section h2 { margin-bottom: 8px; }

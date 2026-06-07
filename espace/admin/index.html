@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Présens</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0F1F18">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="stylesheet" href="/espace/espace.css">
+</head>
+
+<body>
+  <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(45,107,82,0.5),transparent 70%);top:-140px;left:50%;transform:translateX(-50%);filter:blur(115px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-link" href="/cdn-cgi/access/logout">Déconnexion</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="pill">ADMINISTRATION</span>
+      <h1>Espace <em>admin.</em></h1>
+    </div>
+    <p class="msg err" id="gate"></p>
+    <div id="panel" style="display:none; flex-direction:column; gap:24px;">
+
+      <!-- Création / édition client -->
+      <div class="card">
+        <h2>Profil client</h2>
+        <form id="clientForm">
+          <input type="hidden" id="c_id">
+          <div class="form-grid">
+            <div class="field"><label>Établissement *</label><input id="c_etab" required></div>
+            <div class="field"><label>Email *</label><input id="c_email" type="email" required></div>
+            <div class="field"><label>Formule</label><input id="c_formule" placeholder="Présent / Cité / Référent"></div>
+            <div class="field"><label>Montant mensuel (€)</label><input id="c_montant" type="number" step="0.01"></div>
+            <div class="field"><label>Date de début</label><input id="c_debut" type="date"></div>
+            <div class="field"><label>Durée d'engagement (mois)</label><input id="c_duree" type="number" value="12"></div>
+            <div class="field"><label>GoCardless subscription ID</label><input id="c_sub"></div>
+            <div class="field"><label>GoCardless mandate ID</label><input id="c_mandate"></div>
+            <div class="field"><label>Statut</label>
+              <select id="c_statut">
+                <option value="actif">actif</option>
+                <option value="resiliation_planifiee">resiliation_planifiee</option>
+                <option value="resilie">resilie</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
+            <button class="btn-cta" type="submit" id="saveBtn">Enregistrer →</button>
+            <button class="btn-outline" type="button" id="resetBtn">Nouveau</button>
+          </div>
+          <p class="msg" id="clientMsg"></p>
+        </form>
+      </div>
+
+      <!-- Liste clients -->
+      <div class="card">
+        <h2>Clients</h2>
+        <div id="clientsList"><p class="empty">Chargement…</p></div>
+      </div>
+
+      <!-- Upload document -->
+      <div class="card">
+        <h2>Déposer un document</h2>
+        <form id="upForm">
+          <div class="form-grid">
+            <div class="field"><label>Client *</label><select id="u_client" required></select></div>
+            <div class="field"><label>Type *</label>
+              <select id="u_type"><option value="audit">audit</option><option value="rapport">rapport</option><option value="facture">facture</option></select>
+            </div>
+            <div class="field"><label>Période</label><input id="u_periode" placeholder="Mai 2026"></div>
+            <div class="field"><label>Fichier *</label><input id="u_file" type="file" required></div>
+          </div>
+          <div style="margin-top:14px;"><button class="btn-cta" type="submit" id="upBtn">Déposer →</button></div>
+          <p class="msg" id="upMsg"></p>
+        </form>
+      </div>
+
+      <!-- Résiliations -->
+      <div class="card">
+        <h2>Demandes de résiliation</h2>
+        <div id="resList"><p class="empty">Chargement…</p></div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var gate = document.getElementById('gate');
+      var panel = document.getElementById('panel');
+      function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+      function fmtDate(d){ if(!d) return '—'; try { return new Date(d+'T00:00:00Z').toLocaleDateString('fr-FR'); } catch(e){ return d; } }
+      function setMsg(el, txt, ok){ el.textContent = txt; el.className = 'msg show ' + (ok ? 'ok' : 'err'); }
+
+      fetch('/espace/api/me').then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+        .then(function(res){
+          if (!res.ok || res.d.role !== 'admin') { gate.textContent = 'Réservé à l\'administrateur.'; gate.classList.add('show'); return; }
+          panel.style.display = 'flex';
+          loadClients(); loadResiliations();
+        }).catch(function(){ gate.textContent = 'Connexion impossible.'; gate.classList.add('show'); });
+
+      // ---- Clients ----
+      function loadClients() {
+        fetch('/espace/api/admin/clients').then(function(r){return r.json();}).then(function(d){
+          var list = document.getElementById('clientsList');
+          var sel = document.getElementById('u_client');
+          var clients = d.clients || [];
+          if (!clients.length) { list.innerHTML = '<p class="empty">Aucun client.</p>'; sel.innerHTML=''; return; }
+          list.innerHTML = '<table><thead><tr><th>Établissement</th><th>Email</th><th>Formule</th><th>Statut</th><th></th></tr></thead><tbody>' +
+            clients.map(function(c){
+              return '<tr><td style="color:var(--text-primary)">'+esc(c.etablissement)+'</td><td>'+esc(c.email)+'</td><td>'+esc(c.formule||'—')+'</td><td>'+esc(c.statut)+'</td>'+
+                '<td><a href="#" class="nav-link editc" data-id="'+esc(c.id)+'">Éditer</a></td></tr>';
+            }).join('') + '</tbody></table>';
+          sel.innerHTML = clients.map(function(c){ return '<option value="'+esc(c.id)+'">'+esc(c.etablissement)+'</option>'; }).join('');
+          window.__clients = clients;
+          Array.prototype.forEach.call(document.querySelectorAll('.editc'), function(a){
+            a.addEventListener('click', function(e){ e.preventDefault(); fillForm((window.__clients||[]).find(function(x){return x.id===a.dataset.id;})); });
+          });
+        });
+      }
+      function fillForm(c){
+        if(!c) return;
+        document.getElementById('c_id').value = c.id;
+        document.getElementById('c_etab').value = c.etablissement||'';
+        document.getElementById('c_email').value = c.email||'';
+        document.getElementById('c_formule').value = c.formule||'';
+        document.getElementById('c_montant').value = c.montant_mensuel!=null?c.montant_mensuel:'';
+        document.getElementById('c_debut').value = c.date_debut||'';
+        document.getElementById('c_duree').value = c.duree_engagement_mois!=null?c.duree_engagement_mois:12;
+        document.getElementById('c_sub').value = c.gocardless_subscription_id||'';
+        document.getElementById('c_mandate').value = c.gocardless_mandate_id||'';
+        document.getElementById('c_statut').value = c.statut||'actif';
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+      document.getElementById('resetBtn').addEventListener('click', function(){ document.getElementById('clientForm').reset(); document.getElementById('c_id').value=''; });
+
+      document.getElementById('clientForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var btn = document.getElementById('saveBtn'); btn.disabled = true;
+        var body = {
+          id: document.getElementById('c_id').value || undefined,
+          etablissement: document.getElementById('c_etab').value,
+          email: document.getElementById('c_email').value,
+          formule: document.getElementById('c_formule').value,
+          montant_mensuel: document.getElementById('c_montant').value,
+          date_debut: document.getElementById('c_debut').value,
+          duree_engagement_mois: document.getElementById('c_duree').value,
+          gocardless_subscription_id: document.getElementById('c_sub').value,
+          gocardless_mandate_id: document.getElementById('c_mandate').value,
+          statut: document.getElementById('c_statut').value,
+        };
+        fetch('/espace/api/admin/clients', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) })
+          .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+          .then(function(rr){
+            btn.disabled=false;
+            if(!rr.ok){ setMsg(document.getElementById('clientMsg'), rr.d.error||'Erreur.', false); return; }
+            setMsg(document.getElementById('clientMsg'), 'Profil enregistré.', true);
+            document.getElementById('clientForm').reset(); document.getElementById('c_id').value='';
+            loadClients();
+          }).catch(function(){ btn.disabled=false; setMsg(document.getElementById('clientMsg'),'Connexion impossible.',false); });
+      });
+
+      // ---- Upload ----
+      document.getElementById('upForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var btn = document.getElementById('upBtn'); btn.disabled = true;
+        var fd = new FormData();
+        fd.append('client_id', document.getElementById('u_client').value);
+        fd.append('type', document.getElementById('u_type').value);
+        fd.append('periode', document.getElementById('u_periode').value);
+        fd.append('file', document.getElementById('u_file').files[0]);
+        fetch('/espace/api/admin/upload', { method:'POST', body: fd })
+          .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+          .then(function(rr){
+            btn.disabled=false;
+            if(!rr.ok){ setMsg(document.getElementById('upMsg'), rr.d.error||'Erreur.', false); return; }
+            setMsg(document.getElementById('upMsg'), 'Document déposé.', true);
+            document.getElementById('upForm').reset();
+          }).catch(function(){ btn.disabled=false; setMsg(document.getElementById('upMsg'),'Connexion impossible.',false); });
+      });
+
+      // ---- Résiliations ----
+      function loadResiliations() {
+        fetch('/espace/api/admin/resiliations').then(function(r){return r.json();}).then(function(d){
+          var box = document.getElementById('resList');
+          var rows = d.resiliations || [];
+          if (!rows.length) { box.innerHTML = '<p class="empty">Aucune demande.</p>'; return; }
+          box.innerHTML = '<table><thead><tr><th>Établissement</th><th>Demandé le</th><th>Effet</th><th>Traité</th></tr></thead><tbody>' +
+            rows.map(function(r){
+              return '<tr><td style="color:var(--text-primary)">'+esc(r.etablissement)+'</td><td>'+fmtDate(r.date_demande)+'</td>'+
+                '<td class="highlight">'+fmtDate(r.date_effet)+'</td><td>'+(r.traite?'oui':'en attente')+'</td></tr>';
+            }).join('') + '</tbody></table>';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

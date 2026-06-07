@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mettre en place le prélèvement · Présens</title>
+  <meta name="description"
+    content="Mettez en place votre prélèvement SEPA mensuel en 2 minutes, sécurisé par GoCardless.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0F1F18">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .nav-back:hover { color: var(--text-secondary); }
+
+    /* ── Contenu ── */
+    main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 560px;
+      padding: 140px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .card {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 40px 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-secondary);
+    }
+
+    .pill::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green-mint);
+      box-shadow: 0 0 12px var(--green-mint);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4.5vw, 38px);
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    h1 em { font-style: italic; color: var(--green-mint); }
+
+    .lead {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 420px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--green-cta);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background 200ms ease;
+      margin-top: 6px;
+    }
+
+    .btn-cta:hover { background: #3a8a6a; }
+    .btn-cta:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .secure {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .form-error {
+      display: none;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: #E5A3A3;
+      background: rgba(180, 90, 90, 0.10);
+      border: 1px solid rgba(180, 90, 90, 0.35);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb" style="width:520px;height:520px;
+       background:radial-gradient(circle,rgba(45,107,82,0.55),transparent 70%);
+       top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(115px);"></div>
+  <div class="orb" style="width:300px;height:300px;
+       background:radial-gradient(circle,rgba(155,234,200,0.40),transparent 70%);
+       top:10%;right:8%;filter:blur(85px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+    <a class="nav-back" href="/">← Retour</a>
+  </nav>
+
+  <main>
+    <div class="card">
+      <span class="pill">PRÉLÈVEMENT SEPA</span>
+      <h1>Mettez en place votre <em>prélèvement mensuel.</em></h1>
+      <p class="lead">En 2 minutes, sécurisé par GoCardless. Vous signez votre mandat SEPA en ligne,
+        sans paperasse. Aucune coordonnée bancaire ne transite par notre site.</p>
+
+      <button class="btn-cta" id="mandate-btn" type="button">Mettre en place le prélèvement →</button>
+      <p class="secure">Paiement sécurisé · Mandat SEPA · Résiliable à tout moment</p>
+
+      <p class="form-error" id="mandate-error" role="alert" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('mandate-btn');
+      var err = document.getElementById('mandate-error');
+
+      function showError(msg) {
+        err.textContent = msg;
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Mettre en place le prélèvement →';
+      }
+
+      btn.addEventListener('click', function () {
+        err.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Redirection en cours…';
+
+        fetch('/api/create-mandate', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+        })
+          .then(function (res) {
+            return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+          })
+          .then(function (r) {
+            if (r.ok && r.data && r.data.authorisation_url) {
+              window.location.href = r.data.authorisation_url;
+            } else {
+              showError((r.data && r.data.error) || "Une erreur est survenue. Merci de réessayer.");
+            }
+          })
+          .catch(function () {
+            showError("Connexion impossible. Vérifiez votre réseau et réessayez.");
+          });
+      });
+    })();
+  </script>
+
+</body>
+</html>

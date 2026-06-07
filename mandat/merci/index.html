@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandat en place · Présens</title>
+  <meta name="description" content="Votre mandat de prélèvement SEPA est en place. Merci.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0F1F18">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-card: #1A2E26;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100dvh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #navbar {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+
+    main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 560px;
+      padding: 140px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+    }
+
+    .check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(45, 107, 82, 0.22);
+      border: 1px solid var(--green-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: var(--green-mint);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4.5vw, 38px);
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    h1 em { font-style: italic; color: var(--green-mint); }
+
+    .lead {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 420px;
+    }
+
+    .state {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-tertiary);
+      min-height: 18px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      background: var(--green-cta);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background 200ms ease;
+      margin-top: 8px;
+    }
+
+    .btn-cta:hover { background: #3a8a6a; }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb" style="width:520px;height:520px;
+       background:radial-gradient(circle,rgba(45,107,82,0.55),transparent 70%);
+       top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(115px);"></div>
+  <div class="orb" style="width:300px;height:300px;
+       background:radial-gradient(circle,rgba(155,234,200,0.40),transparent 70%);
+       top:10%;right:8%;filter:blur(85px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </a>
+  </nav>
+
+  <main>
+    <div class="check" aria-hidden="true">✓</div>
+    <h1>Votre mandat est <em>en place.</em></h1>
+    <p class="lead">Merci. Votre prélèvement SEPA mensuel est désormais actif. Vous recevrez une
+      confirmation de GoCardless par email.</p>
+    <p class="state" id="state" aria-live="polite"></p>
+    <a class="btn-cta" href="/">Retour à l'accueil →</a>
+  </main>
+
+  <script>
+    (function () {
+      var stateEl = document.getElementById('state');
+      var params = new URLSearchParams(window.location.search);
+      var br = params.get('br');
+
+      if (!br) {
+        // Pas de référence : on reste sur le message de remerciement neutre.
+        return;
+      }
+
+      stateEl.textContent = 'Finalisation en cours…';
+
+      fetch('/api/complete-mandate?br=' + encodeURIComponent(br), {
+        headers: { 'Accept': 'application/json' },
+      })
+        .then(function (res) {
+          return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+        })
+        .then(function (r) {
+          if (r.ok && r.data && r.data.status === 'fulfilled') {
+            stateEl.textContent = 'Mandat confirmé.';
+          } else if (r.ok) {
+            stateEl.textContent = 'Mandat enregistré, confirmation en cours de traitement.';
+          } else {
+            stateEl.textContent = 'Mandat enregistré. Si besoin, notre équipe vous recontactera.';
+          }
+        })
+        .catch(function () {
+          stateEl.textContent = 'Mandat enregistré.';
+        });
+    })();
+  </script>
+
+</body>
+</html>

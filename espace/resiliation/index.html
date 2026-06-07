@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Se désabonner · Présens</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0F1F18">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="stylesheet" href="/espace/espace.css">
+</head>
+
+<body>
+  <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(45,107,82,0.5),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-link" href="/espace/">← Mon espace</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="pill">RÉSILIATION</span>
+      <h1>Se <em>désabonner.</em></h1>
+    </div>
+    <p class="msg err" id="error"></p>
+
+    <div class="card" id="recap">
+      <p class="note">Chargement du récapitulatif…</p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var recap = document.getElementById('recap');
+      var errEl = document.getElementById('error');
+      function showError(m) { errEl.textContent = m; errEl.classList.add('show'); }
+      function fmtDate(d) { if (!d) return '—'; try { return new Date(d + 'T00:00:00Z').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
+      function fmtMoney(n) { return (n == null) ? '—' : Number(n).toLocaleString('fr-FR') + ' € / mois'; }
+
+      fetch('/espace/api/resiliation', { headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok) { showError(res.d.error || 'Accès refusé.'); recap.style.display = 'none'; return; }
+          var d = res.d;
+
+          if (d.statut !== 'actif') {
+            recap.innerHTML =
+              '<h2>Résiliation déjà enregistrée</h2>' +
+              '<p class="note">Votre abonnement prendra fin le <span class="highlight">' + fmtDate(d.date_effet) + '</span>. ' +
+              'Vous restez facturé jusqu\'à cette date.</p>' +
+              '<a class="btn-outline" href="/espace/">Retour à mon espace</a>';
+            return;
+          }
+
+          recap.innerHTML =
+            '<h2>Avant de confirmer</h2>' +
+            '<p class="note">Votre abonnement (' + fmtMoney(d.montant_mensuel) + ') prendra fin le ' +
+            '<span class="highlight">' + fmtDate(d.date_effet) + '</span>.</p>' +
+            '<p class="note">⚠️ Conformément à votre engagement, votre abonnement <strong>reste actif et facturé ' +
+            'jusqu\'à cette date</strong>. Aucun remboursement des échéances déjà dues n\'est effectué. ' +
+            'Passé cette date, aucun prélèvement ne sera plus réalisé.</p>' +
+            '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;">' +
+            '<button class="btn-cta" id="confirm">Confirmer la résiliation →</button>' +
+            '<a class="btn-outline" href="/espace/">Annuler</a>' +
+            '</div>' +
+            '<p class="msg ok" id="done"></p>';
+
+          document.getElementById('confirm').addEventListener('click', function () {
+            var btn = this;
+            btn.disabled = true; btn.textContent = 'Envoi…';
+            errEl.classList.remove('show');
+            fetch('/espace/api/resiliation', { method: 'POST', headers: { 'Accept': 'application/json' } })
+              .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, d: j }; }); })
+              .then(function (rr) {
+                if (!rr.ok) { showError(rr.d.error || 'Erreur lors de la résiliation.'); btn.disabled = false; btn.textContent = 'Confirmer la résiliation →'; return; }
+                recap.innerHTML =
+                  '<h2>Résiliation confirmée</h2>' +
+                  '<p class="note">C\'est noté. Votre abonnement prendra fin le <span class="highlight">' + fmtDate(rr.d.date_effet) + '</span>. ' +
+                  'Un email de confirmation vous a été envoyé.</p>' +
+                  '<a class="btn-outline" href="/espace/">Retour à mon espace</a>';
+              })
+              .catch(function () { showError('Connexion impossible.'); btn.disabled = false; btn.textContent = 'Confirmer la résiliation →'; });
+          });
+        })
+        .catch(function () { showError('Connexion impossible.'); recap.style.display = 'none'; });
+    })();
+  </script>
+</body>
+</html>

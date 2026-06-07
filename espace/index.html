@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace client · Présens</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0F1F18">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="stylesheet" href="/espace/espace.css">
+</head>
+
+<body>
+  <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(45,107,82,0.5),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);"></div>
+  <div class="orb" style="width:320px;height:320px;background:radial-gradient(circle,rgba(155,234,200,0.34),transparent 70%);bottom:10%;right:-60px;filter:blur(90px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-link" href="/cdn-cgi/access/logout">Déconnexion</a>
+  </nav>
+
+  <main id="app">
+    <div class="page-head">
+      <span class="pill">ESPACE CLIENT</span>
+      <h1 id="title">Chargement…</h1>
+    </div>
+    <p class="msg err" id="error"></p>
+    <div id="content"></div>
+  </main>
+
+  <script>
+    (function () {
+      var content = document.getElementById('content');
+      var title = document.getElementById('title');
+      var errEl = document.getElementById('error');
+
+      function showError(m) { errEl.textContent = m; errEl.classList.add('show'); title.textContent = 'Espace client'; }
+      function fmtDate(d) { if (!d) return '—'; try { return new Date(d + 'T00:00:00Z').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
+      function fmtMoney(n) { return (n == null) ? '—' : Number(n).toLocaleString('fr-FR') + ' € / mois'; }
+      function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+      var STATUT_LABEL = { actif: 'Actif', resiliation_planifiee: 'Résiliation planifiée', resilie: 'Résilié' };
+
+      fetch('/espace/api/me', { headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok) { showError(res.d.error || 'Accès refusé.'); return; }
+          var me = res.d;
+
+          if (me.role === 'admin') {
+            title.textContent = 'Administration';
+            content.innerHTML =
+              '<div class="card"><p class="note">Vous êtes connecté en tant qu\'administrateur.</p>' +
+              '<a class="btn-cta" href="/espace/admin/">Ouvrir l\'espace admin →</a></div>';
+            return;
+          }
+
+          title.innerHTML = 'Bonjour, <em>' + esc(me.etablissement) + '.</em>';
+          var statutClass = me.statut || 'actif';
+          var statutTxt = STATUT_LABEL[me.statut] || me.statut;
+
+          var html =
+            '<div class="card">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">' +
+            '<h2 style="margin:0;">Votre abonnement</h2>' +
+            '<span class="badge ' + esc(statutClass) + '">' + esc(statutTxt) + '</span>' +
+            '</div>' +
+            '<div class="info-grid">' +
+            '<div class="info-item"><span class="info-label">Formule</span><span class="info-value">' + esc(me.formule || '—') + '</span></div>' +
+            '<div class="info-item"><span class="info-label">Montant</span><span class="info-value">' + esc(fmtMoney(me.montant_mensuel)) + '</span></div>' +
+            '<div class="info-item"><span class="info-label">Début d\'abonnement</span><span class="info-value">' + esc(fmtDate(me.date_debut)) + '</span></div>' +
+            '<div class="info-item"><span class="info-label">Fin d\'engagement</span><span class="info-value">' + esc(fmtDate(me.fin_engagement)) + '</span></div>' +
+            '</div>';
+
+          if (me.statut === 'resiliation_planifiee') {
+            html += '<p class="note">Résiliation planifiée. Votre abonnement reste actif et facturé jusqu\'au <span class="highlight">' + esc(fmtDate(me.date_effet_si_resiliation)) + '</span>.</p>';
+          } else if (me.statut === 'actif') {
+            html += '<div style="margin-top:4px;"><a class="btn-danger" href="/espace/resiliation/">Se désabonner →</a></div>';
+          }
+          html += '</div>';
+
+          // Documents
+          html += '<div class="card"><h2>Vos documents</h2><div class="doc-list" id="docs"><p class="empty">Chargement…</p></div></div>';
+          content.innerHTML = html;
+
+          fetch('/espace/api/documents', { headers: { 'Accept': 'application/json' } })
+            .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(function (dr) {
+              var box = document.getElementById('docs');
+              if (!dr.ok) { box.innerHTML = '<p class="empty">Impossible de charger les documents.</p>'; return; }
+              var docs = dr.d.documents || [];
+              if (!docs.length) { box.innerHTML = '<p class="empty">Aucun document pour le moment.</p>'; return; }
+              box.innerHTML = docs.map(function (doc) {
+                return '<a class="doc-row" href="/espace/api/document?id=' + encodeURIComponent(doc.id) + '">' +
+                  '<span class="doc-main"><span class="doc-type">' + esc(doc.type) + '</span>' +
+                  '<span class="doc-name">' + esc(doc.filename) + '</span></span>' +
+                  '<span class="doc-meta">' + esc(doc.periode || fmtDate((doc.uploaded_at || '').slice(0, 10))) + ' ↓</span></a>';
+              }).join('');
+            });
+        })
+        .catch(function () { showError('Connexion impossible.'); });
+    })();
+  </script>
+</body>
+</html>

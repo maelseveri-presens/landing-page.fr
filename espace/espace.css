@@ -1,0 +1,167 @@
+/* ============================================================
+   Présens — espace client (charte)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --bg-main: #0F1F18;
+  --bg-deep: #142822;
+  --bg-card: #1A2E26;
+  --bg-hover: #21372C;
+  --green-cta: #2D6B52;
+  --green-sage: #B8DDC8;
+  --green-mint: #9BEAC8;
+  --green-forest: #1F3A2D;
+  --text-primary: #F0F5F2;
+  --text-secondary: #9CADA5;
+  --text-tertiary: #6B7A73;
+  --font-display: 'Lora', Georgia, serif;
+  --font-ui: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --ls-pill: 0.18em;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100%;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { position: relative; overflow-x: hidden; min-height: 100dvh; }
+
+.orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+/* ── Navbar ── */
+#navbar {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 100; display: flex; align-items: center; gap: 20px;
+  padding: 8px 20px;
+  background: rgba(26, 46, 38, 0.7);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+.nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
+.nav-logo .pre { color: #E8E0D0; }
+.nav-logo .sens { color: var(--green-sage); }
+.nav-link { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
+.nav-link:hover { color: var(--text-secondary); }
+
+/* ── Layout ── */
+main {
+  position: relative; z-index: 10;
+  width: 100%; max-width: 880px; margin: 0 auto;
+  padding: 130px 24px 80px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+.page-head { display: flex; flex-direction: column; gap: 10px; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 9px; width: fit-content;
+  font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: var(--ls-pill); color: var(--text-secondary);
+}
+.pill::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green-mint); box-shadow: 0 0 12px var(--green-mint); flex-shrink: 0;
+}
+
+h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); line-height: 1.12; color: var(--text-primary); }
+h1 em { font-style: italic; color: var(--green-mint); }
+h2 { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+
+.card {
+  background: var(--bg-card); border: 1px solid var(--green-forest);
+  border-radius: var(--radius-md); padding: 26px 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+/* ── Grille d'infos ── */
+.info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 28px; }
+.info-item { display: flex; flex-direction: column; gap: 3px; }
+.info-label { font-family: var(--font-ui); font-size: 10px; font-weight: 600; letter-spacing: var(--ls-pill); text-transform: uppercase; color: var(--text-tertiary); }
+.info-value { font-family: var(--font-body); font-size: 15px; color: var(--text-primary); }
+
+/* ── Badge statut ── */
+.badge {
+  display: inline-flex; align-items: center; gap: 7px; width: fit-content;
+  font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; padding: 5px 12px; border-radius: var(--radius-pill);
+  border: 1px solid var(--green-forest);
+}
+.badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.badge.actif { color: var(--green-mint); border-color: rgba(155, 234, 200, 0.3); }
+.badge.resiliation_planifiee { color: #E3C77A; border-color: rgba(227, 199, 122, 0.3); }
+.badge.resilie { color: #E5A3A3; border-color: rgba(229, 163, 163, 0.3); }
+
+/* ── Documents ── */
+.doc-list { display: flex; flex-direction: column; gap: 2px; }
+.doc-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 13px 14px; border-radius: 8px; text-decoration: none;
+  transition: background 180ms;
+}
+.doc-row:hover { background: var(--bg-hover); }
+.doc-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.doc-type {
+  font-family: var(--font-ui); font-size: 9px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: var(--ls-pill); color: var(--green-mint);
+  background: rgba(155, 234, 200, 0.08); border-radius: var(--radius-pill); padding: 3px 10px; flex-shrink: 0;
+}
+.doc-name { font-family: var(--font-body); font-size: 14px; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.doc-meta { font-family: var(--font-body); font-size: 12px; color: var(--text-tertiary); flex-shrink: 0; }
+.empty { font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--text-secondary); }
+
+/* ── Boutons ── */
+.btn-cta, .btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 28px; border-radius: var(--radius-pill);
+  font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--ls-pill);
+  cursor: pointer; text-decoration: none; transition: background 200ms, border-color 200ms, color 200ms;
+}
+.btn-cta { background: var(--green-cta); border: 1px solid var(--green-cta); color: var(--text-primary); }
+.btn-cta:hover { background: #3a8a6a; }
+.btn-cta:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-outline { background: transparent; border: 1px solid var(--green-forest); color: var(--text-secondary); }
+.btn-outline:hover { border-color: var(--green-cta); color: var(--text-primary); }
+.btn-danger { background: transparent; border: 1px solid rgba(229, 163, 163, 0.4); color: #E5A3A3; }
+.btn-danger:hover { background: rgba(229, 163, 163, 0.1); }
+
+/* ── Formulaires (admin) ── */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-family: var(--font-ui); font-size: 10px; font-weight: 600; letter-spacing: var(--ls-pill); text-transform: uppercase; color: var(--text-secondary); }
+.field input, .field select {
+  background: var(--bg-deep); border: 1px solid var(--green-forest); border-radius: var(--radius-md);
+  padding: 11px 14px; font-family: var(--font-body); font-size: 14px; color: var(--text-primary);
+  outline: none; width: 100%; transition: border-color 200ms;
+}
+.field input:focus, .field select:focus { border-color: var(--green-cta); }
+.field select option { background: var(--bg-deep); }
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+/* ── Messages ── */
+.msg { font-family: var(--font-body); font-size: 13px; line-height: 1.55; border-radius: var(--radius-md); padding: 12px 14px; display: none; }
+.msg.show { display: block; }
+.msg.ok { color: var(--green-mint); background: rgba(155, 234, 200, 0.08); border: 1px solid rgba(155, 234, 200, 0.3); }
+.msg.err { color: #E5A3A3; background: rgba(180, 90, 90, 0.10); border: 1px solid rgba(180, 90, 90, 0.35); }
+
+.note { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.65; }
+.highlight { color: var(--green-mint); font-weight: 500; }
+
+table { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 13px; }
+th { font-family: var(--font-ui); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--ls-pill); color: var(--text-tertiary); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--green-forest); }
+td { padding: 12px; color: var(--text-secondary); border-bottom: 1px solid rgba(31, 58, 45, 0.5); }
+
+@media (max-width: 640px) {
+  .info-grid, .form-grid { grid-template-columns: 1fr; }
+  main { padding-top: 110px; }
+}
