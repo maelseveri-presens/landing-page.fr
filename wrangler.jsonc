@@ -1,0 +1,25 @@
+{
+  // ── Config Cloudflare Pages — projet "landing-page" (déploiement Git) ──
+  // Le projet utilise des Pages Functions (/functions) : on déclare donc
+  // "pages_build_output_dir" (modèle Pages) et NON "main"/"assets" (modèle
+  // Workers), qui désactiverait l'exécution de /functions.
+  // Les bindings D1/R2 ci-dessous ne sont PAS des secrets : versionnables.
+  "name": "landing-page",
+  "compatibility_date": "2025-09-23",
+  "pages_build_output_dir": ".",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "presens-db",
+      "database_id": "00d8b60f-2c61-4dc6-8463-f99a0d10c144"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "DOCS",
+      "bucket_name": "presens-docs"
+    }
+  ]
+}
