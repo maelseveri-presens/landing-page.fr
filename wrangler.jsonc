@@ -13,7 +13,7 @@
   // restent définis dans le dashboard / via `wrangler secret`, JAMAIS ici.
   "vars": {
     "CF_ACCESS_TEAM_DOMAIN": "silent-boat-a254",
-    "CF_ACCESS_AUD": "7429ffae-8c28-486f-9495-adc731cf14e5",
+    "CF_ACCESS_AUD": "8d25daed-c310-4eda-a8f3-65828e1af38d",
     "GOCARDLESS_ENVIRONMENT": "sandbox"
   },
 
