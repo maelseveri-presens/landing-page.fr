@@ -40,9 +40,16 @@
       --ls-pill: 0.18em;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
+    html,
+    body {
       background: var(--bg-main);
       color: var(--text-primary);
       font-family: var(--font-body);
@@ -51,25 +58,68 @@
       min-height: 100dvh;
     }
 
-    body { position: relative; overflow-x: hidden; display: flex; flex-direction: column; }
+    body {
+      position: relative;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
 
-    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     /* ── Navbar ── */
     #navbar {
-      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
-      z-index: 100; display: flex; align-items: center; gap: 20px;
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 20px;
       padding: 8px 20px;
       background: rgba(26, 46, 38, 0.7);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
       white-space: nowrap;
     }
-    .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
-    .nav-logo .pre { color: #E8E0D0; }
-    .nav-logo .sens { color: var(--green-sage); }
-    .nav-back { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
-    .nav-back:hover { color: var(--text-secondary); }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-logo .pre {
+      color: #E8E0D0;
+    }
+
+    .nav-logo .sens {
+      color: var(--green-sage);
+    }
+
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .nav-back:hover {
+      color: var(--text-secondary);
+    }
 
     /* ── Contenu ── */
     main {
@@ -83,14 +133,26 @@
     }
 
     .pill {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-family: var(--font-ui); font-size: 11px; font-weight: 500;
-      text-transform: uppercase; letter-spacing: var(--ls-pill); color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-secondary);
       margin-bottom: 14px;
     }
+
     .pill::before {
-      content: ''; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--green-mint); box-shadow: 0 0 12px var(--green-mint); flex-shrink: 0;
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green-mint);
+      box-shadow: 0 0 12px var(--green-mint);
+      flex-shrink: 0;
     }
 
     h1 {
@@ -102,20 +164,28 @@
     }
 
     .intro {
-      font-family: var(--font-body); font-size: 14px; font-weight: 300;
-      color: var(--text-secondary); line-height: 1.65; margin-bottom: 36px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
     }
 
-    section.legal { margin-bottom: 30px; }
+    section.legal {
+      margin-bottom: 30px;
+    }
 
     h2 {
       font-family: var(--font-display);
-      font-size: 20px; font-weight: 500;
+      font-size: 20px;
+      font-weight: 500;
       color: var(--green-mint);
       margin-bottom: 12px;
     }
 
-    p, li {
+    p,
+    li {
       font-family: var(--font-body);
       font-size: 14.5px;
       font-weight: 300;
@@ -123,14 +193,44 @@
       line-height: 1.75;
     }
 
-    p { margin-bottom: 10px; }
-    strong { color: var(--text-primary); font-weight: 500; }
-    a.inline { color: var(--green-mint); text-decoration: none; }
-    a.inline:hover { color: var(--green-sage); }
+    p {
+      margin-bottom: 10px;
+    }
 
-    .legal ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .legal li { position: relative; padding-left: 18px; }
-    .legal li::before { content: '·'; position: absolute; left: 4px; top: 0; color: var(--green-cta); font-weight: 700; }
+    strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    a.inline {
+      color: var(--green-mint);
+      text-decoration: none;
+    }
+
+    a.inline:hover {
+      color: var(--green-sage);
+    }
+
+    .legal ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .legal li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .legal li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      top: 0;
+      color: var(--green-cta);
+      font-weight: 700;
+    }
 
     .todo {
       color: var(--green-sage);
@@ -140,21 +240,32 @@
       font-weight: 400;
     }
 
-    hr { border: none; border-top: 1px solid var(--green-forest); margin: 30px 0; }
+    hr {
+      border: none;
+      border-top: 1px solid var(--green-forest);
+      margin: 30px 0;
+    }
 
     .disclaimer {
-      font-family: var(--font-body); font-size: 12px; font-style: italic;
-      color: var(--text-tertiary); line-height: 1.6;
-      border-left: 2px solid var(--green-forest); padding-left: 14px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--text-tertiary);
+      line-height: 1.6;
+      border-left: 2px solid var(--green-forest);
+      padding-left: 14px;
     }
   </style>
 </head>
 
 <body>
-  <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(31,58,45,0.6),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);"></div>
+  <div class="orb"
+    style="width:520px;height:520px;background:radial-gradient(circle,rgba(31,58,45,0.6),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);">
+  </div>
 
   <nav id="navbar" aria-label="Navigation">
-    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span
+        class="sens">sens</span></a>
     <a class="nav-back" href="/">← Retour</a>
   </nav>
 
@@ -166,18 +277,17 @@
 
     <section class="legal">
       <h2>Éditeur du site</h2>
-      <p>Le site presens.site est édité par <strong>Maël Séveri</strong>, micro-entrepreneur
-        (entreprise individuelle).</p>
+      <p>Le site presens.site est édité par <strong>Maël Severi</strong></p>
       <ul>
         <li>SIRET : <strong>953 704 657 00014</strong></li>
-        <li>Siège : <span class="todo">[adresse du siège]</span></li>
+        <li>Siège : <span class="todo">Marseille</span></li>
         <li>Email : <a class="inline" href="mailto:contact@presens.site">contact@presens.site</a></li>
       </ul>
     </section>
 
     <section class="legal">
       <h2>Directeur de la publication</h2>
-      <p><strong>Maël Séveri</strong>.</p>
+      <p><strong>Maël Severi</strong>.</p>
     </section>
 
     <section class="legal">
@@ -191,7 +301,7 @@
 
     <section class="legal">
       <h2>TVA</h2>
-      <p>TVA non applicable, article 293 B du CGI.</p>
+      <p>TVA non applicable en dessous du seuil prévu par l'article 293 B du CGI.</p>
     </section>
 
     <section class="legal">
@@ -210,13 +320,10 @@
         suppression de vos données : adressez votre demande à
         <a class="inline" href="mailto:contact@presens.site">contact@presens.site</a>.
         Les mandats de prélèvement sont gérés par le prestataire GoCardless, qui conserve seul les
-        coordonnées bancaires ; aucune donnée de paiement n'est stockée par Présens.</p>
+        coordonnées bancaires ; aucune donnée de paiement n'est stockée par Présens.
+      </p>
     </section>
 
-    <hr>
-
-    <p class="disclaimer">Ce contenu est fourni à titre indicatif et doit être vérifié et complété
-      par un professionnel du droit avant publication.</p>
   </main>
 
   <!-- ── Footer ── -->
@@ -261,4 +368,5 @@
     </div>
   </footer>
 </body>
+
 </html>

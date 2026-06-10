@@ -4,42 +4,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mentions légales · Présens</title>
-  <meta name="description" content="Mentions légales du site presens.site — studio GEO Présens.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://presens.site/mentions-legales">
+  <title>Présens · Studio GEO Français</title>
+  <meta name="description"
+    content="Premier studio français spécialisé exclusivement en GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Faites citer votre établissement par ChatGPT, Perplexity, Gemini et Claude. Audit gratuit en 48h.">
+  <meta name="keywords"
+    content="GEO, Generative Engine Optimization, référencement génératif, restaurant, hôtel, ChatGPT, Perplexity, Gemini, Claude, France, llms.txt">
+  <meta name="author" content="Maël — Présens">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://presens.site/">
+  <link rel="sitemap" type="application/xml" href="https://presens.site/sitemap.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presens.site/">
+  <meta property="og:site_name" content="Présens">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Présens · Studio GEO Français pour restaurants &amp; hôtels">
+  <meta property="og:description"
+    content="Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration. Audit gratuit en 48h — Score de Présence sur ChatGPT, Perplexity, Gemini et Claude.">
+  <meta property="og:image" content="https://presens.site/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Présens — Studio GEO pour restaurants et hôtels">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Présens · Studio GEO Français pour restaurants &amp; hôtels">
+  <meta name="twitter:description"
+    content="Premier studio français de GEO pour l'hôtellerie-restauration. Audit gratuit en 48h.">
+  <meta name="twitter:image" content="https://presens.site/assets/img/og-image.jpg">
+
+  <!-- Technique -->
   <meta name="theme-color" content="#0F1F18">
+  <meta name="format-detection" content="telephone=no">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
   <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/footer.css">
+
+  <!-- GSAP (micro-animations d'entrée uniquement) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 
   <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════ */
     :root {
       --bg-main: #0F1F18;
       --bg-deep: #142822;
       --bg-card: #1A2E26;
       --bg-hover: #21372C;
+
       --green-cta: #2D6B52;
       --green-sage: #B8DDC8;
       --green-mint: #9BEAC8;
       --green-forest: #1F3A2D;
+
       --text-primary: #F0F5F2;
       --text-secondary: #9CADA5;
       --text-tertiary: #6B7A73;
+
       --font-display: 'Lora', Georgia, serif;
       --font-ui: 'Space Grotesk', sans-serif;
       --font-body: 'Inter', sans-serif;
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --space-16: 64px;
+
+      --radius-xs: 4px;
+      --radius-sm: 6px;
       --radius-md: 12px;
+      --radius-lg: 16px;
       --radius-pill: 999px;
+
+      --container: 1100px;
+      --gutter: 24px;
+      --lh-body: 1.6;
+      --lh-title: 1.07;
       --ls-pill: 0.18em;
     }
 
+    /* ═══════════════════════════════════════════
+       RESET
+    ═══════════════════════════════════════════ */
     *,
     *::before,
     *::after {
@@ -48,31 +106,55 @@
       padding: 0;
     }
 
-    html,
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+
     body {
+      height: 100%;
+      overflow: hidden;
       background: var(--bg-main);
       color: var(--text-primary);
       font-family: var(--font-body);
-      line-height: 1.6;
+      line-height: var(--lh-body);
       -webkit-font-smoothing: antialiased;
-      min-height: 100dvh;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    body {
-      position: relative;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
+    ul {
+      list-style: none;
     }
 
-    /* ── Navbar ── */
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+
+    /* ═══════════════════════════════════════════
+       NAVBAR FLOTTANTE
+    ═══════════════════════════════════════════ */
     #navbar {
       position: fixed;
       top: 24px;
@@ -81,7 +163,7 @@
       z-index: 100;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 28px;
       padding: 8px 20px;
       background: rgba(26, 46, 38, 0.7);
       backdrop-filter: blur(20px);
@@ -95,9 +177,12 @@
       font-family: var(--font-display);
       font-style: italic;
       font-size: 18px;
+      letter-spacing: 0.01em;
       line-height: 1;
-      text-decoration: none;
-      color: var(--text-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
     }
 
     .nav-logo .pre {
@@ -108,34 +193,460 @@
       color: var(--green-sage);
     }
 
-    .nav-back {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      transition: color 200ms ease;
+      padding: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      transition: background-color 200ms ease, transform 200ms ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--bg-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ═══════════════════════════════════════════
+       ESPACE CLIENT — pastille ronde coin droit (desktop)
+       + icône dans la navbar (mobile)
+    ═══════════════════════════════════════════ */
+    #corner-actions {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px;
+      aspect-ratio: 1 / 1;            /* carré → cercle parfait */
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: 50%;
+    }
+
+    .corner-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      color: var(--green-sage);
+      transition: background 200ms ease, color 200ms ease;
+    }
+
+    .corner-icon:hover {
+      background: var(--bg-hover);
+      color: var(--green-mint);
+    }
+
+    /* Icône profil intégrée à la navbar (mobile uniquement) */
+    .nav-profile {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      color: var(--green-sage);
+      transition: color 200ms ease;
+    }
+
+    .nav-profile:hover {
+      color: var(--green-mint);
+    }
+
+    /* Orbe floue derrière la pastille profil (desktop uniquement) */
+    .corner-orb {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(180, 245, 215, 1), rgba(155, 234, 200, 0.4) 55%, transparent 74%);
+      filter: blur(15px);
+      transform: scale(2);         /* déborde autour de la pastille */
+      z-index: 99;                 /* derrière #corner-actions (z-index 100) */
+      pointer-events: none;
+      display: none;               /* PC uniquement */
+      animation: corner-orb-pulse 4.5s ease-in-out infinite;
+    }
+
+    @keyframes corner-orb-pulse {
+      0%, 100% { opacity: 0.7; }
+      50%      { opacity: 1; }
+    }
+
+    @media (min-width: 1024px) {
+      #corner-actions { padding: 14px; }   /* hauteur ≈ celle de la navbar desktop */
+    }
+
+    @media (min-width: 769px) {
+      .corner-orb { display: block; }
+    }
+
+    @media (max-width: 768px) {
+      #corner-actions { display: none; }    /* sur mobile : l'icône passe dans la navbar */
+      .nav-profile { display: inline-flex; }
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION DOTS — fixe droite, centre vertical
+    ═══════════════════════════════════════════ */
+    /* ── Nav dots — barre verticale (mobile + desktop) ── */
+    #nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      padding: 10px 8px;
+      background: rgba(26, 46, 38, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      max-height: calc(100dvh - 80px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    #nav-dots::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 16px;
+      border-radius: 4px;
+      background: rgba(155, 234, 200, 0.25);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition:
+        background 280ms ease,
+        height 280ms ease;
+    }
+
+    .nav-dot:hover {
+      background: var(--green-sage);
+    }
+
+    .nav-dot.active {
+      background: var(--green-mint);
+      height: 44px;
+    }
+
+    /* ── GDPR Banner ── */
+    #gdpr-banner {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      z-index: 300;
+      width: min(520px, calc(100vw - 48px));
+      background: rgba(20, 40, 34, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 380ms ease, transform 380ms ease;
+    }
+
+    #gdpr-banner.gdpr-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .gdpr-text {
       font-family: var(--font-body);
       font-size: 13px;
       font-weight: 300;
-      color: var(--text-tertiary);
-      text-decoration: none;
-      transition: color 200ms;
-    }
-
-    .nav-back:hover {
       color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
     }
 
-    /* ── Contenu ── */
-    main {
+    .gdpr-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .gdpr-refuse {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid var(--green-sage);
+      color: var(--green-sage);
+      transition: background 200ms ease;
+    }
+
+    .gdpr-refuse:hover {
+      background: rgba(184, 221, 200, 0.1);
+    }
+
+    .gdpr-accept {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      background: var(--green-cta);
+      border: 1px solid var(--green-cta);
+      color: var(--text-primary);
+      transition: background 200ms ease;
+    }
+
+    .gdpr-accept:hover {
+      background: #3a8a6a;
+      border-color: #3a8a6a;
+    }
+
+    @media (max-width: 768px) {
+      #gdpr-banner {
+        bottom: 16px;
+        padding: 14px 16px;
+        gap: 12px;
+      }
+    }
+
+    /* ── Scrollbar sections (overflow-y: auto) ── */
+    .section {
+      scrollbar-width: thin;
+      scrollbar-color: var(--green-cta) var(--bg-card);
+    }
+
+    .section::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .section::-webkit-scrollbar-track {
+      background: var(--bg-card);
+    }
+
+    .section::-webkit-scrollbar-thumb {
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+    }
+
+    .section::-webkit-scrollbar-thumb:hover {
+      background: var(--green-sage);
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL CONTAINER + SECTIONS
+    ═══════════════════════════════════════════ */
+    #scroll-container {
+      position: relative;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    @keyframes slide-in-from-below {
+      0% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+
+      60% {
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes slide-in-from-above {
+      0% {
+        transform: translate3d(0, -100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+
+      60% {
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes slide-out-to-above {
+      0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, -100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+    }
+
+    @keyframes slide-out-to-below {
+      0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      100% {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+        filter: blur(8px);
+      }
+    }
+
+    .section {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: none;
+      will-change: transform, filter;
+      transform: translateY(100%);
+    }
+
+    .section.is-above {
+      transform: translateY(-100%);
+    }
+
+    .section.active {
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .section.entering-down {
+      animation: slide-in-from-below 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .section.entering-up {
+      animation: slide-in-from-above 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .section.leaving-up {
+      animation: slide-out-to-above 700ms cubic-bezier(0.64, 0, 0.78, 0) both;
+    }
+
+    .section.leaving-down {
+      animation: slide-out-to-below 700ms cubic-bezier(0.64, 0, 0.78, 0) both;
+    }
+
+    /* ═══════════════════════════════════════════
+       ORBES — radial-gradient, blur, fond z:0
+    ═══════════════════════════════════════════ */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: orb-pulse 4s ease-in-out infinite;
+    }
+
+    /* Décalage de phase entre les 3 orbes de chaque section */
+    .section>.orb:nth-child(3) {
+      animation-delay: -1.3s;
+    }
+
+    .section>.orb:nth-child(4) {
+      animation-delay: -2.6s;
+    }
+
+    /* Sections 1–7 : orbes plus lumineux, respiration plus ample */
+    .section:not(#section-0)>.orb {
+      animation-name: orb-pulse-bright;
+      animation-duration: 6s;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION INNER
+    ═══════════════════════════════════════════ */
+    .section-inner {
       position: relative;
       z-index: 10;
+      text-align: center;
       width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 130px 24px 40px;
-      flex: 1;
+      max-width: var(--container);
+      padding: 0 var(--gutter);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
     }
 
+    /* ═══════════════════════════════════════════
+       PILL COMPOSANT
+    ═══════════════════════════════════════════ */
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      padding: 4px 14px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
       font-family: var(--font-ui);
       font-size: 11px;
       font-weight: 500;
@@ -145,228 +656,3082 @@
       margin-bottom: 14px;
     }
 
-    .pill::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green-mint);
-      box-shadow: 0 0 12px var(--green-mint);
-      flex-shrink: 0;
+    /* ═══════════════════════════════════════════
+       SKIP LINK — accessibilité clavier
+    ═══════════════════════════════════════════ */
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 10px 24px;
+      background: var(--green-cta);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: top 200ms;
     }
 
-    h1 {
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOCUS VISIBLE — navigation clavier
+    ═══════════════════════════════════════════ */
+    :focus-visible {
+      outline: 2px solid var(--green-mint);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .audit-input:focus-visible {
+      outline: 2px solid var(--green-cta);
+      outline-offset: -2px;
+    }
+
+    /* ═══════════════════════════════════════════
+       TOUCH TARGETS — min 44px (WCAG 2.5.5)
+    ═══════════════════════════════════════════ */
+    .tarif-toggle-btn,
+    .tarif-cta-outline,
+    .tarif-cta-filled,
+    .footer-nav-link {
+      min-height: 44px;
+    }
+
+    .footer-nav-link {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ═══════════════════════════════════════════
+       PREFERS-REDUCED-MOTION
+       — sections : fade opacity sans slide ni blur
+       — orbes : statiques
+       — éléments GSAP : immédiatement visibles
+    ═══════════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+
+      /* Orbes : statiques, pas de pulsation */
+      .orb,
+      .orb-cta-pulse,
+      .corner-orb {
+        animation: none !important;
+        opacity: 0.35;
+      }
+
+      /* Sections : fade simple, sans slide ni blur */
+      .section {
+        transform: translateY(0) !important;
+        animation: none !important;
+        opacity: 0;
+        transition: opacity 300ms linear !important;
+      }
+
+      .section.active {
+        opacity: 1 !important;
+      }
+
+      .section.entering-down,
+      .section.entering-up {
+        opacity: 1 !important;
+      }
+
+      /* Éléments GSAP : visibles immédiatement */
+      .hero-pill,
+      .hero-title,
+      .hero-sub,
+      .hero-ctas,
+      .prob-pill,
+      .prob-title,
+      .prob-body,
+      .prob-stat,
+      .prob-source,
+      .prob-cta,
+      .meth-pill,
+      .meth-title,
+      .meth-card,
+      .found-portrait,
+      .found-pill,
+      .found-title,
+      .found-paras,
+      .found-sig,
+      .found-cta,
+      .tarif-scarcity,
+      .tarif-pill,
+      .tarif-title,
+      .tarif-toggle,
+      .tarif-card,
+      .audit-pill,
+      .audit-title,
+      .audit-sub,
+      .audit-form,
+      .faq-pill,
+      .faq-title,
+      .faq-item,
+      .footer-anim {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE NAVBAR
+    ═══════════════════════════════════════════ */
+    @media (min-width: 1024px) {
+      #navbar {
+        padding: 14px 32px;
+        gap: 36px;
+      }
+
+      .nav-links {
+        gap: 36px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .nav-logo {
+        font-size: 22px;
+      }
+    }
+
+    /* ── Mobile dropdown menu ── */
+    .nav-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: border-color 200ms, color 200ms;
+    }
+
+    .nav-menu-btn:hover {
+      border-color: var(--green-sage);
+      color: var(--text-primary);
+    }
+
+    .nav-menu-btn .icon-close {
+      display: none;
+    }
+
+    .nav-menu-btn.open .icon-menu {
+      display: none;
+    }
+
+    .nav-menu-btn.open .icon-close {
+      display: block;
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px;
+      background: rgba(20, 40, 34, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      min-width: 150px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    .nav-dropdown.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .nav-dropdown-item {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+      transition: background 180ms, color 180ms;
+    }
+
+    .nav-dropdown-item:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links .nav-link {
+        display: none;
+      }
+
+      .nav-menu-btn {
+        display: flex;
+      }
+
+      #navbar {
+        gap: 16px;
+      }
+
+      #nav-dots {
+        right: 10px;
+        gap: 0;
+        padding: 4px 2px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 350ms ease;
+      }
+
+      #nav-dots.nav-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Grande zone de tap (hauteur), trait vertical fin via ::before */
+      .nav-dot {
+        width: 14px;
+        height: 20px;
+        background: transparent;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-dot::before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 14px;
+        border-radius: 2px;
+        background: rgba(155, 234, 200, 0.28);
+        transition: background 280ms ease, height 280ms ease;
+        pointer-events: none;
+      }
+
+      .nav-dot.active {
+        height: 36px;
+        background: transparent;
+      }
+
+      .nav-dot.active::before {
+        height: 34px;
+        background: var(--green-mint);
+      }
+
+      .nav-dot:hover::before {
+        background: var(--green-sage);
+      }
+
+      /* Transitions mobile : blur plus fort + opacités décalées
+         pour éviter que les deux sections soient visibles simultanément */
+      @keyframes slide-in-from-below {
+        0% {
+          transform: translate3d(0, 100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        40% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        75% {
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
+      }
+
+      @keyframes slide-in-from-above {
+        0% {
+          transform: translate3d(0, -100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        40% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        75% {
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
+      }
+
+      @keyframes slide-out-to-above {
+        0% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        50% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        100% {
+          transform: translate3d(0, -100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
+      }
+
+      @keyframes slide-out-to-below {
+        0% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+          filter: blur(0);
+        }
+
+        50% {
+          opacity: 0;
+          filter: blur(20px);
+        }
+
+        100% {
+          transform: translate3d(0, 100%, 0);
+          opacity: 0;
+          filter: blur(20px);
+        }
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       ORBE CTA PULSE — Hero uniquement (index 0)
+    ═══════════════════════════════════════════ */
+    @keyframes orb-pulse {
+
+      0%,
+      100% {
+        opacity: 0.18;
+      }
+
+      50% {
+        opacity: 0.58;
+      }
+    }
+
+    @keyframes orb-pulse-bright {
+
+      0%,
+      100% {
+        opacity: 0.28;
+      }
+
+      50% {
+        opacity: 0.78;
+      }
+    }
+
+    .orb-cta-pulse {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #9BEAC8 0%, transparent 70%);
+      filter: blur(40px);
+      left: 58%;
+      top: 8%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      pointer-events: none;
+      animation: orb-pulse 4s ease-in-out infinite;
+      animation-delay: -0.7s;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO — INDEX 0
+    ═══════════════════════════════════════════ */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    /* États initiaux — GSAP anime vers opacity:1, y:0 */
+    .hero-pill,
+    .hero-title,
+    .hero-sub,
+    .hero-ctas {
+      opacity: 0;
+    }
+
+    .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(30px, 5vw, 46px);
-      line-height: 1.1;
+      font-size: clamp(44px, 5.5vw, 64px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .hero-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-mint);
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
+      background: var(--green-cta);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      color: var(--text-primary);
+      cursor: pointer;
+      border: none;
+      transition: background-color 200ms ease, transform 200ms ease;
+    }
+
+    .btn-cta:hover {
+      background: var(--bg-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 4px;
+      transition: color 200ms ease, text-decoration-color 200ms ease;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-primary);
+      text-decoration-color: var(--text-secondary);
+    }
+
+    /* ═══════════════════════════════════════════
+       PROBLÈME — INDEX 1
+    ═══════════════════════════════════════════ */
+    .prob-pill,
+    .prob-title,
+    .prob-body,
+    .prob-stat,
+    .prob-source,
+    .prob-cta {
+      opacity: 0;
+    }
+
+    .prob-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 54px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .prob-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-mint);
+    }
+
+    .prob-body {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.5vw, 17px);
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.65;
+    }
+
+    .prob-stat {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 36px);
+      color: var(--green-mint);
+      max-width: 560px;
+      margin: 0 auto 10px;
+      line-height: 1.3;
+    }
+
+    .prob-source {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.4;
+    }
+
+    /* ═══════════════════════════════════════════
+       MÉTHODE — INDEX 2
+    ═══════════════════════════════════════════ */
+    .meth-pill,
+    .meth-title,
+    .meth-card {
+      opacity: 0;
+    }
+
+    .meth-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 40px;
+    }
+
+    .meth-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-mint);
+    }
+
+    .meth-cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .meth-card {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: left;
+      transition: border-color 250ms ease, transform 250ms ease;
+    }
+
+    .meth-card:hover {
+      border-color: var(--green-cta);
+      transform: translateY(-2px);
+    }
+
+    .meth-card-icon {
+      color: var(--green-mint);
+      margin-bottom: 14px;
+    }
+
+    .meth-card-num {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .meth-card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
       color: var(--text-primary);
       margin-bottom: 10px;
     }
 
-    .intro {
+    .meth-card-desc {
       font-family: var(--font-body);
       font-size: 14px;
       font-weight: 300;
       color: var(--text-secondary);
       line-height: 1.65;
-      margin-bottom: 36px;
     }
 
-    section.legal {
-      margin-bottom: 30px;
+    .meth-card-chevron {
+      display: none;
     }
 
-    h2 {
+    @media (max-width: 768px) {
+      .meth-cards {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       FONDATEUR — INDEX 3
+    ═══════════════════════════════════════════ */
+    .found-portrait,
+    .found-pill,
+    .found-title,
+    .found-paras,
+    .found-sig,
+    .found-cta {
+      opacity: 0;
+    }
+
+    .found-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+      text-align: left;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px var(--gutter) 0;
+    }
+
+    .found-portrait {
+      flex: 0 0 260px;
+      aspect-ratio: 4 / 5;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .found-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .found-portrait-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 16px;
+    }
+
+    .found-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .found-title {
       font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--green-mint);
-      margin-bottom: 12px;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: var(--lh-title);
+      color: var(--text-primary);
+      margin-bottom: 20px;
     }
 
-    p,
-    li {
+    .found-em {
+      display: block;
+      font-style: italic;
+      color: var(--green-mint);
+    }
+
+    .found-paras {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .found-para {
       font-family: var(--font-body);
-      font-size: 14.5px;
+      font-size: clamp(13px, 1.3vw, 15px);
       font-weight: 300;
       color: var(--text-secondary);
-      line-height: 1.75;
+      line-height: 1.65;
     }
 
-    p {
-      margin-bottom: 10px;
+    .found-sig {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--green-mint);
+      margin-bottom: 24px;
     }
 
-    strong {
+    @media (max-width: 768px) {
+      .found-inner {
+        flex-direction: column;
+        gap: 28px;
+        text-align: left;
+      }
+
+      .found-portrait {
+        flex: 0 0 auto;
+        width: 200px;
+        align-self: center;
+      }
+    }
+
+    /* ── TARIFS (INDEX 4) ───────────────────────── */
+    .tarif-inner {
+      gap: 16px;
+      padding-top: 86px;
+      padding-bottom: 12px;
+    }
+
+    .tarif-scarcity,
+    .tarif-pill,
+    .tarif-title,
+    .tarif-toggle,
+    .tarif-card {
+      opacity: 0;
+    }
+
+    .tarif-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .tarif-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
       color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .tarif-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    .tarif-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+    }
+
+    .tarif-toggle-btn {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 8px 20px;
+      cursor: pointer;
+      letter-spacing: var(--ls-pill);
+      transition: background 250ms, color 250ms;
+    }
+
+    .tarif-toggle-btn.active {
+      background: var(--green-cta);
+      color: var(--text-primary);
+    }
+
+    .tarif-banner {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      background: rgba(45, 107, 82, 0.18);
+      border: 1px solid var(--green-cta);
+      border-radius: var(--radius-md);
+      padding: 14px 22px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .tarif-banner-icon {
+      font-size: 18px;
+      color: var(--green-mint);
+      flex-shrink: 0;
+    }
+
+    .tarif-banner strong {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green-mint);
+      display: block;
+    }
+
+    .tarif-banner p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin: 2px 0 0;
+    }
+
+    .tarif-cards {
+      display: flex;
+      gap: 18px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .tarif-card {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 26px 20px 20px;
+    }
+
+    .tarif-card-featured {
+      border-color: var(--green-cta);
+      background: rgba(45, 107, 82, 0.10);
+    }
+
+    .tarif-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green-cta);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      border-radius: var(--radius-pill);
+      padding: 4px 14px;
+      white-space: nowrap;
+    }
+
+    .tarif-name {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+    }
+
+    .tarif-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .tarif-amount {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .tarif-curr {
+      font-style: italic;
+      color: var(--green-sage);
+      font-size: 20px;
+    }
+
+    .tarif-period {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    .tarif-setup {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .tarif-setup-std {
+      display: inline;
+    }
+
+    .tarif-setup-fond {
+      display: none;
+      color: var(--green-mint);
       font-weight: 500;
     }
 
-    a.inline {
-      color: var(--green-mint);
-      text-decoration: none;
+    .tarif-target {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--green-forest);
+      padding-top: 10px;
+      margin-top: 2px;
     }
 
-    a.inline:hover {
-      color: var(--green-sage);
-    }
-
-    .legal ul {
+    .tarif-features {
       list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .tarif-features li {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      line-height: 1.4;
+    }
+
+    .tarif-features li::before {
+      content: '→';
+      color: var(--green-cta);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    .tarif-fond-bonus {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: rgba(155, 234, 200, 0.07);
+      border-radius: 8px;
+      padding: 9px 13px;
+    }
+
+    .tarif-fond-bonus span {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      color: var(--green-mint);
+      font-weight: 500;
+    }
+
+    .tarif-fond-bonus span::before {
+      content: '✓  ';
+    }
+
+    .tarif-cta-outline,
+    .tarif-cta-filled {
+      width: 100%;
+      padding: 11px 0;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: var(--ls-pill);
+      cursor: pointer;
+      transition: background 250ms, border-color 250ms, color 250ms;
+      margin-top: auto;
+    }
+
+    .tarif-cta-outline {
+      background: transparent;
+      border: 1px solid var(--green-forest);
+      color: var(--text-secondary);
+    }
+
+    .tarif-cta-outline:hover {
+      border-color: var(--green-cta);
+      color: var(--text-primary);
+    }
+
+    .tarif-cta-filled {
+      background: var(--green-cta);
+      border: 1px solid var(--green-cta);
+      color: var(--text-primary);
+    }
+
+    .tarif-cta-filled:hover {
+      background: #3a8a6a;
+    }
+
+    /* Bandeau de rareté — toujours visible au-dessus du toggle */
+    .tarif-scarcity {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green-mint);
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+      border: 1px solid rgba(155, 234, 200, 0.25);
+      border-radius: var(--radius-pill);
+      padding: 5px 16px;
+    }
+
+    /* Référent — setup masqué dans les deux états (prix sur devis) */
+    .tarif-card-referent .tarif-setup {
+      display: none;
+    }
+
+    /* Référent fondateur — "Sur devis" */
+    .tarif-fond-referent-info {
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .tarif-fond-ref-price {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      line-height: 1;
+    }
+
+    .tarif-fond-ref-sub {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    /* Encart Conditions Fondateur — sous la grille */
+    .tarif-cond-encart {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .tarif-cond-encart-title {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+    }
+
+    .tarif-cond-encart ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
 
-    .legal li {
-      position: relative;
-      padding-left: 18px;
-    }
-
-    .legal li::before {
-      content: '·';
-      position: absolute;
-      left: 4px;
-      top: 0;
-      color: var(--green-cta);
-      font-weight: 700;
-    }
-
-    .todo {
-      color: var(--green-sage);
-      background: rgba(155, 234, 200, 0.07);
-      border-radius: 4px;
-      padding: 0 5px;
-      font-weight: 400;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--green-forest);
-      margin: 30px 0;
-    }
-
-    .disclaimer {
+    .tarif-cond-encart li {
       font-family: var(--font-body);
-      font-size: 12px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .tarif-cond-encart li::before {
+      content: '→';
+      color: var(--green-cta);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    .tarif-cond-encart em {
       font-style: italic;
       color: var(--text-tertiary);
+    }
+
+    .tarif-cond-encart p {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--green-forest);
+      padding-top: 8px;
+    }
+
+    /* Fondateur mode */
+    #section-4.tarif-fondateur .tarif-banner {
+      display: flex;
+    }
+
+    #section-4.tarif-fondateur .tarif-setup-std {
+      text-decoration: line-through;
+      color: var(--text-tertiary);
+    }
+
+    #section-4.tarif-fondateur .tarif-setup-fond {
+      display: inline;
+    }
+
+    #section-4.tarif-fondateur .tarif-fond-bonus {
+      display: flex;
+    }
+
+    /* Référent — masquer prix+setup standard, afficher "Sur devis" */
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-price,
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-setup {
+      display: none;
+    }
+
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-fond-referent-info {
+      display: flex;
+    }
+
+    /* Référent n'a pas de fond-bonus (conditions sur devis) */
+    #section-4.tarif-fondateur .tarif-card-referent .tarif-fond-bonus {
+      display: none !important;
+    }
+
+    /* Encart conditions — sous la grille en mode fondateur */
+    #section-4.tarif-fondateur .tarif-cond-encart {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .tarif-cards {
+        flex-direction: column;
+      }
+
+      .tarif-card {
+        padding: 22px 16px 16px;
+      }
+    }
+
+    /* ── AUDIT GRATUIT (INDEX 5) ────────────────── */
+    .audit-inner {
+      gap: 22px;
+      max-width: 540px;
+      padding-top: 86px;
+      padding-bottom: 12px;
+    }
+
+    .audit-pill,
+    .audit-title,
+    .audit-sub,
+    .audit-form {
+      opacity: 0;
+    }
+
+    .audit-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .audit-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    .audit-sub {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .audit-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .audit-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .audit-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .audit-field:nth-child(5),
+    .audit-field:nth-child(6),
+    .audit-field:nth-child(7),
+    .audit-field:nth-child(8) {
+      grid-column: 1 / -1;
+    }
+
+    .audit-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: var(--ls-pill);
+      text-transform: uppercase;
+    }
+
+    .audit-optional {
+      font-weight: 400;
+      color: var(--text-tertiary);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 10px;
+    }
+
+    .audit-input {
+      background: var(--bg-card);
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 200ms, outline-color 200ms;
+    }
+
+    .audit-input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .audit-input:focus {
+      border-color: var(--green-cta);
+    }
+
+    .audit-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%236B7A73' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .audit-select option {
+      background: var(--bg-deep);
+    }
+
+    .audit-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .audit-submit {
+      padding: 14px 44px;
+      font-size: 14px;
+    }
+
+    .audit-mention {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .audit-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .audit-success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(45, 107, 82, 0.22);
+      border: 1px solid var(--green-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--green-mint);
+    }
+
+    .audit-success-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--text-primary);
+    }
+
+    .audit-success-sub {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
       line-height: 1.6;
-      border-left: 2px solid var(--green-forest);
-      padding-left: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .audit-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .audit-field:nth-child(5),
+      .audit-field:nth-child(6),
+      .audit-field:nth-child(7),
+      .audit-field:nth-child(8) {
+        grid-column: auto;
+      }
+    }
+
+    /* ── FAQ (INDEX 6) ──────────────────────────── */
+    .faq-inner {
+      gap: 28px;
+      max-width: 700px;
+      padding-top: 86px;
+      padding-bottom: 12px;
+    }
+
+    .faq-pill,
+    .faq-title,
+    .faq-item {
+      opacity: 0;
+    }
+
+    .faq-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .faq-title em {
+      color: var(--green-mint);
+      font-style: italic;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border: 1px solid var(--green-forest);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--green-forest);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 200ms;
+    }
+
+    .faq-q:hover,
+    .faq-item.open .faq-q {
+      background: rgba(31, 58, 45, 0.45);
+    }
+
+    .faq-q-text {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      color: var(--green-sage);
+      transition: transform 320ms cubic-bezier(0.7, 0, 0.3, 1);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 360ms cubic-bezier(0.7, 0, 0.3, 1);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 280px;
+    }
+
+    .faq-a-inner {
+      padding: 0 22px 18px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      border-top: 1px solid var(--green-forest);
+      padding-top: 14px;
+    }
+
+    /* ── FOOTER (INDEX 7) ───────────────────────── */
+    .footer-inner {
+      align-items: stretch;
+      text-align: left;
+      gap: 0;
+      padding-top: 64px;
+    }
+
+    .footer-anim {
+      opacity: 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--green-forest);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .footer-logo .pre {
+      color: #E8E0D0;
+    }
+
+    .footer-logo .sens {
+      color: var(--green-sage);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.65;
+      max-width: 230px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      margin-bottom: 4px;
+    }
+
+    .footer-nav-link {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      transition: color 200ms;
+    }
+
+    .footer-nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-contact-email {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--green-mint);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .footer-contact-email:hover {
+      color: var(--green-sage);
+    }
+
+    .footer-contact-line {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 16px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-geo-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-geo-link {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .footer-geo-link:hover {
+      color: var(--green-sage);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .footer-tagline {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    /* Dégagement global navbar pour sections sans -inner spécifique */
+    #section-2 .section-inner {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    /* ═══════════════════════════════════════════
+       MOBILE — espacements réduits + scroll interne
+       Bloc terminal : prime sur les règles antérieures
+    ═══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* ── Réduction globale des espacements ────────── */
+      .section-inner {
+        gap: 16px;
+      }
+
+      /* Hero */
+      .hero-title {
+        margin-bottom: 8px;
+      }
+
+      .hero-sub {
+        margin: 0 auto 8px;
+      }
+
+      /* Le Constat */
+      .prob-title {
+        margin-bottom: 8px;
+      }
+
+      .prob-body {
+        margin: 0 auto 8px;
+      }
+
+      .prob-stat {
+        margin: 0 auto 4px;
+      }
+
+      .prob-source {
+        margin: 0 auto 8px;
+      }
+
+      /* La Méthode — compact + accordion */
+      .meth-title {
+        margin-bottom: 12px;
+      }
+
+      .meth-card {
+        padding: 14px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .meth-card-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .meth-card-icon {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .meth-card-meta {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .meth-card-num {
+        margin-bottom: 2px;
+      }
+
+      .meth-card-title {
+        margin-bottom: 0;
+      }
+
+      .meth-card-chevron {
+        display: block;
+        flex-shrink: 0;
+        color: var(--text-tertiary);
+        transition: transform 280ms ease;
+      }
+
+      .meth-card.open .meth-card-chevron {
+        transform: rotate(180deg);
+      }
+
+      .meth-card-desc {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 350ms ease, padding-top 350ms ease;
+        padding-top: 0;
+      }
+
+      .meth-card.open .meth-card-desc {
+        max-height: 200px;
+        padding-top: 10px;
+      }
+
+      /* Fondateur */
+      .found-inner {
+        gap: 16px;
+      }
+
+      .found-portrait {
+        flex: 0 0 auto;
+        width: 140px;
+      }
+
+      /* Tarifs / Audit / FAQ — gap mobile */
+      .audit-inner {
+        gap: 14px;
+      }
+
+      .faq-inner {
+        gap: 16px;
+      }
+
+      /* ── Sections à scroll interne ────────────────── */
+      /* Sections 2–5 : align flex-start + scroll + bordures indicatrices */
+      #section-2,
+      #section-3,
+      #section-4 {
+        align-items: flex-start;
+        overflow-y: auto;
+        box-shadow:
+          inset 0 1px 0 var(--green-forest),
+          inset 0 -1px 0 var(--green-forest);
+      }
+
+      /* Le Constat : centré verticalement, scrollable si déborde */
+      #section-1 {
+        overflow-y: auto;
+        box-shadow:
+          inset 0 1px 0 var(--green-forest),
+          inset 0 -1px 0 var(--green-forest);
+      }
+
+      /* FAQ : scroll + bordures uniquement quand une réponse est déployée */
+      #section-6.faq-expanded {
+        align-items: flex-start;
+        overflow-y: auto;
+        box-shadow:
+          inset 0 1px 0 var(--green-forest),
+          inset 0 -1px 0 var(--green-forest);
+      }
+
+      /* Le Constat : min-height 100% + justify center = toujours centré */
+      #section-1 .section-inner {
+        min-height: 100%;
+        justify-content: center;
+        padding-top: 120px;
+        padding-bottom: 0;
+      }
+
+      /* Sections 2-3 : dégagement navbar haut + nav dots bas */
+      #section-2 .section-inner,
+      #section-3 .section-inner {
+        padding-top: 88px;
+        padding-bottom: 48px;
+      }
+
+      /* Sections 4-5-6 : padding-bottom pour la barre de nav */
+      .tarif-inner {
+        padding-bottom: 48px;
+      }
+
+      .audit-inner {
+        padding-bottom: 48px;
+      }
+
+      .faq-inner {
+        padding-bottom: 48px;
+      }
+
     }
   </style>
+
+  <!-- ── JSON-LD Schemas ── GEO self-citation signals ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://presens.site/#website",
+        "name": "Présens",
+        "url": "https://presens.site",
+        "description": "Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration.",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "https://presens.site/#organization" }
+      },
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://presens.site/#organization",
+        "name": "Présens",
+        "alternateName": "Studio Présens",
+        "url": "https://presens.site",
+        "email": "contact@presens.site",
+        "foundingDate": "2026",
+        "description": "Premier studio français spécialisé exclusivement en GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Présens accompagne restaurants, hôtels et bars à être cités par ChatGPT, Perplexity, Gemini et Claude.",
+        "slogan": "Votre établissement, cité par les IA.",
+        "areaServed": { "@type": "Country", "name": "France" },
+        "knowsAbout": [
+          "Generative Engine Optimization",
+          "GEO",
+          "référencement génératif",
+          "LLM optimization",
+          "llms.txt",
+          "schema.org",
+          "hôtellerie",
+          "restauration gastronomique"
+        ],
+        "founder": { "@id": "https://presens.site/#founder" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "contact@presens.site",
+          "contactType": "customer service",
+          "availableLanguage": "French"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://presens.site/#founder",
+        "name": "Maël",
+        "jobTitle": "Fondateur, expert GEO hôtellerie-restauration",
+        "worksFor": { "@id": "https://presens.site/#organization" },
+        "email": "contact@presens.site",
+        "knowsAbout": [
+          "Generative Engine Optimization",
+          "GEO",
+          "référencement génératif",
+          "hôtellerie-restauration",
+          "hôtellerie de luxe",
+          "ChatGPT optimization",
+          "Perplexity optimization",
+          "Gemini optimization",
+          "Claude optimization",
+          "llms.txt"
+        ],
+        "alumniOf": [
+          { "@type": "EducationalOrganization", "name": "KEDGE Business School" },
+          { "@type": "EducationalOrganization", "name": "Nottingham Business School" }
+        ],
+        "description": "Maël est le fondateur de Présens et l'unique expert français spécialisé en GEO pour l'hôtellerie-restauration. Master 2 Digital Marketing & Sales (KEDGE / Nottingham Business School)."
+      },
+      {
+        "@type": "Service",
+        "@id": "https://presens.site/#service",
+        "name": "GEO pour restaurants et hôtels",
+        "serviceType": "Generative Engine Optimization",
+        "provider": { "@id": "https://presens.site/#organization" },
+        "areaServed": { "@type": "Country", "name": "France" },
+        "description": "Audit, optimisation et suivi mensuel de la présence des établissements HoReCa dans les réponses des LLMs majeurs : ChatGPT, Perplexity, Gemini, Claude.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Plans GEO Présens",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Plan Présent",
+              "description": "Audit GEO complet, optimisation llms.txt + schema.org, 1 contenu d'autorité par mois, rapport mensuel avec Score de Présence. Pour bars, cafés, restaurants indépendants.",
+              "price": "240",
+              "priceCurrency": "EUR",
+              "eligibleCustomerType": "Restaurant indépendant, bar, café"
+            },
+            {
+              "@type": "Offer",
+              "name": "Plan Cité",
+              "description": "Tout le plan Présent, plus suivi sur 5 LLMs, 3 contenus optimisés par mois, veille concurrents, rapport bi-mensuel. Pour restaurants gastronomiques et hôtels boutiques.",
+              "price": "580",
+              "priceCurrency": "EUR",
+              "eligibleCustomerType": "Restaurant gastronomique, hôtel boutique"
+            },
+            {
+              "@type": "Offer",
+              "name": "Plan Référent",
+              "description": "Tout le plan Cité, plus jusqu'à 3 établissements, stratégie PR, dashboard temps réel, call mensuel dédié. Pour hôtels 4-5 étoiles, étoilés Michelin, groupes multi-sites.",
+              "price": "880",
+              "priceCurrency": "EUR",
+              "eligibleCustomerType": "Hôtel 4-5 étoiles, restaurant étoilé Michelin, groupe multi-sites"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://presens.site/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce que le GEO et en quoi est-ce différent du SEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un établissement dans les réponses des intelligences artificielles génératives — ChatGPT, Perplexity, Gemini, Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et recommandé par les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant gastronomique à Lyon ? »."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mon restaurant ou hôtel est-il concerné par le GEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les IA pour chercher des recommandations. Les établissements premium — gastronomiques, boutiques, étoilés — sont les premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y fait confiance pour des décisions à forte valeur."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment se déroule l'audit GEO gratuit de Présens ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vous remplissez le formulaire, Maël interroge manuellement ChatGPT, Perplexity, Gemini et Claude avec les requêtes pertinentes pour votre établissement. Sous 48h, vous recevez un rapport avec votre Score de Présence sur 100, les citations identifiées, et les axes d'amélioration prioritaires. Sans engagement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "En combien de temps voit-on des résultats avec le GEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les premières améliorations apparaissent généralement en 6 à 12 semaines. Les optimisations techniques (llms.txt, schemas) sont indexées rapidement par certains modèles ; la stratégie éditoriale d'autorité produit ses effets sur 2 à 4 mois. Chaque rapport mensuel trace la progression avec le Score de Présence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment Présens mesure-t-il les progrès en GEO ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le Score de Présence est notre indicateur clé : calculé sur 100, il agrège la fréquence de citation, la qualité des descriptions et la cohérence des informations sur les 4 LLMs majeurs. Chaque mois, vous recevez ce score avec les requêtes testées, des extraits de réponses IA, et le détail des actions menées."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Pourquoi choisir Présens plutôt qu'une agence SEO classique ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les agences SEO optimisent pour Google — un moteur qui classe des liens. Les IA génératives fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de données, le format sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier studio français à se consacrer exclusivement à cette discipline pour l'hôtellerie-restauration."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
-  <div class="orb"
-    style="width:520px;height:520px;background:radial-gradient(circle,rgba(31,58,45,0.6),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);">
-  </div>
 
-  <nav id="navbar" aria-label="Navigation">
-    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span
-        class="sens">sens</span></a>
-    <a class="nav-back" href="/">← Retour</a>
+  <!-- ── Skip link ─────────────────────────── -->
+  <a class="skip-link" href="#scroll-container">Passer au contenu principal</a>
+
+  <!-- ── Navbar Flottante ──────────────────── -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <button class="nav-logo" data-section="0" aria-label="Présens — retour à l'accueil">
+      <span class="pre">Pré</span><span class="sens">sens</span>
+    </button>
+    <div class="nav-links">
+      <button class="nav-link" data-section="2">Méthode</button>
+      <button class="nav-link" data-section="4">Tarifs</button>
+      <button class="nav-link" data-section="3">Le fondateur</button>
+      <button class="nav-link" data-section="5">FAQ</button>
+      <a class="nav-link" href="/blog" style="text-decoration:none;">Blog</a>
+      <a class="nav-cta" href="/audit" style="text-decoration:none;">AUDIT GRATUIT →</a>
+    </div>
+    <a class="nav-profile" href="/espace" aria-label="Espace client" title="Espace client">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.6" />
+        <path d="M4.5 20c0-4 3.4-6.2 7.5-6.2s7.5 2.2 7.5 6.2" />
+      </svg>
+    </a>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu" aria-expanded="false">
+      <svg class="icon-menu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+      <svg class="icon-close" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <div class="nav-dropdown" id="nav-dropdown" role="menu">
+      <button class="nav-dropdown-item" data-section="4" role="menuitem">Tarifs</button>
+      <button class="nav-dropdown-item" data-section="5" role="menuitem">FAQ</button>
+      <a class="nav-dropdown-item" href="/blog" role="menuitem">Blog</a>
+    </div>
   </nav>
 
-  <main>
-    <span class="pill">INFORMATIONS LÉGALES</span>
-    <h1>Mentions légales</h1>
-    <p class="intro">Conformément à la loi pour la confiance dans l'économie numérique (LCEN),
-      les informations légales du site <strong>presens.site</strong> sont précisées ci-dessous.</p>
+  <!-- ── Action coin droit : espace client ── -->
+  <div class="corner-orb" aria-hidden="true"></div>
+  <div id="corner-actions">
+    <a class="corner-icon" href="/espace" aria-label="Espace client" title="Espace client">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.6" />
+        <path d="M4.5 20c0-4 3.4-6.2 7.5-6.2s7.5 2.2 7.5 6.2" />
+      </svg>
+    </a>
+  </div>
 
-    <section class="legal">
-      <h2>Éditeur du site</h2>
-      <p>Le site presens.site est édité par <strong>Maël Severi</strong></p>
-      <ul>
-        <li>SIRET : <strong>953 704 657 00014</strong></li>
-        <li>Siège : <span class="todo">Marseille</span></li>
-        <li>Email : <a class="inline" href="mailto:contact@presens.site">contact@presens.site</a></li>
-      </ul>
+  <!-- ── Navigation Dots ───────────────────── -->
+  <nav id="nav-dots" aria-label="Navigation par section"></nav>
+
+  <!-- ── Main Scroll Container ─────────────── -->
+  <main id="scroll-container" tabindex="-1" aria-label="Contenu principal">
+
+    <!-- INDEX 0 — HERO -->
+    <section class="section active" id="section-0" data-index="0"
+      aria-label="Hero — Présens, premier studio GEO français pour l'hôtellerie-restauration">
+      <span class="sr-only">Section 1 sur 8</span>
+
+      <!-- Vidéo Higgsfield (fallback : orbes CSS si fichier absent) -->
+      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/img/hero-poster.jpg">
+        <source src="/assets/video/hero-ambience.webm" type="video/webm">
+        <source src="/assets/video/hero-ambience.mp4" type="video/mp4">
+      </video>
+
+      <!-- Orbes de fond -->
+      <div class="orb" style="width:640px;height:640px;
+           background:radial-gradient(circle,rgba(45,107,82,0.32),transparent 80%);
+           top:-120px;left:-80px;filter:blur(100px);"></div>
+      <div class="orb" style="width:500px;height:500px;
+           background:radial-gradient(circle,rgba(155,234,200,0.44),transparent 70%);
+           bottom:-100px;right:-60px;filter:blur(80px);"></div>
+      <div class="orb" style="width:400px;height:400px;
+           background:radial-gradient(circle,rgba(31,58,45,0.08),transparent 70%);
+           top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(120px);"></div>
+      <!-- Orbe CTA — Hero uniquement -->
+      <div class="orb-cta-pulse"></div>
+      <div class="section-inner">
+        <span class="pill hero-pill">GEO · STUDIO FRANÇAIS · 2026</span>
+        <h1 class="hero-title">
+          Votre établissement,
+          <em class="hero-em">cité par les IA.</em>
+        </h1>
+        <p class="hero-sub">Vos clients cherchent déjà sur ChatGPT, Perplexity, Gemini. Vous n'apparaissez pas encore.
+          Présens vous y place.</p>
+        <div class="hero-ctas">
+          <!-- Tour 7 : remplacer data-section par href="[URL Formspree ou #audit]" si CTA externe -->
+          <button class="btn-cta" id="hero-cta-audit" data-audit="true">Demander un audit gratuit →</button>
+          <button class="btn-secondary" data-section="2">Découvrir la méthode</button>
+        </div>
+      </div>
     </section>
 
-    <section class="legal">
-      <h2>Directeur de la publication</h2>
-      <p><strong>Maël Severi</strong>.</p>
+    <!-- INDEX 1 — LE PROBLÈME -->
+    <section class="section" id="section-1" data-index="1" aria-label="Le Problème — le shift GEO">
+      <span class="sr-only">Section 2 sur 8</span>
+      <div class="orb" style="width:520px;height:520px;
+           background:radial-gradient(circle,rgba(45,107,82,0.72),transparent 70%);
+           top:10%;right:-60px;filter:blur(90px);"></div>
+      <div class="orb" style="width:400px;height:400px;
+           background:radial-gradient(circle,rgba(155,234,200,0.52),transparent 70%);
+           bottom:-80px;left:8%;filter:blur(100px);"></div>
+      <div class="orb" style="width:300px;height:300px;
+           background:radial-gradient(circle,rgba(31,58,45,0.82),transparent 70%);
+           top:60%;left:40%;filter:blur(80px);"></div>
+      <div class="section-inner">
+        <span class="pill prob-pill">LE CONSTAT</span>
+        <h2 class="prob-title">
+          Vos concurrents existent.
+          <em class="prob-em">Pas vous.</em>
+        </h2>
+        <p class="prob-body">Chaque jour, ChatGPT recommande des restaurants à Paris, Perplexity suggère des hôtels à
+          Cannes, Gemini cite des bars à Lyon. Rarement les vôtres.</p>
+        <p class="prob-body">Ce n'est pas encore la majorité des recherches — c'est <em>celle qui grandit le plus
+            vite</em>.
+          Le basculement avec Google est attendu dès 2028. Le référencement Google s'est joué en 2005 ; la présence sur
+          les IA se joue maintenant. Pendant que vos concurrents attendent, la place est encore à prendre.</p>
+        <p class="prob-stat">Près d'une recherche sur dix passe déjà par une IA générative — et cette part double chaque
+          année.</p>
+        <p class="prob-source">Sources : Datos · Semrush · SparkToro, 2025-2026</p>
+        <button class="btn-cta prob-cta" data-audit="true">Vérifier ma visibilité →</button>
+      </div>
     </section>
 
-    <section class="legal">
-      <h2>Hébergeur</h2>
-      <p><strong>Cloudflare France</strong>, société par actions simplifiée.<br>
-        Siège : 6 place de la Madeleine, 75008 Paris.<br>
-        RCS Paris 883 044 646 — Téléphone : +33 7 57 90 52 73.</p>
-      <p>Maison mère : <strong>Cloudflare, Inc.</strong>, 101 Townsend Street,
-        San Francisco, CA 94107, États-Unis.</p>
+    <!-- INDEX 2 — LA MÉTHODE -->
+    <section class="section" id="section-2" data-index="2" aria-label="La Méthode Présens — audit, optimisation, suivi">
+      <span class="sr-only">Section 3 sur 8</span>
+      <div class="orb" style="width:600px;height:600px;
+           background:radial-gradient(circle,rgba(31,58,45,0.82),transparent 70%);
+           top:-80px;left:50%;transform:translateX(-50%);filter:blur(110px);"></div>
+      <div class="orb" style="width:360px;height:360px;
+           background:radial-gradient(circle,rgba(45,107,82,0.62),transparent 70%);
+           bottom:5%;right:12%;filter:blur(90px);"></div>
+      <div class="orb" style="width:280px;height:280px;
+           background:radial-gradient(circle,rgba(155,234,200,0.48),transparent 70%);
+           top:30%;left:5%;filter:blur(80px);"></div>
+      <div class="section-inner">
+        <span class="pill meth-pill">LA MÉTHODE PRÉSENS</span>
+        <h2 class="meth-title">
+          Trois étapes vers la
+          <em class="meth-em">présence.</em>
+        </h2>
+        <div class="meth-cards">
+
+          <!-- Card 01 — Audit -->
+          <div class="meth-card" role="button" aria-expanded="false" tabindex="0">
+            <div class="meth-card-header">
+              <div class="meth-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              </div>
+              <div class="meth-card-meta">
+                <span class="meth-card-num">01</span>
+                <h3 class="meth-card-title">Audit</h3>
+              </div>
+              <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <p class="meth-card-desc">Cartographie complète de votre présence actuelle sur les 4 LLMs majeurs.</p>
+          </div>
+
+          <!-- Card 02 — Optimisation -->
+          <div class="meth-card" role="button" aria-expanded="false" tabindex="0">
+            <div class="meth-card-header">
+              <div class="meth-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                  <polyline points="2 17 12 22 22 17" />
+                  <polyline points="2 12 12 17 22 12" />
+                </svg>
+              </div>
+              <div class="meth-card-meta">
+                <span class="meth-card-num">02</span>
+                <h3 class="meth-card-title">Optimisation</h3>
+              </div>
+              <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <p class="meth-card-desc">Mise en place technique et éditoriale : llms.txt, balisage, contenus d'autorité.
+            </p>
+          </div>
+
+          <!-- Card 03 — Suivi -->
+          <div class="meth-card" role="button" aria-expanded="false" tabindex="0">
+            <div class="meth-card-header">
+              <div class="meth-card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                  <polyline points="16 7 22 7 22 13" />
+                </svg>
+              </div>
+              <div class="meth-card-meta">
+                <span class="meth-card-num">03</span>
+                <h3 class="meth-card-title">Suivi</h3>
+              </div>
+              <svg class="meth-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <p class="meth-card-desc">Rapport mensuel détaillé. Vous voyez votre progression, vous gardez le contrôle.
+            </p>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section class="legal">
-      <h2>TVA</h2>
-      <p>TVA non applicable en dessous du seuil prévu par l'article 293 B du CGI.</p>
+    <!-- INDEX 3 — LE FONDATEUR -->
+    <section class="section" id="section-3" data-index="3" aria-label="Maël, fondateur de Présens, expert GEO">
+      <span class="sr-only">Section 4 sur 8</span>
+      <div class="orb" style="width:460px;height:460px;
+           background:radial-gradient(circle,rgba(45,107,82,0.74),transparent 70%);
+           top:12%;left:-100px;filter:blur(95px);"></div>
+      <div class="orb" style="width:500px;height:500px;
+           background:radial-gradient(circle,rgba(155,234,200,0.50),transparent 70%);
+           bottom:-120px;right:-80px;filter:blur(100px);"></div>
+      <div class="orb" style="width:320px;height:320px;
+           background:radial-gradient(circle,rgba(31,58,45,0.76),transparent 70%);
+           top:55%;left:55%;filter:blur(85px);"></div>
+      <!-- Layout 2 colonnes — found-inner override section-inner -->
+      <div class="section-inner found-inner">
+
+        <!-- Colonne gauche : portrait Higgsfield (fallback placeholder) -->
+        <div class="found-portrait" aria-label="Portrait de Maël, fondateur de Présens">
+          <video class="found-video" autoplay muted loop playsinline preload="none">
+            <source src="/assets/video/founder-portrait.webm" type="video/webm">
+            <source src="/assets/video/founder-portrait.mp4" type="video/mp4">
+          </video>
+          <span class="found-portrait-label">[Portrait Maël — Higgsfield]</span>
+        </div>
+
+        <!-- Colonne droite : texte -->
+        <div class="found-content">
+          <span class="pill found-pill">LE FONDATEUR</span>
+          <h2 class="found-title">
+            Maël,
+            <em class="found-em">fondateur de Présens.</em>
+          </h2>
+          <div class="found-paras">
+            <p class="found-para">Expert en référencement génératif (GEO), j'ai fondé Présens en 2026 avec une
+              conviction simple : les établissements qui ne sont pas cités par les IA d'ici 2027 perdront la bataille de
+              l'attention.</p>
+            <p class="found-para">Je travaille exclusivement avec des restaurants, hôtels et bars en France. Pas par
+              hasard : ce sont les secteurs où la recommandation conversationnelle a le plus de valeur, et où l'écart
+              entre la qualité réelle et la visibilité IA est aujourd'hui le plus large.</p>
+            <p class="found-para">Mon engagement : un nombre limité de clients à la fois, un suivi personnel, des
+              résultats mesurables. Pas d'agence anonyme, pas de promesse en l'air. Juste un travail de fond, partagé
+              chaque mois en toute transparence.</p>
+          </div>
+          <p class="found-sig">— Maël</p>
+          <!-- CTA : remplacer data-section par href Calendly à la mise en ligne -->
+          <button class="btn-cta found-cta" data-audit="true">Échanger avec Maël →</button>
+        </div>
+
+      </div>
     </section>
 
-    <section class="legal">
-      <h2>Propriété intellectuelle</h2>
-      <p>L'ensemble des contenus du site (textes, identité visuelle, logo, structure, éléments
-        graphiques) est la propriété exclusive de Maël Séveri, sauf mention contraire. Toute
-        reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite
-        préalable, est interdite et susceptible de constituer une contrefaçon.</p>
+    <!-- INDEX 4 — TARIFS -->
+    <section class="section" id="section-4" data-index="4" aria-label="Tarifs Présens — trois paliers GEO">
+      <span class="sr-only">Section 5 sur 8</span>
+      <div class="orb" style="width:520px;height:520px;
+           background:radial-gradient(circle,rgba(31,58,45,0.80),transparent 70%);
+           top:-60px;right:-60px;filter:blur(100px);"></div>
+      <div class="orb" style="width:420px;height:420px;
+           background:radial-gradient(circle,rgba(45,107,82,0.62),transparent 70%);
+           bottom:-80px;left:-40px;filter:blur(90px);"></div>
+      <div class="orb" style="width:300px;height:300px;
+           background:radial-gradient(circle,rgba(155,234,200,0.52),transparent 70%);
+           top:40%;left:35%;filter:blur(80px);"></div>
+      <div class="section-inner tarif-inner">
+
+        <!-- En-tête + toggle -->
+        <div class="tarif-header">
+          <span class="pill tarif-pill">TARIFS · OFFRE TRANSPARENTE</span>
+          <h2 class="tarif-title">Une offre simple, <em>sans surprise.</em></h2>
+          <p class="tarif-scarcity">Partenaire Fondateur · 19 / 20 places restantes</p>
+          <div class="tarif-toggle" role="group" aria-label="Mode tarifaire">
+            <button class="tarif-toggle-btn active" id="btn-std" aria-pressed="true">Tarifs standards</button>
+            <button class="tarif-toggle-btn" id="btn-fond" aria-pressed="false">Mode Fondateur</button>
+          </div>
+        </div>
+
+        <!-- Bannière fondateur (masquée par défaut) -->
+        <div class="tarif-banner" role="note" aria-live="polite">
+          <span class="tarif-banner-icon" aria-hidden="true">★</span>
+          <div>
+            <strong>Offre Fondateur — places limitées</strong>
+            <p>2 mois offerts + 2 mois supplémentaires si vous n'êtes pas cité dans une IA majeure sous 60 jours · Tarif
+              verrouillé à vie</p>
+          </div>
+        </div>
+
+        <!-- 3 cartes -->
+        <div class="tarif-cards">
+
+          <!-- Plan Présent -->
+          <div class="tarif-card">
+            <span class="tarif-name">Plan Présent</span>
+            <div class="tarif-price">
+              <span class="tarif-amount">240 <span class="tarif-curr">€</span></span>
+              <span class="tarif-period">/mois</span>
+            </div>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">380 €</span><span class="tarif-setup-fond"> 200 €</span></p>
+            <p class="tarif-target">Bars, cafés, restaurants indépendants</p>
+            <ul class="tarif-features">
+              <li>Audit GEO initial complet</li>
+              <li>Optimisation llms.txt + schemas</li>
+              <li>1 contenu d'autorité / mois</li>
+              <li>Présence sur 3 IA majeures</li>
+              <li>Score de Présence mensuel</li>
+            </ul>
+            <div class="tarif-fond-bonus" aria-hidden="true">
+              <span>2 mois offerts </span>
+              <span>Tarif verrouillé à vie</span>
+            </div>
+            <button class="tarif-cta-outline" data-audit="true">Démarrer →</button>
+          </div>
+
+          <!-- Plan Cité (featured) -->
+          <div class="tarif-card tarif-card-featured">
+            <span class="tarif-badge">Le plus populaire</span>
+            <span class="tarif-name">Plan Cité</span>
+            <div class="tarif-price">
+              <span class="tarif-amount">680 <span class="tarif-curr">€</span></span>
+              <span class="tarif-period">/mois</span>
+            </div>
+            <p class="tarif-setup">Setup : <span class="tarif-setup-std">980 €</span><span class="tarif-setup-fond"> 200 €</span></p>
+            <p class="tarif-target">Restaurants gastronomiques, hôtels boutiques</p>
+            <ul class="tarif-features">
+              <li>Tout du plan Présent</li>
+              <li>3 contenus d'autorité / mois</li>
+              <li>Présence sur 5 IA majeures</li>
+              <li>Veille sur 3 concurrents</li>
+              <li>Optimisation d'entité</li>
+              <li>Rapport bi-mensuel</li>
+            </ul>
+            <div class="tarif-fond-bonus" aria-hidden="true">
+              <span>2 mois offerts </span>
+              <span>Tarif verrouillé à vie</span>
+            </div>
+            <button class="tarif-cta-filled" data-audit="true">Démarrer →</button>
+          </div>
+
+          <!-- Plan Référent -->
+          <div class="tarif-card tarif-card-referent">
+            <span class="tarif-name">Plan Référent</span>
+            <div class="tarif-price">
+              <span class="tarif-amount">Sur devis</span>
+            </div>
+            <div class="tarif-fond-referent-info" aria-hidden="true">
+              <span class="tarif-fond-ref-price">Sur devis</span>
+              <span class="tarif-fond-ref-sub">Conditions Fondateur disponibles</span>
+            </div>
+            <p class="tarif-target">Hôtels 4-5 étoiles, restaurants étoilés, châteaux et domaines de prestige</p>
+            <ul class="tarif-features">
+              <li>Tout du plan Cité</li>
+              <li>5 contenus d'autorité / mois</li>
+              <li>Présence maximale sur toutes les IA</li>
+              <li>Relations presse</li>
+              <li>Dashboard de suivi</li>
+              <li>Accompagnement dédié par le fondateur</li>
+            </ul>
+            <div class="tarif-fond-bonus" aria-hidden="true">
+              <span>2 mois offerts</span>
+            </div>
+            <button class="tarif-cta-outline" data-audit="true">Démarrer →</button>
+          </div>
+
+        </div><!-- /.tarif-cards -->
+
+        <!-- Encart Conditions Fondateur — affiché sous la grille en mode fondateur -->
+        <div class="tarif-cond-encart" aria-live="polite">
+          <span class="tarif-cond-encart-title">Conditions Partenaire Fondateur</span>
+          <ul>
+            <li>Mise en place à 200 € au lieu du tarif standard</li>
+            <li>2 premiers mois offerts</li>
+            <li>Tarif Fondateur verrouillé à vie (Présent &amp; Cité)</li>
+            <li>Garantie résultats : 2 mois supplémentaires offerts si non cité dans une IA majeure sous 60 jours</li>
+            <li><em>En contrepartie : engagement minimum de 12 mois</em></li>
+          </ul>
+          <p>Réservé aux 20 premiers établissements partenaires.</p>
+        </div>
+
+      </div><!-- /.section-inner -->
     </section>
 
-    <section class="legal">
-      <h2>Données personnelles</h2>
-      <p>Les données transmises via les formulaires du site (notamment la demande d'audit) sont
-        utilisées uniquement pour traiter la demande et ne sont jamais cédées à des tiers à des fins
-        commerciales. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de
-        suppression de vos données : adressez votre demande à
-        <a class="inline" href="mailto:contact@presens.site">contact@presens.site</a>.
-        Les mandats de prélèvement sont gérés par le prestataire GoCardless, qui conserve seul les
-        coordonnées bancaires ; aucune donnée de paiement n'est stockée par Présens.
-      </p>
+
+    <!-- INDEX 6 — FAQ -->
+    <section class="section" id="section-6" data-index="6" aria-label="Foire aux questions — GEO et Présens">
+      <span class="sr-only">Section 7 sur 8</span>
+      <div class="orb" style="width:490px;height:490px;
+           background:radial-gradient(circle,rgba(31,58,45,0.74),transparent 70%);
+           top:-80px;left:-80px;filter:blur(100px);"></div>
+      <div class="orb" style="width:430px;height:430px;
+           background:radial-gradient(circle,rgba(45,107,82,0.66),transparent 70%);
+           bottom:-80px;right:-60px;filter:blur(90px);"></div>
+      <div class="orb" style="width:260px;height:260px;
+           background:radial-gradient(circle,rgba(155,234,200,0.50),transparent 70%);
+           top:45%;right:25%;filter:blur(80px);"></div>
+      <div class="section-inner faq-inner">
+        <span class="pill faq-pill">QUESTIONS FRÉQUENTES</span>
+        <h2 class="faq-title">Ce que vous <em>voulez savoir.</em></h2>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Qu'est-ce que le GEO et en quoi est-ce différent du SEO ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un
+                établissement dans les réponses des intelligences artificielles génératives — ChatGPT, Perplexity,
+                Gemini, Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et
+                recommandé par les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant
+                gastronomique à Lyon ? ».</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Mon restaurant ou hôtel est-il concerné ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les
+                IA pour chercher des recommandations. Les établissements premium — gastronomiques, boutiques, étoilés —
+                sont les premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y
+                fait confiance pour des décisions à forte valeur.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Comment se déroule l'audit gratuit ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Vous remplissez le formulaire, Maël interroge manuellement ChatGPT, Perplexity,
+                Gemini et Claude avec les requêtes pertinentes pour votre établissement. Sous 48h, vous recevez un
+                rapport avec votre Score de Présence sur 100, les citations identifiées, et les axes d'amélioration
+                prioritaires. Sans engagement.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">En combien de temps voit-on des résultats ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Les premières améliorations apparaissent généralement en 6 à 12 semaines. Les
+                optimisations techniques (llms.txt, schemas) sont indexées rapidement par certains modèles ; la
+                stratégie éditoriale d'autorité produit ses effets sur 2 à 4 mois. Chaque rapport mensuel trace la
+                progression avec le Score de Présence.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Comment mesurez-vous les progrès ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Le Score de Présence est notre indicateur clé : calculé sur 100, il agrège la
+                fréquence de citation, la qualité des descriptions et la cohérence des informations sur les 4 LLMs
+                majeurs. Chaque mois, vous recevez ce score avec les requêtes testées, des extraits de réponses IA, et
+                le détail des actions menées.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Qu'est-ce qu'un « contenu d'autorité » ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Un contenu d'autorité est une unité de production qui renforce votre visibilité sur
+                les IA génératives. Selon la stratégie du mois, il peut prendre l'une de ces formes : un article
+                éditorial optimisé publié sur votre site, un enrichissement de votre FAQ structuré pour les IA, une
+                mention obtenue sur un site externe à forte autorité (guide sectoriel, presse, blog d'influence), ou une
+                fiche d'entité publiée sur une plateforme comme Wikidata. Le format est choisi à chaque édition en
+                fonction de ce qui aura le plus d'impact pour votre établissement, dans une logique d'efficacité plutôt
+                que de remplissage.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">
+              <span class="faq-q-text">Pourquoi Présens plutôt qu'une agence SEO classique ?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-a" role="region">
+              <p class="faq-a-inner">Les agences SEO optimisent pour Google — un moteur qui classe des liens. Les IA
+                génératives fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de
+                données, le format sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier
+                studio français à se consacrer exclusivement à cette discipline pour l'hôtellerie-restauration.</p>
+            </div>
+          </div>
+
+        </div><!-- /.faq-list -->
+      </div><!-- /.section-inner -->
+    </section>
+
+    <!-- INDEX 7 — FOOTER -->
+    <section class="section" id="section-7" data-index="7" aria-label="Footer — Présens, studio GEO, contact">
+      <span class="sr-only">Section 8 sur 8</span>
+      <div class="orb" style="width:420px;height:420px;
+           background:radial-gradient(circle,rgba(45,107,82,0.68),transparent 70%);
+           top:20%;right:18%;filter:blur(95px);"></div>
+      <div class="orb" style="width:360px;height:360px;
+           background:radial-gradient(circle,rgba(155,234,200,0.52),transparent 70%);
+           bottom:18%;left:18%;filter:blur(85px);"></div>
+      <div class="orb" style="width:300px;height:300px;
+           background:radial-gradient(circle,rgba(31,58,45,0.72),transparent 70%);
+           top:50%;left:10%;filter:blur(80px);"></div>
+      <div class="section-inner footer-inner">
+
+        <div class="footer-top">
+
+          <!-- Marque -->
+          <div class="footer-brand footer-anim">
+            <div class="footer-logo" aria-label="Présens">
+              <span class="pre">Pré</span><span class="sens">sens</span>
+            </div>
+            <p class="footer-tagline">Premier studio français de GEO pour l'hôtellerie-restauration. Faites citer votre
+              établissement par les IA.</p>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="footer-nav footer-anim" aria-label="Navigation footer">
+            <span class="footer-col-title">Navigation</span>
+            <button class="footer-nav-link" data-section="2">La méthode</button>
+            <button class="footer-nav-link" data-section="4">Tarifs</button>
+            <button class="footer-nav-link" data-section="3">Le fondateur</button>
+            <button class="footer-nav-link" data-section="5">FAQ</button>
+            <a class="footer-nav-link" href="/audit" style="text-decoration:none;">Audit gratuit</a>
+          </nav>
+
+          <!-- Contact -->
+          <div class="footer-contact footer-anim">
+            <span class="footer-col-title">Contact</span>
+            <a class="footer-contact-email" href="mailto:contact@presens.site">contact@presens.site</a>
+            <span class="footer-contact-line">Maël — Fondateur</span>
+            <span class="footer-contact-line">France · 2026</span>
+          </div>
+
+          <!-- Légal -->
+          <nav class="footer-nav footer-anim" aria-label="Légal">
+            <span class="footer-col-title">Légal</span>
+            <a class="footer-nav-link" href="/mentions-legales" style="text-decoration:none;">Mentions légales</a>
+            <!-- Emplacements futurs :
+            <a class="footer-nav-link" href="/cgv" style="text-decoration:none;">CGV</a>
+            <a class="footer-nav-link" href="/confidentialite" style="text-decoration:none;">Confidentialité</a>
+            -->
+          </nav>
+
+        </div><!-- /.footer-top -->
+
+        <div class="footer-bottom footer-anim">
+          <p class="footer-copy">© 2026 Présens · Studio GEO · France · Tous droits réservés</p>
+          <div class="footer-geo-links" aria-label="Fichiers GEO">
+            <a class="footer-geo-link" href="/llms.txt" target="_blank" rel="noopener">llms.txt</a>
+            <a class="footer-geo-link" href="/sitemap.xml" target="_blank" rel="noopener">sitemap.xml</a>
+            <a class="footer-geo-link" href="/robots.txt" target="_blank" rel="noopener">robots.txt</a>
+          </div>
+        </div>
+
+      </div><!-- /.section-inner -->
     </section>
 
   </main>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo" aria-label="Présens"><span class="pre">Pré</span><span class="sens">sens</span></div>
-          <p class="footer-tagline">Premier studio français de GEO pour l'hôtellerie-restauration.
-            Faites citer votre établissement par les IA.</p>
-        </div>
-        <nav class="footer-col" aria-label="Navigation">
-          <span class="footer-col-title">Navigation</span>
-          <a class="footer-link" href="/">Accueil</a>
-          <a class="footer-link" href="/blog">Blog</a>
-          <a class="footer-link" href="/audit">Audit gratuit</a>
-          <a class="footer-link" href="/espace">Espace client</a>
-        </nav>
-        <div class="footer-col">
-          <span class="footer-col-title">Contact</span>
-          <a class="footer-email" href="mailto:contact@presens.site">contact@presens.site</a>
-          <span class="footer-line">Maël — Fondateur</span>
-          <span class="footer-line">France · 2026</span>
-        </div>
-        <nav class="footer-col" aria-label="Légal">
-          <span class="footer-col-title">Légal</span>
-          <a class="footer-link" href="/mentions-legales">Mentions légales</a>
-          <!-- Emplacements futurs :
-          <a class="footer-link" href="/cgv">CGV</a>
-          <a class="footer-link" href="/confidentialite">Confidentialité</a>
-          -->
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2026 Présens · Studio GEO · France · Tous droits réservés</p>
-        <div class="footer-geo-links">
-          <a class="footer-geo-link" href="/llms.txt" target="_blank" rel="noopener">llms.txt</a>
-          <a class="footer-geo-link" href="/sitemap.xml" target="_blank" rel="noopener">sitemap.xml</a>
-          <a class="footer-geo-link" href="/robots.txt" target="_blank" rel="noopener">robots.txt</a>
-        </div>
-      </div>
+  <!-- ── GDPR Consent Banner ── -->
+  <div id="gdpr-banner" role="dialog" aria-modal="false" aria-label="Consentement aux cookies" aria-live="polite">
+    <p class="gdpr-text">Ce site utilise des cookies pour mesurer l'audience et améliorer votre expérience. Aucune
+      donnée n'est partagée avec des tiers à des fins publicitaires.</p>
+    <div class="gdpr-actions">
+      <button class="gdpr-refuse" id="gdpr-refuse">Refuser</button>
+      <button class="gdpr-accept" id="gdpr-accept">Accepter</button>
     </div>
-  </footer>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SNAP-ON-INTENT SYSTEM
+  ═══════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Constants ──────────────────────────── */
+      var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var TOTAL = 7;
+      var THRESHOLD = 350;       // wheel : px avant bascule
+      var TOUCH_THRESHOLD = 80;  // touch : seuil mobile (swipe court suffit)
+      var TRANSITION_MS = 900;   // durée animation entrante
+      var RESET_MS = 1200;   // délai d'expiration de l'intention
+      var WHEEL_MULT = 1.35;   // sensibilité molette / trackpad
+      var TOUCH_MULT = 1.2;   // sensibilité tactile
+
+      /* ── State ──────────────────────────────── */
+      var current = 0;
+      var buffer = 0;
+      var transitioning = false;
+      var resetTimer = null;
+      var rafPending = false;
+      var navHideTimer = null;
+      var pendingDelta = 0;
+      var touchStartY = 0;
+
+      /* ── DOM refs ───────────────────────────── */
+      var sections = Array.from(document.querySelectorAll('.section'));
+      var dotsNav = document.getElementById('nav-dots');
+
+      /* ── Build Navigation Dots ──────────────── */
+      var dots = sections.map(function (_, i) {
+        var btn = document.createElement('button');
+        btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        btn.setAttribute('aria-label', 'Section ' + (i + 1) + ' sur ' + TOTAL);
+        btn.addEventListener('click', function () { jumpTo(i); });
+        dotsNav.appendChild(btn);
+        return btn;
+      });
+
+      /* ── showNav: affiche la barre sur mobile puis la cache ── */
+      function showNav() {
+        if (window.innerWidth > 768) return;
+        dotsNav.classList.add('nav-visible');
+        clearTimeout(navHideTimer);
+        navHideTimer = setTimeout(function () {
+          dotsNav.classList.remove('nav-visible');
+        }, TRANSITION_MS + 900);
+      }
+
+      /* ── goTo: direction-aware slide + motion blur ── */
+      function goTo(idx) {
+        if (transitioning) return;
+        if (idx < 0 || idx >= TOTAL) return;
+        if (idx === current) return;
+
+        transitioning = true;
+        buffer = 0;
+        clearTimeout(resetTimer);
+        showNav();
+
+        var prev = current;
+        var dir = idx > prev ? 'down' : 'up';
+        current = idx;
+
+        /* Update dots + aria */
+        dots[prev].classList.remove('active');
+        dots[idx].classList.add('active');
+        dots[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        sections[prev].removeAttribute('aria-current');
+        sections[idx].setAttribute('aria-current', 'step');
+
+        /* Leaving animation on old section */
+        sections[prev].classList.add(dir === 'down' ? 'leaving-up' : 'leaving-down');
+        sections[prev].classList.remove('active');
+
+        /* Entering animation on new section */
+        if (dir === 'up') sections[idx].classList.remove('is-above');
+        sections[idx].classList.add(dir === 'down' ? 'entering-down' : 'entering-up');
+
+        /* Fire content entrance animation concurrently with the CSS slide */
+        onSectionEnter(idx);
+
+        setTimeout(function () {
+          /* Settle leaving section at its new rest position */
+          sections[prev].classList.remove('leaving-up', 'leaving-down');
+          if (dir === 'down') sections[prev].classList.add('is-above');
+          /* going up: prev returns to base (below) — no extra class needed */
+          sections[prev].scrollTop = 0; /* reset pour re-entrée propre */
+
+          /* Settle entering section as active */
+          sections[idx].classList.remove('entering-down', 'entering-up');
+          sections[idx].classList.add('active');
+
+          transitioning = false;
+        }, TRANSITION_MS);
+      }
+
+      /* ── jumpTo: instant jump (dots / navbar / Home / End) */
+      function jumpTo(idx) {
+        if (idx < 0 || idx >= TOTAL) return;
+
+        transitioning = false;
+        buffer = 0;
+        clearTimeout(resetTimer);
+        showNav();
+
+        /* Reset every section to correct positional state without animation */
+        sections.forEach(function (sec, i) {
+          sec.classList.remove(
+            'active', 'is-above',
+            'entering-down', 'entering-up', 'leaving-up', 'leaving-down'
+          );
+          if (i < idx) sec.classList.add('is-above');
+          else if (i === idx) sec.classList.add('active');
+          /* else: base transform = below */
+
+          if (i === idx) sec.setAttribute('aria-current', 'step');
+          else sec.removeAttribute('aria-current');
+        });
+
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        dots[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        current = idx;
+
+        /* Brief lock then trigger GSAP entrance */
+        transitioning = true;
+        setTimeout(function () {
+          transitioning = false;
+          onSectionEnter(current);
+        }, TRANSITION_MS);
+      }
+
+      /* ── addBuffer: accumulation + seuil ────── */
+      function addBuffer(delta, thr) {
+        if (transitioning) return;
+        thr = thr || THRESHOLD;
+
+        buffer += delta;
+
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          buffer = 0;
+        }, RESET_MS);
+
+        if (buffer >= thr) {
+          buffer = 0;
+          goTo(current + 1);
+        } else if (buffer <= -thr) {
+          buffer = 0;
+          goTo(current - 1);
+        }
+      }
+
+      /* ── Wheel Handler ──────────────────────── */
+      function onWheel(e) {
+        e.preventDefault();                    /* toujours, même en transition */
+        if (transitioning) return;
+
+        var delta = e.deltaY;
+        if (e.deltaMode === 1) delta *= 16;    /* lignes → px */
+        if (e.deltaMode === 2) delta *= 100;   /* pages  → px */
+
+        pendingDelta += delta * WHEEL_MULT;
+
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(function () {
+            addBuffer(pendingDelta);
+            pendingDelta = 0;
+            rafPending = false;
+          });
+        }
+      }
+
+      /* ── Touch Handlers ─────────────────────── */
+      function onTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+      }
+
+      function onTouchMove(e) {
+        var sec = sections[current];
+        /* Vérifie que la section est réellement scrollable (overflow auto/scroll)
+           et que le contenu dépasse la hauteur visible */
+        var oy = window.getComputedStyle(sec).overflowY;
+        var isScrollable = (oy === 'auto' || oy === 'scroll') &&
+          sec.scrollHeight > sec.clientHeight + 1;
+
+        if (isScrollable) {
+          var swipingDown = e.touches[0].clientY < touchStartY;
+          var atBottom = sec.scrollTop >= sec.scrollHeight - sec.clientHeight - 2;
+          var atTop = sec.scrollTop <= 0;
+
+          if ((swipingDown && !atBottom) || (!swipingDown && !atTop)) {
+            /* Section a du contenu à scroller — laisser le scroll natif agir */
+            touchStartY = e.touches[0].clientY;
+            return;
+          }
+        }
+
+        e.preventDefault();
+        if (transitioning) return;
+        var delta = (touchStartY - e.touches[0].clientY) * TOUCH_MULT;
+        touchStartY = e.touches[0].clientY;
+        addBuffer(delta, TOUCH_THRESHOLD);
+      }
+
+      /* ── Keyboard Handler ───────────────────── */
+      function onKeyDown(e) {
+        if (transitioning) return;
+
+        var tag = document.activeElement ? document.activeElement.tagName : '';
+        var inForm = ['INPUT', 'TEXTAREA', 'SELECT'].indexOf(tag) !== -1;
+
+        switch (e.key) {
+          case 'ArrowDown':
+          case 'PageDown':
+            e.preventDefault();
+            goTo(current + 1);
+            break;
+          case ' ':
+            if (!inForm) { e.preventDefault(); goTo(current + 1); }
+            break;
+          case 'ArrowUp':
+          case 'PageUp':
+            e.preventDefault();
+            goTo(current - 1);
+            break;
+          case 'Home':
+            e.preventDefault();
+            jumpTo(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            jumpTo(TOTAL - 1);
+            break;
+        }
+      }
+
+      /* ── Section Animations (GSAP stagger) ─── */
+      function animateSection(idx) {
+        if (typeof gsap === 'undefined' || REDUCED_MOTION) return;
+        if (idx === 0) {
+          gsap.fromTo(
+            ['#section-0 .hero-pill', '#section-0 .hero-title',
+              '#section-0 .hero-sub', '#section-0 .hero-ctas'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 1) {
+          gsap.fromTo(
+            ['#section-1 .prob-pill', '#section-1 .prob-title',
+              '#section-1 .prob-body', '#section-1 .prob-stat',
+              '#section-1 .prob-source', '#section-1 .prob-cta'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 2) {
+          document.querySelectorAll('#section-2 .meth-card').forEach(function (c) {
+            c.classList.remove('open');
+            c.setAttribute('aria-expanded', 'false');
+          });
+          gsap.fromTo(
+            ['#section-2 .meth-pill', '#section-2 .meth-title',
+              '#section-2 .meth-card'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 3) {
+          gsap.fromTo(
+            ['#section-3 .found-portrait', '#section-3 .found-pill',
+              '#section-3 .found-title', '#section-3 .found-paras',
+              '#section-3 .found-sig', '#section-3 .found-cta'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 4) {
+          gsap.fromTo(
+            ['#section-4 .tarif-pill', '#section-4 .tarif-title',
+              '#section-4 .tarif-scarcity', '#section-4 .tarif-toggle',
+              '#section-4 .tarif-card'],
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 }
+          );
+        }
+        if (idx === 5) {
+          gsap.fromTo(
+            ['#section-6 .faq-pill', '#section-6 .faq-title', '#section-6 .faq-item'],
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.07 }
+          );
+        }
+        if (idx === 6) {
+          gsap.fromTo(
+            '#section-7 .footer-anim',
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.12 }
+          );
+        }
+      }
+
+      /* ── Section Entrance Hook ──────────────── */
+      function onSectionEnter(idx) {
+        animateSection(idx);
+      }
+
+      /* ── Tarif Toggle (standard / fondateur) ── */
+      function initTarifToggle() {
+        var sec = document.getElementById('section-4');
+        var btnS = document.getElementById('btn-std');
+        var btnF = document.getElementById('btn-fond');
+        if (!sec || !btnS || !btnF) return;
+        btnS.addEventListener('click', function () {
+          sec.classList.remove('tarif-fondateur');
+          btnS.classList.add('active'); btnS.setAttribute('aria-pressed', 'true');
+          btnF.classList.remove('active'); btnF.setAttribute('aria-pressed', 'false');
+        });
+        btnF.addEventListener('click', function () {
+          sec.classList.add('tarif-fondateur');
+          btnF.classList.add('active'); btnF.setAttribute('aria-pressed', 'true');
+          btnS.classList.remove('active'); btnS.setAttribute('aria-pressed', 'false');
+        });
+      }
+
+      /* ── Audit Form (Formspree async) ──────────── */
+
+      /* ── Méthode Accordion (mobile uniquement) ─ */
+      function initMeth() {
+        var cards = document.querySelectorAll('#section-2 .meth-card');
+        cards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            if (window.innerWidth > 768) return;
+            var isOpen = card.classList.contains('open');
+            cards.forEach(function (c) {
+              c.classList.remove('open');
+              c.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              card.classList.add('open');
+              card.setAttribute('aria-expanded', 'true');
+            }
+          });
+          card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+          });
+        });
+      }
+
+      /* ── FAQ Accordion ──────────────────────── */
+      function initFaq() {
+        var sec6 = document.getElementById('section-6');
+        var items = document.querySelectorAll('#section-6 .faq-item');
+        function syncScroll() {
+          var anyOpen = Array.from(items).some(function (i) { return i.classList.contains('open'); });
+          sec6.classList.toggle('faq-expanded', anyOpen);
+          if (!anyOpen) sec6.scrollTop = 0;
+        }
+        items.forEach(function (item) {
+          var btn = item.querySelector('.faq-q');
+          if (!btn) return;
+          btn.addEventListener('click', function () {
+            var isOpen = item.classList.contains('open');
+            items.forEach(function (i) {
+              i.classList.remove('open');
+              var b = i.querySelector('.faq-q');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+              item.classList.add('open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+            syncScroll();
+          });
+        });
+      }
+
+      /* ── Navbar & Dot links ─────────────────── */
+      /* ── Mobile nav dropdown ── */
+      var menuBtn = document.getElementById('nav-menu-btn');
+      var dropdown = document.getElementById('nav-dropdown');
+      if (menuBtn && dropdown) {
+        menuBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = dropdown.classList.contains('open');
+          dropdown.classList.toggle('open', !isOpen);
+          menuBtn.classList.toggle('open', !isOpen);
+          menuBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        dropdown.querySelectorAll('.nav-dropdown-item').forEach(function (item) {
+          item.addEventListener('click', function () {
+            dropdown.classList.remove('open');
+            menuBtn.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+        document.addEventListener('click', function () {
+          dropdown.classList.remove('open');
+          menuBtn.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      document.querySelectorAll('[data-audit]').forEach(function (el) {
+        el.addEventListener('click', function () { window.location.href = '/audit'; });
+      });
+
+      document.querySelectorAll('[data-section]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          jumpTo(parseInt(el.dataset.section, 10));
+        });
+      });
+
+      /* ── Event Listeners ────────────────────── */
+      document.addEventListener('wheel', onWheel, { passive: false });
+      document.addEventListener('touchstart', onTouchStart, { passive: true });
+      document.addEventListener('touchmove', onTouchMove, { passive: false });
+      document.addEventListener('keydown', onKeyDown);
+
+      /* ── Init ───────────────────────────────── */
+      sections[0].setAttribute('aria-current', 'step');
+
+      /* Expose pour debug console */
+      window.__presens = {
+        goTo: goTo,
+        jumpTo: jumpTo,
+        getCurrent: function () { return current; },
+        getBuffer: function () { return buffer; }
+      };
+
+      /* Animation Hero au chargement (GSAP disponible après defer) */
+      window.addEventListener('load', function () {
+        animateSection(0);
+        initMeth();
+        initTarifToggle();
+        initFaq();
+      });
+
+    })();
+  </script>
+
+  <script>
+    /* ── GDPR Consent ── */
+    (function () {
+      var banner = document.getElementById('gdpr-banner');
+      if (localStorage.getItem('presens-consent')) return;
+      setTimeout(function () { banner.classList.add('gdpr-visible'); }, 900);
+      document.getElementById('gdpr-accept').addEventListener('click', function () {
+        localStorage.setItem('presens-consent', 'accepted');
+        banner.classList.remove('gdpr-visible');
+      });
+      document.getElementById('gdpr-refuse').addEventListener('click', function () {
+        localStorage.setItem('presens-consent', 'refused');
+        banner.classList.remove('gdpr-visible');
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
