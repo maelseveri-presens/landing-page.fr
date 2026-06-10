@@ -239,8 +239,8 @@
       <p class="lead">En 2 minutes, sécurisé par GoCardless. Vous signez votre mandat SEPA en ligne,
         sans paperasse. Aucune coordonnée bancaire ne transite par notre site.</p>
 
-      <button class="btn-cta" id="mandate-btn" type="button">Mettre en place le prélèvement →</button>
-      <p class="secure">Paiement sécurisé · Mandat SEPA · Résiliable à tout moment</p>
+      <button class="btn-cta" id="mandate-btn" type="button" style="display:none;">Mettre en place le prélèvement →</button>
+      <p class="secure" id="secure" style="display:none;">Paiement sécurisé · Mandat SEPA · Résiliable à tout moment</p>
 
       <p class="form-error" id="mandate-error" role="alert" aria-live="polite"></p>
     </div>
@@ -249,14 +249,25 @@
   <script>
     (function () {
       var btn = document.getElementById('mandate-btn');
+      var secure = document.getElementById('secure');
       var err = document.getElementById('mandate-error');
+      var token = new URLSearchParams(window.location.search).get('c');
 
-      function showError(msg) {
-        err.textContent = msg;
-        err.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Mettre en place le prélèvement →';
-      }
+      function showError(msg) { err.textContent = msg; err.style.display = 'block'; }
+      function resetBtn() { btn.disabled = false; btn.textContent = 'Mettre en place le prélèvement →'; }
+
+      // Sans jeton : aucun bouton, message clair.
+      if (!token) { showError('Lien invalide ou expiré. Contactez Présens.'); return; }
+
+      // Valide le jeton avant d'autoriser quoi que ce soit.
+      fetch('/api/mandate-info?c=' + encodeURIComponent(token), { headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok || !res.d.ok) { showError('Lien invalide ou expiré. Contactez Présens.'); return; }
+          btn.style.display = 'inline-flex';
+          secure.style.display = 'block';
+        })
+        .catch(function () { showError('Connexion impossible. Réessayez dans un instant.'); });
 
       btn.addEventListener('click', function () {
         err.style.display = 'none';
@@ -265,21 +276,19 @@
 
         fetch('/api/create-mandate', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ c: token }),
         })
-          .then(function (res) {
-            return res.json().then(function (data) { return { ok: res.ok, data: data }; });
-          })
+          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
           .then(function (r) {
             if (r.ok && r.data && r.data.authorisation_url) {
               window.location.href = r.data.authorisation_url;
             } else {
-              showError((r.data && r.data.error) || "Une erreur est survenue. Merci de réessayer.");
+              showError((r.data && r.data.error) || 'Une erreur est survenue. Merci de réessayer.');
+              resetBtn();
             }
           })
-          .catch(function () {
-            showError("Connexion impossible. Vérifiez votre réseau et réessayez.");
-          });
+          .catch(function () { showError('Connexion impossible. Vérifiez votre réseau et réessayez.'); resetBtn(); });
       });
     })();
   </script>

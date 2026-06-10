@@ -38,30 +38,36 @@ export async function onRequestPost({ request, env }) {
 
     if (b.id) {
       // Édition
-      const exists = await env.DB.prepare('SELECT id FROM clients WHERE id = ?').bind(b.id).first();
+      const exists = await env.DB.prepare('SELECT id, mandate_token FROM clients WHERE id = ?').bind(b.id).first();
       if (!exists) throw httpError(404, 'Client introuvable.');
+      // Backfill : si le client n'a pas encore de jeton, on lui en attribue un (sinon on garde le sien).
+      const token = exists.mandate_token || crypto.randomUUID();
       await env.DB.prepare(
         `UPDATE clients SET etablissement=?, email=?, formule=?, montant_mensuel=?, date_debut=?,
-         duree_engagement_mois=?, statut=?, gocardless_subscription_id=?, gocardless_mandate_id=?
+         duree_engagement_mois=?, statut=?, gocardless_subscription_id=?, gocardless_mandate_id=?,
+         mandate_token=?
          WHERE id=?`
       ).bind(
         fields.etablissement, fields.email, fields.formule, fields.montant_mensuel, fields.date_debut,
         fields.duree_engagement_mois, fields.statut, fields.gocardless_subscription_id,
-        fields.gocardless_mandate_id, b.id
+        fields.gocardless_mandate_id, token, b.id
       ).run();
       return jsonOk({ id: b.id, updated: true });
     }
 
     // Création
     const clientId = newId('cli');
+    const mandateToken = crypto.randomUUID(); // jeton unique et imprévisible
     await env.DB.prepare(
       `INSERT INTO clients (id, etablissement, email, formule, montant_mensuel, date_debut,
-        duree_engagement_mois, statut, gocardless_subscription_id, gocardless_mandate_id, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        duree_engagement_mois, statut, gocardless_subscription_id, gocardless_mandate_id,
+        mandate_token, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(
       clientId, fields.etablissement, fields.email, fields.formule, fields.montant_mensuel,
       fields.date_debut, fields.duree_engagement_mois, fields.statut,
-      fields.gocardless_subscription_id, fields.gocardless_mandate_id, new Date().toISOString()
+      fields.gocardless_subscription_id, fields.gocardless_mandate_id,
+      mandateToken, new Date().toISOString()
     ).run();
     return jsonOk({ id: clientId, created: true });
   } catch (e) {

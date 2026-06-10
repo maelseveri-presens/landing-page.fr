@@ -15,10 +15,12 @@ CREATE TABLE IF NOT EXISTS clients (
   statut                 TEXT NOT NULL DEFAULT 'actif',  -- actif | resiliation_planifiee | resilie
   gocardless_subscription_id TEXT,
   gocardless_mandate_id      TEXT,
+  mandate_token          TEXT,                 -- jeton unique pour le lien /mandat?c=...
   created_at             TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_clients_email ON clients (email);
+CREATE INDEX IF NOT EXISTS idx_clients_mandate_token ON clients (mandate_token);
 
 CREATE TABLE IF NOT EXISTS documents (
   id          TEXT PRIMARY KEY,

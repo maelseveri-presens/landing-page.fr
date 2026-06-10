@@ -111,15 +111,28 @@
           var sel = document.getElementById('u_client');
           var clients = d.clients || [];
           if (!clients.length) { list.innerHTML = '<p class="empty">Aucun client.</p>'; sel.innerHTML=''; return; }
-          list.innerHTML = '<table><thead><tr><th>Établissement</th><th>Email</th><th>Formule</th><th>Statut</th><th></th></tr></thead><tbody>' +
+          list.innerHTML = '<table><thead><tr><th>Établissement</th><th>Email</th><th>Statut</th><th>Lien mandat</th><th></th></tr></thead><tbody>' +
             clients.map(function(c){
-              return '<tr><td style="color:var(--text-primary)">'+esc(c.etablissement)+'</td><td>'+esc(c.email)+'</td><td>'+esc(c.formule||'—')+'</td><td>'+esc(c.statut)+'</td>'+
+              var linkCell = c.mandate_token
+                ? '<button class="nav-link copylink" type="button" data-token="'+esc(c.mandate_token)+'">Copier le lien</button>'
+                : '<span style="color:var(--text-tertiary)">— (enregistrer pour générer)</span>';
+              return '<tr><td style="color:var(--text-primary)">'+esc(c.etablissement)+'</td><td>'+esc(c.email)+'</td><td>'+esc(c.statut)+'</td>'+
+                '<td>'+linkCell+'</td>'+
                 '<td><a href="#" class="nav-link editc" data-id="'+esc(c.id)+'">Éditer</a></td></tr>';
             }).join('') + '</tbody></table>';
           sel.innerHTML = clients.map(function(c){ return '<option value="'+esc(c.id)+'">'+esc(c.etablissement)+'</option>'; }).join('');
           window.__clients = clients;
           Array.prototype.forEach.call(document.querySelectorAll('.editc'), function(a){
             a.addEventListener('click', function(e){ e.preventDefault(); fillForm((window.__clients||[]).find(function(x){return x.id===a.dataset.id;})); });
+          });
+          Array.prototype.forEach.call(document.querySelectorAll('.copylink'), function(b){
+            b.addEventListener('click', function(){
+              var url = location.origin + '/mandat?c=' + encodeURIComponent(b.dataset.token);
+              var done = function(){ var t=b.textContent; b.textContent='Copié ✓'; setTimeout(function(){ b.textContent=t; }, 1500); };
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('Copiez le lien :', url); });
+              } else { window.prompt('Copiez le lien :', url); }
+            });
           });
         });
       }
