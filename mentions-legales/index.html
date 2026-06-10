@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales · Présens</title>
+  <meta name="description" content="Mentions légales du site presens.site — studio GEO Présens.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presens.site/mentions-legales">
+  <meta name="theme-color" content="#0F1F18">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+  <link rel="apple-touch-icon" href="/favicon.svg?v=2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/footer.css">
+
+  <style>
+    :root {
+      --bg-main: #0F1F18;
+      --bg-deep: #142822;
+      --bg-card: #1A2E26;
+      --bg-hover: #21372C;
+      --green-cta: #2D6B52;
+      --green-sage: #B8DDC8;
+      --green-mint: #9BEAC8;
+      --green-forest: #1F3A2D;
+      --text-primary: #F0F5F2;
+      --text-secondary: #9CADA5;
+      --text-tertiary: #6B7A73;
+      --font-display: 'Lora', Georgia, serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --ls-pill: 0.18em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+    }
+
+    body { position: relative; overflow-x: hidden; display: flex; flex-direction: column; }
+
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 20px;
+      padding: 8px 20px;
+      background: rgba(26, 46, 38, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest); border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    .nav-logo { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1; text-decoration: none; color: var(--text-primary); }
+    .nav-logo .pre { color: #E8E0D0; }
+    .nav-logo .sens { color: var(--green-sage); }
+    .nav-back { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-tertiary); text-decoration: none; transition: color 200ms; }
+    .nav-back:hover { color: var(--text-secondary); }
+
+    /* ── Contenu ── */
+    main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 130px 24px 40px;
+      flex: 1;
+    }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: var(--font-ui); font-size: 11px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: var(--ls-pill); color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .pill::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green-mint); box-shadow: 0 0 12px var(--green-mint); flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      font-family: var(--font-body); font-size: 14px; font-weight: 300;
+      color: var(--text-secondary); line-height: 1.65; margin-bottom: 36px;
+    }
+
+    section.legal { margin-bottom: 30px; }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 500;
+      color: var(--green-mint);
+      margin-bottom: 12px;
+    }
+
+    p, li {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    p { margin-bottom: 10px; }
+    strong { color: var(--text-primary); font-weight: 500; }
+    a.inline { color: var(--green-mint); text-decoration: none; }
+    a.inline:hover { color: var(--green-sage); }
+
+    .legal ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .legal li { position: relative; padding-left: 18px; }
+    .legal li::before { content: '·'; position: absolute; left: 4px; top: 0; color: var(--green-cta); font-weight: 700; }
+
+    .todo {
+      color: var(--green-sage);
+      background: rgba(155, 234, 200, 0.07);
+      border-radius: 4px;
+      padding: 0 5px;
+      font-weight: 400;
+    }
+
+    hr { border: none; border-top: 1px solid var(--green-forest); margin: 30px 0; }
+
+    .disclaimer {
+      font-family: var(--font-body); font-size: 12px; font-style: italic;
+      color: var(--text-tertiary); line-height: 1.6;
+      border-left: 2px solid var(--green-forest); padding-left: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(31,58,45,0.6),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);"></div>
+
+  <nav id="navbar" aria-label="Navigation">
+    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-back" href="/">← Retour</a>
+  </nav>
+
+  <main>
+    <span class="pill">INFORMATIONS LÉGALES</span>
+    <h1>Mentions légales</h1>
+    <p class="intro">Conformément à la loi pour la confiance dans l'économie numérique (LCEN),
+      les informations légales du site <strong>presens.site</strong> sont précisées ci-dessous.</p>
+
+    <section class="legal">
+      <h2>Éditeur du site</h2>
+      <p>Le site presens.site est édité par <strong>Maël Séveri</strong>, micro-entrepreneur
+        (entreprise individuelle).</p>
+      <ul>
+        <li>SIRET : <span class="todo">[SIRET]</span></li>
+        <li>Siège : <span class="todo">[adresse du siège]</span></li>
+        <li>Email : <a class="inline" href="mailto:contact@presens.site">contact@presens.site</a></li>
+      </ul>
+    </section>
+
+    <section class="legal">
+      <h2>Directeur de la publication</h2>
+      <p><strong>Maël Séveri</strong>.</p>
+    </section>
+
+    <section class="legal">
+      <h2>Hébergeur</h2>
+      <p><strong>Cloudflare, Inc.</strong><br>
+        101 Townsend Street, San Francisco, CA 94107, États-Unis. <span class="todo">[à vérifier]</span></p>
+    </section>
+
+    <section class="legal">
+      <h2>TVA</h2>
+      <p>TVA non applicable, article 293 B du CGI.</p>
+    </section>
+
+    <section class="legal">
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus du site (textes, identité visuelle, logo, structure, éléments
+        graphiques) est la propriété exclusive de Maël Séveri, sauf mention contraire. Toute
+        reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite
+        préalable, est interdite et susceptible de constituer une contrefaçon.</p>
+    </section>
+
+    <section class="legal">
+      <h2>Données personnelles</h2>
+      <p>Les données transmises via les formulaires du site (notamment la demande d'audit) sont
+        utilisées uniquement pour traiter la demande et ne sont jamais cédées à des tiers à des fins
+        commerciales. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de
+        suppression de vos données : adressez votre demande à
+        <a class="inline" href="mailto:contact@presens.site">contact@presens.site</a>.
+        Les mandats de prélèvement sont gérés par le prestataire GoCardless, qui conserve seul les
+        coordonnées bancaires ; aucune donnée de paiement n'est stockée par Présens.</p>
+    </section>
+
+    <hr>
+
+    <p class="disclaimer">Ce contenu est fourni à titre indicatif et doit être vérifié et complété
+      par un professionnel du droit avant publication.</p>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo" aria-label="Présens"><span class="pre">Pré</span><span class="sens">sens</span></div>
+          <p class="footer-tagline">Premier studio français de GEO pour l'hôtellerie-restauration.
+            Faites citer votre établissement par les IA.</p>
+        </div>
+        <nav class="footer-col" aria-label="Navigation">
+          <span class="footer-col-title">Navigation</span>
+          <a class="footer-link" href="/">Accueil</a>
+          <a class="footer-link" href="/blog">Blog</a>
+          <a class="footer-link" href="/audit">Audit gratuit</a>
+          <a class="footer-link" href="/espace">Espace client</a>
+        </nav>
+        <div class="footer-col">
+          <span class="footer-col-title">Contact</span>
+          <a class="footer-email" href="mailto:contact@presens.site">contact@presens.site</a>
+          <span class="footer-line">Maël — Fondateur</span>
+          <span class="footer-line">France · 2026</span>
+        </div>
+        <nav class="footer-col" aria-label="Légal">
+          <span class="footer-col-title">Légal</span>
+          <a class="footer-link" href="/mentions-legales">Mentions légales</a>
+          <!-- Emplacements futurs :
+          <a class="footer-link" href="/cgv">CGV</a>
+          <a class="footer-link" href="/confidentialite">Confidentialité</a>
+          -->
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Présens · Studio GEO · France · Tous droits réservés</p>
+        <div class="footer-geo-links">
+          <a class="footer-geo-link" href="/llms.txt" target="_blank" rel="noopener">llms.txt</a>
+          <a class="footer-geo-link" href="/sitemap.xml" target="_blank" rel="noopener">sitemap.xml</a>
+          <a class="footer-geo-link" href="/robots.txt" target="_blank" rel="noopener">robots.txt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

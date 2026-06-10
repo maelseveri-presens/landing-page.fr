@@ -2152,7 +2152,7 @@
 
     .footer-top {
       display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
       gap: 32px;
       width: 100%;
       padding-bottom: 20px;
@@ -2281,12 +2281,19 @@
 
     @media (max-width: 768px) {
       .footer-top {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
       }
 
       .footer-tagline {
         max-width: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
     }
 
@@ -3225,6 +3232,16 @@
             <span class="footer-contact-line">Maël — Fondateur</span>
             <span class="footer-contact-line">France · 2026</span>
           </div>
+
+          <!-- Légal -->
+          <nav class="footer-nav footer-anim" aria-label="Légal">
+            <span class="footer-col-title">Légal</span>
+            <a class="footer-nav-link" href="/mentions-legales" style="text-decoration:none;">Mentions légales</a>
+            <!-- Emplacements futurs :
+            <a class="footer-nav-link" href="/cgv" style="text-decoration:none;">CGV</a>
+            <a class="footer-nav-link" href="/confidentialite" style="text-decoration:none;">Confidentialité</a>
+            -->
+          </nav>
 
         </div><!-- /.footer-top -->
 
