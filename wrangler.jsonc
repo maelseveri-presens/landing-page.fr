@@ -14,7 +14,7 @@
   "vars": {
     "CF_ACCESS_TEAM_DOMAIN": "silent-boat-a254",
     "CF_ACCESS_AUD": "7429ffae-8c28-486f-9495-adc731cf14e5",
-    "GOCARDLESS_ENVIRONMENT": "sandbox"
+    "GOCARDLESS_ENVIRONMENT": "live"
   },
 
   "d1_databases": [
