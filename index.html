@@ -421,6 +421,9 @@
       color: var(--text-tertiary); display: flex; flex-direction: column; align-items: center; gap: 8px;
     }
     .scroll-cue .bar { width: 1px; height: 34px; background: linear-gradient(var(--mint-vivid), transparent); }
+    /* Mobile : la carte occupe le bas du hero → on masque le repère « Défiler »
+       pour qu'il ne soit plus caché dessous. */
+    @media (max-width: 920px) { .scroll-cue { display: none; } }
 
     /* ── Reveals partagés (IntersectionObserver) ── */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
@@ -631,7 +634,7 @@
 
     /* ── CTA FINAL (zone profonde, orbe en respiration) ── */
     .final {
-      position: relative; overflow: hidden; text-align: center;
+      position: relative; overflow: visible; text-align: center;
       padding: clamp(96px, 16vw, 180px) 0;
       background: radial-gradient(120% 100% at 50% 50%, #102019 0%, var(--bg-deep) 55%, var(--onyx) 100%);
     }
