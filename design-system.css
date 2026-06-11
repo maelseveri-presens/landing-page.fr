@@ -1,0 +1,284 @@
+/* ============================================================
+   PRÉSENS — DESIGN SYSTEM « Liquid Glass »
+   Tokens, échelle typographique, composant .glass, utilitaires.
+   Les filtres SVG (#chroma, #liquid, #threadGlow) sont définis
+   dans un <svg> caché côté HTML (voir partial defs).
+   ============================================================ */
+
+/* ── 1. TOKENS ──────────────────────────────────────────── */
+:root {
+  /* Palette stricte (charte Présens validée) */
+  --cream:       #F0F5F2;
+  --onyx:        #0E1F18;
+  --forest:      #1F3A2D;
+  --cta:         #2D6B52;
+  --mint:        #9BEAC8;
+  --sage:        #B8DDC8;
+  --mint-vivid:  #7DF0B5;
+  --gold:        #C9A876;   /* accent fonctionnel discret — jamais en aplat */
+
+  /* Dérivés de fond (respiration clair / mid / profond) */
+  --bg-deep:     #0B1812;   /* onyx + sombre, zones profondes */
+  --bg-mid:      #16291F;   /* forest atténué */
+  --bg-card:     #16291F;
+
+  /* Texte */
+  --text-primary:   #F0F5F2;
+  --text-secondary: #9CADA5;
+  --text-tertiary:  #6B7A73;
+
+  /* Typographie */
+  --font-display: 'Lora', Georgia, serif;
+  --font-ui:      'Space Grotesk', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Échelle fluide (clamp) */
+  --fs-eyebrow: clamp(0.68rem, 0.62rem + 0.3vw, 0.78rem);
+  --fs-body:    clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+  --fs-lead:    clamp(1.05rem, 0.98rem + 0.5vw, 1.25rem);
+  --fs-h3:      clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  --fs-h2:      clamp(1.8rem, 1.4rem + 2vw, 2.9rem);
+  --fs-display: clamp(2.6rem, 1.8rem + 4.2vw, 5rem);
+
+  /* Letter-spacing labels Space Grotesk uppercase */
+  --ls-label: 0.18em;
+
+  /* Rayons / profondeur */
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-pill: 999px;
+
+  /* Couches de verre */
+  --glass-blur: 18px;
+  --glass-bg:   linear-gradient(135deg, rgba(240,245,242,0.10), rgba(240,245,242,0.03));
+  --glass-border: rgba(184,221,200,0.35);
+  --glass-inner-light: inset 0 1px 0 rgba(240,245,242,0.25);
+  --glass-shadow: 0 24px 60px rgba(10,20,16,0.35);
+
+  /* Durées */
+  --t-fast: 200ms;
+  --t-med:  450ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── 2. BASE ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--onyx);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgba(125,240,181,0.25); color: var(--cream); }
+
+/* ── 3. TYPOGRAPHIE ─────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-secondary);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+.display em { font-style: italic; color: var(--mint); }
+
+h1, .h1 { font-family: var(--font-display); font-size: var(--fs-display); font-weight: 500; line-height: 1.05; }
+h2, .h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 500; line-height: 1.1; }
+h3, .h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; line-height: 1.2; }
+
+.lead { font-size: var(--fs-lead); color: var(--text-secondary); font-weight: 300; }
+.num  { font-family: var(--font-ui); font-feature-settings: "tnum"; }
+
+/* ── 4. COMPOSANT .glass ───────────────────────────────────
+   Empilement : fond translucide → blur+saturation → bordure
+   verre + liseré interne → reflet spéculaire (::before) →
+   ombre de profondeur. Réfraction liquide en option (.glass--liquid).
+   ──────────────────────────────────────────────────────── */
+.glass {
+  position: relative;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow), var(--glass-inner-light);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Reflet spéculaire — suit la souris via --mx/--my (0–100%), drift par défaut */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background:
+    radial-gradient(220px 220px at var(--mx, 30%) var(--my, 0%),
+      rgba(255,255,255,0.12), rgba(255,255,255,0) 60%),
+    linear-gradient(125deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 40%);
+  opacity: 0.8;
+  transition: background var(--t-fast) linear;
+  z-index: 1;
+}
+
+/* Le contenu passe au-dessus du reflet */
+.glass > * { position: relative; z-index: 2; }
+
+/* Variante claire (verre sur fond clair) */
+.glass--light {
+  background: linear-gradient(135deg, rgba(14,31,24,0.06), rgba(14,31,24,0.02));
+  border-color: rgba(31,58,45,0.18);
+  box-shadow: 0 24px 60px rgba(10,20,16,0.12), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* Variante signature : réfraction liquide (réservée à 2-3 éléments) */
+.glass--liquid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* le filtre déplace ce voile, donnant l'ondulation derrière le verre */
+  background: linear-gradient(135deg, rgba(155,234,200,0.05), rgba(125,240,181,0.02));
+  filter: url(#liquid);
+  z-index: 0;
+}
+
+/* Fallback élégant si backdrop-filter indisponible */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass        { background: rgba(22,41,31,0.92); }
+  .glass--light { background: rgba(240,245,242,0.92); }
+}
+
+/* ── 5. ABERRATION CHROMATIQUE ─────────────────────────────
+   - .chroma-svg : applique le filtre SVG (titres hero, fil).
+   - .chroma-hover : alternative GPU-friendly (ombres décalées). */
+.chroma-svg { filter: url(#chroma); }
+
+.chroma-hover { transition: text-shadow var(--t-fast) var(--ease-out); }
+.chroma-hover:hover {
+  text-shadow:
+    -1.5px 0 rgba(255,46,92,0.55),
+     1.5px 0 rgba(40,150,255,0.55);
+}
+
+/* Flash d'aberration au chargement (ajouter/retirer la classe en JS) */
+.chroma-flash { animation: chroma-flash 320ms var(--ease-out) both; }
+@keyframes chroma-flash {
+  0%   { text-shadow: -6px 0 rgba(255,46,92,0.8), 6px 0 rgba(40,150,255,0.8); }
+  100% { text-shadow: 0 0 rgba(255,46,92,0), 0 0 rgba(40,150,255,0); }
+}
+
+/* ── 6. BOUTONS ────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--t-fast) var(--ease-out),
+              background var(--t-fast) var(--ease-out),
+              box-shadow var(--t-fast) var(--ease-out);
+  will-change: transform;
+}
+.btn--primary {
+  background: var(--cta);
+  color: var(--cream);
+  box-shadow: 0 8px 24px rgba(45,107,82,0.35);
+}
+.btn--primary:hover {
+  background: #347a5d;
+  box-shadow: 0 10px 30px rgba(45,107,82,0.5),
+             -1.5px 0 rgba(255,46,92,0.4), 1.5px 0 rgba(40,150,255,0.4);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--glass-border);
+}
+.btn--ghost:hover { border-color: var(--sage); color: var(--cream); }
+
+/* ── 7. ACCENTS / BADGES ───────────────────────────────── */
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,118,0.45);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  background: rgba(201,168,118,0.08);
+}
+
+/* ── 8. ORBES / LUEURS DE FOND ─────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: 0;
+}
+.orb--mint  { background: radial-gradient(circle, rgba(155,234,200,0.45), transparent 70%); }
+.orb--vivid { background: radial-gradient(circle, rgba(125,240,181,0.4), transparent 70%); }
+.orb--forest{ background: radial-gradient(circle, rgba(31,58,45,0.6), transparent 70%); }
+
+/* ── 9. UTILITAIRES ────────────────────────────────────── */
+.wrap { width: 100%; max-width: 1100px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 48px); }
+.stack-sm > * + * { margin-top: 10px; }
+.stack    > * + * { margin-top: 20px; }
+.muted { color: var(--text-tertiary); }
+.center { text-align: center; }
+
+/* ── 10. ACCESSIBILITÉ / PERF ──────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--mint-vivid);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Sous 768px : on allège le verre (coût GPU mobile) */
+@media (max-width: 768px) {
+  :root { --glass-blur: 12px; }
+  .orb { filter: blur(70px); }
+}
+
+/* Mouvement réduit : on coupe liquide, reflet animé, aberration */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .glass--liquid::after { filter: none; }
+  .chroma-svg { filter: none; }
+  .chroma-hover:hover { text-shadow: none; }
+}

@@ -36,7 +36,7 @@ html, body {
 
 body { position: relative; overflow-x: hidden; min-height: 100dvh; }
 
-.orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+.orb { display: none; }   /* orbes d'arrière-plan retirées (hors hero) */
 
 /* ── Navbar ── */
 #navbar {

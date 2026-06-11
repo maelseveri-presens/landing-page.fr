@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab · Liquid Glass — Présens (démo interne)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0E1F18">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Design system Présens -->
+  <link rel="stylesheet" href="/design-system.css">
+
+  <style>
+    /* Styles propres à la page démo (hors design system) */
+    body { position: relative; overflow-x: hidden; }
+
+    .lab-note {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-label);
+      color: var(--gold);
+      border: 1px dashed rgba(201,168,118,0.4);
+      border-radius: var(--radius-pill);
+      padding: 4px 14px;
+      display: inline-block;
+    }
+
+    section.lab { padding: clamp(56px, 9vw, 110px) 0; position: relative; z-index: 1; }
+    section.lab + section.lab { border-top: 1px solid rgba(184,221,200,0.10); }
+
+    .lab-head { margin-bottom: 36px; }
+    .lab-head .eyebrow { display: block; margin-bottom: 10px; }
+
+    /* zones de respiration clair / mid / profond */
+    .zone-deep  { background: radial-gradient(120% 80% at 50% 0%, #16291F, var(--bg-deep) 70%); }
+    .zone-mid   { background: linear-gradient(180deg, var(--bg-deep), #173026); }
+    .zone-clair { background: linear-gradient(180deg, #173026 0%, #DCE9E1 55%, #EEF4F0 100%); }
+    .zone-clair .eyebrow { color: var(--cta); }
+    .zone-clair .h2, .zone-clair .display { color: var(--onyx); }
+    .zone-clair .lead { color: #3a4a43; }
+
+    /* grilles */
+    .grid { display: grid; gap: 22px; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 860px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+    /* swatches palette */
+    .swatches { display: flex; flex-wrap: wrap; gap: 14px; }
+    .sw { width: 120px; }
+    .sw .chip { height: 64px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.08); }
+    .sw .name { font-family: var(--font-ui); font-size: 0.72rem; margin-top: 8px; color: var(--text-secondary); }
+    .sw .hex  { font-family: var(--font-ui); font-size: 0.68rem; color: var(--text-tertiary); }
+
+    /* cartes démo */
+    .card-pad { padding: 28px; }
+    .card-pad .h3 { margin-bottom: 8px; }
+
+    /* carte hero signature */
+    .hero-wrap { position: relative; padding: clamp(64px, 10vw, 130px) 0 90px; text-align: center; z-index: 1; }
+    .hero-card {
+      max-width: 460px; margin: 40px auto 0; padding: 30px;
+      text-align: left;
+    }
+    .score-row { display: flex; align-items: baseline; justify-content: space-between; }
+    .score-big { font-family: var(--font-ui); font-weight: 600; font-size: 3.4rem; color: var(--mint-vivid); line-height: 1; }
+    .score-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.10); overflow: hidden; margin-top: 18px; }
+    .score-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--cta), var(--mint-vivid)); transition: width 1.2s var(--ease-out); }
+    .llm-line { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-ui); font-size: 0.82rem; color: var(--text-secondary); }
+    .llm-line + .llm-line { margin-top: 10px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint-vivid); box-shadow: 0 0 10px var(--mint-vivid); }
+
+    /* offre surélevée */
+    .offer-featured { transform: translateY(-12px); border-color: rgba(155,234,200,0.5); box-shadow: var(--glass-shadow), 0 0 60px rgba(155,234,200,0.18), var(--glass-inner-light); }
+    .price { font-family: var(--font-ui); font-weight: 600; font-size: 2rem; color: var(--cream); }
+    .price small { font-size: 0.9rem; color: var(--text-tertiary); font-weight: 400; }
+    @media (max-width: 860px) { .offer-featured { transform: none; } }
+
+    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 26px; }
+  </style>
+</head>
+
+<body>
+  <!-- ══ Filtres SVG cachés (signature Présens) ══ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="chroma" x="-20%" y="-20%" width="140%" height="140%">
+        <feOffset in="SourceGraphic" dx="1.6" dy="0" result="r" />
+        <feOffset in="SourceGraphic" dx="-1.6" dy="0" result="b" />
+        <feComponentTransfer in="r" result="rOnly">
+          <feFuncG type="linear" slope="0" />
+          <feFuncB type="linear" slope="0" />
+        </feComponentTransfer>
+        <feComponentTransfer in="b" result="bOnly">
+          <feFuncR type="linear" slope="0" />
+          <feFuncG type="linear" slope="0" />
+        </feComponentTransfer>
+        <feBlend in="rOnly" in2="bOnly" mode="screen" result="rb" />
+        <feBlend in="rb" in2="SourceGraphic" mode="screen" />
+      </filter>
+
+      <filter id="liquid">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.014" numOctaves="2" seed="7" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+      </filter>
+
+      <filter id="threadGlow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="10" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ══ HERO signature : verre liquide + aberration ══ -->
+  <section class="zone-deep">
+    <div class="orb orb--mint" style="width:560px;height:560px;top:-160px;left:50%;transform:translateX(-50%);"></div>
+    <div class="orb orb--vivid" style="width:340px;height:340px;bottom:-80px;right:-60px;"></div>
+
+    <div class="wrap hero-wrap">
+      <span class="lab-note">Page démo interne — validation du verre</span>
+      <p class="eyebrow" style="margin-top:22px;">Studio GEO · Hôtellerie-restauration</p>
+      <h1 class="display chroma-flash" id="hero-title" style="margin-top:14px;">
+        Votre établissement,<br><em>cité par les IA.</em>
+      </h1>
+      <p class="lead" style="max-width:540px;margin:18px auto 0;">
+        Aperçu du système « liquid glass » : réfraction, profondeur, lumière qui circule,
+        aberration chromatique signature.
+      </p>
+
+      <!-- carte signature avec réfraction liquide -->
+      <div class="glass glass--liquid hero-card" data-glass>
+        <div class="score-row">
+          <div>
+            <p class="eyebrow">Score de Présence</p>
+            <p class="muted" style="font-size:0.8rem;">Restaurant — exemple</p>
+          </div>
+          <div class="score-big num" data-count="74">0</div>
+        </div>
+        <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+        <div style="margin-top:22px;">
+          <div class="llm-line"><span><span class="dot" style="display:inline-block;margin-right:8px;"></span>ChatGPT</span><span class="num">cité</span></div>
+          <div class="llm-line"><span><span class="dot" style="display:inline-block;margin-right:8px;"></span>Perplexity</span><span class="num">cité</span></div>
+          <div class="llm-line"><span><span class="dot" style="display:inline-block;margin-right:8px;background:var(--text-tertiary);box-shadow:none;"></span>Gemini</span><span class="num muted">à travailler</span></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#" id="magBtn">Demander un audit</a>
+        <a class="btn btn--ghost" href="#">Voir la méthode</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PALETTE ══ -->
+  <section class="lab zone-mid">
+    <div class="wrap">
+      <div class="lab-head">
+        <span class="eyebrow">Fondations</span>
+        <h2 class="h2">Palette &amp; matière</h2>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--cream)"></div><div class="name">Cream</div><div class="hex">#F0F5F2</div></div>
+        <div class="sw"><div class="chip" style="background:var(--onyx)"></div><div class="name">Onyx</div><div class="hex">#0E1F18</div></div>
+        <div class="sw"><div class="chip" style="background:var(--forest)"></div><div class="name">Forest</div><div class="hex">#1F3A2D</div></div>
+        <div class="sw"><div class="chip" style="background:var(--cta)"></div><div class="name">CTA</div><div class="hex">#2D6B52</div></div>
+        <div class="sw"><div class="chip" style="background:var(--mint)"></div><div class="name">Mint</div><div class="hex">#9BEAC8</div></div>
+        <div class="sw"><div class="chip" style="background:var(--sage)"></div><div class="name">Sage</div><div class="hex">#B8DDC8</div></div>
+        <div class="sw"><div class="chip" style="background:var(--mint-vivid)"></div><div class="name">Mint vivid</div><div class="hex">#7DF0B5</div></div>
+        <div class="sw"><div class="chip" style="background:var(--gold)"></div><div class="name">Gold</div><div class="hex">#C9A876</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TYPOGRAPHIE ══ -->
+  <section class="lab zone-deep">
+    <div class="wrap">
+      <div class="lab-head">
+        <span class="eyebrow">Fondations</span>
+        <h2 class="h2">Échelle typographique</h2>
+      </div>
+      <div class="stack">
+        <p class="eyebrow">Eyebrow · Space Grotesk · uppercase</p>
+        <p class="display">Display Lora <em>italique</em></p>
+        <h2 class="h2">Titre H2 — Lora 500</h2>
+        <h3 class="h3">Titre H3 — Lora 500</h3>
+        <p class="lead">Lead Inter — un sous-titre lisible qui introduit la section avec une couleur secondaire douce.</p>
+        <p style="max-width:60ch;">Corps Inter Light — texte de lecture confortable. Le contenu reste toujours en HTML statique, crawlable sans JavaScript, pour préserver le SEO et le GEO. Voici un nombre tabulaire : <span class="num">74 / 100</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CARTES VERRE ══ -->
+  <section class="lab zone-mid">
+    <div class="wrap">
+      <div class="lab-head">
+        <span class="eyebrow">Composant</span>
+        <h2 class="h2">Cartes <em style="font-style:italic;color:var(--mint)">.glass</em></h2>
+        <p class="lead">Reflet spéculaire suivant la souris · bordure de verre · profondeur. Survole les cartes.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="glass card-pad" data-glass>
+          <h3 class="h3">Réfraction</h3>
+          <p class="muted">Le fond ondule légèrement derrière le verre.</p>
+        </div>
+        <div class="glass card-pad" data-glass>
+          <h3 class="h3">Profondeur</h3>
+          <p class="muted">Ombre portée douce + liseré interne lumineux.</p>
+        </div>
+        <div class="glass card-pad" data-glass>
+          <h3 class="h3">Lumière</h3>
+          <p class="muted">Saturation rehaussée par le backdrop-filter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OFFRES (cartes verre + or) ══ -->
+  <section class="lab zone-deep">
+    <div class="wrap">
+      <div class="lab-head center">
+        <span class="eyebrow">Aperçu</span>
+        <h2 class="h2">Cartes d'offres</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="glass card-pad" data-glass>
+          <p class="eyebrow">Présent</p>
+          <p class="price">240 € <small>/ mois</small></p>
+          <p class="muted">Bars, cafés, restaurants indépendants.</p>
+        </div>
+        <div class="glass card-pad offer-featured" data-glass>
+          <span class="badge-gold">★ Partenaire Fondateur</span>
+          <p class="eyebrow" style="margin-top:12px;">Cité</p>
+          <p class="price">580 € <small>/ mois</small></p>
+          <p class="muted">Gastronomiques, hôtels boutiques.</p>
+        </div>
+        <div class="glass card-pad" data-glass>
+          <p class="eyebrow">Référent</p>
+          <p class="price">Sur devis</p>
+          <p class="muted">Établissements de prestige, groupes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ZONE CLAIRE (transition de thème) ══ -->
+  <section class="lab zone-clair">
+    <div class="wrap">
+      <div class="lab-head">
+        <span class="eyebrow">Respiration</span>
+        <h2 class="h2">Zone claire</h2>
+        <p class="lead">Le verre fonctionne aussi sur fond clair (variante <code>.glass--light</code>).</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="glass glass--light card-pad" data-glass>
+          <h3 class="h3" style="color:var(--onyx)">Verre clair</h3>
+          <p style="color:#3a4a43">Bordure et reflet adaptés au fond lumineux.</p>
+        </div>
+        <div class="glass glass--light card-pad" data-glass>
+          <h3 class="h3" style="color:var(--onyx)">Lisibilité</h3>
+          <p style="color:#3a4a43">Contraste maintenu (objectif AA).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* Reflet spéculaire suivant la souris sur chaque .glass */
+    (function () {
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('[data-glass]').forEach(function (el) {
+        el.addEventListener('pointermove', function (e) {
+          var r = el.getBoundingClientRect();
+          el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+          el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+        });
+        el.addEventListener('pointerleave', function () {
+          el.style.setProperty('--mx', '30%');
+          el.style.setProperty('--my', '0%');
+        });
+      });
+
+      /* Compteur + barre du score (démo) */
+      var fill = document.getElementById('scoreFill');
+      var counter = document.querySelector('[data-count]');
+      function animateScore() {
+        if (fill) fill.style.width = '74%';
+        if (counter && !reduce) {
+          var target = +counter.dataset.count, t0 = null;
+          requestAnimationFrame(function step(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / 1100, 1);
+            counter.textContent = Math.round(target * (0.5 - Math.cos(p * Math.PI) / 2));
+            if (p < 1) requestAnimationFrame(step);
+          });
+        } else if (counter) { counter.textContent = counter.dataset.count; }
+      }
+      setTimeout(animateScore, 350);
+
+      /* Bouton magnétique (rayon 60px) */
+      var btn = document.getElementById('magBtn');
+      if (btn && !reduce) {
+        btn.addEventListener('pointermove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var dx = e.clientX - (r.left + r.width / 2);
+          var dy = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = 'translate(' + dx * 0.25 + 'px,' + dy * 0.35 + 'px)';
+        });
+        btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+      }
+
+      /* Réfraction liquide vivante : seed animée lentement (~11s) */
+      if (!reduce) {
+        var turb = document.querySelector('#liquid feTurbulence');
+        if (turb) {
+          var start = performance.now();
+          (function loop(now) {
+            var t = (now - start) / 1000;
+            var bf = 0.010 + Math.sin(t / 5.5) * 0.004;
+            turb.setAttribute('baseFrequency', bf.toFixed(4) + ' ' + (bf * 1.6).toFixed(4));
+            setTimeout(function () { requestAnimationFrame(loop); }, 90); // throttle ~11fps : suffisant, coût GPU limité
+          })(start);
+        }
+      }
+    })();
+  </script>
+</body>
+
+</html>
