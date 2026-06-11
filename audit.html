@@ -145,6 +145,13 @@
 
     .nav-cta:hover { background: #3a8a6a; }
 
+    .nav-espace {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; flex-shrink: 0;
+      color: var(--green-sage); transition: color 200ms;
+    }
+    .nav-espace:hover { color: var(--green-mint); }
+
     .nav-menu-btn {
       display: none;
       align-items: center;
@@ -490,6 +497,11 @@
       <a class="nav-link" href="/blog">Blog</a>
       <a class="nav-cta" href="/audit">AUDIT GRATUIT →</a>
     </div>
+    <a class="nav-espace" href="/espace" aria-label="Espace client" title="Espace client">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.6" /><path d="M4.5 20c0-4 3.4-6.2 7.5-6.2s7.5 2.2 7.5 6.2" />
+      </svg>
+    </a>
     <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu" aria-expanded="false">
       <svg class="icon-menu" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>

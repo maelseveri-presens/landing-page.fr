@@ -118,6 +118,36 @@
       color: var(--text-secondary);
     }
 
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--green-cta);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: var(--ls-pill);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 200ms, transform 200ms;
+    }
+    .nav-cta:hover { background: #347a5d; transform: translateY(-1px); }
+
+    .nav-espace {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      color: var(--green-sage);
+      transition: color 200ms;
+    }
+    .nav-espace:hover { color: var(--green-mint); }
+
     /* ── Contenu ── */
     main {
       position: relative;
@@ -264,6 +294,12 @@
     <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span
         class="sens">sens</span></a>
     <a class="nav-back" href="/">← Retour</a>
+    <a class="nav-cta" href="/audit">Audit gratuit →</a>
+    <a class="nav-espace" href="/espace" aria-label="Espace client" title="Espace client">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.6" /><path d="M4.5 20c0-4 3.4-6.2 7.5-6.2s7.5 2.2 7.5 6.2" />
+      </svg>
+    </a>
   </nav>
 
   <main>
