@@ -87,6 +87,7 @@ Articles disponibles :
 ## Contact
 
 - Site web officiel : https://presens.site
+- Page À propos (présentation du studio, méthode GEO en 3 étapes, fondateur) : https://presens.site/a-propos
 - Email : contact@presens.site
 - Fondateur : Maël
 - Localisation : France

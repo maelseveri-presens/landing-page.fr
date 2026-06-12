@@ -559,6 +559,10 @@
     .step-icon { margin-left: auto; color: var(--sage); opacity: 0.7; }
     .step-desc { color: var(--text-secondary); font-size: 0.92rem; }
 
+    /* Constellations en clusters (motif différent du réseau de la section Problème) */
+    .constellation { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.5; }
+    .method .wrap, .faq .wrap { position: relative; z-index: 1; }   /* contenu au-dessus de la constellation */
+
     /* ── LE FONDATEUR ── */
     .founder {
       position: relative; overflow: hidden; padding: clamp(80px, 12vw, 150px) 0;
@@ -659,6 +663,32 @@
 
     /* placeholder fin (sections suivantes = phases ultérieures) */
     .placeholder { padding: clamp(70px, 12vw, 140px) 0; text-align: center; background: linear-gradient(180deg, #0F2118, var(--onyx)); }
+
+    /* ── Bandeau cookies (RGPD) ── */
+    #gdpr-banner {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(12px);
+      z-index: 300; width: min(540px, calc(100vw - 48px));
+      background: rgba(20, 40, 34, 0.92);
+      -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+      border: 1px solid var(--forest); border-radius: var(--radius-md);
+      padding: 18px 22px; display: flex; flex-direction: column; gap: 14px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 380ms ease, transform 380ms ease;
+    }
+    #gdpr-banner.gdpr-visible { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .gdpr-text { font-family: var(--font-body); font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .gdpr-text a { color: var(--mint); text-decoration: none; }
+    .gdpr-text a:hover { color: var(--sage); }
+    .gdpr-actions { display: flex; gap: 10px; justify-content: flex-end; }
+    .gdpr-refuse, .gdpr-accept {
+      font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: var(--ls-label);
+      padding: 9px 20px; border-radius: var(--radius-pill); cursor: pointer; transition: background 200ms ease, border-color 200ms ease;
+    }
+    .gdpr-refuse { background: transparent; border: 1px solid var(--sage); color: var(--sage); }
+    .gdpr-refuse:hover { background: rgba(184, 221, 200, 0.1); }
+    .gdpr-accept { background: var(--cta); border: 1px solid var(--cta); color: var(--text-primary); }
+    .gdpr-accept:hover { background: #3a8a6a; border-color: #3a8a6a; }
+    @media (max-width: 768px) { #gdpr-banner { bottom: 16px; padding: 14px 16px; gap: 12px; } }
   </style>
 </head>
 
@@ -949,6 +979,7 @@
 
     <!-- ══════════ MÉTHODE ══════════ -->
     <section class="method" id="methode" aria-label="La méthode Présens — audit, optimisation, suivi">
+      <svg class="constellation" id="methodStars" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
 
       <div class="wrap">
         <div class="method-head">
@@ -1006,6 +1037,7 @@
 
     <!-- ══════════ LE FONDATEUR ══════════ -->
     <section class="founder" id="fondateur" aria-label="Maël, fondateur de Présens, expert GEO">
+      <svg class="constellation" id="founderStars" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
 
       <div class="wrap founder-grid">
         <div class="glass founder-portrait reveal" data-glass aria-label="Portrait de Maël, fondateur de Présens">
@@ -1071,6 +1103,7 @@
 
     <!-- ══════════ FAQ ══════════ -->
     <section class="faq" id="faq" aria-label="Questions fréquentes sur le GEO">
+      <svg class="constellation" id="faqStars" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
       <div class="wrap">
         <div class="faq-head">
           <span class="eyebrow reveal">FAQ</span>
@@ -1154,6 +1187,7 @@
           <span class="footer-col-title">Navigation</span>
           <a class="footer-link" href="#methode">Méthode</a>
           <a class="footer-link" href="#offres">Tarifs</a>
+          <a class="footer-link" href="/a-propos">À propos</a>
           <a class="footer-link" href="#faq">FAQ</a>
           <a class="footer-link" href="/blog">Blog</a>
           <a class="footer-link" href="/audit">Audit gratuit</a>
@@ -1179,6 +1213,36 @@
       </div>
     </div>
   </footer>
+
+  <!-- ── Bandeau cookies (RGPD) ── -->
+  <div id="gdpr-banner" role="dialog" aria-modal="false" aria-label="Consentement aux cookies" aria-live="polite">
+    <p class="gdpr-text">Ce site utilise des cookies de <strong style="color:var(--text-primary);font-weight:500;">performance</strong>,
+      nécessaires à son bon fonctionnement et à l'affichage, ainsi que des cookies de <strong style="color:var(--text-primary);font-weight:500;">mesure d'audience</strong>.
+      Vous pouvez refuser ces derniers — les cookies de performance, eux, restent actifs. Aucune donnée n'est partagée à des fins publicitaires.
+      <a href="/mentions-legales">En savoir plus</a></p>
+    <div class="gdpr-actions">
+      <button class="gdpr-refuse" id="gdpr-refuse">Refuser</button>
+      <button class="gdpr-accept" id="gdpr-accept">Accepter</button>
+    </div>
+  </div>
+
+  <!-- ── Consentement RGPD ── -->
+  <script>
+    (function () {
+      var banner = document.getElementById('gdpr-banner');
+      if (!banner) return;
+      if (localStorage.getItem('presens-consent')) return;   // choix déjà fait → on n'affiche pas
+      setTimeout(function () { banner.classList.add('gdpr-visible'); }, 900);
+      function choose(value) {
+        localStorage.setItem('presens-consent', value);       // 'all' (tout) ou 'performance' (perf. uniquement)
+        banner.classList.remove('gdpr-visible');
+      }
+      // « Accepter » : performance + mesure d'audience.
+      document.getElementById('gdpr-accept').addEventListener('click', function () { choose('all'); });
+      // « Refuser » : on garde les cookies de performance (bon fonctionnement / affichage), on décline la mesure d'audience.
+      document.getElementById('gdpr-refuse').addEventListener('click', function () { choose('performance'); });
+    })();
+  </script>
 
   <script>
     (function () {
@@ -1348,8 +1412,64 @@
           svg.innerHTML = lines + dots;
         }
         buildNeural();
+
+        /* ── Constellations en clusters (Méthode + Fondateur) — motif distinct ── */
+        function buildClusters(id, seed, scale) {
+          scale = scale || 1;
+          var svg = document.getElementById(id);
+          if (!svg) return;
+          var sec = svg.closest('section');
+          var w = sec.clientWidth, h = sec.clientHeight;
+          if (!w || !h) return;
+          svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+          var st = { s: seed };
+          function rnd() { st.s = (st.s * 1103515245 + 12345) & 0x7fffffff; return st.s / 0x7fffffff; }
+
+          // Bandes latérales : de part et d'autre de la colonne de contenu.
+          var contentW = Math.min(1080, w * 0.9);
+          var sideW = (w - contentW) / 2;
+          if (sideW < 72) { svg.innerHTML = ''; return; }   // pas la place (mobile) → rien
+          var spread = Math.min(sideW * 0.82, 64 * scale);
+          var perSide = Math.max(2, Math.min(4, Math.round(h / 300)));
+          var maxN = scale >= 1.4 ? 6 : 5;
+          var bands = [[14, sideW - 14], [w - sideW + 14, w - 14]];
+          var out = '';
+
+          bands.forEach(function (band) {
+            for (var k = 0; k < perSide; k++) {
+              var cx = band[0] + rnd() * (band[1] - band[0]);
+              var cy = 70 + ((k + rnd()) / perSide) * (h - 140);
+              var n = 2 + Math.floor(rnd() * (maxN - 1));   // 2 à maxN points
+              var pts = [];
+              for (var i = 0; i < n; i++) {
+                var px = Math.max(band[0], Math.min(band[1], cx + (rnd() - 0.5) * spread));
+                pts.push([px, cy + (rnd() - 0.5) * spread]);
+              }
+              for (i = 0; i < pts.length - 1; i++) {         // reliés en ligne (mini-constellation)
+                out += '<line x1="' + pts[i][0].toFixed(1) + '" y1="' + pts[i][1].toFixed(1) +
+                  '" x2="' + pts[i + 1][0].toFixed(1) + '" y2="' + pts[i + 1][1].toFixed(1) +
+                  '" stroke="rgba(184,221,200,0.26)" stroke-width="' + (1 * scale).toFixed(2) + '"/>';
+              }
+              for (i = 0; i < pts.length; i++) {
+                out += '<circle cx="' + pts[i][0].toFixed(1) + '" cy="' + pts[i][1].toFixed(1) +
+                  '" r="' + ((1.8 + rnd() * 2) * scale).toFixed(1) + '" fill="rgba(125,240,181,0.8)"/>';
+              }
+            }
+          });
+          svg.innerHTML = out;
+        }
+        function buildAllClusters() {
+          buildClusters('methodStars', 23);
+          buildClusters('founderStars', 41);
+          buildClusters('faqStars', 59, 1.7);   // FAQ : clusters plus gros
+        }
+        buildAllClusters();
+
         var nrt;
-        window.addEventListener('resize', function () { clearTimeout(nrt); nrt = setTimeout(buildNeural, 180); });
+        window.addEventListener('resize', function () {
+          clearTimeout(nrt);
+          nrt = setTimeout(function () { buildNeural(); buildAllClusters(); }, 180);
+        });
 
         /* ── Parallaxe douce du réseau ── */
         if (hasGSAP && window.ScrollTrigger && !reduce) {
