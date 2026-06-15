@@ -15,7 +15,7 @@
   <div class="orb" style="width:520px;height:520px;background:radial-gradient(circle,rgba(45,107,82,0.5),transparent 70%);top:-120px;left:50%;transform:translateX(-50%);filter:blur(115px);"></div>
 
   <nav id="navbar" aria-label="Navigation">
-    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-logo" href="/" aria-label="Présens, accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
     <a class="nav-link" href="/espace/">← Mon espace</a>
   </nav>
 
@@ -36,8 +36,8 @@
       var recap = document.getElementById('recap');
       var errEl = document.getElementById('error');
       function showError(m) { errEl.textContent = m; errEl.classList.add('show'); }
-      function fmtDate(d) { if (!d) return '—'; try { return new Date(d + 'T00:00:00Z').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
-      function fmtMoney(n) { return (n == null) ? '—' : Number(n).toLocaleString('fr-FR') + ' € / mois'; }
+      function fmtDate(d) { if (!d) return '–'; try { return new Date(d + 'T00:00:00Z').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
+      function fmtMoney(n) { return (n == null) ? '–' : Number(n).toLocaleString('fr-FR') + ' € / mois'; }
 
       fetch('/espace/api/resiliation', { headers: { 'Accept': 'application/json' } })
         .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })

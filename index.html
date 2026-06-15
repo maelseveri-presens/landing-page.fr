@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Présens · Studio GEO Français</title>
+  <title>Présens · Studio GEO pour l'hôtellerie-restauration (France)</title>
   <meta name="description"
-    content="Premier studio français spécialisé exclusivement en GEO (Generative Engine Optimization) pour l'hôtellerie-restauration. Faites citer votre établissement par ChatGPT, Perplexity, Gemini et Claude. Audit gratuit en 48h.">
+    content="Studio français de visibilité IA (GEO) pour l'hôtellerie-restauration. Présens rend restaurants et hôtels visibles dans les réponses de ChatGPT, Perplexity, Gemini et Claude. Audit gratuit en 48h.">
   <meta name="keywords"
     content="GEO, Generative Engine Optimization, référencement génératif, restaurant, hôtel, ChatGPT, Perplexity, Gemini, Claude, France, llms.txt">
-  <meta name="author" content="Maël — Présens">
+  <meta name="author" content="Maël, Présens">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://presens.site/">
   <link rel="sitemap" type="application/xml" href="https://presens.site/sitemap.xml">
@@ -21,11 +21,11 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="Présens · Studio GEO Français pour restaurants &amp; hôtels">
   <meta property="og:description"
-    content="Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration. Audit gratuit en 48h — Score de Présence sur ChatGPT, Perplexity, Gemini et Claude.">
+    content="Premier studio français spécialisé exclusivement en GEO pour l'hôtellerie-restauration. Audit gratuit en 48h : Score de Présence sur ChatGPT, Perplexity, Gemini et Claude.">
   <meta property="og:image" content="https://presens.site/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Présens — Studio GEO pour restaurants et hôtels">
+  <meta property="og:image:alt" content="Présens, studio GEO pour restaurants et hôtels">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -131,7 +131,8 @@
         "serviceType": "Generative Engine Optimization",
         "provider": { "@id": "https://presens.site/#organization" },
         "areaServed": { "@type": "Country", "name": "France" },
-        "description": "Audit, optimisation et suivi mensuel de la présence des établissements HoReCa dans les réponses des LLMs majeurs : ChatGPT, Perplexity, Gemini, Claude.",
+        "audience": { "@type": "BusinessAudience", "name": "Hôtellerie-restauration (restaurants, bars, cafés, hôtels, chambres d'hôtes, établissements étoilés, palaces et domaines) en France" },
+        "description": "Audit, optimisation et suivi mensuel de la présence des établissements d'hôtellerie-restauration dans les réponses des LLMs majeurs : ChatGPT, Perplexity, Gemini, Claude.",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Plans GEO Présens",
@@ -139,26 +140,31 @@
             {
               "@type": "Offer",
               "name": "Plan Présent",
-              "description": "Audit GEO complet, optimisation llms.txt + schema.org, 1 contenu d'autorité par mois, rapport mensuel avec Score de Présence. Pour bars, cafés, restaurants indépendants.",
-              "price": "240",
+              "description": "Audit GEO complet, optimisation llms.txt + schema.org, 1 contenu d'autorité par mois, rapport mensuel avec Score de Présence. Pour bars, cafés et restaurants indépendants.",
+              "price": "280",
               "priceCurrency": "EUR",
               "eligibleCustomerType": "Restaurant indépendant, bar, café"
             },
             {
               "@type": "Offer",
               "name": "Plan Cité",
-              "description": "Tout le plan Présent, plus suivi sur 5 LLMs, 3 contenus optimisés par mois, veille concurrents, rapport bi-mensuel. Pour restaurants gastronomiques et hôtels boutiques.",
-              "price": "580",
+              "description": "Tout le plan Présent, plus visibilité sur les 5 principales IA (ChatGPT, Gemini, Perplexity, Claude et les aperçus IA de Google), 3 contenus optimisés par mois, veille concurrents, rapport bi-mensuel. Pour restaurants gastronomiques, hôtels boutiques et chambres d'hôtes.",
+              "price": "680",
               "priceCurrency": "EUR",
-              "eligibleCustomerType": "Restaurant gastronomique, hôtel boutique"
+              "eligibleCustomerType": "Restaurant gastronomique, hôtel boutique, chambre d'hôtes"
             },
             {
               "@type": "Offer",
               "name": "Plan Référent",
-              "description": "Tout le plan Cité, plus jusqu'à 3 établissements, stratégie PR, dashboard temps réel, call mensuel dédié. Pour hôtels 4-5 étoiles, étoilés Michelin, groupes multi-sites.",
-              "price": "880",
+              "description": "Tout le plan Cité (visibilité sur les 5 principales IA), plus renforcement de la présence dans les sources de référence du secteur (guides, annuaires et publications en ligne) que les IA citent, dashboard temps réel, points stratégiques bi-mensuels avec le fondateur. Mise en place 1 680 €. Tarif sur-mesure pour les groupes et établissements multi-sites. À partir de 1 280 €/mois. Pour hôtels 4-5 étoiles, étoilés Michelin, palaces, châteaux et domaines de prestige.",
               "priceCurrency": "EUR",
-              "eligibleCustomerType": "Hôtel 4-5 étoiles, restaurant étoilé Michelin, groupe multi-sites"
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "minPrice": "1280",
+                "priceCurrency": "EUR",
+                "unitText": "MONTH"
+              },
+              "eligibleCustomerType": "Hôtel 4-5 étoiles, restaurant étoilé Michelin, palace, groupe multi-sites"
             }
           ]
         }
@@ -172,7 +178,7 @@
             "name": "Qu'est-ce que le GEO et en quoi est-ce différent du SEO ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un établissement dans les réponses des intelligences artificielles génératives — ChatGPT, Perplexity, Gemini, Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et recommandé par les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant gastronomique à Lyon ? »."
+              "text": "Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un établissement dans les réponses des intelligences artificielles génératives : ChatGPT, Perplexity, Gemini, Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et recommandé par les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant gastronomique à Lyon ? »."
             }
           },
           {
@@ -180,7 +186,7 @@
             "name": "Mon restaurant ou hôtel est-il concerné par le GEO ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les IA pour chercher des recommandations. Les établissements premium — gastronomiques, boutiques, étoilés — sont les premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y fait confiance pour des décisions à forte valeur."
+              "text": "Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les IA pour chercher des recommandations. Les établissements premium (gastronomiques, boutiques, étoilés) sont les premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y fait confiance pour des décisions à forte valeur."
             }
           },
           {
@@ -212,7 +218,7 @@
             "name": "Pourquoi choisir Présens plutôt qu'une agence SEO classique ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Les agences SEO optimisent pour Google — un moteur qui classe des liens. Les IA génératives fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de données, le format sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier studio français à se consacrer exclusivement à cette discipline pour l'hôtellerie-restauration."
+              "text": "Les agences SEO optimisent pour Google, un moteur qui classe des liens. Les IA génératives fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de données, le format sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier studio français à se consacrer exclusivement à cette discipline pour l'hôtellerie-restauration."
             }
           }
         ]
@@ -349,6 +355,9 @@
     .nav-dropdown {
       position: absolute; top: calc(100% + 12px); right: 0; min-width: 190px;
       display: flex; flex-direction: column; gap: 2px; padding: 8px;
+      background: rgba(20, 40, 34, 0.95);
+      -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+      border: 1px solid var(--green-forest);
       border-radius: var(--radius-md);
       opacity: 0; pointer-events: none; transform: translateY(-6px);
       transition: opacity var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
@@ -472,6 +481,8 @@
     .offers-head .h2 { margin: 12px 0 10px; }
     .offers em { font-style: italic; color: var(--mint); }
     .offers-scarcity { font-family: var(--font-ui); font-size: 0.78rem; color: var(--mint-vivid); letter-spacing: 0.04em; }
+    .offers-audience { font-size: 0.98rem; color: var(--text-secondary); margin-top: 8px; }
+    .offers-vat { text-align: center; margin-top: 18px; font-family: var(--font-ui); font-size: 0.72rem; color: var(--text-tertiary); letter-spacing: 0.03em; }
 
     .toggle { display: inline-flex; gap: 4px; padding: 5px; margin-top: 22px; border-radius: var(--radius-pill); border: 1px solid var(--glass-border); background: rgba(255,255,255,0.04); }
     .toggle-btn { font-family: var(--font-ui); font-size: 0.78rem; font-weight: 500; padding: 9px 18px; border: none; border-radius: var(--radius-pill); background: none; color: var(--text-secondary); cursor: pointer; transition: background var(--t-fast), color var(--t-fast); }
@@ -724,7 +735,7 @@
 
   <!-- ══ Navbar ══ -->
   <nav class="nav glass" aria-label="Navigation principale">
-    <a class="nav-logo" href="#hero" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-logo" href="#hero" aria-label="Présens, accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
     <div class="nav-links">
       <a class="nav-link" href="#methode">Méthode</a>
       <a class="nav-link" href="#offres">Tarifs</a>
@@ -778,8 +789,8 @@
   <main id="main">
 
     <!-- ══════════ HERO ══════════ -->
-    <section class="hero" id="hero" aria-label="Hero — Présens, premier studio GEO français pour l'hôtellerie-restauration">
-      <span class="sr-only">Présens — studio GEO français pour l'hôtellerie-restauration</span>
+    <section class="hero" id="hero" aria-label="Hero : Présens, premier studio GEO français pour l'hôtellerie-restauration">
+      <span class="sr-only">Présens, studio GEO français pour l'hôtellerie-restauration</span>
 
       <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/img/hero-poster.jpg" aria-hidden="true">
         <source src="/assets/video/hero-ambience.webm" type="video/webm">
@@ -792,13 +803,13 @@
 
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow hero-pill">GEO · Studio français · 2026</span>
+          <span class="eyebrow hero-pill">GEO · Hôtellerie-restauration · France</span>
           <h1 class="display hero-title" id="heroTitle">
-            <span class="line"><span>Votre établissement,</span></span>
-            <span class="line"><span><em>cité par les IA.</em></span></span>
+            <span class="line"><span>Restaurants &amp; hôtels,</span></span>
+            <span class="line"><span><em>cités par les IA.</em></span></span>
           </h1>
-          <p class="lead hero-sub">Vos clients cherchent déjà sur ChatGPT, Perplexity, Gemini.
-            Vous n'apparaissez pas encore. Présens vous y place.</p>
+          <p class="lead hero-sub">Présens rend les restaurants et les hôtels visibles dans les réponses de l'IA.
+            Vos clients cherchent déjà sur ChatGPT, Perplexity et Gemini. Vous n'y apparaissez pas encore. On vous y place.</p>
           <div class="hero-ctas">
             <a class="btn btn--primary" href="/audit" id="heroCta">Demander un audit gratuit →</a>
             <a class="btn btn--ghost" href="#methode">Découvrir la méthode</a>
@@ -810,7 +821,7 @@
           <div class="score-row">
             <div>
               <p class="eyebrow">Score de Présence</p>
-              <p class="muted" style="font-size:0.8rem;">Exemple — restaurant gastronomique</p>
+              <p class="muted" style="font-size:0.8rem;">Exemple : restaurant gastronomique</p>
             </div>
             <div class="score-big num" data-count="74">0</div>
           </div>
@@ -828,7 +839,7 @@
     </section>
 
     <!-- ══════════ PROBLÈME / SOLUTION ══════════ -->
-    <section class="problem" id="probleme" aria-label="Le constat — SEO contre GEO">
+    <section class="problem" id="probleme" aria-label="Le constat : SEO contre GEO">
       <svg class="neural" id="neural" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
 
       <div class="wrap problem-inner">
@@ -843,22 +854,22 @@
           <article class="glass card-vs reveal" data-glass data-d="1">
             <span class="eyebrow">SEO classique</span>
             <h3 class="h3">Vous classer sur Google</h3>
-            <p class="muted">Un lien parmi dix, sur lequel l'internaute doit encore cliquer — s'il descend jusqu'à vous.</p>
+            <p class="muted">Un lien parmi dix, sur lequel l'internaute doit encore cliquer, s'il descend jusqu'à vous.</p>
           </article>
           <div class="vs-mark" aria-hidden="true">→</div>
           <article class="glass card-vs card-vs--accent reveal" data-glass data-d="2">
             <span class="eyebrow" style="color:var(--mint)">GEO · Présens</span>
             <h3 class="h3">Vous faire <em>citer</em> par l'IA</h3>
-            <p class="muted">Une recommandation directe, nommée dans la réponse — là où la décision se prend désormais.</p>
+            <p class="muted">Une recommandation directe, nommée dans la réponse, là où la décision se prend désormais.</p>
           </article>
         </div>
 
         <div class="problem-foot">
-          <p class="problem-body reveal">Ce n'est pas encore la majorité des recherches — c'est <em>celle qui grandit
+          <p class="problem-body reveal">Ce n'est pas encore la majorité des recherches, c'est <em>celle qui grandit
               le plus vite</em>. Le basculement avec Google est attendu dès 2028. Le référencement Google s'est joué en
             2005 ; la présence sur les IA se joue maintenant. Pendant que vos concurrents attendent, la place est encore
             à prendre.</p>
-          <p class="problem-stat reveal" data-d="1">Près d'une recherche sur dix passe déjà par une IA générative — et
+          <p class="problem-stat reveal" data-d="1">Près d'une recherche sur dix passe déjà par une IA générative, et
             cette part double chaque année.</p>
           <p class="problem-source reveal" data-d="2">Sources : Datos · Semrush · SparkToro, 2025-2026</p>
           <a class="btn btn--primary reveal" data-d="2" href="/audit">Vérifier ma visibilité →</a>
@@ -867,12 +878,13 @@
     </section>
 
     <!-- ══════════ OFFRES ══════════ -->
-    <section class="offers" id="offres" aria-label="Tarifs Présens — trois paliers GEO">
+    <section class="offers" id="offres" aria-label="Tarifs Présens : trois paliers GEO">
 
       <div class="wrap">
         <div class="offers-head">
           <span class="eyebrow reveal">Tarifs · Offre transparente</span>
           <h2 class="h2 reveal" data-d="1">Une offre simple, <em>sans surprise.</em></h2>
+          <p class="offers-audience reveal" data-d="2">Pour l'hôtellerie-restauration en France : du bar de quartier au palace.</p>
           <p class="offers-scarcity reveal" data-d="2">Partenaire Fondateur · 19 / 20 places restantes</p>
           <div class="toggle reveal" data-d="2" role="group" aria-label="Mode tarifaire">
             <button class="toggle-btn active" id="toggle-std" aria-pressed="true">Tarifs standards</button>
@@ -883,7 +895,7 @@
         <div class="glass founder-banner" role="note" aria-live="polite">
           <span class="star" aria-hidden="true">★</span>
           <div>
-            <strong>Offre Fondateur — places limitées</strong>
+            <strong>Offre Fondateur : places limitées</strong>
             <p>2 mois offerts + 2 mois supplémentaires si vous n'êtes pas cité dans une IA majeure sous 60 jours ·
               Tarif verrouillé à vie.</p>
           </div>
@@ -895,16 +907,16 @@
           <article class="glass offer-card reveal" data-glass data-d="1">
             <span class="offer-name">Plan Présent</span>
             <div class="offer-price">
-              <span class="offer-amount">240<span class="cur"> €</span></span>
-              <span class="offer-period">/mois</span>
+              <span class="offer-amount">280<span class="cur"> €</span></span>
+              <span class="offer-period">/mois HT</span>
             </div>
             <p class="offer-setup">Setup : <span class="setup-std">380 €</span><span class="setup-fond">200 €</span></p>
-            <p class="offer-target">Bars, cafés, restaurants indépendants</p>
+            <p class="offer-target">Bars, cafés et restaurants indépendants</p>
             <ul class="offer-features">
               <li>Audit GEO initial complet</li>
               <li>Optimisation llms.txt + schemas</li>
               <li>1 contenu d'autorité / mois</li>
-              <li>Présence sur 3 IA majeures</li>
+              <li>Visibilité sur 3 IA majeures : ChatGPT, Perplexity et les aperçus IA de Google (AI Overviews)</li>
               <li>Score de Présence mensuel</li>
             </ul>
             <div class="offer-bonus" aria-hidden="true">
@@ -920,14 +932,14 @@
             <span class="offer-name">Plan Cité</span>
             <div class="offer-price">
               <span class="offer-amount">680<span class="cur"> €</span></span>
-              <span class="offer-period">/mois</span>
+              <span class="offer-period">/mois HT</span>
             </div>
             <p class="offer-setup">Setup : <span class="setup-std">980 €</span><span class="setup-fond">200 €</span></p>
-            <p class="offer-target">Restaurants gastronomiques, hôtels boutiques</p>
+            <p class="offer-target">Restaurants gastronomiques, hôtels boutiques, chambres d'hôtes</p>
             <ul class="offer-features">
               <li>Tout du plan Présent</li>
               <li>3 contenus d'autorité / mois</li>
-              <li>Présence sur 5 IA majeures</li>
+              <li>Visibilité sur les 5 principales IA : ChatGPT, Gemini, Perplexity, Claude et les aperçus IA de Google</li>
               <li>Veille sur 3 concurrents</li>
               <li>Optimisation d'entité</li>
               <li>Rapport bi-mensuel</li>
@@ -942,18 +954,20 @@
           <!-- Plan Référent -->
           <article class="glass offer-card reveal" data-glass data-d="3">
             <span class="offer-name">Plan Référent</span>
-            <div class="offer-price">
-              <span class="offer-amount" style="font-size:1.9rem;">Sur devis</span>
+            <div class="offer-price" style="flex-wrap:wrap;">
+              <span class="offer-period" style="width:100%;font-size:0.72rem;">À partir de</span>
+              <span class="offer-amount" style="font-size:2.1rem;">1 280<span class="cur"> €</span></span>
+              <span class="offer-period">/mois HT</span>
             </div>
-            <p class="offer-setup">Conditions Fondateur disponibles</p>
-            <p class="offer-target">Hôtels 4-5 étoiles, restaurants étoilés, châteaux et domaines de prestige</p>
+            <p class="offer-setup">Setup : 1 680 € (tarif sur-mesure pour les groupes et établissements multi-sites)</p>
+            <p class="offer-target">Hôtels 4-5 étoiles, restaurants étoilés, palaces, châteaux et domaines de prestige</p>
             <ul class="offer-features">
               <li>Tout du plan Cité</li>
               <li>5 contenus d'autorité / mois</li>
-              <li>Présence maximale sur toutes les IA</li>
-              <li>Relations presse</li>
+              <li>Visibilité sur les 5 principales IA</li>
+              <li>Renforcement de votre présence dans les sources de référence du secteur (guides, annuaires et publications en ligne) que les IA citent</li>
               <li>Dashboard de suivi</li>
-              <li>Accompagnement dédié par le fondateur</li>
+              <li>Des points stratégiques bi-mensuels avec le fondateur</li>
             </ul>
             <div class="offer-bonus" aria-hidden="true">
               <span>2 mois offerts</span>
@@ -962,6 +976,8 @@
           </article>
 
         </div>
+
+        <p class="offers-vat reveal">Prix en € HT, TVA non applicable (article 293 B du CGI).</p>
 
         <div class="glass founder-conditions" aria-live="polite">
           <span class="fc-title">Conditions Partenaire Fondateur</span>
@@ -978,7 +994,7 @@
     </section>
 
     <!-- ══════════ MÉTHODE ══════════ -->
-    <section class="method" id="methode" aria-label="La méthode Présens — audit, optimisation, suivi">
+    <section class="method" id="methode" aria-label="La méthode Présens : audit, optimisation, suivi">
       <svg class="constellation" id="methodStars" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
 
       <div class="wrap">
@@ -1041,7 +1057,7 @@
 
       <div class="wrap founder-grid">
         <div class="glass founder-portrait reveal" data-glass aria-label="Portrait de Maël, fondateur de Présens">
-          <span class="founder-portrait-label">[Portrait Maël — Higgsfield]</span>
+          <span class="founder-portrait-label">[Portrait Maël, Higgsfield]</span>
           <video class="founder-video" autoplay muted loop playsinline preload="none" aria-hidden="true">
             <source src="/assets/video/founder-portrait.webm" type="video/webm">
             <source src="/assets/video/founder-portrait.mp4" type="video/mp4">
@@ -1062,14 +1078,14 @@
               résultats mesurables. Pas d'agence anonyme, pas de promesse en l'air. Juste un travail de fond, partagé
               chaque mois en toute transparence.</p>
           </div>
-          <p class="founder-sig reveal" data-d="2">— Maël</p>
+          <p class="founder-sig reveal" data-d="2">Maël</p>
           <a class="btn btn--primary reveal" data-d="3" href="/audit">Échanger avec Maël →</a>
         </div>
       </div>
     </section>
 
     <!-- ══════════ PREUVE ══════════ -->
-    <section class="proof" id="preuve" aria-label="Ce que vous recevez — le rapport mensuel">
+    <section class="proof" id="preuve" aria-label="Ce que vous recevez : le rapport mensuel">
 
       <div class="wrap proof-grid">
         <div class="proof-copy">
@@ -1077,7 +1093,7 @@
           <h2 class="h2 reveal" data-d="1">Votre présence, <em>en toutes lettres.</em></h2>
           <p class="lead reveal" data-d="2">Chaque mois, un rapport clair : votre Score de Présence sur 100, les
             requêtes testées, les citations obtenues par IA, et les extraits de réponses. Vous voyez exactement où vous
-            progressez — et pourquoi.</p>
+            progressez, et pourquoi.</p>
         </div>
 
         <div class="glass report reveal" data-glass data-d="2" role="img"
@@ -1114,7 +1130,7 @@
           <details class="glass faq-item reveal">
             <summary>Qu'est-ce que le GEO et en quoi est-ce différent du SEO ?<span class="faq-plus" aria-hidden="true"></span></summary>
             <p class="faq-a">Le GEO (Generative Engine Optimization) est l'art d'optimiser la présence d'un
-              établissement dans les réponses des intelligences artificielles génératives — ChatGPT, Perplexity, Gemini,
+              établissement dans les réponses des intelligences artificielles génératives : ChatGPT, Perplexity, Gemini,
               Claude. Contrairement au SEO qui vise le classement dans Google, le GEO vise à être cité et recommandé par
               les IA quand un utilisateur pose une question comme « quel est le meilleur restaurant gastronomique à
               Lyon ? ».</p>
@@ -1122,7 +1138,7 @@
           <details class="glass faq-item reveal">
             <summary>Mon restaurant ou hôtel est-il concerné par le GEO ?<span class="faq-plus" aria-hidden="true"></span></summary>
             <p class="faq-a">Si vos clients ont moins de 45 ans et sont actifs en ligne, ils utilisent déjà les IA pour
-              chercher des recommandations. Les établissements premium — gastronomiques, boutiques, étoilés — sont les
+              chercher des recommandations. Les établissements premium (gastronomiques, boutiques, étoilés) sont les
               premiers concernés : leur clientèle est précisément celle qui adopte ces outils en premier et y fait
               confiance pour des décisions à forte valeur.</p>
           </details>
@@ -1149,7 +1165,7 @@
           </details>
           <details class="glass faq-item reveal">
             <summary>Pourquoi choisir Présens plutôt qu'une agence SEO classique ?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p class="faq-a">Les agences SEO optimisent pour Google — un moteur qui classe des liens. Les IA génératives
+            <p class="faq-a">Les agences SEO optimisent pour Google, un moteur qui classe des liens. Les IA génératives
               fonctionnent différemment : elles synthétisent, citent et recommandent. La structure de données, le format
               sémantique et les signaux d'autorité requis sont spécifiques. Présens est le premier studio français à se
               consacrer exclusivement à cette discipline pour l'hôtellerie-restauration.</p>
@@ -1195,7 +1211,7 @@
         <div class="footer-col">
           <span class="footer-col-title">Contact</span>
           <a class="footer-email" href="mailto:contact@presens.site">contact@presens.site</a>
-          <span class="footer-line">Maël — Fondateur</span>
+          <span class="footer-line">Maël, Fondateur</span>
           <span class="footer-line">France · 2026</span>
         </div>
         <nav class="footer-col" aria-label="Légal">
@@ -1218,7 +1234,7 @@
   <div id="gdpr-banner" role="dialog" aria-modal="false" aria-label="Consentement aux cookies" aria-live="polite">
     <p class="gdpr-text">Ce site utilise des cookies de <strong style="color:var(--text-primary);font-weight:500;">performance</strong>,
       nécessaires à son bon fonctionnement et à l'affichage, ainsi que des cookies de <strong style="color:var(--text-primary);font-weight:500;">mesure d'audience</strong>.
-      Vous pouvez refuser ces derniers — les cookies de performance, eux, restent actifs. Aucune donnée n'est partagée à des fins publicitaires.
+      Vous pouvez refuser ces derniers : les cookies de performance, eux, restent actifs. Aucune donnée n'est partagée à des fins publicitaires.
       <a href="/mentions-legales">En savoir plus</a></p>
     <div class="gdpr-actions">
       <button class="gdpr-refuse" id="gdpr-refuse">Refuser</button>
@@ -1292,6 +1308,15 @@
           document.addEventListener('click', function (e) { if (!dd.contains(e.target) && !burger.contains(e.target)) closeDd(); });
           document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDd(); });
         }
+
+        /* ── FAQ : accordéon « un seul ouvert à la fois » (comme l'ancien index) ── */
+        var faqItems = document.querySelectorAll('.faq-list .faq-item');
+        faqItems.forEach(function (d) {
+          d.addEventListener('toggle', function () {
+            if (!d.open) return;
+            faqItems.forEach(function (other) { if (other !== d) other.open = false; });
+          });
+        });
 
         /* ── Reflet spéculaire suivant la souris ── */
         document.querySelectorAll('[data-glass]').forEach(function (el) {

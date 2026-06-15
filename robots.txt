@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# AI Crawlers — explicitly authorized
+# AI Crawlers : explicitly authorized
 User-agent: GPTBot
 Allow: /
 

@@ -95,7 +95,7 @@
   <div class="orb" style="width:320px;height:320px;background:radial-gradient(circle,rgba(155,234,200,0.34),transparent 70%);bottom:10%;right:-60px;filter:blur(90px);"></div>
 
   <nav id="navbar" role="navigation" aria-label="Navigation principale">
-    <a class="nav-logo" href="/" aria-label="Présens — accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
+    <a class="nav-logo" href="/" aria-label="Présens, accueil"><span class="pre">Pré</span><span class="sens">sens</span></a>
     <div class="nav-links">
       <a class="nav-link" href="/#section-2">Méthode</a>
       <a class="nav-link" href="/#section-4">Tarifs</a>
@@ -118,12 +118,9 @@
       </svg>
     </button>
     <div class="nav-dropdown" id="nav-dropdown" role="menu">
-      <a class="nav-dropdown-item" href="/#section-2" role="menuitem">Méthode</a>
-      <a class="nav-dropdown-item" href="/#section-4" role="menuitem">Tarifs</a>
-      <a class="nav-dropdown-item" href="/#section-3" role="menuitem">Le fondateur</a>
-      <a class="nav-dropdown-item" href="/#section-5" role="menuitem">FAQ</a>
+      <a class="nav-dropdown-item" href="/#offres" role="menuitem">Tarifs</a>
+      <a class="nav-dropdown-item" href="/#faq" role="menuitem">FAQ</a>
       <a class="nav-dropdown-item" href="/blog" role="menuitem">Blog</a>
-      <a class="nav-dropdown-item" href="/cdn-cgi/access/logout" role="menuitem">Déconnexion</a>
     </div>
   </nav>
 
@@ -161,8 +158,8 @@
       var errEl = document.getElementById('error');
 
       function showError(m) { errEl.textContent = m; errEl.classList.add('show'); title.textContent = 'Espace client'; }
-      function fmtDate(d) { if (!d) return '—'; try { return new Date(d + 'T00:00:00Z').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
-      function fmtMoney(n) { return (n == null) ? '—' : Number(n).toLocaleString('fr-FR') + ' € / mois'; }
+      function fmtDate(d) { if (!d) return '–'; try { return new Date(d + 'T00:00:00Z').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
+      function fmtMoney(n) { return (n == null) ? '–' : Number(n).toLocaleString('fr-FR') + ' € / mois'; }
       function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
       var STATUT_LABEL = { actif: 'Actif', resiliation_planifiee: 'Résiliation planifiée', resilie: 'Résilié' };
 
@@ -191,7 +188,7 @@
             '<span class="badge ' + esc(statutClass) + '">' + esc(statutTxt) + '</span>' +
             '</div>' +
             '<div class="info-grid">' +
-            '<div class="info-item"><span class="info-label">Formule</span><span class="info-value">' + esc(me.formule || '—') + '</span></div>' +
+            '<div class="info-item"><span class="info-label">Formule</span><span class="info-value">' + esc(me.formule || '–') + '</span></div>' +
             '<div class="info-item"><span class="info-label">Montant</span><span class="info-value">' + esc(fmtMoney(me.montant_mensuel)) + '</span></div>' +
             '<div class="info-item"><span class="info-label">Début d\'abonnement</span><span class="info-value">' + esc(fmtDate(me.date_debut)) + '</span></div>' +
             '<div class="info-item"><span class="info-label">Fin d\'engagement</span><span class="info-value">' + esc(fmtDate(me.fin_engagement)) + '</span></div>' +
